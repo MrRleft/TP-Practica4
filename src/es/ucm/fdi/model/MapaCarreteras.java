@@ -11,34 +11,47 @@ public class MapaCarreteras {
 	 private List<Cruce> cruces;
 	 private List<Vehiculo> vehiculos;
 	
+	 private Map<String, Carretera> mapaDeCarreteras;
+	 private Map<String, Cruce> mapaDeCruces;
+	 private Map<String, Vehiculo> mapaDeVehiculos;
+	
 	 public MapaCarreteras() {
 		 // inicializa los atributos a sus constructoras por defecto.
-		 // Para carreteras, cruces y vehículos puede usarse ArrayList.
+		 // Para carreteras, cruces y vehÃ­culos puede usarse ArrayList.
 		 // Para los mapas puede usarse HashMap
+		 	List<Carretera> carreteras = new ArrayList<>();
+		 	List<Cruce> cruces = new ArrayList<>();
+		 	List<Vehiculo> vehiculos = new ArrayList<>();
+		 	Map<String, Carretera> mapaDeCarreteras = new HashMap<>();
+		 	Map<String, Cruce> mapaDeCruces = new HashMap<>();
+		 	Map<String, Vehiculo> mapaDeVehiculos = new HashMap<>();
+		 	
 		}
 	
 	 public void addCruce(String idCruce, Cruce cruce) {
-		 // comprueba que “idCruce” no existe en el mapa.
-		 // Si no existe, lo añade a “cruces” y a “mapaDeCruces”.
-		 // Si existe lanza una excepción.
+		 // comprueba que â€œidCruceâ€ no existe en el mapa.
+		 // Si no existe, lo aÃ±ade a â€œcrucesâ€ y a â€œmapaDeCrucesâ€.
+		 // Si existe lanza una excepciÃ³n.
+		 if(mapaDeCruces.containsKey(idCruce))
+			 throw new InsertException();
 	}
 	
 	 public void addVehiculo(String idVehiculo,Vehiculo vehiculo) {
-		 // comprueba que “idVehiculo” no existe en el mapa.
-		 // Si no existe, lo añade a “vehiculos” y a “mapaDeVehiculos”,
+		 // comprueba que â€œidVehiculoâ€ no existe en el mapa.
+		 // Si no existe, lo aÃ±ade a â€œvehiculosâ€ y a â€œmapaDeVehiculosâ€,
 		 // y posteriormente solicita al vehiculo que se mueva a la siguiente
 		 // carretera de su itinerario (moverASiguienteCarretera).
-		 // Si existe lanza una excepción.
+		 // Si existe lanza una excepciÃ³n.
 	}
 	
 	 public void addCarretera(String idCarretera, Cruce origen, Carretera carretera,
 			 Cruce destino) {
-			 // comprueba que “idCarretera” no existe en el mapa.
-			 // Si no existe, lo añade a “carreteras” y a “mapaDeCarreteras”,
+			 // comprueba que â€œidCarreteraâ€ no existe en el mapa.
+			 // Si no existe, lo aÃ±ade a â€œcarreterasâ€ y a â€œmapaDeCarreterasâ€,
 			 // y posteriormente actualiza los cruces origen y destino como sigue:
-			 // - Añade al cruce origen la carretera, como “carretera saliente”
-			 // - Añade al crude destino la carretera, como “carretera entrante”
-			 // Si existe lanza una excepción.
+			 // - AÃ±ade al cruce origen la carretera, como â€œcarretera salienteâ€
+			 // - AÃ±ade al crude destino la carretera, como â€œcarretera entranteâ€
+			 // Si existe lanza una excepciÃ³n.
 			}
 	 
 	 public String generateReport(int time) {
@@ -50,25 +63,25 @@ public class MapaCarreteras {
 	}
 	 
 	public void actualizar() {
-		 // llama al método avanza de cada cruce
-		 // llama al método avanza de cada carretera
+		 // llama al mÃ©todo avanza de cada cruce
+		 // llama al mÃ©todo avanza de cada carretera
 		}
 	
 	public Cruce getCruce(String id) {
 		return null;
-		 // devuelve el cruce con ese “id” utilizando el mapaDeCruces.
-		 // sino existe el cruce lanza excepción.
+		 // devuelve el cruce con ese â€œidâ€ utilizando el mapaDeCruces.
+		 // sino existe el cruce lanza excepciÃ³n.
 		}
 	
 	public Vehiculo getVehiculo(String id) {
 		return null;
-		 // devuelve el vehículo con ese “id” utilizando el mapaDeVehiculos.
-		 // sino existe el vehículo lanza excepción.
+		 // devuelve el vehÃ­culo con ese â€œidâ€ utilizando el mapaDeVehiculos.
+		 // sino existe el vehÃ­culo lanza excepciÃ³n.
 		}
 	
 	public Carretera getCarretera(String id) {
 		return null;
-		 // devuelve la carretera con ese “id” utilizando el mapaDeCarreteras.
-		 // sino existe la carretra lanza excepción.
+		 // devuelve la carretera con ese â€œidâ€ utilizando el mapaDeCarreteras.
+		 // sino existe la carretra lanza excepciÃ³n.
 		}
 }
