@@ -13,7 +13,7 @@ public class ErrorCarga extends Exception {
 		
 	}
 		
-	public ErrorCarga(String string) {
+	public ErrorCarga() {
 		
 		super("Ha habido un problema al cargar un elemento");
 	}

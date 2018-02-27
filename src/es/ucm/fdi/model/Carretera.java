@@ -85,4 +85,10 @@ public class Carretera {
 		
 		return this.cruceDestino;
 	}
+
+
+	public void sacarVehiculoCarretera(Vehiculo vehiculo) {
+		// TODO Auto-generated method stub
+		
+	}
 }

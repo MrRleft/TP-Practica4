@@ -11,5 +11,10 @@ public class InsertException extends Exception {
 		
 		super("Problema al insertar algo");
 	}
+	
+	public InsertException(String string) {
+		
+		super(string);
+	}
 
 }
