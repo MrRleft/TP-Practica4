@@ -25,12 +25,13 @@ public class MapaCarreteras {
 		 // inicializa los atributos a sus constructoras por defecto.
 		 // Para carreteras, cruces y vehÃ­culos puede usarse ArrayList.
 		 // Para los mapas puede usarse HashMap
-		 	List<Carretera> carreteras = new ArrayList<>();
-		 	List<Cruce> cruces = new ArrayList<>();
-		 	List<Vehiculo> vehiculos = new ArrayList<>();
-		 	Map<String, Carretera> mapaDeCarreteras = new HashMap<>();
-		 	Map<String, Cruce> mapaDeCruces = new HashMap<>();
-		 	Map<String, Vehiculo> mapaDeVehiculos = new HashMap<>();
+		 //Preguntar como inicializar los arraylist/diccionarios, y preguntar si se pueden eliminar los array list
+		this.carreteras = new ArrayList<>();
+		this.cruces = new ArrayList<>();
+		this.vehiculos = new ArrayList<>();
+		this.mapaDeCarreteras = new HashMap<>();
+		this.mapaDeCruces = new HashMap<>();
+		this.mapaDeVehiculos = new HashMap<>();
 		 	
 		}
 	
