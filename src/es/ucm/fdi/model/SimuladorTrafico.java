@@ -27,22 +27,27 @@ public class SimuladorTrafico {
 			}
 			 
 		 };
-		 this.eventos = new SortedArrayList<Evento>(); // estructura ordenada por “tiempo”
+		 this.eventos = new SortedArrayList<Evento>(cmp); // estructura ordenada por ï¿½tiempoï¿½
 	}
 	
 	public void ejecuta(int pasosSimulacion, OutputStream ficheroSalida) {
 		 int limiteTiempo = this.contadorTiempo + pasosSimulacion - 1;
 		 while (this.contadorTiempo <= limiteTiempo) {
-			// ejecutar todos los eventos correspondienes a “this.contadorTiempo”
-			 // actualizar “mapa”
-			 // escribir el informe en “ficheroSalida”, controlando que no sea null.
+			// ejecutar todos los eventos correspondienes a ï¿½this.contadorTiempoï¿½
+			for(Evento evento : eventos){
+				if(evento.getTiempo() == limiteTiempo){
+					evento.ejecuta(mapa);
+				}
+			}
+			 // actualizar ï¿½mapaï¿½
+			 // escribir el informe en ï¿½ficheroSalidaï¿½, controlando que no sea null.
 		 } 
 
 	}
 	
 	public void insertaEvento(Evento e) {
-		 // inserta un evento en “eventos”, controlando que el tiempo de
-		 // ejecución del evento sea menor que “contadorTiempo”
+		 // inserta un evento en ï¿½eventosï¿½, controlando que el tiempo de
+		 // ejecuciï¿½n del evento sea menor que ï¿½contadorTiempoï¿½
 			if(e.getTiempo() < this.contadorTiempo){
 			this.eventos.add(e);
 			}
