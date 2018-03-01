@@ -2,6 +2,7 @@ package es.ucm.fdi.events;
 
 import java.util.List;
 
+import es.ucm.fdi.Exceptions.NotFoundException;
 import es.ucm.fdi.ini.IniSection;
 import es.ucm.fdi.model.MapaCarreteras;
 
@@ -23,8 +24,21 @@ public class EventoNuevoVehiculo extends Evento{
 	 public void ejecuta(MapaCarreteras mapa) {
 		 
 
-		 // si iti es null o tiene menos de dos cruces lanzar excepción
-		 // en otro caso crear el vehículo y añadirlo al mapa.
+		 // si iti es null o tiene menos de dos cruces lanzar excepciï¿½n
+		 
+			 if(this.itinerario == null ){
+				 try {
+					throw new NotFoundException();
+				} catch (NotFoundException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+			 }
+			 else{
+				
+			 }
+		 
+		 // en otro caso crear el vehï¿½culo y aï¿½adirlo al mapa.
 	 }
 
 	 @Override

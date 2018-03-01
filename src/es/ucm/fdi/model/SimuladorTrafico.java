@@ -40,7 +40,9 @@ public class SimuladorTrafico {
 				}
 			}
 			 // actualizar �mapa�
+			this.mapa.actualizar();
 			 // escribir el informe en �ficheroSalida�, controlando que no sea null.
+			
 		 } 
 
 	}
