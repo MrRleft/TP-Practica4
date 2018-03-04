@@ -4,6 +4,8 @@ import es.ucm.fdi.model.MapaCarreteras;
 
 
 public class EventoNuevoCruce extends Evento {
+	
+	protected String id;
 
 	public EventoNuevoCruce(int tiempo, String string) {
 		super(tiempo);

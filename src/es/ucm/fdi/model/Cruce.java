@@ -2,39 +2,39 @@ package es.ucm.fdi.model;
 
 import es.ucm.fdi.ini.IniSection;
 
-public class Cruce extends ObjetoDeSimulacion {
+public class Cruce extends ObjetoSimulacion {
 	
 	public Cruce(String id) {
-		
+		super(id);
 	}
 	
 	public Carretera carreteraHaciaCruce(Cruce cruce) {
-	 // devuelve la carretera que llega a ese cruce desde “this”
+	 // devuelve la carretera que llega a ese cruce desde ï¿½thisï¿½
 	}
 	
 	public void addCarreteraEntranteAlCruce(String idCarretera, Carretera carretera) {
-	 // añade una carretera entrante al “mapaCarreterasEntrantes” y
-	 // a las “carreterasEntrantes”
+	 // aï¿½ade una carretera entrante al ï¿½mapaCarreterasEntrantesï¿½ y
+	 // a las ï¿½carreterasEntrantesï¿½
 	}
 	
 	public void addCarreteraSalienteAlCruce(Cruce destino, Carretera road) {
-	 // añade una carretera saliente
+	 // aï¿½ade una carretera saliente
 	}
 	
 	public void entraVehiculoAlCruce(String idCarretera, Vehiculo vehiculo){
-	 // añade el “vehiculo” a la carretera entrante “idCarretera”
+	 // aï¿½ade el ï¿½vehiculoï¿½ a la carretera entrante ï¿½idCarreteraï¿½
 	}
 	
 	protected void actualizaSemaforos(){
-	 // pone el semáforo de la carretera actual a “rojo”, y busca la siguiente
-	 // carretera entrante para ponerlo a “verde”
+	 // pone el semï¿½foro de la carretera actual a ï¿½rojoï¿½, y busca la siguiente
+	 // carretera entrante para ponerlo a ï¿½verdeï¿½
 	} 
 	
 	@Override
 	public void avanza() {
-	// Si “carreterasEntrantes” es vacío, no hace nada.
-	 // en otro caso “avanzaPrimerVehiculo” de la carretera con el semáforo verde.
-	 // Posteriormente actualiza los semáforos.
+	// Si ï¿½carreterasEntrantesï¿½ es vacï¿½o, no hace nada.
+	 // en otro caso ï¿½avanzaPrimerVehiculoï¿½ de la carretera con el semï¿½foro verde.
+	 // Posteriormente actualiza los semï¿½foros.
 	}
 	
 	@Override
@@ -44,6 +44,6 @@ public class Cruce extends ObjetoDeSimulacion {
 	
 	@Override
 	protected void completaDetallesSeccion(IniSection is) {
-	 // genera la sección queues = (r2,green,[]),...
+	 // genera la secciï¿½n queues = (r2,green,[]),...
 	}
 }

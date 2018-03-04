@@ -39,12 +39,18 @@ public class Carretera {
 	
 	 public void entraVehiculo(Vehiculo vehiculo) {
 		// Si el vehÃ­culo no existe en la carretera, se aÃ±ade a la lista de vehÃ­culos y
+		 if(!this.vehiculos.contains(vehiculo)){
+			 this.vehiculos.add(vehiculo);
+			 this.vehiculos.sort(this.comparadorVehiculo);
+			 }
 		 // se ordena la lista.
+		 
 		 // Si existe no se hace nada.
 	}
 	
 	 public void saleVehiculo(Vehiculo vehiculo) {
 		// elimina el vehÃ­culo de la lista de vehÃ­culos
+		 vehiculos.remove(vehiculo);
 	}
 	 
 	public void entraVehiculoAlCruce(Vehiculo v) {
@@ -63,17 +69,13 @@ public class Carretera {
 		else return 1;
 	}
 	
-	@Override
 	protected String getNombreSeccion() {
-		
-		
-			
+		return this.id;
 	}
 	
-		@Override
 	protected void completaDetallesSeccion(IniSection is) {
 		 // crea â€œvehicles = (v1,10),(v2,10) â€�
-		}
+	}
 	
 		
 	//Metodos extra creados para facilitarnos la vida considerablemente. Ojo que no es poco lo que facilitan
@@ -83,13 +85,9 @@ public class Carretera {
 	}
 	
 	public Cruce getCruceDest() {
-		
 		return this.cruceDestino;
 	}
 
 
-	public void sacarVehiculoCarretera(Vehiculo vehiculo) {
-		// TODO Auto-generated method stub
-		
-	}
+	
 }
