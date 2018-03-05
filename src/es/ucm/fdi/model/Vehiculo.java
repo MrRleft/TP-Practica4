@@ -17,7 +17,7 @@ public class Vehiculo extends ObjetoSimulacion {
 	 protected List<Cruce> itinerario; // itinerario a recorrer (mínimo 2)
 	 private boolean EnCruce;
 	 private boolean haLlegado;
-	 private int CrucesCruzados;
+
 
 	 public Vehiculo(String id, int velocidadMaxima, List<Cruce> iti) throws ErrorCarga {
 		super(id);
@@ -119,7 +119,7 @@ public class Vehiculo extends ObjetoSimulacion {
 		// 4. Se inicializa su localización.
 		 
 		 if(this.carretera != null) {
-			 this.carretera.sacarVehiculoCarretera(this);
+			 this.carretera.saleVehiculo(this);
 			 if(this.carretera.getCruceDest() == this.itinerario.get(this.itinerario.size()-1)) {
 				 this.haLlegado = true;
 				 this.velocidadActual = 0;

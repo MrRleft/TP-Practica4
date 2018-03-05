@@ -1,9 +1,11 @@
+
 package es.ucm.fdi.model;
-//Hola esto es una prueba
+
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
+
 
 
 import es.ucm.fdi.ini.IniSection;
@@ -16,6 +18,7 @@ public class Carretera {
 	 protected Cruce cruceDestino; // cruce al que llega la carretera
 	 protected List<Vehiculo> vehiculos; // lista ordenada de vehÃ­culos en la
 	// carretera (ordenada por localizaciÃ³n)
+	 
 	 
 	 protected Comparator<Vehiculo> comparadorVehiculo; // orden entre vehÃ­culos
 	 
@@ -31,19 +34,39 @@ public class Carretera {
 	 
 	
 	public void avanza() {
-		calculaVelocidadBase();
-		//poner aqui la vel de cada vehiculo
-		//llamar a avanza de vehiculos
+		
+		// calcular velocidad base de la carretera
+		 // inicializar obst�culos a 0
+		 // Para cada veh�culo de la lista �vehiculos�:
+		 //1. Si el veh�culo est� averiado se incrementa el n�mero de obstaculos.
+		// 2. Se fija la velocidad actual del veh�culo
+		// 3. Se pide al veh�culo que avance.
+		 // ordenar la lista de veh�culos 
+	
+		for( Vehiculo v : vehiculos){
+			int obstaculos = 0;
+			if (v.tiempoAveria > 0) {
+				obstaculos++;
+			}
+			v.velocidadActual= this.calculaVelocidadBase()/this.calculaFactorReduccion(obstaculos);
+			v.avanza();
+			this.vehiculos.sort(this.comparadorVehiculo);
+		}
 	}
 	
 	 public void entraVehiculo(Vehiculo vehiculo) {
 		// Si el vehÃ­culo no existe en la carretera, se aÃ±ade a la lista de vehÃ­culos y
-		 // se ordena la lista.
+		 if(!this.vehiculos.contains(vehiculo)){
+			 this.vehiculos.add(vehiculo);
+			 this.vehiculos.sort(this.comparadorVehiculo); // se ordena la lista.
+			 }
+	
 		 // Si existe no se hace nada.
 	}
 	
 	 public void saleVehiculo(Vehiculo vehiculo) {
 		// elimina el vehÃ­culo de la lista de vehÃ­culos
+		 vehiculos.remove(vehiculo);
 	}
 	 
 	public void entraVehiculoAlCruce(Vehiculo v) {
@@ -52,27 +75,22 @@ public class Carretera {
 	}
 	
 	protected int calculaVelocidadBase() {
-		int resultado;
-		return resultado = Math.min(this.velocidadMaxima,(this.velocidadMaxima/Math.max(this.vehiculos.size(),1)));
+		
+		return  Math.min(this.velocidadMaxima,(this.velocidadMaxima/Math.max(this.vehiculos.size(),1)));
 	
 	}
 	protected int calculaFactorReduccion(int obstaculos) {
-		
 		if(obstaculos != 0) return 2;
 		else return 1;
 	}
 	
-	@Override
 	protected String getNombreSeccion() {
-		
-		
-			
+		return this.id;
 	}
 	
-		@Override
 	protected void completaDetallesSeccion(IniSection is) {
 		 // crea â€œvehicles = (v1,10),(v2,10) â€�
-		}
+	}
 	
 		
 	//Metodos extra creados para facilitarnos la vida considerablemente. Ojo que no es poco lo que facilitan
@@ -82,7 +100,10 @@ public class Carretera {
 	}
 	
 	public Cruce getCruceDest() {
-		
 		return this.cruceDestino;
 	}
+
+
+	
 }
+

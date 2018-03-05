@@ -7,11 +7,10 @@ public abstract class ObjetoSimulacion {
 	 protected String id;
 	 
 	 public ObjetoSimulacion(String id) {
-		 
+		 this.id = id;
 	 }
 	 public String getId() {
 		return id;
-		 
 	 }
 
 	 @Override
@@ -31,8 +30,8 @@ public abstract class ObjetoSimulacion {
 	protected abstract void completaDetallesSeccion(IniSection is);
 	
 	public abstract String getNombreSeccion();
-		// los métodos getNombreSeccion y completaDetallesSeccion
-		// tendrán que implementarlos cada subclase de ObjetoSimulacion
+		// los mï¿½todos getNombreSeccion y completaDetallesSeccion
+		// tendrï¿½n que implementarlos cada subclase de ObjetoSimulacion
 	
 	 public abstract void avanza();
 	 
