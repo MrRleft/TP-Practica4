@@ -18,6 +18,7 @@ public class Carretera {
 	 protected List<Vehiculo> vehiculos; // lista ordenada de vehÃƒÂ­culos en la
 	// carretera (ordenada por localizaciÃƒÂ³n)
 	 
+	 
 	 protected Comparator<Vehiculo> comparadorVehiculo; // orden entre vehÃƒÂ­culos
 	 
 	 public Carretera(String id, int length, int maxSpeed, Cruce src, Cruce dest) {
@@ -32,19 +33,33 @@ public class Carretera {
 	 
 	
 	public void avanza() {
-		calculaVelocidadBase();
-		//poner aqui la vel de cada vehiculo
-		//llamar a avanza de vehiculos
+		
+		// calcular velocidad base de la carretera
+		 // inicializar obstáculos a 0
+		 // Para cada vehículo de la lista “vehiculos”:
+		 //1. Si el vehículo está averiado se incrementa el número de obstaculos.
+		// 2. Se fija la velocidad actual del vehículo
+		// 3. Se pide al vehículo que avance.
+		 // ordenar la lista de vehículos 
+	
+		for( Vehiculo v : vehiculos){
+			int obstaculos = 0;
+			if (v.tiempoAveria > 0) {
+				obstaculos++;
+			}
+			v.velocidadActual= this.calculaVelocidadBase()/this.calculaFactorReduccion(obstaculos);
+			v.avanza();
+			this.vehiculos.sort(this.comparadorVehiculo);
+		}
 	}
 	
 	 public void entraVehiculo(Vehiculo vehiculo) {
 		// Si el vehÃƒÂ­culo no existe en la carretera, se aÃƒÂ±ade a la lista de vehÃƒÂ­culos y
 		 if(!this.vehiculos.contains(vehiculo)){
 			 this.vehiculos.add(vehiculo);
-			 this.vehiculos.sort(this.comparadorVehiculo);
+			 this.vehiculos.sort(this.comparadorVehiculo); // se ordena la lista.
 			 }
-		 // se ordena la lista.
-		 
+	
 		 // Si existe no se hace nada.
 	}
 	
@@ -59,12 +74,11 @@ public class Carretera {
 	}
 	
 	protected int calculaVelocidadBase() {
-		int resultado;
-		return resultado = Math.min(this.velocidadMaxima,(this.velocidadMaxima/Math.max(this.vehiculos.size(),1)));
+		
+		return  Math.min(this.velocidadMaxima,(this.velocidadMaxima/Math.max(this.vehiculos.size(),1)));
 	
 	}
 	protected int calculaFactorReduccion(int obstaculos) {
-		
 		if(obstaculos != 0) return 2;
 		else return 1;
 	}
