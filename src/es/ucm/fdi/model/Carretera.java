@@ -1,3 +1,4 @@
+
 package es.ucm.fdi.model;
 
 import java.util.Collections;
@@ -35,12 +36,12 @@ public class Carretera {
 	public void avanza() {
 		
 		// calcular velocidad base de la carretera
-		 // inicializar obstáculos a 0
-		 // Para cada vehículo de la lista “vehiculos”:
-		 //1. Si el vehículo está averiado se incrementa el número de obstaculos.
-		// 2. Se fija la velocidad actual del vehículo
-		// 3. Se pide al vehículo que avance.
-		 // ordenar la lista de vehículos 
+		 // inicializar obstï¿½culos a 0
+		 // Para cada vehï¿½culo de la lista ï¿½vehiculosï¿½:
+		 //1. Si el vehï¿½culo estï¿½ averiado se incrementa el nï¿½mero de obstaculos.
+		// 2. Se fija la velocidad actual del vehï¿½culo
+		// 3. Se pide al vehï¿½culo que avance.
+		 // ordenar la lista de vehï¿½culos 
 	
 		for( Vehiculo v : vehiculos){
 			int obstaculos = 0;
@@ -105,3 +106,4 @@ public class Carretera {
 
 	
 }
+
