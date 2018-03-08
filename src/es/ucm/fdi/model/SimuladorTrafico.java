@@ -1,10 +1,10 @@
 package es.ucm.fdi.model;
 
 import java.io.OutputStream;
-import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+import es.ucm.fdi.Exceptions.ErrorDeSimulacion;
 import es.ucm.fdi.Utils.SortedArrayList;
 import es.ucm.fdi.events.Evento;
 
@@ -30,7 +30,7 @@ public class SimuladorTrafico {
 		 this.eventos = new SortedArrayList<Evento>(cmp); // estructura ordenada por �tiempo�
 	}
 	
-	public void ejecuta(int pasosSimulacion, OutputStream ficheroSalida) {
+	public void ejecuta(int pasosSimulacion, OutputStream ficheroSalida) throws ErrorDeSimulacion {
 		 int limiteTiempo = this.contadorTiempo + pasosSimulacion - 1;
 		 while (this.contadorTiempo <= limiteTiempo) {
 			// ejecutar todos los eventos correspondienes a �this.contadorTiempo�

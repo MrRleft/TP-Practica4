@@ -89,7 +89,7 @@ public class Vehiculo extends ObjetoSimulacion {
 		 if(this.tiempoAveria > 0)
 			 this.tiempoAveria--;
 		 else {
-			 if(/*Si no esta esperando en un cruce*/){
+			 if(/*Si no esta esperando en un cruce*/!this.EnCruce){
 				 if(!LLegoAlCruce()) {
 					 this.kilometraje += this.velocidadActual;
 					 this.localizacion += this.velocidadActual;
@@ -128,7 +128,7 @@ public class Vehiculo extends ObjetoSimulacion {
 			 }
 			 else {
 				 //Como calculo su siguiente carretera?
-				 Carretera nuevaCarretera;
+				 this.carretera.getCruceDest().carreteraHaciaCruce(itinerario.get(index)cruce);
 				 if(/*La siguiente carretera no existe*/)
 					 throw new ErrorDeSimulacion("La Carretera: " + carretera + "del Vehiculo" + id + "No existe");
 				 nuevaCarretera.entraVehiculo(this);

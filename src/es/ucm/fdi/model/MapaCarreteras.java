@@ -89,7 +89,7 @@ public class MapaCarreteras {
 		return report;
 	}
 	 
-	public void actualizar() {
+	public void actualizar() throws ErrorDeSimulacion {
 		 // llama al mÃ©todo avanza de cada cruce
 		 // llama al mÃ©todo avanza de cada carretera
 		for(int i = 0; i < cruces.size(); i++)

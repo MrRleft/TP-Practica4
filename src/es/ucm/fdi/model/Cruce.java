@@ -3,6 +3,7 @@ package es.ucm.fdi.model;
 import java.util.List;
 import java.util.Map;
 
+import es.ucm.fdi.Exceptions.ErrorDeSimulacion;
 import es.ucm.fdi.ini.IniSection;
 
 abstract public class Cruce extends ObjetoSimulacion {
@@ -34,30 +35,47 @@ abstract public class Cruce extends ObjetoSimulacion {
 		}
 	 public void addCarreteraSalienteAlCruce(Cruce destino, Carretera road) {
 		 // añade una carretera saliente
-		 this.parCarreteraCruce.p
+		 this.parCarreteraCruce.put(destino, road);
 		 
 		}
-	 public void entraVehiculoAlCruce(String idCarretera, Vehiculo vehiculo){
+	 public void entraVehiculoAlCruce(String idCarretera, Vehiculo vehiculo) throws ErrorDeSimulacion{
 		 // añade el “vehiculo” a la carretera entrante “idCarretera”
-		 
+		 this.mapaCarreterasEntrantes.get(idCarretera).entraVehiculo(vehiculo);
 		}
 	 protected void actualizaSemaforos(){
 		 // pone el semáforo de la carretera actual a “rojo”, y busca la siguiente
 		 // carretera entrante para ponerlo a “verde”
+		 this.carreterasEntrantes.get(indiceSemaforoVerde).ponSemaforo(false);
+		 this.indiceSemaforoVerde++;
+		 this.carreterasEntrantes.get(this.indiceSemaforoVerde).ponSemaforo(true);
 		}
+	 
 		@Override
-	 public void avanza() {
+	 public void avanza() throws ErrorDeSimulacion {
 		// Si “carreterasEntrantes” es vacío, no hace nada.
 		 // en otro caso “avanzaPrimerVehiculo” de la carretera con el semáforo verde.
 		 // Posteriormente actualiza los semáforos.
+			if (!this.carreterasEntrantes.isEmpty()) {
+				carreterasEntrantes.get(this.indiceSemaforoVerde).avanzaPrimerVehiculo();
+				this.actualizaSemaforos();
+				
+			}
 		}
 		
 	 protected String getNombreSeccion() {
 			
+		 return null;
 		}
 		@Override
 	protected void completaDetallesSeccion(IniSection is) {
 		 // genera la sección queues = (r2,green,[]),...
+			this.getNombreSeccion();
 		}
 }
+
+/*Bucle for que recorre todo un mapa
+ * for(Map.Entry<String, CarreteraEntrante> entry : mapaCarreterasEntrantes.entrySet()) {
+			entry.avanza();		
+				}
+ */
 

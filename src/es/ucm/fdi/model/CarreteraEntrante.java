@@ -34,9 +34,18 @@ public class CarreteraEntrante {
 		 this.colaVehiculos.get(0).moverASiguienteCarretera();
 		 this.colaVehiculos.remove(0);
 		  
-	
-		 
 	 }
+	 
+	 public void entraVehiculo(Vehiculo vehiculo) throws ErrorDeSimulacion {
+			// Si el vehÃ­culo no existe en la carretera, se aÃ±ade a la lista de vehÃ­culos y
+			 if(!this.colaVehiculos.contains(vehiculo)){
+				 this.colaVehiculos.add(vehiculo);// se ordena la lista.
+				 }
+			 else {
+				 throw new ErrorDeSimulacion("Se ha a�adido el mismo vehiculo dos veces a una carretera entrante");
+			 }
+			 // Si existe no se hace nada.
+		}
 	 
 	 @Override
 	 public String toString() {
