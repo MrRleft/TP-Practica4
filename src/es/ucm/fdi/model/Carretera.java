@@ -6,8 +6,7 @@ import java.util.Comparator;
 import java.util.Iterator;
 import java.util.List;
 
-
-
+import es.ucm.fdi.Exceptions.ErrorDeSimulacion;
 import es.ucm.fdi.ini.IniSection;
 
 public class Carretera {
@@ -33,7 +32,7 @@ public class Carretera {
 	 }
 	 
 	
-	public void avanza() {
+	public void avanza() throws ErrorDeSimulacion {
 		
 		// calcular velocidad base de la carretera
 		 // inicializar obst�culos a 0
@@ -69,7 +68,7 @@ public class Carretera {
 		 vehiculos.remove(vehiculo);
 	}
 	 
-	public void entraVehiculoAlCruce(Vehiculo v) {
+	public void entraVehiculoAlCruce(Vehiculo v) throws ErrorDeSimulacion {
 		 // aÃ±ade el vehÃ­culo al â€œcruceDestinoâ€� de la carreteraâ€�
 		this.cruceDestino.entraVehiculoAlCruce(this.id, v);
 	}
@@ -102,7 +101,11 @@ public class Carretera {
 	public Cruce getCruceDest() {
 		return this.cruceDestino;
 	}
-
+	
+	public String getID() {
+		
+		return id;
+	}
 
 	
 }
