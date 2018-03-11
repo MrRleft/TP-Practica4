@@ -48,7 +48,12 @@ public class Carretera {
 				obstaculos++;
 			}
 			v.velocidadActual= this.calculaVelocidadBase()/this.calculaFactorReduccion(obstaculos);
-			v.avanza();
+			try {
+				v.avanza();
+			} catch (ErrorDeSimulacion e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			this.vehiculos.sort(this.comparadorVehiculo);
 		}
 	}
