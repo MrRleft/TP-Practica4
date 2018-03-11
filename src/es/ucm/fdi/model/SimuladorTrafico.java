@@ -5,6 +5,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import es.ucm.fdi.Exceptions.ErrorDeSimulacion;
+import es.ucm.fdi.Exceptions.NotFoundException;
 import es.ucm.fdi.Utils.SortedArrayList;
 import es.ucm.fdi.events.Evento;
 
@@ -36,7 +37,12 @@ public class SimuladorTrafico {
 			// ejecutar todos los eventos correspondienes a �this.contadorTiempo�
 			for(Evento evento : eventos){
 				if(evento.getTiempo() == limiteTiempo){
-					evento.ejecuta(mapa);
+					try {
+						evento.ejecuta(mapa);
+					} catch (NotFoundException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				}
 			}
 			 // actualizar �mapa�
