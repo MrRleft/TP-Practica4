@@ -74,7 +74,7 @@ public class Vehiculo extends ObjetoSimulacion {
 	 }
 	 
 	 @Override
-	 public void avanza() {
+	 public void avanza() throws ErrorDeSimulacion {
 	  // si el coche está averiado, decrementar tiempoAveria
 	  // si el coche está esperando en un cruce, no se hace nada.
 	  // en otro caso:
@@ -127,14 +127,13 @@ public class Vehiculo extends ObjetoSimulacion {
 				 this.EnCruce = true;
 			 }
 			 else {
-				 //Como calculo su siguiente carretera?
-				 this.carretera.getCruceDest().carreteraHaciaCruce(itinerario.get(index)cruce);
-				 if(/*La siguiente carretera no existe*/)
+
+				 this.carretera = this.calculoSigCarretera();
+				 if(this.carretera == null)
 					 throw new ErrorDeSimulacion("La Carretera: " + carretera + "del Vehiculo" + id + "No existe");
-				 nuevaCarretera.entraVehiculo(this);
+				 this.carretera.entraVehiculo(this);
 				 this.localizacion = 0;	 
 			 }
-			 
 		 }
 	}
 	 
@@ -144,13 +143,22 @@ public class Vehiculo extends ObjetoSimulacion {
 	}
 	 
 	//Metodos extra creados para facilitarnos la vida considerablemente. Ojo que no es poco lo que facilitan
-	public boolean LLegoAlCruce() {
+	protected boolean LLegoAlCruce() {
 		
 		return (this.localizacion + this.velocidadActual) > this.carretera.getLongitud();
 		
 	}
-			
-
+		
+	protected Carretera calculoSigCarretera() {
+		
+		int i = 0;
+		while(this.itinerario.get(i).carreteraEntranteAqui(this.carretera) && (i < this.itinerario.size() -1)  ) {
+			i++;
+		}
+		Cruce Anterior = this.itinerario.get(i) , Proximo = this.itinerario.get(i+1);
+		return Anterior.EncuentraCarretera(Proximo);
+	}
+	
 	
 	
 }

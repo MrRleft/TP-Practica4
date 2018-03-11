@@ -71,6 +71,14 @@ abstract public class Cruce extends ObjetoSimulacion {
 		 // genera la sección queues = (r2,green,[]),...
 			this.getNombreSeccion();
 		}
+	public boolean carreteraEntranteAqui(Carretera c) {
+		
+		return this.mapaCarreterasEntrantes.containsKey(c.getID());	
+	}
+	public Carretera EncuentraCarretera(Cruce proximo) {
+		// TODO Auto-generated method stub
+		return this.parCarreteraCruce.get(proximo);
+	}
 }
 
 /*Bucle for que recorre todo un mapa
