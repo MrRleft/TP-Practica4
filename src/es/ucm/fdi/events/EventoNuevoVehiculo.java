@@ -2,9 +2,12 @@ package es.ucm.fdi.events;
 
 import java.util.List;
 
+import es.ucm.fdi.Exceptions.ErrorCarga;
 import es.ucm.fdi.Exceptions.NotFoundException;
 import es.ucm.fdi.ini.IniSection;
+import es.ucm.fdi.model.Cruce;
 import es.ucm.fdi.model.MapaCarreteras;
+import es.ucm.fdi.model.Vehiculo;
 
 public class EventoNuevoVehiculo extends Evento{
 
@@ -22,8 +25,8 @@ public class EventoNuevoVehiculo extends Evento{
 	
 	 @Override
 	 public void ejecuta(MapaCarreteras mapa) {
-		 
-
+		
+		List<Cruce> iti = ParserCarreteras.parseaListaCruces(this.itinerario,mapa);
 		 // si iti es null o tiene menos de dos cruces lanzar excepci�n
 		 
 			 if(this.itinerario == null ){
@@ -35,7 +38,13 @@ public class EventoNuevoVehiculo extends Evento{
 				}
 			 }
 			 else{
-				
+				try {
+					Vehiculo vehiculo = new Vehiculo(this.id,this.velocidadMaxima,iti);
+					mapa.addVehiculo(id, vehiculo);
+				} catch (ErrorCarga e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 			 }
 		 
 		 // en otro caso crear el veh�culo y a�adirlo al mapa.
@@ -43,8 +52,13 @@ public class EventoNuevoVehiculo extends Evento{
 
 	 @Override
 	 public String toString() {
-		 
-		 return null;
+		 StringBuilder sb = new StringBuilder();
+		 System.out.println("[new_vehicle]");
+		 System.out.println("time=" + this.tiempo);
+		 System.out.println("id= "+ this.id);
+		 System.out.println("max_speed= "+ this.velocidadMaxima);
+		 System.out.println("itinerary= "+ this.itinerario);
+		 return sb.toString();
 		 
 	 }
 
