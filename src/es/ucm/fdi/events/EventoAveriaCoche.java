@@ -1,6 +1,11 @@
 package es.ucm.fdi.events;
 
 import es.ucm.fdi.model.MapaCarreteras;
+import es.ucm.fdi.model.Vehiculo;
+
+import java.util.List;
+
+import es.ucm.fdi.Exceptions.ErrorCarga;
 import es.ucm.fdi.events.Evento;
 
 public class EventoAveriaCoche extends Evento {
@@ -15,9 +20,11 @@ public class EventoAveriaCoche extends Evento {
 	}
 
 	@Override
-	public void ejecuta(MapaCarreteras mapa) {
+	public void ejecuta(MapaCarreteras mapa) throws ErrorCarga {
 		// TODO Auto-generated method stub
-		
+		for(String i: vehicle) {
+			mapa.SetAveria(i, duration);
+		}
 		
 	}
 
