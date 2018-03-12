@@ -18,7 +18,7 @@ public class EventoAveriaCoche extends Evento {
 	public void ejecuta(MapaCarreteras mapa) {
 		// TODO Auto-generated method stub
 		
-		mapa.setAveria(parts[i], duration);
+		
 	}
 
 	@Override
