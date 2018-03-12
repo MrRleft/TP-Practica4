@@ -30,7 +30,7 @@ public class ConstructorEventoNuevoVehiculo extends ConstructorEventos {
 			 ConstructorEventos.parseaIntNoNegativo(section, "time", 0),
 			 ConstructorEventos.identificadorValido(section, "id"),
 			 ConstructorEventos.parseaIntNoNegativo(section, "max_speed", 0),
-			 ConstructorEventos.identificadorValido(section, "itinerary"));
+			 ConstructorEventos.toStringToList(section, "itinerario"));
 			//FALTA
 		}
 	
