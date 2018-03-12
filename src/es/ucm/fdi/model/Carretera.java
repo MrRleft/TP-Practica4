@@ -99,7 +99,10 @@ public class Carretera {
 	
 	protected void completaDetallesSeccion(IniSection is) {
 		 // crea â€œvehicles = (v1,10),(v2,10) â€�
-		is.setValue(key, value);
+	
+		for(int i = 0; i < this.vehiculos.size();++i){
+			is.setValue("vehicles","("+this.vehiculos.get(i).id+","+ this.vehiculos.get(i).velocidadActual + ")");
+		} 
 	}
 	
 		
@@ -113,7 +116,9 @@ public class Carretera {
 		return this.cruceDestino;
 	}
 
-
+	public String getID(){
+		return id; 
+	}
 	
 }
 

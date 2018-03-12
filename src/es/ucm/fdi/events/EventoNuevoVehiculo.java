@@ -1,8 +1,11 @@
 package es.ucm.fdi.events;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import es.ucm.fdi.Exceptions.ErrorCarga;
+import es.ucm.fdi.Exceptions.ErrorDeSimulacion;
+import es.ucm.fdi.Exceptions.InsertException;
 import es.ucm.fdi.Exceptions.NotFoundException;
 import es.ucm.fdi.ini.IniSection;
 import es.ucm.fdi.model.Cruce;
@@ -13,9 +16,9 @@ public class EventoNuevoVehiculo extends Evento{
 
 	 protected String id;
 	 protected Integer velocidadMaxima;
-	 protected String itinerario;
+	 protected String[] itinerario;
 
-	 public EventoNuevoVehiculo(int tiempo, String id, int velocidadMaxima, String itinerario)
+	 public EventoNuevoVehiculo(int tiempo, String id, int velocidadMaxima, String[] itinerario)
 	 {
 		 super(tiempo);
 		 this.id = id;
@@ -26,8 +29,9 @@ public class EventoNuevoVehiculo extends Evento{
 	 @Override
 	 public void ejecuta(MapaCarreteras mapa) {
 		
-		List<Cruce> iti = ParserCarreteras.parseaListaCruces(this.itinerario,mapa);
+		//List<Cruce> iti = ParserCarreteras.parseaListaCruces(this.itinerario,mapa);
 		 // si iti es null o tiene menos de dos cruces lanzar excepci�n
+		 List<Cruce> iti = this.ayudaCarretera(this.itinerario, mapa);
 		 
 			 if(this.itinerario == null ){
 				 try {
@@ -40,7 +44,15 @@ public class EventoNuevoVehiculo extends Evento{
 			 else{
 				try {
 					Vehiculo vehiculo = new Vehiculo(this.id,this.velocidadMaxima,iti);
-					mapa.addVehiculo(id, vehiculo);
+					try {
+						mapa.addVehiculo(id, vehiculo);
+					} catch (InsertException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} catch (ErrorDeSimulacion e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 				} catch (ErrorCarga e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
@@ -49,7 +61,23 @@ public class EventoNuevoVehiculo extends Evento{
 		 
 		 // en otro caso crear el veh�culo y a�adirlo al mapa.
 	 }
-
+	 
+	 public List<Cruce> ayudaCarretera(String[] stCr,MapaCarreteras mC){
+		 List<Cruce> auxCarr = new ArrayList();
+		 for (String j : stCr ){
+			try {
+				Cruce x = mC.getCruce(j);
+				auxCarr.add(x);
+			} catch (NotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		 }
+		return auxCarr;
+		 
+		 
+	 }
+	 
 	 @Override
 	 public String toString() {
 		 StringBuilder sb = new StringBuilder();
