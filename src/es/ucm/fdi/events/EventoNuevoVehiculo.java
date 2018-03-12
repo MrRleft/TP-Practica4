@@ -63,7 +63,7 @@ public class EventoNuevoVehiculo extends Evento{
 	 }
 	 
 	 public List<Cruce> ayudaCarretera(String[] stCr,MapaCarreteras mC){
-		 List<Cruce> auxCarr = new ArrayList();
+		 List<Cruce> auxCarr = new ArrayList<Cruce>();
 		 for (String j : stCr ){
 			try {
 				Cruce x = mC.getCruce(j);

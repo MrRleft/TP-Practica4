@@ -85,8 +85,17 @@ public class MapaCarreteras {
 		 //Preguntar como va el report.
 		 String report = "";
 		 // genera informe para cruces
+		 for(int i = 0; i < this.cruces.size();++i){
+			 report += this.cruces.get(i).generaInforme(time);
+		 }
 		 // genera informe para carreteras
+		 for(int j = 0; j < this.carreteras.size();++j){
+			 report += this.carreteras.get(j).generaInforme(time);
+		 }
 		 // genera informe para vehiculos
+		 for(int w = 0; w < this.vehiculos.size();++w){
+			 report += this.vehiculos.get(w).generaInforme(time);
+		 }
 		return report;
 	}
 	 

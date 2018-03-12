@@ -9,7 +9,7 @@ import java.util.List;
 import es.ucm.fdi.Exceptions.ErrorDeSimulacion;
 import es.ucm.fdi.ini.IniSection;
 
-public class Carretera {
+public class Carretera extends ObjetoSimulacion {
 	 private String id;
 	 protected int longitud; // longitud de la carretera
 	 protected int velocidadMaxima; // velocidad mÃ¡xima
@@ -22,7 +22,7 @@ public class Carretera {
 	 protected Comparator<Vehiculo> comparadorVehiculo; // orden entre vehÃ­culos
 	 
 	 public Carretera(String id, int length, int maxSpeed, Cruce src, Cruce dest) {
-		 this.id  = id;
+		 super(id);
 		 this.longitud = length;
 		 this.velocidadMaxima = maxSpeed;
 		 this.cruceOrigen = src;
@@ -119,6 +119,9 @@ public class Carretera {
 	public String getID(){
 		return id; 
 	}
+
+
+	
 	
 }
 
