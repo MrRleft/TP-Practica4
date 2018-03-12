@@ -1,5 +1,6 @@
 package es.ucm.fdi.events;
 
+import es.ucm.fdi.Exceptions.ErrorCarga;
 import es.ucm.fdi.Exceptions.InsertException;
 import es.ucm.fdi.model.Cruce;
 import es.ucm.fdi.model.MapaCarreteras;
@@ -16,7 +17,7 @@ public class EventoNuevoCruce extends Evento {
 	}
 
 	@Override
-	public void ejecuta(MapaCarreteras mapa) {
+	public void ejecuta(MapaCarreteras mapa) throws ErrorCarga {
 		String aux = this.id;
 		
 		// TODO Auto-generated method stub
@@ -25,7 +26,7 @@ public class EventoNuevoCruce extends Evento {
 			mapa.addCruce(this.id, cruce);
 		} catch (InsertException e) {
 			// TODO Auto-generated catch block
-			e.printStackTrace();
+			throw new ErrorCarga();
 		}
 	}
 

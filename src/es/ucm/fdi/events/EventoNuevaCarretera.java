@@ -27,23 +27,18 @@ public class EventoNuevaCarretera extends Evento {
 	}
 
 	@Override
-	public void ejecuta(MapaCarreteras mapa) throws NotFoundException {
+	public void ejecuta(MapaCarreteras mapa) throws NotFoundException, InsertException {
 		// TODO Auto-generated method stub
 		
 		// obten cruce origen y cruce destino utilizando el mapa
 		
-			Cruce cOrigen = mapa.getCruce(cruceOrigenId);
-			Cruce cDestino = mapa.getCruce(cruceDestinoId);
+		Cruce cOrigen = mapa.getCruce(cruceOrigenId);
+		Cruce cDestino = mapa.getCruce(cruceDestinoId);
 		// crea la carretera
 		// añade al mapa la carretera	
 		Carretera carretera = new Carretera(this.id,this.longitud,this.velocidadMaxima,cOrigen,cDestino);
-		try {
-			mapa.addCarretera(this.id, cOrigen, carretera, cDestino);
-		} catch (InsertException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		 
+		mapa.addCarretera(this.id, cOrigen, carretera, cDestino);
+		
 	}
 	
 	public String toString() {

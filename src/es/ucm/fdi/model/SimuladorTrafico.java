@@ -6,7 +6,6 @@ import java.util.List;
 
 import es.ucm.fdi.Exceptions.ErrorCarga;
 import es.ucm.fdi.Exceptions.ErrorDeSimulacion;
-import es.ucm.fdi.Exceptions.NotFoundException;
 import es.ucm.fdi.Utils.SortedArrayList;
 import es.ucm.fdi.events.Evento;
 
@@ -21,12 +20,13 @@ public class SimuladorTrafico {
 		 this.mapa = new MapaCarreteras();
 		 this.contadorTiempo = 0;
 		 Comparator<Evento> cmp = new Comparator<Evento>() {
-
+			//preguntar
 			@Override
-			public int compare(Evento o1, Evento o2) {
-				// TODO Auto-generated method stub
-				//Hacer
-				return 0;
+			public Evento compare(Evento o1, Evento o2) {
+				if(o1.getTiempo() < o2.getTiempo())
+					return o1;
+				else
+					return o2;
 			}
 			 
 		 };
@@ -41,9 +41,9 @@ public class SimuladorTrafico {
 				if(evento.getTiempo() == limiteTiempo){
 					try {
 						evento.ejecuta(mapa);
-					} catch (NotFoundException e) {
+					} catch (Exception e) {
 						// TODO Auto-generated catch block
-						e.printStackTrace();
+						throw new ErrorCarga();
 					}
 				}
 			}

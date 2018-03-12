@@ -7,7 +7,6 @@ import es.ucm.fdi.Exceptions.ErrorCarga;
 import es.ucm.fdi.Exceptions.ErrorDeSimulacion;
 import es.ucm.fdi.Exceptions.InsertException;
 import es.ucm.fdi.Exceptions.NotFoundException;
-import es.ucm.fdi.ini.IniSection;
 import es.ucm.fdi.model.Cruce;
 import es.ucm.fdi.model.MapaCarreteras;
 import es.ucm.fdi.model.Vehiculo;
@@ -27,7 +26,7 @@ public class EventoNuevoVehiculo extends Evento{
 	 }
 	
 	 @Override
-	 public void ejecuta(MapaCarreteras mapa) {
+	 public void ejecuta(MapaCarreteras mapa) throws ErrorCarga {
 		
 		//List<Cruce> iti = ParserCarreteras.parseaListaCruces(this.itinerario,mapa);
 		 // si iti es null o tiene menos de dos cruces lanzar excepciï¿½n
@@ -62,7 +61,7 @@ public class EventoNuevoVehiculo extends Evento{
 		 // en otro caso crear el vehï¿½culo y aï¿½adirlo al mapa.
 	 }
 	 
-	 public List<Cruce> ayudaCarretera(String[] stCr,MapaCarreteras mC){
+	 public List<Cruce> ayudaCarretera(String[] stCr,MapaCarreteras mC) throws ErrorCarga{
 		 List<Cruce> auxCarr = new ArrayList<Cruce>();
 		 for (String j : stCr ){
 			try {
@@ -70,12 +69,10 @@ public class EventoNuevoVehiculo extends Evento{
 				auxCarr.add(x);
 			} catch (NotFoundException e) {
 				// TODO Auto-generated catch block
-				e.printStackTrace();
+				throw new ErrorCarga("Problemas al añadir el itinerario");
 			}
 		 }
 		return auxCarr;
-		 
-		 
 	 }
 	 
 	 @Override

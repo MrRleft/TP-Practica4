@@ -33,7 +33,7 @@ public class Controlador {
 			 this.cargaEventos(this.ficheroEntrada);
 			 this.simulador.ejecuta(pasosSimulacion,this.ficheroSalida);
 		 }
-		 catch(ErrorDeSimulacion r) {
+		 catch(Exception r) {
 			 
 			 System.err.println(r.getMessage());
 		 }
