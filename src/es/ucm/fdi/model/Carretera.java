@@ -99,7 +99,7 @@ public class Carretera {
 	
 	protected void completaDetallesSeccion(IniSection is) {
 		 // crea â€œvehicles = (v1,10),(v2,10) â€�
-		
+		is.setValue(key, value);
 	}
 	
 		

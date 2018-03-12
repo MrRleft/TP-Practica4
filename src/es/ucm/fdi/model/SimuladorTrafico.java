@@ -24,6 +24,7 @@ public class SimuladorTrafico {
 			@Override
 			public int compare(Evento o1, Evento o2) {
 				// TODO Auto-generated method stub
+				//Hacer
 				return 0;
 			}
 			 
