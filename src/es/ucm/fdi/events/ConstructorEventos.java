@@ -6,8 +6,8 @@ public abstract class ConstructorEventos {
 
 	 // cada clase darÃ¡ los valores correspondientes a estos atributos
 	 // en la constructora
-	 protected String etiqueta; // etiqueta de la entrada (â€œnew_roadâ€?, etc..)
-	 protected String[] claves; // campos de la entrada (â€œtimeâ€?, â€œvehiclesâ€?, etc.)
+	 protected String etiqueta; // etiqueta de la entrada (â€œnew_roadï¿½?, etc..)
+	 protected String[] claves; // campos de la entrada (â€œtimeï¿½?, â€œvehiclesï¿½?, etc.)
 	 
 	 public ConstructorEventos() {
 		 this.etiqueta = null;
@@ -24,10 +24,9 @@ public abstract class ConstructorEventos {
 			 " no es un ID valido");
 		 else return s;
 	}
-		// identificadores válidos
-		// sólo pueden contener letras, números y subrayados
-	 
-	 
+
+		// identificadores vï¿½lidos
+		// sï¿½lo pueden contener letras, nï¿½meros y subrayados
 	 private static boolean esIdentificadorValido(String id) {
 			
 			return id != null && id.matches("[a-z0-9_]+");
@@ -57,6 +56,7 @@ public abstract class ConstructorEventos {
 		 else 
 			 return i;
 	 }
+
 	 
 	 protected static String[] toStringToList(IniSection seccion,String clave) {
 		 
@@ -68,5 +68,6 @@ public abstract class ConstructorEventos {
 				 " no es un ID valido");
 		 return vlist;
 	 }
+
 	
 }
