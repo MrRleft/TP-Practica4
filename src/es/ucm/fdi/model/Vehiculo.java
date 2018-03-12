@@ -158,6 +158,13 @@ public class Vehiculo extends ObjetoSimulacion {
 		Cruce Anterior = this.itinerario.get(i) , Proximo = this.itinerario.get(i+1);
 		return Anterior.EncuentraCarretera(Proximo);
 	}
+
+
+	public void setAveria(int duration) {
+		// TODO Auto-generated method stub
+		this.tiempoAveria += duration;
+
+	}
 	
 	
 	

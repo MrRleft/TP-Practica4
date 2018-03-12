@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import es.ucm.fdi.Exceptions.ErrorCarga;
 import es.ucm.fdi.Exceptions.ErrorDeSimulacion;
 import es.ucm.fdi.Exceptions.InsertException;
 import es.ucm.fdi.Exceptions.NotFoundException;
@@ -125,4 +126,12 @@ public class MapaCarreteras {
 			throw new NotFoundException("No se ha encontrado la carretera: " + id);
 		return mapaDeCarreteras.get(id);
 		}
+	
+	public void SetAveria(String id, int duration) throws ErrorCarga {
+		
+		Vehiculo v = mapaDeVehiculos.get(id);
+		if(v == null)
+			throw new ErrorCarga("No se han podido colocar las averias correctamente");
+		v.setAveria(duration);
+	}
 }

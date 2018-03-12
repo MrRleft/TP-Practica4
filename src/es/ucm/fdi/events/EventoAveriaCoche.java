@@ -4,20 +4,21 @@ import es.ucm.fdi.model.MapaCarreteras;
 import es.ucm.fdi.events.Evento;
 
 public class EventoAveriaCoche extends Evento {
-	String vehicles;
+	String[] vehicle;
 	int duration;
 
-	public EventoAveriaCoche(int tiempo, String vehicles, int duration) {
+	public EventoAveriaCoche(int tiempo, String[] vehicles, int duration) {
 		super(tiempo);
 		// TODO Auto-generated constructor stub
-		this.vehicles = vehicles;
+		this.vehicle = vehicles;
 		this.duration = duration;
 	}
 
 	@Override
 	public void ejecuta(MapaCarreteras mapa) {
 		// TODO Auto-generated method stub
-
+		
+		mapa.setAveria(parts[i], duration);
 	}
 
 	@Override
@@ -26,7 +27,7 @@ public class EventoAveriaCoche extends Evento {
 		StringBuilder sb = new StringBuilder();
 		System.out.println("[make_vehicle_faulty]");
 		System.out.println("time = "+ super.getTiempo());
-		System.out.println("vehicles = "+ this.vehicles);
+		System.out.println("vehicles = "+ this.vehicle);
 		System.out.println("duration = " + this.duration);
 		return sb.toString();
 		

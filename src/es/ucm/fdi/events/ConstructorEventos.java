@@ -26,11 +26,12 @@ public abstract class ConstructorEventos {
 	}
 		// identificadores válidos
 		// sólo pueden contener letras, números y subrayados
-	
+	 
+	 
 	 private static boolean esIdentificadorValido(String id) {
 			
 			return id != null && id.matches("[a-z0-9_]+");
-	}
+	 }
 	 
 	 protected static int parseaInt(IniSection seccion, String clave) {
 		 String v = seccion.getValue(clave);
@@ -55,6 +56,17 @@ public abstract class ConstructorEventos {
 					 " no es un ID valido");
 		 else 
 			 return i;
+	 }
+	 
+	 protected static String[] toStringToList(IniSection seccion,String clave) {
+		 
+		 String v = seccion.getValue(clave);
+		 String[] vlist = v.split(" ");
+		 for (String i: vlist)
+			 if (!esIdentificadorValido(i))
+				 throw new IllegalArgumentException("El valor " + i + " para " + clave +
+				 " no es un ID valido");
+		 return vlist;
 	 }
 	
 }
