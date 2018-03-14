@@ -43,8 +43,6 @@
 	Lo hago
 
 10.Problema al actualizar el mapa en ejecuta de ST.
-	(ACT)(R) Salta la excepcion al avanzar el segundo cruce, porque
-	 carreterasEntrantes.get(this.indiceSemaforoVerde).avanzaPrimerVehiculo();
-	no hace nada. Hago un bucle que busque qué semáforo está en verde y avance 
-	esa carretera
+	(ACT)(R) Salta la excepcion al avanzar el segundo cruce.
 	(ACT)(R) A pesar de ello ahora falla ActualizarSemaforos dentro de cruce falla
+	(ACT)(R) Falla porque no se hace una gestión correcta de IndiceSemaforoVerde

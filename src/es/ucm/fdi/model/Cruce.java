@@ -21,6 +21,7 @@ import es.ucm.fdi.ini.IniSection;
 	 
 	 public Cruce(String id) {
 		super(id);
+		this.indiceSemaforoVerde = 0;
 		this.mapaCarreterasEntrantes = new HashMap<>();
 		this.parCarreteraCruce = new HashMap<>();
 		this.carreterasEntrantes = new ArrayList<>();
@@ -63,11 +64,7 @@ import es.ucm.fdi.ini.IniSection;
 			if (!this.carreterasEntrantes.isEmpty()) {
 				boolean ok = false; 
 				int i = 0;
-				while(!ok && i < carreterasEntrantes.size()) {
-					if(carreterasEntrantes.get(i).getSem())
-						carreterasEntrantes.get(i).avanzaPrimerVehiculo();
-					i++;
-				}
+				carreterasEntrantes.get(this.indiceSemaforoVerde).avanzaPrimerVehiculo();
 				this.actualizaSemaforos();
 				
 			}
