@@ -7,18 +7,16 @@ import es.ucm.fdi.ini.IniSection;
 
 public class ConstructorEventoNuevoVehiculo extends ConstructorEventos {
 	
+	@SuppressWarnings("unused")
 	private String[] valoresPorDefecto;
 
-	public ConstructorEventoNuevoVehiculo(IniSection section) {
+	public ConstructorEventoNuevoVehiculo() {
 		 this.etiqueta = "new_vehicle";
 		 this.claves = new String[] { "time", "id" ,"max_speed", "itinerary" };
 		 this.valoresPorDefecto = new String[] { "", "", };
 		
 		}
 
-	public ConstructorEventoNuevoVehiculo() {
-		// TODO Auto-generated constructor stub
-	}
 
 	@Override
 	public Evento parser(IniSection section) {
@@ -30,7 +28,7 @@ public class ConstructorEventoNuevoVehiculo extends ConstructorEventos {
 			 ConstructorEventos.parseaIntNoNegativo(section, "time", 0),
 			 ConstructorEventos.identificadorValido(section, "id"),
 			 ConstructorEventos.parseaIntNoNegativo(section, "max_speed", 0),
-			 ConstructorEventos.toStringToList(section, "itinerario"));
+			 ConstructorEventos.toStringToList(section, "itinerary"));
 			//FALTA
 		}
 	

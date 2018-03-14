@@ -7,6 +7,7 @@ import es.ucm.fdi.ini.IniSection;
 
 public class ConstructorEventoAveriaCoche extends ConstructorEventos {
 	
+	
 	private String[] valoresPorDefecto;
 
 	public ConstructorEventoAveriaCoche() {

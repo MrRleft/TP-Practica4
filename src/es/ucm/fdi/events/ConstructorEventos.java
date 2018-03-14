@@ -61,7 +61,7 @@ public abstract class ConstructorEventos {
 	 protected static String[] toStringToList(IniSection seccion,String clave) {
 		 
 		 String v = seccion.getValue(clave);
-		 String[] vlist = v.split(" ");
+		 String[] vlist = v.split(",");
 		 for (String i: vlist)
 			 if (!esIdentificadorValido(i))
 				 throw new IllegalArgumentException("El valor " + i + " para " + clave +

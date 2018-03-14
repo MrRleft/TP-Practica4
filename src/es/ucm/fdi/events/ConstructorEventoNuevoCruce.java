@@ -4,15 +4,16 @@ import es.ucm.fdi.ini.IniSection;
 
 public class ConstructorEventoNuevoCruce extends ConstructorEventos {
 
-
-		 private String[] valoresPorDefecto;
-		public ConstructorEventoNuevoCruce() {
+	@SuppressWarnings("unused")
+	private String[] valoresPorDefecto;
+	public ConstructorEventoNuevoCruce() {
 			 this.etiqueta = "new_junction";
 			 this.claves = new String[] { "time", "id" };
 			 this.valoresPorDefecto = new String[] { "", "", };
 		}
-		 @Override
-		 public Evento parser(IniSection section) {
+	
+	 @Override
+	 public Evento parser(IniSection section) {
 			 if (!section.getTag().equals(this.etiqueta) ||section.getValue("type") != null)
 				 return null;
 			 else
@@ -25,7 +26,7 @@ public class ConstructorEventoNuevoCruce extends ConstructorEventos {
 		 }
 		 @Override
 
-		 public String toString() { return "New Junction"; }
+	 public String toString() { return "New Junction"; }
 
 }
 

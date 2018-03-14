@@ -36,9 +36,6 @@ public class SortedArrayList<E> extends ArrayList<E> {
 	 
 	 
 	 protected  int compare(E k1, E k2) {
-			if (this.cmp == null) {
-				return ((Comparable) k1).compareTo(k2);
-			}
 			return this.cmp.compare(k1, k2);
 		}
 	 

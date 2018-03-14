@@ -1,0 +1,12 @@
+-Fallo en los constructores por defecto de los parsers (FIXED)(R)
+	Se eliminan los constructores(IniSection sec) quedando unicamente los de
+	por defecto y se les da los valores básicos
+-Al llamar a StringToList en el constructor de vehículo peta (FIXED)(R)
+	Al llamar a la función se le hacia buscar la clave "itinerario" en lugar de 
+	itinerary
+-StringToList da errores de IDs no validos (FIXED)(R)
+	El split debe hacerse con comas
+--El parseo parece funcional.
+
+-El ejecuta de SimuladorTrafico no funciona.
+-El ejecuta de SimuladorTrafico no imprime los resultados de cada paso
