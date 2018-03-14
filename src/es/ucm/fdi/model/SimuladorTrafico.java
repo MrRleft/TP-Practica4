@@ -22,11 +22,13 @@ public class SimuladorTrafico {
 		 Comparator<Evento> cmp = new Comparator<Evento>() {
 			//preguntar
 			@Override
-			public Evento compare(Evento o1, Evento o2) {
+			public int compare(Evento o1, Evento o2) {
 				if(o1.getTiempo() < o2.getTiempo())
-					return o1;
-				else
-					return o2;
+					return -1;
+				else if(o1.getTiempo() > o2.getTiempo())
+					return 1;
+				else 
+					return 0;
 			}
 			 
 		 };

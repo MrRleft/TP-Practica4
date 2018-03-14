@@ -26,6 +26,18 @@ public class Carretera extends ObjetoSimulacion {
 		 this.velocidadMaxima = maxSpeed;
 		 this.cruceOrigen = src;
 		 this.cruceDestino = dest;
+		 this.comparadorVehiculo = new Comparator<Vehiculo>() {
+		 
+		 	@Override
+			public int compare(Vehiculo o1, Vehiculo o2) {
+				if(o1.getLocalizacion() < o2.getLocalizacion())
+					return -1;
+				else if(o1.getLocalizacion() < o2.getLocalizacion())
+					return 1;
+				else 
+					return 0;
+			}
+		 };
 		 Collections.sort(vehiculos,comparadorVehiculo); //ordena vehiculos??
 
 	 }
