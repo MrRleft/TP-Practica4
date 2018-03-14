@@ -14,8 +14,9 @@ public class SimuladorTrafico {
 	private MapaCarreteras mapa;
 	private List<Evento> eventos;
 	private int contadorTiempo;
+	private int pasosSim;
 	
-	public SimuladorTrafico() {
+	public SimuladorTrafico(int lt) {
 		
 		 this.mapa = new MapaCarreteras();
 		 this.contadorTiempo = 0;
@@ -33,6 +34,7 @@ public class SimuladorTrafico {
 			 
 		 };
 		 this.eventos = new SortedArrayList<Evento>(cmp); // estructura ordenada por �tiempo�
+		 this.pasosSim = lt;
 	}
 	
 	public void ejecuta(int pasosSimulacion, OutputStream ficheroSalida) throws ErrorDeSimulacion, ErrorCarga {
@@ -40,7 +42,7 @@ public class SimuladorTrafico {
 		 while (this.contadorTiempo <= limiteTiempo) {
 			// ejecutar todos los eventos correspondienes a �this.contadorTiempo�
 			for(Evento evento : eventos){
-				if(evento.getTiempo() == limiteTiempo){
+				if(evento.getTiempo() == this.contadorTiempo){
 					try {
 						evento.ejecuta(mapa);
 					} catch (Exception e) {
@@ -52,7 +54,9 @@ public class SimuladorTrafico {
 			 // actualizar �mapa�
 			this.mapa.actualizar();
 			 // escribir el informe en �ficheroSalida�, controlando que no sea null.
-			
+			System.out.println("-------------PASO " + this.contadorTiempo + "----------------");
+			System.out.println(this.mapa.generateReport(this.contadorTiempo));
+			this.contadorTiempo++;
 		 } 
 
 	}
@@ -60,7 +64,7 @@ public class SimuladorTrafico {
 	public void insertaEvento(Evento e) {
 		 // inserta un evento en �eventos�, controlando que el tiempo de
 		 // ejecuci�n del evento sea menor que �contadorTiempo�
-			if(e.getTiempo() < this.contadorTiempo){
+			if(e.getTiempo() < this.pasosSim){
 			this.eventos.add(e);
 			}
 		}

@@ -1,5 +1,7 @@
 package es.ucm.fdi.model;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -19,6 +21,9 @@ import es.ucm.fdi.ini.IniSection;
 	 
 	 public Cruce(String id) {
 		super(id);
+		this.mapaCarreterasEntrantes = new HashMap<>();
+		this.parCarreteraCruce = new HashMap<>();
+		this.carreterasEntrantes = new ArrayList<>();
 		// TODO Auto-generated constructor stub
 	}
 	 public Carretera carreteraHaciaCruce(Cruce cruce) {
@@ -56,7 +61,13 @@ import es.ucm.fdi.ini.IniSection;
 		 // en otro caso �avanzaPrimerVehiculo� de la carretera con el sem�foro verde.
 		 // Posteriormente actualiza los sem�foros.
 			if (!this.carreterasEntrantes.isEmpty()) {
-				carreterasEntrantes.get(this.indiceSemaforoVerde).avanzaPrimerVehiculo();
+				boolean ok = false; 
+				int i = 0;
+				while(!ok && i < carreterasEntrantes.size()) {
+					if(carreterasEntrantes.get(i).getSem())
+						carreterasEntrantes.get(i).avanzaPrimerVehiculo();
+					i++;
+				}
 				this.actualizaSemaforos();
 				
 			}

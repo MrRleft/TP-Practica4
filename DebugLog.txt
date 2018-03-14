@@ -1,12 +1,50 @@
--Fallo en los constructores por defecto de los parsers (FIXED)(R)
-	Se eliminan los constructores(IniSection sec) quedando unicamente los de
+1.Fallo en los constructores por defecto de los parsers (FIXED)
+	(ACT)(R) Se eliminan los constructores(IniSection sec) quedando unicamente los de
 	por defecto y se les da los valores básicos
--Al llamar a StringToList en el constructor de vehículo peta (FIXED)(R)
-	Al llamar a la función se le hacia buscar la clave "itinerario" en lugar de 
+
+2.Al llamar a StringToList en el constructor de vehículo peta (FIXED)
+	(ACT)(R) Al llamar a la función se le hacia buscar la clave "itinerario" en lugar de 
 	itinerary
--StringToList da errores de IDs no validos (FIXED)(R)
-	El split debe hacerse con comas
+
+3.StringToList da errores de IDs no validos (FIXED)
+	(ACT)(R) El split debe hacerse con comas
+
 --El parseo parece funcional.
 
--El ejecuta de SimuladorTrafico no funciona.
--El ejecuta de SimuladorTrafico no imprime los resultados de cada paso
+4.El ejecuta de SimuladorTrafico no termina la ejecución sin Exceptions. 
+	(ACT)(R) El if que determina si se debe ejecutar cuando debe ejecutarse un evento
+	compara con el LimTiempo en lugar con el tiempo actual, lo cambio
+	(ACT)(R) FALLO 8. Una vez se arregle podremos seguir depurando.
+	(ACT)(R) Arreglado fallo 8 seguimos depurando.
+	(ACT)(R) FALLO 9. Una vez se arregle podremos seguir depurando.
+	(ACT)(R) Arreglado fallo 9 seguimos depurando.
+	(ACT)(R) FALLO 10. Una vez se arregle podremos seguir depurando.
+
+5.El ejecuta de SimuladorTrafico no imprime los resultados de cada paso
+	(ACT)(R) He puesto un SYSO que muestre lo que ocurre en cada paso
+
+6.El contador de tiempo se inicia en otro lugar que no es 0... A veces (FIXED?)
+	(ACT)(R) No ha vuelto a ocurrir
+
+7.Eventos dentro de ST parece estar vacio. (FIXED)
+	(ACT)(R) Efectivamente, el insertar eventos no los inserta
+	(ACT)(R) Creo un nuevo atributo en ST de LimiteTiempo, cuando se crea
+	se le da el valor, permitiendo asi la inserción.
+
+8.Problema al crearse una carretera en el ejecutar de Mapa. (FIXED)
+	(ACT)(R) Error en el Collection.sort().
+	(ACT)(R) No se inicializaba la lista de vehiculos, asi que la inicializo como
+	SortedArrayList
+
+9. Al añadir una carretera al mapa de carreteras salta un error. (FIXED)
+	(ACT)(R) Salta un error cuando se añaden un cruce a una carretera saliente.
+	(ACT)(R) AddCarreteraEntranteAlCruce tiene el mismo error.
+	(ACT)(R) Claro, es que no hemos iniciado los Hashmaps ni el ArrayList...
+	Lo hago
+
+10.Problema al actualizar el mapa en ejecuta de ST.
+	(ACT)(R) Salta la excepcion al avanzar el segundo cruce, porque
+	 carreterasEntrantes.get(this.indiceSemaforoVerde).avanzaPrimerVehiculo();
+	no hace nada. Hago un bucle que busque qué semáforo está en verde y avance 
+	esa carretera
+	(ACT)(R) A pesar de ello ahora falla ActualizarSemaforos dentro de cruce falla

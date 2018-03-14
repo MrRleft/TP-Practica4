@@ -52,4 +52,9 @@ public class CarreteraEntrante {
 		 
 		return null;
 	 }
+
+	public boolean getSem() {
+		// TODO Auto-generated method stub
+		return this.semaforo;
+	}
 }

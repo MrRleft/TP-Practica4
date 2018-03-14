@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 
 import es.ucm.fdi.Exceptions.ErrorDeSimulacion;
+import es.ucm.fdi.Utils.SortedArrayList;
 import es.ucm.fdi.ini.IniSection;
 
 public class Carretera extends ObjetoSimulacion {
@@ -38,7 +39,7 @@ public class Carretera extends ObjetoSimulacion {
 					return 0;
 			}
 		 };
-		 Collections.sort(vehiculos,comparadorVehiculo); //ordena vehiculos??
+		 this.vehiculos = new SortedArrayList<Vehiculo>(comparadorVehiculo); //ordena vehiculos??
 
 	 }
 	 
