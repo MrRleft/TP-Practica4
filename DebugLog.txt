@@ -89,3 +89,6 @@
 	(ACT)(R) Ponía Lenght en el constructor
 
 17. Saltan excepciones al mostrar el string
+18.No se llama a avanza() de carretera en SimuladorTrafico,por cada carretera (FIXED)
+19.Arreglado el string de Cruce (FIXED) 
+20.Al final pone null

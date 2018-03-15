@@ -79,18 +79,18 @@ import es.ucm.fdi.ini.IniSection;
 		@Override
 	protected void completaDetallesSeccion(IniSection is) {
 			String detalles = "";
-			is.setValue("id", this.id);
-			is.setValue("time",0);//arreglar
+		//	is.setValue("id", this.id);
+			//is.setValue("time",0);//arreglar
 			for (int i = 0; i <this.carreterasEntrantes.size(); ++i){
 				detalles += "(" + this.carreterasEntrantes.get(i).carretera.getID() + ", ";
 				if (this.carreterasEntrantes.get(i).getSem()) detalles += "green, [";
 				else detalles += "red, [";
 				for (Vehiculo v : this.carreterasEntrantes.get(i).colaVehiculos)
 					detalles += v.id + ", ";
-				detalles = detalles.substring(0, detalles.length() - 2);
+				detalles = detalles.substring(0, detalles.length() );
 				detalles += "]), ";	
 			}
-			detalles = detalles.substring(0, detalles.length() - 2);
+			detalles = detalles.substring(0, detalles.length() );
 			is.setValue("queue", detalles);
 		}
 	public boolean carreteraEntranteAqui(Carretera c) {

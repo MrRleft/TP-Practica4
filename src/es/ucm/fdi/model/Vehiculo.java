@@ -69,8 +69,8 @@ public class Vehiculo extends ObjetoSimulacion {
 	 
 	 @Override
 	 protected void completaDetallesSeccion(IniSection is) {
-		  is.setValue("id", this.id);
-		  is.setValue("time", 1);
+		 // is.setValue("id", this.id);
+		 // is.setValue("time", 1);
 		  is.setValue("speed", this.velocidadActual);
 		  is.setValue("kilometrage", this.kilometraje);
 		  is.setValue("faulty", this.getTiempoDeInfraccion());

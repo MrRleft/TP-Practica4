@@ -37,6 +37,7 @@ public class EventoNuevaCarretera extends Evento {
 		// crea la carretera
 		// añade al mapa la carretera	
 		Carretera carretera = new Carretera(this.id,this.longitud,this.velocidadMaxima,cOrigen,cDestino);
+		
 		mapa.addCarretera(this.id, cOrigen, carretera, cDestino);
 		
 	}

@@ -6,6 +6,8 @@ import java.util.List;
 
 import es.ucm.fdi.Exceptions.ErrorCarga;
 import es.ucm.fdi.Exceptions.ErrorDeSimulacion;
+import es.ucm.fdi.Exceptions.InsertException;
+import es.ucm.fdi.Exceptions.NotFoundException;
 import es.ucm.fdi.Utils.SortedArrayList;
 import es.ucm.fdi.events.Evento;
 
@@ -37,27 +39,26 @@ public class SimuladorTrafico {
 		 this.pasosSim = lt;
 	}
 	
-	public void ejecuta(int pasosSimulacion, OutputStream ficheroSalida) throws ErrorDeSimulacion, ErrorCarga {
-		 int limiteTiempo = this.contadorTiempo + pasosSimulacion - 1;
+	public void ejecuta(int pasosSimulacion, OutputStream ficheroSalida) throws ErrorDeSimulacion, ErrorCarga, NotFoundException, InsertException {
+		
+		int limiteTiempo = this.contadorTiempo + pasosSimulacion - 1;
 		 while (this.contadorTiempo <= limiteTiempo) {
 			// ejecutar todos los eventos correspondienes a �this.contadorTiempo�
+			 System.out.println("-------------PASO " + this.contadorTiempo + "----------------");
 			for(Evento evento : eventos){
 				if(evento.getTiempo() == this.contadorTiempo){
-					try {
 						evento.ejecuta(mapa);
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						throw new ErrorCarga();
-					}
-				}
+				}	
 			}
+			for(Carretera r : this.mapa.getCarreteras())
+				r.avanza();
 			 // actualizar �mapa�
 			this.mapa.actualizar();
 			 // escribir el informe en �ficheroSalida�, controlando que no sea null.
-			System.out.println("-------------PASO " + this.contadorTiempo + "----------------");
+			
 			System.out.println(this.mapa.generateReport(this.contadorTiempo));
 			this.contadorTiempo++;
-		 } 
+			}
 
 	}
 	

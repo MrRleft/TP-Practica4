@@ -81,7 +81,15 @@ public class MapaCarreteras {
 	 }
 	 
 	 
-	 public String generateReport(int time) {
+	 public List<Cruce> getCruces() {
+		return cruces;
+	}
+
+	public List<Carretera> getCarreteras() {
+		return carreteras;
+	}
+
+	public String generateReport(int time) {
 		 //Preguntar como va el report.
 		 String report = "";
 		 // genera informe para cruces
