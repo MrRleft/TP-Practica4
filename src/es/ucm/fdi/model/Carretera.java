@@ -106,7 +106,7 @@ public class Carretera extends ObjetoSimulacion {
 	}
 	
 	protected String getNombreSeccion() {
-		return this.id;
+		return "road_report";
 	}
 	
 	protected void completaDetallesSeccion(IniSection is) {
