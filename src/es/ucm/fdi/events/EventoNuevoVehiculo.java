@@ -41,7 +41,7 @@ public class EventoNuevoVehiculo extends Evento{
 					mapa.addVehiculo(id, vehiculo);
 				} catch (InsertException e) {
 					// TODO Auto-generated catch block
-					throw new ErrorCarga("Problema al añadir " + id + "Al mapa de carreteras");
+					throw new ErrorCarga("Problema al aniadir " + id + "Al mapa de carreteras");
 				}
 			 }
 		 
@@ -56,7 +56,7 @@ public class EventoNuevoVehiculo extends Evento{
 				auxCarr.add(x);
 			} catch (NotFoundException e) {
 				// TODO Auto-generated catch block
-				throw new ErrorCarga("Problemas al añadir el itinerario");
+				throw new ErrorCarga("Problemas al aï¿½adir el itinerario");
 			}
 		 }
 		return auxCarr;

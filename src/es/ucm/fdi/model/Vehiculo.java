@@ -39,7 +39,7 @@ public class Vehiculo extends ObjetoSimulacion {
 		this.tiempoAveria = 0;
 		this.haLlegado = false;
 		this.EnCruce = false;
-		this.cE = new CarreteraEntrante(this.carretera);
+		
 	}
 
 	 
@@ -123,7 +123,7 @@ public class Vehiculo extends ObjetoSimulacion {
 		// 2. Si dicha carretera no existe, se lanza excepci�n.
 		// 3. En otro caso, se introduce el veh�culo en la carretera.
 		// 4. Se inicializa su localizaci�n.
-		 
+
 		 if(this.carretera != null) {
 			 this.carretera.saleVehiculo(this);
 			 if(this.carretera.getCruceDest() == this.itinerario.get(this.itinerario.size()-1)) {
@@ -132,6 +132,7 @@ public class Vehiculo extends ObjetoSimulacion {
 				 this.carretera = null;
 				 this.EnCruce = true;
 			 }
+		 
 			 else {
 
 				 this.carretera = this.calculoSigCarretera();
@@ -141,7 +142,8 @@ public class Vehiculo extends ObjetoSimulacion {
 				 this.localizacion = 0;	 
 			 }
 		 }
-	}
+	 }
+	
 	 
 	@Override
 	public String getNombreSeccion() {

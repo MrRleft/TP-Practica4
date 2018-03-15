@@ -74,12 +74,24 @@ import es.ucm.fdi.ini.IniSection;
 		
 	 protected String getNombreSeccion() {
 			
-		 return null;
+		 return "junction_report";
 		}
 		@Override
 	protected void completaDetallesSeccion(IniSection is) {
-		 // genera la secci�n queues = (r2,green,[]),...
-			this.getNombreSeccion();
+			String detalles = "";
+			is.setValue("id", this.id);
+			is.setValue("time",0);//arreglar
+			for (int i = 0; i <this.carreterasEntrantes.size(); ++i){
+				detalles += "(" + this.carreterasEntrantes.get(i).carretera.getID() + ", ";
+				if (this.carreterasEntrantes.get(i).getSem()) detalles += "green, [";
+				else detalles += "red, [";
+				for (Vehiculo v : this.carreterasEntrantes.get(i).colaVehiculos)
+					detalles += v.id + ", ";
+				detalles = detalles.substring(0, detalles.length() - 2);
+				detalles += "]), ";	
+			}
+			detalles = detalles.substring(0, detalles.length() - 2);
+			is.setValue("queue", detalles);
 		}
 	public boolean carreteraEntranteAqui(Carretera c) {
 		
