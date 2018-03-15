@@ -62,8 +62,6 @@ import es.ucm.fdi.ini.IniSection;
 		 // en otro caso �avanzaPrimerVehiculo� de la carretera con el sem�foro verde.
 		 // Posteriormente actualiza los sem�foros.
 			if (!this.carreterasEntrantes.isEmpty()) {
-				boolean ok = false; 
-				int i = 0;
 				carreterasEntrantes.get(this.indiceSemaforoVerde).avanzaPrimerVehiculo();
 				this.actualizaSemaforos();
 				

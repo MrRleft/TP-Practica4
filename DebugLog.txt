@@ -46,3 +46,6 @@
 	(ACT)(R) Salta la excepcion al avanzar el segundo cruce.
 	(ACT)(R) A pesar de ello ahora falla ActualizarSemaforos dentro de cruce falla
 	(ACT)(R) Falla porque no se hace una gestión correcta de IndiceSemaforoVerde
+	(ACT)(E) En CarreteraEntrante,ponSemaforo(),habia = en vez de ==.(FIXED)
+	(ACT)(E) En Cruce no llamábamos a avanzaPrimerVehiculo() .Ahora el fallo da ahí
+	(ACT)(E) El problema parece estar en colaVehiculos, que está vacía.

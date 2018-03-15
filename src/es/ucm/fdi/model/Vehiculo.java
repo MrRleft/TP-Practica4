@@ -17,6 +17,7 @@ public class Vehiculo extends ObjetoSimulacion {
 	 protected List<Cruce> itinerario; // itinerario a recorrer (m�nimo 2)
 	 private boolean EnCruce;
 	 private boolean haLlegado;
+	 private CarreteraEntrante cE;
 
 
 	 public Vehiculo(String id, int velocidadMaxima, List<Cruce> iti) throws ErrorCarga {
@@ -38,6 +39,7 @@ public class Vehiculo extends ObjetoSimulacion {
 		this.tiempoAveria = 0;
 		this.haLlegado = false;
 		this.EnCruce = false;
+		this.cE = new CarreteraEntrante(this.carretera);
 	}
 
 	 

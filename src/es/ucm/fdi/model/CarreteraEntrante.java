@@ -24,7 +24,7 @@ public class CarreteraEntrante {
 	 
 	 void ponSemaforo(boolean color) {
 		 
-		 if(color = true) this.semaforo = true;//verde
+		 if(color == true) this.semaforo = true;//verde
 		 else this.semaforo = false;//rojo
 	 }
 
@@ -42,7 +42,7 @@ public class CarreteraEntrante {
 				 this.colaVehiculos.add(vehiculo);// se ordena la lista.
 				 }
 			 else {
-				 throw new ErrorDeSimulacion("Se ha añadido el mismo vehiculo dos veces a una carretera entrante");
+				 throw new ErrorDeSimulacion("Se ha aï¿½adido el mismo vehiculo dos veces a una carretera entrante");
 			 }
 			 // Si existe no se hace nada.
 		}
