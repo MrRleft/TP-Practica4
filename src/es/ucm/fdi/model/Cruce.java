@@ -55,10 +55,10 @@ import es.ucm.fdi.ini.IniSection;
 		 // carretera entrante para ponerlo a �verde�
 		 this.carreterasEntrantes.get(indiceSemaforoVerde).ponSemaforo(false);
 		 this.indiceSemaforoVerde++;
-		 this.carreterasEntrantes.get(this.indiceSemaforoVerde).ponSemaforo(true);
 		 if(this.indiceSemaforoVerde == this.carreterasEntrantes.size())
 			 this.indiceSemaforoVerde = 0;
-		}
+		 this.carreterasEntrantes.get(this.indiceSemaforoVerde).ponSemaforo(true);
+	 }
 	 
 		@Override
 	 public void avanza() throws ErrorDeSimulacion {

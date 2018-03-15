@@ -91,24 +91,25 @@ public class Vehiculo extends ObjetoSimulacion {
 	  3.2. Corregir el kilometraje.
 	  3.3. Indicar a la carretera que el veh�culo entra al cruce.
 	  3.4. Marcar que �ste veh�culo est� en un cruce (this.estEnCruce = true)
-	 */
-		 if(this.tiempoAveria > 0)
-			 this.tiempoAveria--;
-		 else {
-			 if(/*Si no esta esperando en un cruce*/!this.EnCruce){
-				 if(!LLegoAlCruce()) {
-					 this.kilometraje += this.velocidadActual;
-					 this.localizacion += this.velocidadActual;
+	 */if(!this.haLlegado) {
+			 if(this.tiempoAveria > 0)
+				 this.tiempoAveria--;
+			 else {
+				 if(/*Si no esta esperando en un cruce*/!this.EnCruce){
+					 if(!LLegoAlCruce()) {
+						 this.kilometraje += this.velocidadActual;
+						 this.localizacion += this.velocidadActual;
+					 }
+					 else {
+						 this.kilometraje += this.carretera.getLongitud() - this.localizacion;
+						 this.localizacion = this.carretera.getLongitud();
+						 this.EnCruce = true;
+						 this.carretera.entraVehiculoAlCruce(this);
+					 }
+				//Preguntar: �Algo mas que hacer aqui?
 				 }
-				 else {
-					 this.kilometraje += this.carretera.getLongitud() - this.localizacion;
-					 this.localizacion = this.carretera.getLongitud();
-					 this.EnCruce = true;
-					 this.carretera.entraVehiculoAlCruce(this);
-				 }
-			//Preguntar: �Algo mas que hacer aqui?
 			 }
-		 }
+	 	}
 	 }
 	 
 	 public void moverASiguienteCarretera() throws ErrorDeSimulacion{
@@ -123,18 +124,18 @@ public class Vehiculo extends ObjetoSimulacion {
 		// 2. Si dicha carretera no existe, se lanza excepci�n.
 		// 3. En otro caso, se introduce el veh�culo en la carretera.
 		// 4. Se inicializa su localizaci�n.
-
-		 if(this.carretera != null) {
-			 this.carretera.saleVehiculo(this);
-			 if(this.carretera.getCruceDest() == this.itinerario.get(this.itinerario.size()-1)) {
+		 if(!this.haLlegado) {
+			 if(this.carretera != null)
+				 this.carretera.saleVehiculo(this);
+			 
+			 if(this.carretera != null && this.carretera.getCruceDest() == this.itinerario.get(this.itinerario.size()-1)) {
 				 this.haLlegado = true;
 				 this.velocidadActual = 0;
 				 this.carretera = null;
 				 this.EnCruce = true;
 			 }
-		 
+			 
 			 else {
-
 				 this.carretera = this.calculoSigCarretera();
 				 if(this.carretera == null)
 					 throw new ErrorDeSimulacion("La Carretera: " + carretera + "del Vehiculo" + id + "No existe");
@@ -159,12 +160,26 @@ public class Vehiculo extends ObjetoSimulacion {
 		
 	protected Carretera calculoSigCarretera() {
 		
+		Cruce cruceAct;
+		
+		if(this.carretera != null) 
+			cruceAct = this.carretera.getCruceDest();
+		
+		else
+			cruceAct = this.itinerario.get(0);
+		
+		int IndexcruceProx = this.itinerario.lastIndexOf(cruceAct)+1;
+		Cruce cruceProx = this.itinerario.get(IndexcruceProx);
+		return cruceAct.carreteraHaciaCruce(cruceProx);
+		
+		/*
 		int i = 0;
 		while(this.itinerario.get(i).carreteraEntranteAqui(this.carretera) && (i < this.itinerario.size() -1)  ) {
 			i++;
 		}
 		Cruce Anterior = this.itinerario.get(i) , Proximo = this.itinerario.get(i+1);
 		return Anterior.EncuentraCarretera(Proximo);
+		*/
 	}
 
 

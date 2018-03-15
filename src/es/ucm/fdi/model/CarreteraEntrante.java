@@ -31,8 +31,10 @@ public class CarreteraEntrante {
 	 public void avanzaPrimerVehiculo() throws ErrorDeSimulacion {
 		 // coge el primer vehiculo de la cola, lo elimina,
 		 // y le manda que se mueva a su siguiente carretera.
-		 this.colaVehiculos.get(0).moverASiguienteCarretera();
-		 this.colaVehiculos.remove(0);
+		if(!this.colaVehiculos.isEmpty()){
+			this.colaVehiculos.get(0).moverASiguienteCarretera();
+		 	this.colaVehiculos.remove(0);
+		}
 		  
 	 }
 	 

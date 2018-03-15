@@ -19,6 +19,8 @@
 	(ACT)(R) FALLO 9. Una vez se arregle podremos seguir depurando.
 	(ACT)(R) Arreglado fallo 9 seguimos depurando.
 	(ACT)(R) FALLO 10. Una vez se arregle podremos seguir depurando.
+	(ACT)(R) Arreglado fallo 10 seguimos depurando.
+	(ACT)(R) FALLO 17. Una vez se arregle podremos seguir depurando.
 
 5.El ejecuta de SimuladorTrafico no imprime los resultados de cada paso
 	(ACT)(R) He puesto un SYSO que muestre lo que ocurre en cada paso
@@ -42,7 +44,7 @@
 	(ACT)(R) Claro, es que no hemos iniciado los Hashmaps ni el ArrayList...
 	Lo hago
 
-10.Problema al actualizar el mapa en ejecuta de ST.
+10.Problema al actualizar el mapa en ejecuta de ST. (FIXED)
 	(ACT)(R) Salta la excepcion al avanzar el segundo cruce.
 	(ACT)(R) A pesar de ello ahora falla ActualizarSemaforos dentro de cruce falla
 	(ACT)(R) Falla porque no se hace una gestión correcta de IndiceSemaforoVerde
@@ -51,13 +53,39 @@
 	(ACT)(E) El problema parece estar en colaVehiculos, que está vacía.
 	(ACT)(R) Ninguno de los semáforos de las carreteras entrantes estaba en verde.
 	Hago que la primera CE en ponerse en un cruce esté en verde.
-	MIRAR FALLO 14??
+	(ACT)(R) FALLO 13. Una vez se arregle podremos seguir depurando.
+	(ACT)(R) Arreglado fallo 13 seguimos depurando.
+	(ACT)(R) FALLO 16. Una vez se arregle podremos seguir depurando.
+	(ACT)(R) Arreglado fallo 16 solucionado el problema
+	
 11.Actualizar índice de semaforos está mal, no es circular. (FIXED)
 	(ACT)(R) Hago que sea circular
 
 12. El completaDetallesSeccion() llama a getNombreSeccion() que está vacia. (FIXED)
-	
-13. La colaDeVehiculos está vacía.
+	(ACT)(E) Completa DetallesSeccion()
+
+13. Salta una excepcion al avanzar los cruces del mapa. (FIXED)
 	(ACT)(R) Retoco el ejecuta de EventoNuevoVehiculo.
-14.La carretera de moverASiguienteCarretera() de Vehiculo siempre es null.
-	
+	(ACT)(R) Creo que el problema está en addVehiculo a mapa
+	(ACT)(R) El problema está en moverASiguienteCarretera
+	(ACT)(R) Los vehiculos si no tenían carretera no se les introducia en ninguna
+	Cambio esto.
+	(ACT)(R) FALLO 14. Una vez se arregle podremos seguir depurando.
+	(ACT)(R) Arreglado fallo 14 seguimos depurando.
+	(ACT)(R) FALLO 15. Una vez se arregle podremos seguir depurando.
+	(ACT)(R) Arreglado fallo 15 solucionado el problema
+	(ACT)(R) Añado un if para que si la cola de vehiculos está vacia que no
+	salte una excepción
+
+14. Fallo en la comprobacion de si una carretera es la última (FIXED)
+	(ACT)(R) En el caso de que no se tenga carretera salta una excepcion, cambio 
+	para que se compruebe antes si tenemos una carretera
+
+15. Excepcion al calcular la sigCarretera() en vehiculo. (FIXED)
+	(ACT)(R) Función completamente rehecha.
+
+16. Salta una excepción al hacer avanzar un vehiculo por una carretera. (FIXED)
+	(ACT)(R) La longitud que tienen las carreteras no es correcta
+	(ACT)(R) Ponía Lenght en el constructor
+
+17. Saltan excepciones al mostrar el string

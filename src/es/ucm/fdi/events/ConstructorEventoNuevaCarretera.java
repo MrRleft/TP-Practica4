@@ -29,7 +29,7 @@ public class ConstructorEventoNuevaCarretera extends ConstructorEventos {
 			 ConstructorEventos.identificadorValido(section, "src"),
 			 ConstructorEventos.identificadorValido(section, "dest"),
 			 ConstructorEventos.parseaIntNoNegativo(section, "max_speed", 0),
-			 ConstructorEventos.parseaIntNoNegativo(section, "lenght", 0));
+			 ConstructorEventos.parseaIntNoNegativo(section, "length", 0));
 		//falta type
 	}
 	
