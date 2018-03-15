@@ -26,35 +26,22 @@ public class EventoNuevoVehiculo extends Evento{
 	 }
 	
 	 @Override
-	 public void ejecuta(MapaCarreteras mapa) throws ErrorCarga {
+	 public void ejecuta(MapaCarreteras mapa) throws ErrorCarga, ErrorDeSimulacion {
 		
 		//List<Cruce> iti = ParserCarreteras.parseaListaCruces(this.itinerario,mapa);
 		 // si iti es null o tiene menos de dos cruces lanzar excepciï¿½n
 		 List<Cruce> iti = this.ayudaCarretera(this.itinerario, mapa);
 		 
 			 if(this.itinerario == null ){
-				 try {
-					throw new NotFoundException();
-				} catch (NotFoundException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+				throw new ErrorCarga("Error al cargar el itinerario de " + id);
 			 }
 			 else{
+				Vehiculo vehiculo = new Vehiculo(this.id,this.velocidadMaxima,iti);
 				try {
-					Vehiculo vehiculo = new Vehiculo(this.id,this.velocidadMaxima,iti);
-					try {
-						mapa.addVehiculo(id, vehiculo);
-					} catch (InsertException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} catch (ErrorDeSimulacion e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
-				} catch (ErrorCarga e) {
+					mapa.addVehiculo(id, vehiculo);
+				} catch (InsertException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					throw new ErrorCarga("Problema al añadir " + id + "Al mapa de carreteras");
 				}
 			 }
 		 

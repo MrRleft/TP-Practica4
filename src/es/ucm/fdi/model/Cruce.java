@@ -35,6 +35,8 @@ import es.ucm.fdi.ini.IniSection;
 		 // a�ade una carretera entrante al �mapaCarreterasEntrantes� y
 		 // a las �carreterasEntrantes�
 		 CarreteraEntrante cE = new CarreteraEntrante(carretera);
+		 if(this.carreterasEntrantes.size() == 0)
+			 cE.ponSemaforo(true);
 		 this.carreterasEntrantes.add(cE);
 		 this.mapaCarreterasEntrantes.put(idCarretera, cE);
 		 
@@ -54,6 +56,8 @@ import es.ucm.fdi.ini.IniSection;
 		 this.carreterasEntrantes.get(indiceSemaforoVerde).ponSemaforo(false);
 		 this.indiceSemaforoVerde++;
 		 this.carreterasEntrantes.get(this.indiceSemaforoVerde).ponSemaforo(true);
+		 if(this.indiceSemaforoVerde == this.carreterasEntrantes.size())
+			 this.indiceSemaforoVerde = 0;
 		}
 	 
 		@Override
