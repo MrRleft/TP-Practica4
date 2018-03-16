@@ -10,7 +10,7 @@ import es.ucm.fdi.Utils.SortedArrayList;
 import es.ucm.fdi.ini.IniSection;
 
 public class Carretera extends ObjetoSimulacion {
-	 private String id;
+
 	 protected int longitud; // longitud de la carretera
 	 protected int velocidadMaxima; // velocidad mÃ¡xima
 	 protected Cruce cruceOrigen; // cruce del que parte la carretera
@@ -44,7 +44,7 @@ public class Carretera extends ObjetoSimulacion {
 	 }
 	 
 	
-	public void avanza() {
+	public void avanza() throws ErrorDeSimulacion {
 		
 		// calcular velocidad base de la carretera
 		 // inicializar obst�culos a 0
@@ -60,12 +60,7 @@ public class Carretera extends ObjetoSimulacion {
 				obstaculos++;
 			}
 			v.velocidadActual= this.calculaVelocidadBase()/this.calculaFactorReduccion(obstaculos);
-			try {
-				v.avanza();
-			} catch (ErrorDeSimulacion e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			v.avanza();
 			this.vehiculos.sort(this.comparadorVehiculo);
 		}
 	}
@@ -85,14 +80,11 @@ public class Carretera extends ObjetoSimulacion {
 		 vehiculos.remove(vehiculo);
 	}
 	 
-	public void entraVehiculoAlCruce(Vehiculo v) {
+	public void entraVehiculoAlCruce(Vehiculo v) throws ErrorDeSimulacion {
 		 // aÃ±ade el vehÃ­culo al â€œcruceDestinoâ€� de la carreteraâ€�
-		try {
-			this.cruceDestino.entraVehiculoAlCruce(this.id, v);
-		} catch (ErrorDeSimulacion e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
+		this.cruceDestino.entraVehiculoAlCruce(this.id, v);
+
 	}
 	
 	protected int calculaVelocidadBase() {

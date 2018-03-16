@@ -17,7 +17,7 @@ public class Vehiculo extends ObjetoSimulacion {
 	 protected List<Cruce> itinerario; // itinerario a recorrer (m�nimo 2)
 	 private boolean EnCruce;
 	 private boolean haLlegado;
-	 private CarreteraEntrante cE;
+
 
 
 	 public Vehiculo(String id, int velocidadMaxima, List<Cruce> iti) throws ErrorCarga {
@@ -75,7 +75,7 @@ public class Vehiculo extends ObjetoSimulacion {
 		  is.setValue("kilometrage", this.kilometraje);
 		  is.setValue("faulty", this.getTiempoDeInfraccion());
 		  is.setValue("location", this.haLlegado ? "arrived" :
-			  	this.carretera + ":" + this.getLocalizacion());
+			  	"(" + this.carretera + "," + this.getLocalizacion() + ")");
 	 
 	 }
 	 

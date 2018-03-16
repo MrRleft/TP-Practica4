@@ -44,14 +44,12 @@ public class SimuladorTrafico {
 		int limiteTiempo = this.contadorTiempo + pasosSimulacion - 1;
 		 while (this.contadorTiempo <= limiteTiempo) {
 			// ejecutar todos los eventos correspondienes a �this.contadorTiempo�
-			 System.out.println("-------------PASO " + this.contadorTiempo + "----------------");
+
 			for(Evento evento : eventos){
 				if(evento.getTiempo() == this.contadorTiempo){
 						evento.ejecuta(mapa);
 				}	
 			}
-			for(Carretera r : this.mapa.getCarreteras())
-				r.avanza();
 			 // actualizar �mapa�
 			this.mapa.actualizar();
 			 // escribir el informe en �ficheroSalida�, controlando que no sea null.

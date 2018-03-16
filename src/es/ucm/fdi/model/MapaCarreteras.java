@@ -91,7 +91,7 @@ public class MapaCarreteras {
 
 	public String generateReport(int time) {
 		 //Preguntar como va el report.
-		 String report = "";
+		 String report = ("# ******* step "+ time +" *******\r\n");
 		 // genera informe para cruces
 		 for(int i = 0; i < this.cruces.size();++i){
 			 report += this.cruces.get(i).generaInforme(time);
