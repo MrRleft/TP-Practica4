@@ -7,6 +7,10 @@ import java.util.Iterator;
 
 public class SortedArrayList<E> extends ArrayList<E> {
 	 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private Comparator<E> cmp;
 	
 	 public SortedArrayList(Comparator<E> cmp) {
@@ -18,7 +22,7 @@ public class SortedArrayList<E> extends ArrayList<E> {
 		}
 	 
 	 @Override
-	 /* programar la inserciÃ³n ordenada */
+	 /* programar la inserción ordenada */
 	 
 	 public boolean add(E e) {
 		 int idx = 0;
@@ -32,9 +36,6 @@ public class SortedArrayList<E> extends ArrayList<E> {
 	 
 	 
 	 protected  int compare(E k1, E k2) {
-			if (this.cmp == null) {
-				return ((Comparable) k1).compareTo(k2);
-			}
 			return this.cmp.compare(k1, k2);
 		}
 	 

@@ -7,6 +7,7 @@ import es.ucm.fdi.ini.IniSection;
 
 public class ConstructorEventoAveriaCoche extends ConstructorEventos {
 	
+	
 	private String[] valoresPorDefecto;
 
 	public ConstructorEventoAveriaCoche() {
@@ -23,7 +24,7 @@ public class ConstructorEventoAveriaCoche extends ConstructorEventos {
 		else
 			 return new EventoAveriaCoche(
 			 ConstructorEventos.parseaIntNoNegativo(section, "time", 0),
-			 ConstructorEventos.identificadorValido(section, "vehicles"),
+			 ConstructorEventos.toStringToList(section, "vehicles"),
 			 ConstructorEventos.parseaIntNoNegativo(section, "duration", 0));
 	}
 

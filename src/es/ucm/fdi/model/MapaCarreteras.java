@@ -6,6 +6,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import es.ucm.fdi.Exceptions.ErrorCarga;
 import es.ucm.fdi.Exceptions.ErrorDeSimulacion;
 import es.ucm.fdi.Exceptions.InsertException;
 import es.ucm.fdi.Exceptions.NotFoundException;
@@ -80,16 +81,33 @@ public class MapaCarreteras {
 	 }
 	 
 	 
-	 public String generateReport(int time) {
+	 public List<Cruce> getCruces() {
+		return cruces;
+	}
+
+	public List<Carretera> getCarreteras() {
+		return carreteras;
+	}
+
+	public String generateReport(int time) {
 		 //Preguntar como va el report.
-		 String report = "";
+		 String report = ("# ******* step "+ time +" *******\r\n");
 		 // genera informe para cruces
+		 for(int i = 0; i < this.cruces.size();++i){
+			 report += this.cruces.get(i).generaInforme(time);
+		 }
 		 // genera informe para carreteras
+		 for(int j = 0; j < this.carreteras.size();++j){
+			 report += this.carreteras.get(j).generaInforme(time);
+		 }
 		 // genera informe para vehiculos
+		 for(int w = 0; w < this.vehiculos.size();++w){
+			 report += this.vehiculos.get(w).generaInforme(time);
+		 }
 		return report;
 	}
 	 
-	public void actualizar() {
+	public void actualizar() throws ErrorDeSimulacion {
 		 // llama al mÃ©todo avanza de cada cruce
 		 // llama al mÃ©todo avanza de cada carretera
 		for(int i = 0; i < cruces.size(); i++)
@@ -125,4 +143,12 @@ public class MapaCarreteras {
 			throw new NotFoundException("No se ha encontrado la carretera: " + id);
 		return mapaDeCarreteras.get(id);
 		}
+	
+	public void SetAveria(String id, int duration) throws ErrorCarga {
+		
+		Vehiculo v = mapaDeVehiculos.get(id);
+		if(v == null)
+			throw new ErrorCarga("No se han podido colocar las averias correctamente");
+		v.setAveria(duration);
+	}
 }

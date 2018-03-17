@@ -1,63 +1,111 @@
 package es.ucm.fdi.model;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import es.ucm.fdi.Exceptions.ErrorDeSimulacion;
 import es.ucm.fdi.ini.IniSection;
 
-abstract public class Cruce extends ObjetoSimulacion {
+ public class Cruce extends ObjetoSimulacion {
 	 
-	 protected int indiceSemaforoVerde; // lleva el índice de la carretera entrante
-	 // con el semáforo en verde
+	 protected int indiceSemaforoVerde; // lleva el ï¿½ndice de la carretera entrante
+	 // con el semï¿½foro en verde
 	 protected List<CarreteraEntrante> carreterasEntrantes;
 
-	 // para optimizar las búsquedas de las carreterasEntrantes
+	 // para optimizar las bï¿½squedas de las carreterasEntrantes
 	 // (IdCarretera, CarreteraEntrante)
 	 protected Map<String,CarreteraEntrante> mapaCarreterasEntrantes;
 	 protected Map<Cruce,Carretera> parCarreteraCruce;
 	 
 	 public Cruce(String id) {
 		super(id);
+		this.indiceSemaforoVerde = 0;
+		this.mapaCarreterasEntrantes = new HashMap<>();
+		this.parCarreteraCruce = new HashMap<>();
+		this.carreterasEntrantes = new ArrayList<>();
 		// TODO Auto-generated constructor stub
 	}
 	 public Carretera carreteraHaciaCruce(Cruce cruce) {
-		 // devuelve la carretera que llega a ese cruce desde “this”
+		 // devuelve la carretera que llega a ese cruce desde ï¿½thisï¿½
 		return this.parCarreteraCruce.get(cruce);
 	 }
 	 public void addCarreteraEntranteAlCruce(String idCarretera, Carretera carretera) {
-		 // añade una carretera entrante al “mapaCarreterasEntrantes” y
-		 // a las “carreterasEntrantes”
+		 // aï¿½ade una carretera entrante al ï¿½mapaCarreterasEntrantesï¿½ y
+		 // a las ï¿½carreterasEntrantesï¿½
 		 CarreteraEntrante cE = new CarreteraEntrante(carretera);
+		 if(this.carreterasEntrantes.size() == 0)
+			 cE.ponSemaforo(true);
 		 this.carreterasEntrantes.add(cE);
 		 this.mapaCarreterasEntrantes.put(idCarretera, cE);
 		 
 		}
 	 public void addCarreteraSalienteAlCruce(Cruce destino, Carretera road) {
-		 // añade una carretera saliente
-		 this.parCarreteraCruce.p
+		 // aï¿½ade una carretera saliente
+		 this.parCarreteraCruce.put(destino, road);
 		 
 		}
-	 public void entraVehiculoAlCruce(String idCarretera, Vehiculo vehiculo){
-		 // añade el “vehiculo” a la carretera entrante “idCarretera”
-		 
+	 public void entraVehiculoAlCruce(String idCarretera, Vehiculo vehiculo) throws ErrorDeSimulacion{
+		 // aï¿½ade el ï¿½vehiculoï¿½ a la carretera entrante ï¿½idCarreteraï¿½
+		 this.mapaCarreterasEntrantes.get(idCarretera).entraVehiculo(vehiculo);
 		}
 	 protected void actualizaSemaforos(){
-		 // pone el semáforo de la carretera actual a “rojo”, y busca la siguiente
-		 // carretera entrante para ponerlo a “verde”
-		}
+		 // pone el semï¿½foro de la carretera actual a ï¿½rojoï¿½, y busca la siguiente
+		 // carretera entrante para ponerlo a ï¿½verdeï¿½
+		 this.carreterasEntrantes.get(indiceSemaforoVerde).ponSemaforo(false);
+		 this.indiceSemaforoVerde++;
+		 if(this.indiceSemaforoVerde == this.carreterasEntrantes.size())
+			 this.indiceSemaforoVerde = 0;
+		 this.carreterasEntrantes.get(this.indiceSemaforoVerde).ponSemaforo(true);
+	 }
+	 
 		@Override
-	 public void avanza() {
-		// Si “carreterasEntrantes” es vacío, no hace nada.
-		 // en otro caso “avanzaPrimerVehiculo” de la carretera con el semáforo verde.
-		 // Posteriormente actualiza los semáforos.
+	 public void avanza() throws ErrorDeSimulacion {
+		// Si ï¿½carreterasEntrantesï¿½ es vacï¿½o, no hace nada.
+		 // en otro caso ï¿½avanzaPrimerVehiculoï¿½ de la carretera con el semï¿½foro verde.
+		 // Posteriormente actualiza los semï¿½foros.
+			if (!this.carreterasEntrantes.isEmpty()) {
+				carreterasEntrantes.get(this.indiceSemaforoVerde).avanzaPrimerVehiculo();
+				this.actualizaSemaforos();
+				
+			}
 		}
 		
 	 protected String getNombreSeccion() {
 			
+		 return "junction_report";
 		}
 		@Override
 	protected void completaDetallesSeccion(IniSection is) {
-		 // genera la sección queues = (r2,green,[]),...
+			String detalles = "";
+		//	is.setValue("id", this.id);
+			//is.setValue("time",0);//arreglar
+			for (int i = 0; i <this.carreterasEntrantes.size(); ++i){
+				detalles += "(" + this.carreterasEntrantes.get(i).carretera.getID() + ", ";
+				if (this.carreterasEntrantes.get(i).getSem()) detalles += "green, [";
+				else detalles += "red, [";
+				for (Vehiculo v : this.carreterasEntrantes.get(i).colaVehiculos)
+					detalles += v.id + ", ";
+				detalles = detalles.substring(0, detalles.length() );
+				detalles += "]), ";	
+			}
+			detalles = detalles.substring(0, detalles.length() );
+			is.setValue("queue", detalles);
 		}
+	public boolean carreteraEntranteAqui(Carretera c) {
+		
+		return this.mapaCarreterasEntrantes.containsKey(c.getID());	
+	}
+	public Carretera EncuentraCarretera(Cruce proximo) {
+		// TODO Auto-generated method stub
+		return this.parCarreteraCruce.get(proximo);
+	}
 }
+
+/*Bucle for que recorre todo un mapa
+ * for(Map.Entry<String, CarreteraEntrante> entry : mapaCarreterasEntrantes.entrySet()) {
+			entry.avanza();		
+				}
+ */
 

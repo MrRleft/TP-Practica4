@@ -1,5 +1,9 @@
 package es.ucm.fdi.events;
 
+import es.ucm.fdi.Exceptions.ErrorCarga;
+import es.ucm.fdi.Exceptions.ErrorDeSimulacion;
+import es.ucm.fdi.Exceptions.InsertException;
+import es.ucm.fdi.Exceptions.NotFoundException;
 import es.ucm.fdi.model.MapaCarreteras;
 
 public abstract class Evento {
@@ -17,9 +21,10 @@ public abstract class Evento {
 		return this.tiempo;
 	}
 	
-	 // cada clase que hereda implementa su método ejecuta, que creará
-	 // el correspondiente objeto de la simulación.
+	 // cada clase que hereda implementa su mï¿½todo ejecuta, que crearï¿½
+	 // el correspondiente objeto de la simulaciï¿½n.
 
-	 public abstract void ejecuta(MapaCarreteras mapa);
+	 public abstract void ejecuta(MapaCarreteras mapa) throws NotFoundException, ErrorCarga, InsertException, ErrorDeSimulacion;
+	 public abstract String toString();
 
 	}

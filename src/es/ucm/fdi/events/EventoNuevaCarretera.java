@@ -1,8 +1,10 @@
 package es.ucm.fdi.events;
 
 
+import es.ucm.fdi.model.Carretera;
 import es.ucm.fdi.model.Cruce;
 import es.ucm.fdi.model.MapaCarreteras;
+import es.ucm.fdi.Exceptions.InsertException;
 import es.ucm.fdi.Exceptions.NotFoundException;
 import es.ucm.fdi.events.Evento;
 
@@ -25,21 +27,32 @@ public class EventoNuevaCarretera extends Evento {
 	}
 
 	@Override
-	public void ejecuta(MapaCarreteras mapa) {
+	public void ejecuta(MapaCarreteras mapa) throws NotFoundException, InsertException {
 		// TODO Auto-generated method stub
-		Cruce cOrigen,cDestino;
+		
 		// obten cruce origen y cruce destino utilizando el mapa
-		try {
-			cOrigen = mapa.getCruce(cruceOrigenId);
-			cDestino = mapa.getCruce(cruceDestinoId);
-		} catch (NotFoundException e) {
-			e.printStackTrace();
-		}
-		 // crea la carretera
 		
+		Cruce cOrigen = mapa.getCruce(cruceOrigenId);
+		Cruce cDestino = mapa.getCruce(cruceDestinoId);
+		// crea la carretera
+		// añade al mapa la carretera	
+		Carretera carretera = new Carretera(this.id,this.longitud,this.velocidadMaxima,cOrigen,cDestino);
 		
+		mapa.addCarretera(this.id, cOrigen, carretera, cDestino);
 		
-		 // añade al mapa la carretera
 	}
+	
+	public String toString() {
+		 StringBuilder sb = new StringBuilder();
+		 System.out.println("[new_road]");
+		 System.out.println("time =" + super.getTiempo());
+		 System.out.println("id = "+ this.id);
+		 System.out.println("src = "+ this.cruceOrigenId);
+		 System.out.println("dest = "+ this.cruceDestinoId);
+		 System.out.println("max_speed = "+ this.velocidadMaxima);
+		 System.out.println("length + = " + this.longitud);
+		 return sb.toString();
+	}
+	
 
 }

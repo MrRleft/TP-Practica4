@@ -5,19 +5,17 @@ import es.ucm.fdi.events.Evento;
 import es.ucm.fdi.ini.IniSection;
 
 public class ConstructorEventoNuevaCarretera extends ConstructorEventos {
-
+	
+	@SuppressWarnings("unused")
 	private String[] valoresPorDefecto;
 	
-	public ConstructorEventoNuevaCarretera(IniSection section) {
+	public ConstructorEventoNuevaCarretera() {
 		 this.etiqueta = "new_road";
 		 this.claves = new String[] { "time", "id" ,"src", "dest","max_speed","lenght" };
 		 this.valoresPorDefecto = new String[] { "", "", };
 		
 		}
-	
-	public ConstructorEventoNuevaCarretera() {
-		// TODO Auto-generated constructor stub
-	}
+
 
 	@Override
 	public Evento parser(IniSection section) {
@@ -31,7 +29,7 @@ public class ConstructorEventoNuevaCarretera extends ConstructorEventos {
 			 ConstructorEventos.identificadorValido(section, "src"),
 			 ConstructorEventos.identificadorValido(section, "dest"),
 			 ConstructorEventos.parseaIntNoNegativo(section, "max_speed", 0),
-			 ConstructorEventos.parseaIntNoNegativo(section, "lenght", 0));
+			 ConstructorEventos.parseaIntNoNegativo(section, "length", 0));
 		//falta type
 	}
 	

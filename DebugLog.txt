@@ -1,0 +1,98 @@
+1.Fallo en los constructores por defecto de los parsers (FIXED)
+	(ACT)(R) Se eliminan los constructores(IniSection sec) quedando unicamente los de
+	por defecto y se les da los valores básicos
+
+2.Al llamar a StringToList en el constructor de vehículo peta (FIXED)
+	(ACT)(R) Al llamar a la función se le hacia buscar la clave "itinerario" en lugar de 
+	itinerary
+
+3.StringToList da errores de IDs no validos (FIXED)
+	(ACT)(R) El split debe hacerse con comas
+
+--El parseo parece funcional.
+
+4.El ejecuta de SimuladorTrafico no termina la ejecución sin Exceptions. 
+	(ACT)(R) El if que determina si se debe ejecutar cuando debe ejecutarse un evento
+	compara con el LimTiempo en lugar con el tiempo actual, lo cambio
+	(ACT)(R) FALLO 8. Una vez se arregle podremos seguir depurando.
+	(ACT)(R) Arreglado fallo 8 seguimos depurando.
+	(ACT)(R) FALLO 9. Una vez se arregle podremos seguir depurando.
+	(ACT)(R) Arreglado fallo 9 seguimos depurando.
+	(ACT)(R) FALLO 10. Una vez se arregle podremos seguir depurando.
+	(ACT)(R) Arreglado fallo 10 seguimos depurando.
+	(ACT)(R) FALLO 17. Una vez se arregle podremos seguir depurando.
+	(ACT)(R) Arreglado fallo 17 solucionado el problema
+
+5.El ejecuta de SimuladorTrafico no imprime los resultados de cada paso (FIXED)
+	(ACT)(R) He puesto un SYSO que muestre lo que ocurre en cada paso
+
+6.El contador de tiempo se inicia en otro lugar que no es 0... A veces (FIXED?)
+	(ACT)(R) No ha vuelto a ocurrir
+
+7.Eventos dentro de ST parece estar vacio. (FIXED)
+	(ACT)(R) Efectivamente, el insertar eventos no los inserta
+	(ACT)(R) Creo un nuevo atributo en ST de LimiteTiempo, cuando se crea
+	se le da el valor, permitiendo asi la inserción.
+
+8.Problema al crearse una carretera en el ejecutar de Mapa. (FIXED)
+	(ACT)(R) Error en el Collection.sort().
+	(ACT)(R) No se inicializaba la lista de vehiculos, asi que la inicializo como
+	SortedArrayList
+
+9. Al añadir una carretera al mapa de carreteras salta un error. (FIXED)
+	(ACT)(R) Salta un error cuando se añaden un cruce a una carretera saliente.
+	(ACT)(R) AddCarreteraEntranteAlCruce tiene el mismo error.
+	(ACT)(R) Claro, es que no hemos iniciado los Hashmaps ni el ArrayList...
+	Lo hago
+
+10.Problema al actualizar el mapa en ejecuta de ST. (FIXED)
+	(ACT)(R) Salta la excepcion al avanzar el segundo cruce.
+	(ACT)(R) A pesar de ello ahora falla ActualizarSemaforos dentro de cruce falla
+	(ACT)(R) Falla porque no se hace una gestión correcta de IndiceSemaforoVerde
+	(ACT)(E) En CarreteraEntrante,ponSemaforo(),habia = en vez de ==.(FIXED)
+	(ACT)(E) En Cruce no llamábamos a avanzaPrimerVehiculo() .Ahora el fallo da ahí
+	(ACT)(E) El problema parece estar en colaVehiculos, que está vacía.
+	(ACT)(R) Ninguno de los semáforos de las carreteras entrantes estaba en verde.
+	Hago que la primera CE en ponerse en un cruce esté en verde.
+	(ACT)(R) FALLO 13. Una vez se arregle podremos seguir depurando.
+	(ACT)(R) Arreglado fallo 13 seguimos depurando.
+	(ACT)(R) FALLO 16. Una vez se arregle podremos seguir depurando.
+	(ACT)(R) Arreglado fallo 16 solucionado el problema
+	
+11.Actualizar índice de semaforos está mal, no es circular. (FIXED)
+	(ACT)(R) Hago que sea circular
+
+12. El completaDetallesSeccion() llama a getNombreSeccion() que está vacia. (FIXED)
+	(ACT)(E) Completa DetallesSeccion()
+
+13. Salta una excepcion al avanzar los cruces del mapa. (FIXED)
+	(ACT)(R) Retoco el ejecuta de EventoNuevoVehiculo.
+	(ACT)(R) Creo que el problema está en addVehiculo a mapa
+	(ACT)(R) El problema está en moverASiguienteCarretera
+	(ACT)(R) Los vehiculos si no tenían carretera no se les introducia en ninguna
+	Cambio esto.
+	(ACT)(R) FALLO 14. Una vez se arregle podremos seguir depurando.
+	(ACT)(R) Arreglado fallo 14 seguimos depurando.
+	(ACT)(R) FALLO 15. Una vez se arregle podremos seguir depurando.
+	(ACT)(R) Arreglado fallo 15 solucionado el problema
+	(ACT)(R) Añado un if para que si la cola de vehiculos está vacia que no
+	salte una excepción
+
+14. Fallo en la comprobacion de si una carretera es la última (FIXED)
+	(ACT)(R) En el caso de que no se tenga carretera salta una excepcion, cambio 
+	para que se compruebe antes si tenemos una carretera
+
+15. Excepcion al calcular la sigCarretera() en vehiculo. (FIXED)
+	(ACT)(R) Función completamente rehecha.
+
+16. Salta una excepción al hacer avanzar un vehiculo por una carretera. (FIXED)
+	(ACT)(R) La longitud que tienen las carreteras no es correcta
+	(ACT)(R) Ponía Lenght en el constructor
+
+17. Saltan excepciones al mostrar el string (FIXED)
+18. No se llama a avanza() de carretera en SimuladorTrafico,por cada carretera (FIXED)
+	(ACT)(R) Si que se llamaba
+19. Arreglado el string de Cruce (FIXED) 
+20. Al final pone null (FIXED)
+	(ACT)(R) No se añadían vehiculos a la coladeVehiculos de las carreteras entrantes
+	porque no se tomaba un id real.

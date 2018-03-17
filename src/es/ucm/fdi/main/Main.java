@@ -108,7 +108,7 @@ public class Main {
 	private static void iniciaModoEstandar() throws IOException {
 		InputStream is = new FileInputStream(new File(Main.ficheroEntrada));
 		OutputStream os = Main.ficheroSalida == null ? System.out : new FileOutputStream(new File(Main.ficheroSalida));
-		SimuladorTrafico sim = new SimuladorTrafico();
+		SimuladorTrafico sim = new SimuladorTrafico(Main.limiteTiempo);
 		Controlador ctrl = new Controlador(sim,Main.limiteTiempo,is,os);
 		ctrl.ejecuta();
 		is.close();

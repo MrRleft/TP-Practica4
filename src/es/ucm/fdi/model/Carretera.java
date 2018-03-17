@@ -1,17 +1,16 @@
 
 package es.ucm.fdi.model;
 
-import java.util.Collections;
+
 import java.util.Comparator;
-import java.util.Iterator;
 import java.util.List;
 
-
-
+import es.ucm.fdi.Exceptions.ErrorDeSimulacion;
+import es.ucm.fdi.Utils.SortedArrayList;
 import es.ucm.fdi.ini.IniSection;
 
-public class Carretera {
-	 private String id;
+public class Carretera extends ObjetoSimulacion {
+
 	 protected int longitud; // longitud de la carretera
 	 protected int velocidadMaxima; // velocidad mÃ¡xima
 	 protected Cruce cruceOrigen; // cruce del que parte la carretera
@@ -23,17 +22,29 @@ public class Carretera {
 	 protected Comparator<Vehiculo> comparadorVehiculo; // orden entre vehÃ­culos
 	 
 	 public Carretera(String id, int length, int maxSpeed, Cruce src, Cruce dest) {
-		 this.id  = id;
+		 super(id);
 		 this.longitud = length;
 		 this.velocidadMaxima = maxSpeed;
 		 this.cruceOrigen = src;
 		 this.cruceDestino = dest;
-		 Collections.sort(vehiculos,comparadorVehiculo); //ordena vehiculos??
+		 this.comparadorVehiculo = new Comparator<Vehiculo>() {
+		 
+		 	@Override
+			public int compare(Vehiculo o1, Vehiculo o2) {
+				if(o1.getLocalizacion() < o2.getLocalizacion())
+					return -1;
+				else if(o1.getLocalizacion() < o2.getLocalizacion())
+					return 1;
+				else 
+					return 0;
+			}
+		 };
+		 this.vehiculos = new SortedArrayList<Vehiculo>(comparadorVehiculo); //ordena vehiculos??
 
 	 }
 	 
 	
-	public void avanza() {
+	public void avanza() throws ErrorDeSimulacion {
 		
 		// calcular velocidad base de la carretera
 		 // inicializar obst�culos a 0
@@ -69,9 +80,11 @@ public class Carretera {
 		 vehiculos.remove(vehiculo);
 	}
 	 
-	public void entraVehiculoAlCruce(Vehiculo v) {
+	public void entraVehiculoAlCruce(Vehiculo v) throws ErrorDeSimulacion {
 		 // aÃ±ade el vehÃ­culo al â€œcruceDestinoâ€� de la carreteraâ€�
+
 		this.cruceDestino.entraVehiculoAlCruce(this.id, v);
+
 	}
 	
 	protected int calculaVelocidadBase() {
@@ -85,11 +98,15 @@ public class Carretera {
 	}
 	
 	protected String getNombreSeccion() {
-		return this.id;
+		return "road_report";
 	}
 	
 	protected void completaDetallesSeccion(IniSection is) {
 		 // crea â€œvehicles = (v1,10),(v2,10) â€�
+	
+		for(int i = 0; i < this.vehiculos.size();++i){
+			is.setValue("vehicles","("+this.vehiculos.get(i).id+","+ this.vehiculos.get(i).velocidadActual + ")");
+		} 
 	}
 	
 		
@@ -103,7 +120,12 @@ public class Carretera {
 		return this.cruceDestino;
 	}
 
+	public String getID(){
+		return id; 
+	}
 
+
+	
 	
 }
 

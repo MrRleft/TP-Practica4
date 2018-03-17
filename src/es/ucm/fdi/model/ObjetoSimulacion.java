@@ -1,5 +1,6 @@
 package es.ucm.fdi.model;
 
+import es.ucm.fdi.Exceptions.ErrorDeSimulacion;
 import es.ucm.fdi.ini.IniSection;
 
 public abstract class ObjetoSimulacion {
@@ -29,11 +30,11 @@ public abstract class ObjetoSimulacion {
 	
 	protected abstract void completaDetallesSeccion(IniSection is);
 	
-	public abstract String getNombreSeccion();
+	protected abstract String getNombreSeccion();
 		// los m�todos getNombreSeccion y completaDetallesSeccion
 		// tendr�n que implementarlos cada subclase de ObjetoSimulacion
 	
-	 public abstract void avanza();
+	 public abstract void avanza() throws ErrorDeSimulacion;
 	 
 	 
 

@@ -8,24 +8,25 @@ import es.ucm.fdi.ini.IniSection;
 
 public class Vehiculo extends ObjetoSimulacion {
 
-	 protected Carretera carretera; // carretera en la que está el vehículo
-	 protected int velocidadMaxima; // velocidad máxima
+	 protected Carretera carretera; // carretera en la que estï¿½ el vehï¿½culo
+	 protected int velocidadMaxima; // velocidad mï¿½xima
 	 protected int velocidadActual; // velocidad actual
 	 protected int kilometraje; // distancia recorrida
-	 protected int localizacion; // localización en la carretera
-	 protected int tiempoAveria; // tiempo que estará averiado
-	 protected List<Cruce> itinerario; // itinerario a recorrer (mínimo 2)
+	 protected int localizacion; // localizaciï¿½n en la carretera
+	 protected int tiempoAveria; // tiempo que estarï¿½ averiado
+	 protected List<Cruce> itinerario; // itinerario a recorrer (mï¿½nimo 2)
 	 private boolean EnCruce;
 	 private boolean haLlegado;
+
 
 
 	 public Vehiculo(String id, int velocidadMaxima, List<Cruce> iti) throws ErrorCarga {
 		super(id);
 		 // comprobar que la velocidadMaxima es mayor o igual que 0, y
 		 // que el itinerario tiene al menos dos cruces.
-		 // En caso de no cumplirse lo anterior, lanzar una excepción.
-		 // inicializar los atributos teniendo en cuenta los parámetros.
-		 // al crear un vehículo su “carretera” será inicalmene “null”.
+		 // En caso de no cumplirse lo anterior, lanzar una excepciï¿½n.
+		 // inicializar los atributos teniendo en cuenta los parï¿½metros.
+		 // al crear un vehï¿½culo su ï¿½carreteraï¿½ serï¿½ inicalmene ï¿½nullï¿½.
 		if(velocidadMaxima < 0)
 			throw new ErrorCarga("La velocidad maxima de " + id + "es menor que 0");
 		if(iti.size() < 2)
@@ -38,6 +39,7 @@ public class Vehiculo extends ObjetoSimulacion {
 		this.tiempoAveria = 0;
 		this.haLlegado = false;
 		this.EnCruce = false;
+		
 	}
 
 	 
@@ -53,10 +55,10 @@ public class Vehiculo extends ObjetoSimulacion {
 		 
 	 }
 	 public void setVelocidadActual(int velocidad) {
-	  // Si “velocidad” es negativa, entonces la “velocidadActual” es 0.
-	  // Si “velocidad” excede a “velocidadMaxima”, entonces la
-	  // “velocidadActual” es “velocidadMaxima”
-	  // En otro caso, “velocidadActual” es “velocidad”
+	  // Si ï¿½velocidadï¿½ es negativa, entonces la ï¿½velocidadActualï¿½ es 0.
+	  // Si ï¿½velocidadï¿½ excede a ï¿½velocidadMaximaï¿½, entonces la
+	  // ï¿½velocidadActualï¿½ es ï¿½velocidadMaximaï¿½
+	  // En otro caso, ï¿½velocidadActualï¿½ es ï¿½velocidadï¿½
 		 if(velocidad < 0)
 			 this.velocidadActual = 0;
 		 if(velocidad > this.velocidadMaxima)
@@ -67,76 +69,82 @@ public class Vehiculo extends ObjetoSimulacion {
 	 
 	 @Override
 	 protected void completaDetallesSeccion(IniSection is) {
-			 
+		 // is.setValue("id", this.id);
+		 // is.setValue("time", 1);
+		  is.setValue("speed", this.velocidadActual);
+		  is.setValue("kilometrage", this.kilometraje);
+		  is.setValue("faulty", this.getTiempoDeInfraccion());
 		  is.setValue("location", this.haLlegado ? "arrived" :
-			  	this.carretera + ":" + this.getLocalizacion());
+			  	"(" + this.carretera + "," + this.getLocalizacion() + ")");
 	 
 	 }
 	 
 	 @Override
-	 public void avanza() {
-	  // si el coche está averiado, decrementar tiempoAveria
-	  // si el coche está esperando en un cruce, no se hace nada.
+	 public void avanza() throws ErrorDeSimulacion {
+	  // si el coche estï¿½ averiado, decrementar tiempoAveria
+	  // si el coche estï¿½ esperando en un cruce, no se hace nada.
 	  // en otro caso:
-	/*  1. Actualizar su “localizacion”
-	  2. Actualizar su “kilometraje”
+	/*  1. Actualizar su ï¿½localizacionï¿½
+	  2. Actualizar su ï¿½kilometrajeï¿½
 	  3. Si el coche ha llegado a un cruce (localizacion >= carretera.getLength())
-	  3.1. Poner la localización igual a la longitud de la carretera.
+	  3.1. Poner la localizaciï¿½n igual a la longitud de la carretera.
 	  3.2. Corregir el kilometraje.
-	  3.3. Indicar a la carretera que el vehículo entra al cruce.
-	  3.4. Marcar que éste vehículo está en un cruce (this.estEnCruce = true)
-	 */
-		 if(this.tiempoAveria > 0)
-			 this.tiempoAveria--;
-		 else {
-			 if(/*Si no esta esperando en un cruce*/){
-				 if(!LLegoAlCruce()) {
-					 this.kilometraje += this.velocidadActual;
-					 this.localizacion += this.velocidadActual;
+	  3.3. Indicar a la carretera que el vehï¿½culo entra al cruce.
+	  3.4. Marcar que ï¿½ste vehï¿½culo estï¿½ en un cruce (this.estEnCruce = true)
+	 */if(!this.haLlegado) {
+			 if(this.tiempoAveria > 0)
+				 this.tiempoAveria--;
+			 else {
+				 if(/*Si no esta esperando en un cruce*/!this.EnCruce){
+					 if(!LLegoAlCruce()) {
+						 this.kilometraje += this.velocidadActual;
+						 this.localizacion += this.velocidadActual;
+					 }
+					 else {
+						 this.kilometraje += this.carretera.getLongitud() - this.localizacion;
+						 this.localizacion = this.carretera.getLongitud();
+						 this.EnCruce = true;
+						 this.carretera.entraVehiculoAlCruce(this);
+					 }
+				//Preguntar: ï¿½Algo mas que hacer aqui?
 				 }
-				 else {
-					 this.kilometraje += this.carretera.getLongitud() - this.localizacion;
-					 this.localizacion = this.carretera.getLongitud();
-					 this.EnCruce = true;
-					 this.carretera.entraVehiculoAlCruce(this);
-				 }
-			//Preguntar: ¿Algo mas que hacer aqui?
 			 }
-		 }
+	 	}
 	 }
 	 
 	 public void moverASiguienteCarretera() throws ErrorDeSimulacion{
-		 // Si la carretera no es null, sacar el vehículo de la carretera.
-		 // Si hemos llegado al último cruce del itinerario, entonces:
-	//	 1. Se marca que el vehículo ha llegado (this.haLlegado = true).
+		 // Si la carretera no es null, sacar el vehï¿½culo de la carretera.
+		 // Si hemos llegado al ï¿½ltimo cruce del itinerario, entonces:
+	//	 1. Se marca que el vehï¿½culo ha llegado (this.haLlegado = true).
 		// 2. Se pone su carretera a null.
-		// 3. Se pone su “velocidadActual” y “localizacion” a 0.
-		 // y se marca que el vehículo está en un cruce (this.estaEnCruce = true).
+		// 3. Se pone su ï¿½velocidadActualï¿½ y ï¿½localizacionï¿½ a 0.
+		 // y se marca que el vehï¿½culo estï¿½ en un cruce (this.estaEnCruce = true).
 		 // En otro caso:
 		 //1. Se calcula la siguiente carretera a la que tiene que ir.
-		// 2. Si dicha carretera no existe, se lanza excepción.
-		// 3. En otro caso, se introduce el vehículo en la carretera.
-		// 4. Se inicializa su localización.
-		 
-		 if(this.carretera != null) {
-			 this.carretera.saleVehiculo(this);
-			 if(this.carretera.getCruceDest() == this.itinerario.get(this.itinerario.size()-1)) {
+		// 2. Si dicha carretera no existe, se lanza excepciï¿½n.
+		// 3. En otro caso, se introduce el vehï¿½culo en la carretera.
+		// 4. Se inicializa su localizaciï¿½n.
+		 if(!this.haLlegado) {
+			 if(this.carretera != null)
+				 this.carretera.saleVehiculo(this);
+			 
+			 if(this.carretera != null && this.carretera.getCruceDest() == this.itinerario.get(this.itinerario.size()-1)) {
 				 this.haLlegado = true;
 				 this.velocidadActual = 0;
 				 this.carretera = null;
 				 this.EnCruce = true;
 			 }
+			 
 			 else {
-				 //Como calculo su siguiente carretera?
-				 Carretera nuevaCarretera;
-				 if(/*La siguiente carretera no existe*/)
+				 this.carretera = this.calculoSigCarretera();
+				 if(this.carretera == null)
 					 throw new ErrorDeSimulacion("La Carretera: " + carretera + "del Vehiculo" + id + "No existe");
-				 nuevaCarretera.entraVehiculo(this);
+				 this.carretera.entraVehiculo(this);
 				 this.localizacion = 0;	 
 			 }
-			 
 		 }
-	}
+	 }
+	
 	 
 	@Override
 	public String getNombreSeccion() {
@@ -144,13 +152,43 @@ public class Vehiculo extends ObjetoSimulacion {
 	}
 	 
 	//Metodos extra creados para facilitarnos la vida considerablemente. Ojo que no es poco lo que facilitan
-	public boolean LLegoAlCruce() {
+	protected boolean LLegoAlCruce() {
 		
 		return (this.localizacion + this.velocidadActual) > this.carretera.getLongitud();
 		
 	}
-			
+		
+	protected Carretera calculoSigCarretera() {
+		
+		Cruce cruceAct;
+		
+		if(this.carretera != null) 
+			cruceAct = this.carretera.getCruceDest();
+		
+		else
+			cruceAct = this.itinerario.get(0);
+		
+		int IndexcruceProx = this.itinerario.lastIndexOf(cruceAct)+1;
+		Cruce cruceProx = this.itinerario.get(IndexcruceProx);
+		return cruceAct.carreteraHaciaCruce(cruceProx);
+		
+		/*
+		int i = 0;
+		while(this.itinerario.get(i).carreteraEntranteAqui(this.carretera) && (i < this.itinerario.size() -1)  ) {
+			i++;
+		}
+		Cruce Anterior = this.itinerario.get(i) , Proximo = this.itinerario.get(i+1);
+		return Anterior.EncuentraCarretera(Proximo);
+		*/
+	}
 
+
+	public void setAveria(int duration) {
+		// TODO Auto-generated method stub
+		this.tiempoAveria += duration;
+
+	}
+	
 	
 	
 }
