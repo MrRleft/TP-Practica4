@@ -104,12 +104,20 @@ public class Carretera extends ObjetoSimulacion {
 	
 	protected void completaDetallesSeccion(IniSection is) {
 		 // crea â€œvehicles = (v1,10),(v2,10) â€�
+		String key= "";
 		if(this.vehiculos.size() != 0)
+		//	is.setValue("vehicles",key);
 			for(int i = 0; i < this.vehiculos.size();++i){
-				is.setValue("vehicles","("+this.vehiculos.get(i).id+","+ this.vehiculos.get(i).localizacion + ")");
+				if(i!=this.vehiculos.size()-1){
+				key += "(" + this.vehiculos.get(i).id+","+ this.vehiculos.get(i).localizacion + ")," ;
+				//System.out.println("vehicles" + this.vehiculos.get(i).id);
+				}
+				else
+				key += "(" + this.vehiculos.get(i).id+","+ this.vehiculos.get(i).localizacion + ")" ;
 			} 
-		else
-			is.setValue("vehicles","");
+		is.setValue("vehicles",key );
+		//else
+			//is.setValue("vehicles","");
 		
 	}
 	
