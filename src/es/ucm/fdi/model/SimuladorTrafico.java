@@ -1,6 +1,8 @@
 package es.ucm.fdi.model;
 
+import java.io.IOException;
 import java.io.OutputStream;
+import java.io.PrintWriter;
 import java.util.Comparator;
 import java.util.List;
 
@@ -41,6 +43,7 @@ public class SimuladorTrafico {
 	
 	public void ejecuta(int pasosSimulacion, OutputStream ficheroSalida) throws ErrorDeSimulacion, ErrorCarga, NotFoundException, InsertException {
 		
+		String output = "";
 		int limiteTiempo = this.contadorTiempo + pasosSimulacion - 1;
 		 while (this.contadorTiempo <= limiteTiempo) {
 			// ejecutar todos los eventos correspondienes a �this.contadorTiempo�
@@ -53,10 +56,15 @@ public class SimuladorTrafico {
 			 // actualizar �mapa�
 			this.mapa.actualizar();
 			 // escribir el informe en �ficheroSalida�, controlando que no sea null.
-			
-			System.out.println(this.mapa.generateReport(this.contadorTiempo));
+			output += this.mapa.generateReport(this.contadorTiempo);
 			this.contadorTiempo++;
 			}
+		 try {
+			ficheroSalida.write(output.getBytes());
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			throw new ErrorDeSimulacion("Error al grabarse en el fichero out");
+		}
 
 	}
 	

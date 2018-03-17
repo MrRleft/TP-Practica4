@@ -1,7 +1,7 @@
 
 package es.ucm.fdi.model;
 
-import java.util.Collections;
+
 import java.util.Comparator;
 import java.util.List;
 

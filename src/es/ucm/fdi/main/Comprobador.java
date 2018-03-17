@@ -30,7 +30,7 @@ public class Comprobador {
 		});
 
 		for (File file : files) {
-			test(file.getAbsolutePath(), file.getAbsolutePath() + ".out", file.getAbsolutePath() + ".eout");
+			test(file.getAbsolutePath(), file.getAbsolutePath() + ".eout", file.getAbsolutePath() + ".eout");
 			System.out.println(file.getAbsolutePath());
 		}
 

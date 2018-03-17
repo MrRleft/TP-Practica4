@@ -21,8 +21,9 @@
 	(ACT)(R) FALLO 10. Una vez se arregle podremos seguir depurando.
 	(ACT)(R) Arreglado fallo 10 seguimos depurando.
 	(ACT)(R) FALLO 17. Una vez se arregle podremos seguir depurando.
+	(ACT)(R) Arreglado fallo 17 solucionado el problema
 
-5.El ejecuta de SimuladorTrafico no imprime los resultados de cada paso
+5.El ejecuta de SimuladorTrafico no imprime los resultados de cada paso (FIXED)
 	(ACT)(R) He puesto un SYSO que muestre lo que ocurre en cada paso
 
 6.El contador de tiempo se inicia en otro lugar que no es 0... A veces (FIXED?)
@@ -88,7 +89,10 @@
 	(ACT)(R) La longitud que tienen las carreteras no es correcta
 	(ACT)(R) Ponía Lenght en el constructor
 
-17. Saltan excepciones al mostrar el string
-18.No se llama a avanza() de carretera en SimuladorTrafico,por cada carretera (FIXED)
-19.Arreglado el string de Cruce (FIXED) 
-20.Al final pone null
+17. Saltan excepciones al mostrar el string (FIXED)
+18. No se llama a avanza() de carretera en SimuladorTrafico,por cada carretera (FIXED)
+	(ACT)(R) Si que se llamaba
+19. Arreglado el string de Cruce (FIXED) 
+20. Al final pone null (FIXED)
+	(ACT)(R) No se añadían vehiculos a la coladeVehiculos de las carreteras entrantes
+	porque no se tomaba un id real.

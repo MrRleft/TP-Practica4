@@ -31,7 +31,7 @@ public class Controlador {
 		 try {
 			 
 			 this.cargaEventos(this.ficheroEntrada);
-			 this.simulador.ejecuta(pasosSimulacion,this.ficheroSalida);
+			 this.simulador.ejecuta(this.pasosSimulacion,this.ficheroSalida);
 		 }
 		 catch(Exception r) {
 			 
