@@ -11,7 +11,7 @@ public class ConstructorEventoAveriaCoche extends ConstructorEventos {
 	private String[] valoresPorDefecto;
 
 	public ConstructorEventoAveriaCoche() {
-		 this.etiqueta = "new_vehicle_faulty";
+		 this.etiqueta = "make_vehicle_faulty";
 		 this.claves = new String[] { "time", "vehicles","duration" };
 		 this.valoresPorDefecto = new String[] { "", "", ""};
 		}

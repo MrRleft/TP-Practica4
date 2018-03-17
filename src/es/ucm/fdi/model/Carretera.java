@@ -61,8 +61,9 @@ public class Carretera extends ObjetoSimulacion {
 			}
 			v.velocidadActual= this.calculaVelocidadBase()/this.calculaFactorReduccion(obstaculos);
 			v.avanza();
-			this.vehiculos.sort(this.comparadorVehiculo);
+			
 		}
+		this.vehiculos.sort(this.comparadorVehiculo);
 	}
 	
 	 public void entraVehiculo(Vehiculo vehiculo) {
@@ -89,7 +90,7 @@ public class Carretera extends ObjetoSimulacion {
 	
 	protected int calculaVelocidadBase() {
 		
-		return  Math.min(this.velocidadMaxima,(this.velocidadMaxima/Math.max(this.vehiculos.size(),1)));
+		return  Math.min(this.velocidadMaxima,(this.velocidadMaxima/Math.max(this.vehiculos.size(),1) + 1));
 	
 	}
 	protected int calculaFactorReduccion(int obstaculos) {
@@ -103,10 +104,13 @@ public class Carretera extends ObjetoSimulacion {
 	
 	protected void completaDetallesSeccion(IniSection is) {
 		 // crea â€œvehicles = (v1,10),(v2,10) â€�
-	
-		for(int i = 0; i < this.vehiculos.size();++i){
-			is.setValue("vehicles","("+this.vehiculos.get(i).id+","+ this.vehiculos.get(i).velocidadActual + ")");
-		} 
+		if(this.vehiculos.size() != 0)
+			for(int i = 0; i < this.vehiculos.size();++i){
+				is.setValue("vehicles","("+this.vehiculos.get(i).id+","+ this.vehiculos.get(i).localizacion + ")");
+			} 
+		else
+			is.setValue("vehicles","");
+		
 	}
 	
 		

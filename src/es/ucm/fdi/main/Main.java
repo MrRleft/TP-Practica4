@@ -2,7 +2,9 @@ package es.ucm.fdi.main;
 
 import java.io.File;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
+import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
@@ -125,9 +127,35 @@ public class Main {
 		// --help
 		//
 		
+		/*
 		Main.ParseaArgumentos(args);
 		Main.iniciaModoEstandar();
-	
+		*/
+		
+		Main.ejecutaFicheros(args[0]);
 	}
+	
+	private static void ejecutaFicheros(String path) throws IOException {
 
+		File dir = new File(path);
+
+		if ( !dir.exists() ) {
+			throw new FileNotFoundException(path);
+		}
+		
+		File[] files = dir.listFiles(new FilenameFilter() {
+			
+			public boolean accept(File dir, String name) {
+				return name.endsWith(".ini");
+			}
+		});
+
+		for (File file : files) {
+			Main.ficheroEntrada = file.getAbsolutePath();
+			Main.ficheroSalida = file.getAbsolutePath() + ".out";
+			Main.limiteTiempo = 10;
+			Main.iniciaModoEstandar();
+		}
+
+	}
 }

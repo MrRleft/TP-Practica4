@@ -82,16 +82,16 @@ import es.ucm.fdi.ini.IniSection;
 		//	is.setValue("id", this.id);
 			//is.setValue("time",0);//arreglar
 			for (int i = 0; i <this.carreterasEntrantes.size(); ++i){
-				detalles += "(" + this.carreterasEntrantes.get(i).carretera.getID() + ", ";
-				if (this.carreterasEntrantes.get(i).getSem()) detalles += "green, [";
-				else detalles += "red, [";
+				detalles += "(" + this.carreterasEntrantes.get(i).carretera.getID() + ",";
+				if (this.carreterasEntrantes.get(i).getSem()) detalles += "green,[";
+				else detalles += "red,[";
 				for (Vehiculo v : this.carreterasEntrantes.get(i).colaVehiculos)
-					detalles += v.id + ", ";
+					detalles += v.id + ",";
 				detalles = detalles.substring(0, detalles.length() );
-				detalles += "]), ";	
+				detalles += "])";	
 			}
 			detalles = detalles.substring(0, detalles.length() );
-			is.setValue("queue", detalles);
+			is.setValue("queues", detalles);
 		}
 	public boolean carreteraEntranteAqui(Carretera c) {
 		

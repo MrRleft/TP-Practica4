@@ -57,6 +57,7 @@ public class SimuladorTrafico {
 			this.mapa.actualizar();
 			 // escribir el informe en �ficheroSalida�, controlando que no sea null.
 			output += this.mapa.generateReport(this.contadorTiempo);
+			System.out.println(output);
 			this.contadorTiempo++;
 			}
 		 try {
@@ -71,6 +72,7 @@ public class SimuladorTrafico {
 	public void insertaEvento(Evento e) {
 		 // inserta un evento en �eventos�, controlando que el tiempo de
 		 // ejecuci�n del evento sea menor que �contadorTiempo�
+		
 			if(e.getTiempo() < this.pasosSim){
 			this.eventos.add(e);
 			}

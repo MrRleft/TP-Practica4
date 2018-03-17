@@ -92,8 +92,10 @@ public class Vehiculo extends ObjetoSimulacion {
 	  3.3. Indicar a la carretera que el veh�culo entra al cruce.
 	  3.4. Marcar que �ste veh�culo est� en un cruce (this.estEnCruce = true)
 	 */if(!this.haLlegado) {
-			 if(this.tiempoAveria > 0)
+			 if(this.tiempoAveria > 0) {
 				 this.tiempoAveria--;
+				 this.velocidadActual = 0;
+			 }
 			 else {
 				 if(/*Si no esta esperando en un cruce*/!this.EnCruce){
 					 if(!LLegoAlCruce()) {
@@ -136,6 +138,7 @@ public class Vehiculo extends ObjetoSimulacion {
 			 }
 			 
 			 else {
+				 this.EnCruce = false;
 				 this.carretera = this.calculoSigCarretera();
 				 if(this.carretera == null)
 					 throw new ErrorDeSimulacion("La Carretera: " + carretera + "del Vehiculo" + id + "No existe");
@@ -154,7 +157,7 @@ public class Vehiculo extends ObjetoSimulacion {
 	//Metodos extra creados para facilitarnos la vida considerablemente. Ojo que no es poco lo que facilitan
 	protected boolean LLegoAlCruce() {
 		
-		return (this.localizacion + this.velocidadActual) > this.carretera.getLongitud();
+		return (this.localizacion + this.velocidadActual) >= this.carretera.getLongitud();
 		
 	}
 		
