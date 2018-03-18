@@ -54,9 +54,11 @@ public class SortedArrayList<E> extends ArrayList<E> {
 
 			return low;
 		}
+	 
 	 public  int findInsertionPoint(E o) {
 			return findInsertionPoint(o, 0, size() - 1);
 		}
+	 
 	 @Override
 	 public boolean addAll(Collection<? extends E> c) {
 		 Iterator<? extends E> i = c.iterator();

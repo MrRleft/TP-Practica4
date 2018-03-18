@@ -21,7 +21,7 @@ import es.ucm.fdi.ini.IniSection;
 	 
 	 public Cruce(String id) {
 		super(id);
-		this.indiceSemaforoVerde = 0;
+		this.indiceSemaforoVerde = -1;
 		this.mapaCarreterasEntrantes = new HashMap<>();
 		this.parCarreteraCruce = new HashMap<>();
 		this.carreterasEntrantes = new ArrayList<>();
@@ -35,8 +35,6 @@ import es.ucm.fdi.ini.IniSection;
 		 // a�ade una carretera entrante al �mapaCarreterasEntrantes� y
 		 // a las �carreterasEntrantes�
 		 CarreteraEntrante cE = new CarreteraEntrante(carretera);
-		 if(this.carreterasEntrantes.size() == 0)
-			 cE.ponSemaforo(true);
 		 this.carreterasEntrantes.add(cE);
 		 this.mapaCarreterasEntrantes.put(idCarretera, cE);
 		 
@@ -53,11 +51,17 @@ import es.ucm.fdi.ini.IniSection;
 	 protected void actualizaSemaforos(){
 		 // pone el sem�foro de la carretera actual a �rojo�, y busca la siguiente
 		 // carretera entrante para ponerlo a �verde�
-		 this.carreterasEntrantes.get(indiceSemaforoVerde).ponSemaforo(false);
-		 this.indiceSemaforoVerde++;
-		 if(this.indiceSemaforoVerde == this.carreterasEntrantes.size())
-			 this.indiceSemaforoVerde = 0;
-		 this.carreterasEntrantes.get(this.indiceSemaforoVerde).ponSemaforo(true);
+		 if(this.indiceSemaforoVerde == -1) {
+				this.indiceSemaforoVerde = 0;
+				this.carreterasEntrantes.get(0).ponSemaforo(true);
+			}
+		 else {
+			 this.carreterasEntrantes.get(indiceSemaforoVerde).ponSemaforo(false);
+			 this.indiceSemaforoVerde++;
+			 if(this.indiceSemaforoVerde == this.carreterasEntrantes.size())
+				 this.indiceSemaforoVerde = 0;
+			 this.carreterasEntrantes.get(this.indiceSemaforoVerde).ponSemaforo(true);
+		 }
 	 }
 	 
 		@Override
@@ -66,8 +70,8 @@ import es.ucm.fdi.ini.IniSection;
 		 // en otro caso �avanzaPrimerVehiculo� de la carretera con el sem�foro verde.
 		 // Posteriormente actualiza los sem�foros.
 			if (!this.carreterasEntrantes.isEmpty()) {
-				carreterasEntrantes.get(this.indiceSemaforoVerde).avanzaPrimerVehiculo();
 				this.actualizaSemaforos();
+				carreterasEntrantes.get(this.indiceSemaforoVerde).avanzaPrimerVehiculo();
 				
 			}
 		}
@@ -87,10 +91,14 @@ import es.ucm.fdi.ini.IniSection;
 				else detalles += "red,[";
 				for (Vehiculo v : this.carreterasEntrantes.get(i).colaVehiculos)
 					detalles += v.id + ",";
+				if(this.carreterasEntrantes.get(i).colaVehiculos.size() > 0)
+					detalles = detalles.substring(0, detalles.length()-1);
 				detalles = detalles.substring(0, detalles.length() );
-				detalles += "])";	
+				detalles += "])";
+				if(i < this.carreterasEntrantes.size()-1)
+					detalles += ",";
 			}
-			detalles = detalles.substring(0, detalles.length() );
+			detalles = detalles.substring(0, detalles.length());
 			is.setValue("queues", detalles);
 		}
 	public boolean carreteraEntranteAqui(Carretera c) {

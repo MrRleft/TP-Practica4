@@ -106,7 +106,9 @@ public class Vehiculo extends ObjetoSimulacion {
 						 this.kilometraje += this.carretera.getLongitud() - this.localizacion;
 						 this.localizacion = this.carretera.getLongitud();
 						 this.EnCruce = true;
+						 this.velocidadActual = 0;
 						 this.carretera.entraVehiculoAlCruce(this);
+
 					 }
 				//Preguntar: �Algo mas que hacer aqui?
 				 }
@@ -143,7 +145,8 @@ public class Vehiculo extends ObjetoSimulacion {
 				 if(this.carretera == null)
 					 throw new ErrorDeSimulacion("La Carretera: " + carretera + "del Vehiculo" + id + "No existe");
 				 this.carretera.entraVehiculo(this);
-				 this.localizacion = 0;	 
+				 this.localizacion = 0;	
+				 this.velocidadActual = 0;
 			 }
 		 }
 	 }
@@ -184,7 +187,15 @@ public class Vehiculo extends ObjetoSimulacion {
 		return Anterior.EncuentraCarretera(Proximo);
 		*/
 	}
-
+	
+	protected void setVActual(int v) {
+		
+		if(v > this.velocidadMaxima)
+			this.velocidadActual = this.velocidadMaxima;
+		else
+			this.velocidadActual = v;
+		
+	}
 
 	public void setAveria(int duration) {
 		// TODO Auto-generated method stub

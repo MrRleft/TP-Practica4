@@ -31,7 +31,7 @@ public class Carretera extends ObjetoSimulacion {
 		 
 		 	@Override
 			public int compare(Vehiculo o1, Vehiculo o2) {
-				if(o1.getLocalizacion() < o2.getLocalizacion())
+				if(o1.getLocalizacion() > o2.getLocalizacion())
 					return -1;
 				else if(o1.getLocalizacion() < o2.getLocalizacion())
 					return 1;
@@ -53,13 +53,14 @@ public class Carretera extends ObjetoSimulacion {
 		// 2. Se fija la velocidad actual del veh�culo
 		// 3. Se pide al veh�culo que avance.
 		 // ordenar la lista de veh�culos 
-	
+		int vBase = this.calculaVelocidadBase();
+		int obstaculos = 0;
 		for( Vehiculo v : vehiculos){
-			int obstaculos = 0;
+			
 			if (v.tiempoAveria > 0) {
 				obstaculos++;
 			}
-			v.velocidadActual= this.calculaVelocidadBase()/this.calculaFactorReduccion(obstaculos);
+			v.setVActual(vBase/this.calculaFactorReduccion(obstaculos));
 			v.avanza();
 			
 		}

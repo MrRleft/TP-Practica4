@@ -127,10 +127,10 @@ public class Main {
 		// --help
 		//
 		
-		/*
-		Main.ParseaArgumentos(args);
-		Main.iniciaModoEstandar();
-		*/
+		
+	//	Main.ParseaArgumentos(args);
+	//	Main.iniciaModoEstandar();
+		
 		
 		Main.ejecutaFicheros(args[0]);
 	}
