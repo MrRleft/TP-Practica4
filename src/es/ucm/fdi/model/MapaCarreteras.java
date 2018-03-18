@@ -91,18 +91,24 @@ public class MapaCarreteras {
 
 	public String generateReport(int time) {
 		 //Preguntar como va el report.
-		 String report = ("# ******* step "+ time +" *******\r\n");
-		 // genera informe para cruces
+		
+	//	 String report = ("# ******* step "+ time +" *******\r\n");
+		 String report = "";
+		 time++;
+		 report += System.lineSeparator();		 // genera informe para cruces
 		 for(int i = 0; i < this.cruces.size();++i){
 			 report += this.cruces.get(i).generaInforme(time);
+			 report += System.lineSeparator();
 		 }
 		 // genera informe para carreteras
 		 for(int j = 0; j < this.carreteras.size();++j){
 			 report += this.carreteras.get(j).generaInforme(time);
+			 report += System.lineSeparator();
 		 }
 		 // genera informe para vehiculos
 		 for(int w = 0; w < this.vehiculos.size();++w){
 			 report += this.vehiculos.get(w).generaInforme(time);
+			 report += System.lineSeparator();
 		 }
 		return report;
 	}
@@ -110,10 +116,11 @@ public class MapaCarreteras {
 	public void actualizar() throws ErrorDeSimulacion {
 		 // llama al mÃ©todo avanza de cada cruce
 		 // llama al mÃ©todo avanza de cada carretera
-		for(int i = 0; i < cruces.size(); i++)
-			cruces.get(i).avanza();
+		
 		for (int i = 0; i < carreteras.size(); i++)
 			carreteras.get(i).avanza();
+		for(int i = 0; i < cruces.size(); i++)
+			cruces.get(i).avanza();
 
 		}
 	

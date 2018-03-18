@@ -31,7 +31,7 @@ public class Carretera extends ObjetoSimulacion {
 		 
 		 	@Override
 			public int compare(Vehiculo o1, Vehiculo o2) {
-				if(o1.getLocalizacion() < o2.getLocalizacion())
+				if(o1.getLocalizacion() > o2.getLocalizacion())
 					return -1;
 				else if(o1.getLocalizacion() < o2.getLocalizacion())
 					return 1;
@@ -53,16 +53,18 @@ public class Carretera extends ObjetoSimulacion {
 		// 2. Se fija la velocidad actual del veh�culo
 		// 3. Se pide al veh�culo que avance.
 		 // ordenar la lista de veh�culos 
-	
+		int vBase = this.calculaVelocidadBase();
+		int obstaculos = 0;
 		for( Vehiculo v : vehiculos){
-			int obstaculos = 0;
+			
 			if (v.tiempoAveria > 0) {
 				obstaculos++;
 			}
-			v.velocidadActual= this.calculaVelocidadBase()/this.calculaFactorReduccion(obstaculos);
+			v.setVActual(vBase/this.calculaFactorReduccion(obstaculos));
 			v.avanza();
-			this.vehiculos.sort(this.comparadorVehiculo);
+			
 		}
+		this.vehiculos.sort(this.comparadorVehiculo);
 	}
 	
 	 public void entraVehiculo(Vehiculo vehiculo) {
@@ -89,7 +91,7 @@ public class Carretera extends ObjetoSimulacion {
 	
 	protected int calculaVelocidadBase() {
 		
-		return  Math.min(this.velocidadMaxima,(this.velocidadMaxima/Math.max(this.vehiculos.size(),1)));
+		return  Math.min(this.velocidadMaxima,(this.velocidadMaxima/Math.max(this.vehiculos.size(),1) + 1));
 	
 	}
 	protected int calculaFactorReduccion(int obstaculos) {
@@ -103,10 +105,21 @@ public class Carretera extends ObjetoSimulacion {
 	
 	protected void completaDetallesSeccion(IniSection is) {
 		 // crea â€œvehicles = (v1,10),(v2,10) â€�
-	
-		for(int i = 0; i < this.vehiculos.size();++i){
-			is.setValue("vehicles","("+this.vehiculos.get(i).id+","+ this.vehiculos.get(i).velocidadActual + ")");
-		} 
+		String key= "";
+		if(this.vehiculos.size() != 0)
+		//	is.setValue("vehicles",key);
+			for(int i = 0; i < this.vehiculos.size();++i){
+				if(i!=this.vehiculos.size()-1){
+				key += "(" + this.vehiculos.get(i).id+","+ this.vehiculos.get(i).localizacion + ")," ;
+				//System.out.println("vehicles" + this.vehiculos.get(i).id);
+				}
+				else
+				key += "(" + this.vehiculos.get(i).id+","+ this.vehiculos.get(i).localizacion + ")" ;
+			} 
+		is.setValue("vehicles",key );
+		//else
+			//is.setValue("vehicles","");
+		
 	}
 	
 		
