@@ -13,7 +13,7 @@ public class ConstructorEventoNuevaBicicleta extends ConstructorEventoNuevoVehic
 	public Evento parser(IniSection section) {
 		// TODO Auto-generated method stub
 		if (!section.getTag().equals(this.etiqueta) ||
-				!section.getValue("type").equals("car")) 
+				!section.getValue("type").equals("bike")) 
 		return null;
 		else 
 			return new EventoNuevaBicicleta(

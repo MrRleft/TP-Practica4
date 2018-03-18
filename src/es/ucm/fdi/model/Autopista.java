@@ -2,17 +2,7 @@ package es.ucm.fdi.model;
 
 import es.ucm.fdi.ini.IniSection;
 
-/*Las autopistas contendrán varios carriles para soportar un nivel de tráfico mayor que
-las carreteras convencionales. Por lo tanto los vehículos podrán circular a mayor velocidad
-incluso aunque haya varios vehículos averiados. Su factor de reducción factorReduccion
-es 1 siempre que haya mas carriles que vehículos averiados (i.e., numCarriles >numObstaculos)
-y 2 en otro caso.
-La velocidad base (velocidadBase) de una autopista también considera el número de
-carriles y se define como m´ın(m, m∗l
-m´ax(n,1) + 1), donde m es la velocidad máxima, n es el
-número de vehículos en la carretera y l es el número de carriles. La división es entera. Las
-autopistas se añaden usando el siguiente evento:
-*/
+
 public class Autopista extends Carretera {
 	private int carriles;
 

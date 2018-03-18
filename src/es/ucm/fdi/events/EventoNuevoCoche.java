@@ -4,6 +4,8 @@ import java.util.List;
 
 import es.ucm.fdi.Exceptions.ErrorCarga;
 import es.ucm.fdi.Exceptions.ErrorDeSimulacion;
+import es.ucm.fdi.Exceptions.InsertException;
+import es.ucm.fdi.model.Coche;
 import es.ucm.fdi.model.Cruce;
 import es.ucm.fdi.model.MapaCarreteras;
 
@@ -22,11 +24,21 @@ public class EventoNuevoCoche extends EventoNuevoVehiculo {
 		this.duracionMaxima = duracionMaxima;
 		this.semilla = seed;
 	}
+	
+	
 
 	@Override
-	public void ejecuta(MapaCarreteras mapa) throws ErrorCarga, ErrorDeSimulacion {
+	public void ejecuta(MapaCarreteras mapa) throws ErrorCarga, ErrorDeSimulacion, InsertException {
 		// TODO Auto-generated method stub
-		super.ejecuta(mapa);
+		List<Cruce> iti = this.ayudaCarretera(this.itinerario, mapa);
+		if(this.itinerario == null ){
+			throw new ErrorCarga("Error al cargar el itinerario de " + id);
+		 }
+		 else{
+			Coche coche = new Coche(id, duracionMaxima, iti, duracionMaxima, probAveria, duracionMaxima, semilla);
+			mapa.addVehiculo(this.id, coche);
+		 }
+
 	}
 
 	@Override

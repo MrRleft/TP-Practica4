@@ -3,7 +3,6 @@ package es.ucm.fdi.model;
 import java.util.List;
 
 import es.ucm.fdi.Exceptions.ErrorCarga;
-import es.ucm.fdi.Exceptions.ErrorDeSimulacion;
 import es.ucm.fdi.ini.IniSection;
 
 public class Bicicleta extends Vehiculo {
