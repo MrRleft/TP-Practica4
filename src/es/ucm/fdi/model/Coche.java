@@ -16,11 +16,11 @@ public class Coche extends Vehiculo {
 	private Random numAleatorio;
 	//private String tipo;
 
-	public Coche(String id, int velocidadMaxima, List<Cruce> iti,int resistencia,double probAve,int duracionMaxima,long seed) throws ErrorCarga {
+	public Coche(String id, int velocidadMaxima, List<Cruce> iti,int resistencia,double probAveria,int duracionMaxima,long seed) throws ErrorCarga {
 		super(id, velocidadMaxima, iti);
 		// TODO Auto-generated constructor stub
 		this.resistenciaKm = resistencia;
-		this.probabilidadDeAveria = probAve;
+		this.probabilidadDeAveria = probAveria;
 		this.duracionMaxima = duracionMaxima;
 		this.seed = seed;
 		this.numAleatorio = new Random(this.seed);
@@ -57,6 +57,7 @@ public class Coche extends Vehiculo {
 		is.setValue("fault_probability", this.probabilidadDeAveria);
 		is.setValue("max_fault_duration", this.duracionMaxima);
 		is.setValue("seed", this.seed);
+		is.setValue("type", "car");
 	}
 
 	

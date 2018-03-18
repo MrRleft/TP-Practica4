@@ -20,16 +20,17 @@ public class Bicicleta extends Vehiculo {
 		super.completaDetallesSeccion(is);
 		is.setValue("itinerary", this.itinerario);
 		is.setValue("max_speed", this.velocidadMaxima);
+		is.setValue("type", "bike");
 		
 	}
 
+	
+
 	@Override
-	public void avanza() throws ErrorDeSimulacion {
+	public void setAveria(int duration) {
 		// TODO Auto-generated method stub
-		if(this.velocidadActual > this.velocidadMaxima/2){
-			this.setAveria(this.tiempoAveria);//Aqui no va tiempoAveria pero no se que poner
-		}
-		super.avanza();
+		if (this.velocidadActual >= this.velocidadMaxima / 2) 
+			super.setAveria(duration);
 	}
 
 	@Override

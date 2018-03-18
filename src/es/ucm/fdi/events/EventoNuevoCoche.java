@@ -8,12 +8,19 @@ import es.ucm.fdi.model.Cruce;
 import es.ucm.fdi.model.MapaCarreteras;
 
 public class EventoNuevoCoche extends EventoNuevoVehiculo {
-	protected String tipo;
 	
-	public EventoNuevoCoche(int tiempo, String id, int velocidadMaxima, String[] itinerario, String tipo) {
+	private int resistencia;
+	private double probAveria;
+	private int duracionMaxima;
+	private long semilla;
+	
+	public EventoNuevoCoche(int tiempo, String id, int velocidadMaxima, String[] itinerario,int resistencia,double probAveria,int duracionMaxima,long seed) {
 		super(tiempo, id, velocidadMaxima, itinerario);
 		// TODO Auto-generated constructor stub
-		this.tipo = tipo;
+		this.resistencia = resistencia;
+		this.probAveria = probAveria;
+		this.duracionMaxima = duracionMaxima;
+		this.semilla = seed;
 	}
 
 	@Override
@@ -33,7 +40,12 @@ public class EventoNuevoCoche extends EventoNuevoVehiculo {
 		StringBuilder sb = new StringBuilder();
 		// TODO Auto-generated method stub
 		super.toString();
-		System.out.println("type= "+ this.tipo);
+		System.out.println("type="+ "car");
+		System.out.println("resistance="+ this.resistencia);
+		System.out.println("fault_probability=" +this.probAveria);
+		System.out.println("max_fault_duration=" + this.duracionMaxima);
+		System.out.println("seed" + this.semilla);
+		
 		return sb.toString() ;
 	}
 
