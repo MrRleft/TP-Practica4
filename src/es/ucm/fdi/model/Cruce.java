@@ -51,17 +51,13 @@ import es.ucm.fdi.ini.IniSection;
 	 protected void actualizaSemaforos(){
 		 // pone el sem�foro de la carretera actual a �rojo�, y busca la siguiente
 		 // carretera entrante para ponerlo a �verde�
-		 if(this.indiceSemaforoVerde == -1) {
-				this.indiceSemaforoVerde = 0;
-				this.carreterasEntrantes.get(0).ponSemaforo(true);
-			}
-		 else {
-			 this.carreterasEntrantes.get(indiceSemaforoVerde).ponSemaforo(false);
-			 this.indiceSemaforoVerde++;
-			 if(this.indiceSemaforoVerde == this.carreterasEntrantes.size())
-				 this.indiceSemaforoVerde = 0;
-			 this.carreterasEntrantes.get(this.indiceSemaforoVerde).ponSemaforo(true);
-		 }
+		
+		 this.carreterasEntrantes.get(indiceSemaforoVerde).ponSemaforo(false);
+		 this.indiceSemaforoVerde++;
+		 if(this.indiceSemaforoVerde == this.carreterasEntrantes.size())
+			 this.indiceSemaforoVerde = 0;
+		 this.carreterasEntrantes.get(this.indiceSemaforoVerde).ponSemaforo(true);
+		 
 	 }
 	 
 		@Override
@@ -70,9 +66,15 @@ import es.ucm.fdi.ini.IniSection;
 		 // en otro caso �avanzaPrimerVehiculo� de la carretera con el sem�foro verde.
 		 // Posteriormente actualiza los sem�foros.
 			if (!this.carreterasEntrantes.isEmpty()) {
-				this.actualizaSemaforos();
+				boolean ok = true;
+				if(this.indiceSemaforoVerde == -1) {
+						this.indiceSemaforoVerde = 0;
+						this.carreterasEntrantes.get(0).ponSemaforo(true);
+						ok = false;
+					}
 				carreterasEntrantes.get(this.indiceSemaforoVerde).avanzaPrimerVehiculo();
-				
+				if(ok)
+					this.actualizaSemaforos();
 			}
 		}
 		
