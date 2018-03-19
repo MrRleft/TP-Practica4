@@ -1,3 +1,4 @@
+
 [junction_report]
 id = j1
 time = 1
@@ -11,7 +12,8 @@ queues = (r1,green,[])
 [road_report]
 id = r1
 time = 1
-state = 
+vehicles = 
+
 
 [junction_report]
 id = j1
@@ -26,17 +28,19 @@ queues = (r1,green,[])
 [road_report]
 id = r1
 time = 2
-state = (v2,5)
+vehicles = (b1,5)
 
 [vehicle_report]
-id = v2
+id = b1
 time = 2
 speed = 5
 kilometrage = 5
 faulty = 0
 location = (r1,5)
+itinerary = [j1, j2]
 max_speed = 5
 type = bike
+
 
 [junction_report]
 id = j1
@@ -51,190 +55,205 @@ queues = (r1,green,[])
 [road_report]
 id = r1
 time = 3
-state = (v2,10)
+vehicles = (b1,5)
 
 [vehicle_report]
-id = v2
+id = b1
 time = 3
+speed = 0
+kilometrage = 5
+faulty = 2
+location = (r1,5)
+itinerary = [j1, j2]
+max_speed = 5
+type = bike
+
+
+[junction_report]
+id = j1
+time = 4
+queues = 
+
+[junction_report]
+id = j2
+time = 4
+queues = (r1,green,[])
+
+[road_report]
+id = r1
+time = 4
+vehicles = (b1,5)
+
+[vehicle_report]
+id = b1
+time = 4
+speed = 0
+kilometrage = 5
+faulty = 1
+location = (r1,5)
+itinerary = [j1, j2]
+max_speed = 5
+type = bike
+
+
+[junction_report]
+id = j1
+time = 5
+queues = 
+
+[junction_report]
+id = j2
+time = 5
+queues = (r1,green,[])
+
+[road_report]
+id = r1
+time = 5
+vehicles = (b1,5)
+
+[vehicle_report]
+id = b1
+time = 5
+speed = 0
+kilometrage = 5
+faulty = 0
+location = (r1,5)
+itinerary = [j1, j2]
+max_speed = 5
+type = bike
+
+
+[junction_report]
+id = j1
+time = 6
+queues = 
+
+[junction_report]
+id = j2
+time = 6
+queues = (r1,green,[])
+
+[road_report]
+id = r1
+time = 6
+vehicles = (b1,10)
+
+[vehicle_report]
+id = b1
+time = 6
 speed = 5
 kilometrage = 10
 faulty = 0
 location = (r1,10)
+itinerary = [j1, j2]
 max_speed = 5
 type = bike
 
+
 [junction_report]
 id = j1
-time = 4
+time = 7
 queues = 
 
 [junction_report]
 id = j2
-time = 4
+time = 7
 queues = (r1,green,[])
 
 [road_report]
 id = r1
-time = 4
-state = (v2,15)
+time = 7
+vehicles = (b1,15)
 
 [vehicle_report]
-id = v2
-time = 4
+id = b1
+time = 7
 speed = 5
 kilometrage = 15
 faulty = 0
 location = (r1,15)
+itinerary = [j1, j2]
 max_speed = 5
 type = bike
 
+
 [junction_report]
 id = j1
-time = 5
+time = 8
 queues = 
 
 [junction_report]
 id = j2
-time = 5
+time = 8
 queues = (r1,green,[])
 
 [road_report]
 id = r1
-time = 5
-state = (v2,20)
+time = 8
+vehicles = (b1,20)
 
 [vehicle_report]
-id = v2
-time = 5
+id = b1
+time = 8
 speed = 5
 kilometrage = 20
 faulty = 0
 location = (r1,20)
+itinerary = [j1, j2]
 max_speed = 5
 type = bike
 
+
 [junction_report]
 id = j1
-time = 6
+time = 9
 queues = 
 
 [junction_report]
 id = j2
-time = 6
+time = 9
 queues = (r1,green,[])
 
 [road_report]
 id = r1
-time = 6
-state = (v2,25)
+time = 9
+vehicles = (b1,25)
 
 [vehicle_report]
-id = v2
-time = 6
+id = b1
+time = 9
 speed = 5
 kilometrage = 25
 faulty = 0
 location = (r1,25)
+itinerary = [j1, j2]
 max_speed = 5
 type = bike
 
+
 [junction_report]
 id = j1
-time = 7
+time = 10
 queues = 
 
 [junction_report]
 id = j2
-time = 7
+time = 10
 queues = (r1,green,[])
 
 [road_report]
 id = r1
-time = 7
-state = (v2,30)
+time = 10
+vehicles = (b1,30)
 
 [vehicle_report]
-id = v2
-time = 7
+id = b1
+time = 10
 speed = 5
 kilometrage = 30
 faulty = 0
 location = (r1,30)
-max_speed = 5
-type = bike
-
-[junction_report]
-id = j1
-time = 8
-queues = 
-
-[junction_report]
-id = j2
-time = 8
-queues = (r1,green,[])
-
-[road_report]
-id = r1
-time = 8
-state = (v2,35)
-
-[vehicle_report]
-id = v2
-time = 8
-speed = 5
-kilometrage = 35
-faulty = 0
-location = (r1,35)
-max_speed = 5
-type = bike
-
-[junction_report]
-id = j1
-time = 9
-queues = 
-
-[junction_report]
-id = j2
-time = 9
-queues = (r1,green,[])
-
-[road_report]
-id = r1
-time = 9
-state = (v2,40)
-
-[vehicle_report]
-id = v2
-time = 9
-speed = 5
-kilometrage = 40
-faulty = 0
-location = (r1,40)
-max_speed = 5
-type = bike
-
-[junction_report]
-id = j1
-time = 10
-queues = 
-
-[junction_report]
-id = j2
-time = 10
-queues = (r1,green,[])
-
-[road_report]
-id = r1
-time = 10
-state = (v2,45)
-
-[vehicle_report]
-id = v2
-time = 10
-speed = 5
-kilometrage = 45
-faulty = 0
-location = (r1,45)
+itinerary = [j1, j2]
 max_speed = 5
 type = bike
 

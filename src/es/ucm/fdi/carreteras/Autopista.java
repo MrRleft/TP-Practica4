@@ -1,6 +1,7 @@
-package es.ucm.fdi.model;
+package es.ucm.fdi.carreteras;
 
 import es.ucm.fdi.ini.IniSection;
+import es.ucm.fdi.model.Cruce;
 
 
 public class Autopista extends Carretera {

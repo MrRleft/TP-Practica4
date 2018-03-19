@@ -6,7 +6,9 @@ import java.util.List;
 import java.util.Map;
 
 import es.ucm.fdi.Exceptions.ErrorDeSimulacion;
+import es.ucm.fdi.carreteras.Carretera;
 import es.ucm.fdi.ini.IniSection;
+import es.ucm.fdi.vehiculos.Vehiculo;
 
  public class Cruce extends ObjetoSimulacion {
 	 

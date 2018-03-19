@@ -1,6 +1,7 @@
-package es.ucm.fdi.model;
+package es.ucm.fdi.carreteras;
 
 import es.ucm.fdi.ini.IniSection;
+import es.ucm.fdi.model.Cruce;
 
 /*Por los caminos es más difícil conducir que por las carreteras convencionales en el
 caso de que haya vehículos averiados. Su factor de reducción (factorReduccion) será 1

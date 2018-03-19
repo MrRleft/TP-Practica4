@@ -10,6 +10,8 @@ import es.ucm.fdi.Exceptions.ErrorCarga;
 import es.ucm.fdi.Exceptions.ErrorDeSimulacion;
 import es.ucm.fdi.Exceptions.InsertException;
 import es.ucm.fdi.Exceptions.NotFoundException;
+import es.ucm.fdi.carreteras.Carretera;
+import es.ucm.fdi.vehiculos.Vehiculo;
 
 public class MapaCarreteras {
 
@@ -95,7 +97,7 @@ public class MapaCarreteras {
 	//	 String report = ("# ******* step "+ time +" *******\r\n");
 		 String report = "";
 		 time++;
-		 report += System.lineSeparator();		 // genera informe para cruces
+	//	 report += System.lineSeparator();		 // genera informe para cruces
 		 for(int i = 0; i < this.cruces.size();++i){
 			 report += this.cruces.get(i).generaInforme(time);
 			 report += System.lineSeparator();

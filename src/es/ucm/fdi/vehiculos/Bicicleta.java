@@ -1,9 +1,10 @@
-package es.ucm.fdi.model;
+package es.ucm.fdi.vehiculos;
 
 import java.util.List;
 
 import es.ucm.fdi.Exceptions.ErrorCarga;
 import es.ucm.fdi.ini.IniSection;
+import es.ucm.fdi.model.Cruce;
 
 public class Bicicleta extends Vehiculo {
 
@@ -17,7 +18,7 @@ public class Bicicleta extends Vehiculo {
 	protected void completaDetallesSeccion(IniSection is) {
 		// TODO Auto-generated method stub
 		super.completaDetallesSeccion(is);
-		is.setValue("itinerary", this.itinerario);
+		//is.setValue("itinerary", this.itinerario);
 		is.setValue("max_speed", this.velocidadMaxima);
 		is.setValue("type", "bike");
 		

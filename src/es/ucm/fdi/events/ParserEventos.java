@@ -1,5 +1,14 @@
 package es.ucm.fdi.events;
 
+import es.ucm.fdi.constructores.ConstructorEventoAveriaCoche;
+import es.ucm.fdi.constructores.ConstructorEventoNuevaAutopista;
+import es.ucm.fdi.constructores.ConstructorEventoNuevaBicicleta;
+import es.ucm.fdi.constructores.ConstructorEventoNuevaCarretera;
+import es.ucm.fdi.constructores.ConstructorEventoNuevoCamino;
+import es.ucm.fdi.constructores.ConstructorEventoNuevoCoche;
+import es.ucm.fdi.constructores.ConstructorEventoNuevoCruce;
+import es.ucm.fdi.constructores.ConstructorEventoNuevoVehiculo;
+import es.ucm.fdi.constructores.ConstructorEventos;
 import es.ucm.fdi.ini.IniSection;
 
 public class ParserEventos {

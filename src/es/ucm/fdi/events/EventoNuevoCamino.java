@@ -2,7 +2,7 @@ package es.ucm.fdi.events;
 
 import es.ucm.fdi.Exceptions.InsertException;
 import es.ucm.fdi.Exceptions.NotFoundException;
-import es.ucm.fdi.model.Camino;
+import es.ucm.fdi.carreteras.Camino;
 import es.ucm.fdi.model.Cruce;
 import es.ucm.fdi.model.MapaCarreteras;
 

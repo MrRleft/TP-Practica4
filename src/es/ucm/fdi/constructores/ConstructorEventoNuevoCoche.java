@@ -1,5 +1,7 @@
-package es.ucm.fdi.events;
+package es.ucm.fdi.constructores;
 
+import es.ucm.fdi.events.Evento;
+import es.ucm.fdi.events.EventoNuevoCoche;
 import es.ucm.fdi.ini.IniSection;
 
 public class ConstructorEventoNuevoCoche extends ConstructorEventoNuevoVehiculo {

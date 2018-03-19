@@ -4,8 +4,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 import es.ucm.fdi.Exceptions.ErrorDeSimulacion;
-import es.ucm.fdi.model.Carretera;
-import es.ucm.fdi.model.Vehiculo;
+import es.ucm.fdi.carreteras.Carretera;
+import es.ucm.fdi.vehiculos.Vehiculo;
 
 public class CarreteraEntrante {
 

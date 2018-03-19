@@ -1,0 +1,360 @@
+[junction_report]
+id = j1
+time = 1
+queues = 
+
+[junction_report]
+id = j2
+time = 1
+queues = (lanes1,green,[])
+
+[road_report]
+id = lanes1
+time = 1
+src = j1
+dest = j2
+max_speed = 20
+length = 100
+type = bike
+lanes = 1
+
+[vehicle_report]
+id = v1
+time = 1
+speed = 11
+kilometrage = 11
+faulty = 0
+location = (lanes1,11)
+
+[vehicle_report]
+id = v2
+time = 1
+speed = 11
+kilometrage = 11
+faulty = 0
+location = (lanes1,11)
+
+[junction_report]
+id = j1
+time = 2
+queues = 
+
+[junction_report]
+id = j2
+time = 2
+queues = (lanes1,green,[])
+
+[road_report]
+id = lanes1
+time = 2
+src = j1
+dest = j2
+max_speed = 20
+length = 100
+type = bike
+lanes = 1
+
+[vehicle_report]
+id = v1
+time = 2
+speed = 11
+kilometrage = 22
+faulty = 0
+location = (lanes1,22)
+
+[vehicle_report]
+id = v2
+time = 2
+speed = 11
+kilometrage = 22
+faulty = 0
+location = (lanes1,22)
+
+[junction_report]
+id = j1
+time = 3
+queues = 
+
+[junction_report]
+id = j2
+time = 3
+queues = (lanes1,green,[])
+
+[road_report]
+id = lanes1
+time = 3
+src = j1
+dest = j2
+max_speed = 20
+length = 100
+type = bike
+lanes = 1
+
+[vehicle_report]
+id = v1
+time = 3
+speed = 11
+kilometrage = 33
+faulty = 0
+location = (lanes1,33)
+
+[vehicle_report]
+id = v2
+time = 3
+speed = 11
+kilometrage = 33
+faulty = 0
+location = (lanes1,33)
+
+[junction_report]
+id = j1
+time = 4
+queues = 
+
+[junction_report]
+id = j2
+time = 4
+queues = (lanes1,green,[])
+
+[road_report]
+id = lanes1
+time = 4
+src = j1
+dest = j2
+max_speed = 20
+length = 100
+type = bike
+lanes = 1
+
+[vehicle_report]
+id = v1
+time = 4
+speed = 11
+kilometrage = 44
+faulty = 0
+location = (lanes1,44)
+
+[vehicle_report]
+id = v2
+time = 4
+speed = 11
+kilometrage = 44
+faulty = 0
+location = (lanes1,44)
+
+[junction_report]
+id = j1
+time = 5
+queues = 
+
+[junction_report]
+id = j2
+time = 5
+queues = (lanes1,green,[])
+
+[road_report]
+id = lanes1
+time = 5
+src = j1
+dest = j2
+max_speed = 20
+length = 100
+type = bike
+lanes = 1
+
+[vehicle_report]
+id = v1
+time = 5
+speed = 11
+kilometrage = 55
+faulty = 0
+location = (lanes1,55)
+
+[vehicle_report]
+id = v2
+time = 5
+speed = 11
+kilometrage = 55
+faulty = 0
+location = (lanes1,55)
+
+[junction_report]
+id = j1
+time = 6
+queues = 
+
+[junction_report]
+id = j2
+time = 6
+queues = (lanes1,green,[])
+
+[road_report]
+id = lanes1
+time = 6
+src = j1
+dest = j2
+max_speed = 20
+length = 100
+type = bike
+lanes = 1
+
+[vehicle_report]
+id = v1
+time = 6
+speed = 11
+kilometrage = 66
+faulty = 0
+location = (lanes1,66)
+
+[vehicle_report]
+id = v2
+time = 6
+speed = 11
+kilometrage = 66
+faulty = 0
+location = (lanes1,66)
+
+[junction_report]
+id = j1
+time = 7
+queues = 
+
+[junction_report]
+id = j2
+time = 7
+queues = (lanes1,green,[])
+
+[road_report]
+id = lanes1
+time = 7
+src = j1
+dest = j2
+max_speed = 20
+length = 100
+type = bike
+lanes = 1
+
+[vehicle_report]
+id = v1
+time = 7
+speed = 11
+kilometrage = 77
+faulty = 0
+location = (lanes1,77)
+
+[vehicle_report]
+id = v2
+time = 7
+speed = 11
+kilometrage = 77
+faulty = 0
+location = (lanes1,77)
+
+[junction_report]
+id = j1
+time = 8
+queues = 
+
+[junction_report]
+id = j2
+time = 8
+queues = (lanes1,green,[])
+
+[road_report]
+id = lanes1
+time = 8
+src = j1
+dest = j2
+max_speed = 20
+length = 100
+type = bike
+lanes = 1
+
+[vehicle_report]
+id = v1
+time = 8
+speed = 11
+kilometrage = 88
+faulty = 0
+location = (lanes1,88)
+
+[vehicle_report]
+id = v2
+time = 8
+speed = 11
+kilometrage = 88
+faulty = 0
+location = (lanes1,88)
+
+[junction_report]
+id = j1
+time = 9
+queues = 
+
+[junction_report]
+id = j2
+time = 9
+queues = (lanes1,green,[])
+
+[road_report]
+id = lanes1
+time = 9
+src = j1
+dest = j2
+max_speed = 20
+length = 100
+type = bike
+lanes = 1
+
+[vehicle_report]
+id = v1
+time = 9
+speed = 11
+kilometrage = 99
+faulty = 0
+location = (lanes1,99)
+
+[vehicle_report]
+id = v2
+time = 9
+speed = 11
+kilometrage = 99
+faulty = 0
+location = (lanes1,99)
+
+[junction_report]
+id = j1
+time = 10
+queues = 
+
+[junction_report]
+id = j2
+time = 10
+queues = (lanes1,green,[v2])
+
+[road_report]
+id = lanes1
+time = 10
+src = j1
+dest = j2
+max_speed = 20
+length = 100
+type = bike
+lanes = 1
+
+[vehicle_report]
+id = v1
+time = 10
+speed = 0
+kilometrage = 100
+faulty = 0
+location = arrived
+
+[vehicle_report]
+id = v2
+time = 10
+speed = 0
+kilometrage = 100
+faulty = 0
+location = (lanes1,100)
+
