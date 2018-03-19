@@ -7,7 +7,11 @@ public class ParserEventos {
 		 new ConstructorEventoNuevoCruce(),
 		 new ConstructorEventoNuevaCarretera(),
 		 new ConstructorEventoNuevoVehiculo(),
-		 new ConstructorEventoAveriaCoche()
+		 new ConstructorEventoAveriaCoche(),
+		 new ConstructorEventoNuevoCoche(),
+		 new ConstructorEventoNuevaBicicleta(),
+		 new ConstructorEventoNuevaAutopista(),
+		 new ConstructorEventoNuevoCamino()
 	 };
 	// bucle de prueba y error
 	 public static Evento parseaEvento(IniSection sec) {

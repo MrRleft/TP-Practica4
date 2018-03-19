@@ -57,6 +57,25 @@ public abstract class ConstructorEventos {
 			 return i;
 	 }
 
+	 protected static double parseaDouble(IniSection seccion,String clave) {
+		  
+		 double i = Double.parseDouble(clave);
+		 if (i < 0)
+			 throw new IllegalArgumentException("El valor " + i + " para " + clave +
+					 " no es un ID valido");
+		 else 
+			 return i;
+	 }
+	 
+	 protected static long parseaLong(IniSection seccion,String clave) {
+		  
+		 long i = Long.parseLong(clave);
+		 if (i < 0)
+			 throw new IllegalArgumentException("El valor " + i + " para " + clave +
+					 " no es un ID valido");
+		 else 
+			 return i;
+	 }
 	 
 	 protected static String[] toStringToList(IniSection seccion,String clave) {
 		 

@@ -17,7 +17,7 @@ public class EventoNuevaBicicleta extends EventoNuevoVehiculo {
 	}
 
 	@Override
-	public void ejecuta(MapaCarreteras mapa) throws ErrorCarga, ErrorDeSimulacion, InsertException {
+	public void ejecuta(MapaCarreteras mapa) throws ErrorCarga, ErrorDeSimulacion {
 		// TODO Auto-generated method stub
 		 List<Cruce> iti = this.ayudaCarretera(this.itinerario, mapa);
 		 
@@ -26,7 +26,12 @@ public class EventoNuevaBicicleta extends EventoNuevoVehiculo {
 		 }
 		 else{
 			Bicicleta bicicleta = new Bicicleta(this.id,this.velocidadMaxima,iti);
-				mapa.addVehiculo(id, bicicleta);
+				try {
+					mapa.addVehiculo(id, bicicleta);
+				} catch (InsertException e) {
+					// TODO Auto-generated catch block
+					throw new ErrorCarga("Problema al aniadir " + id + "Al mapa de carreteras");
+				}
 		 }
 	}
 

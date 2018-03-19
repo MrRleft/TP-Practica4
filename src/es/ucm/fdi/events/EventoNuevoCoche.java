@@ -28,7 +28,7 @@ public class EventoNuevoCoche extends EventoNuevoVehiculo {
 	
 
 	@Override
-	public void ejecuta(MapaCarreteras mapa) throws ErrorCarga, ErrorDeSimulacion, InsertException {
+	public void ejecuta(MapaCarreteras mapa) throws ErrorCarga, ErrorDeSimulacion {
 		// TODO Auto-generated method stub
 		List<Cruce> iti = this.ayudaCarretera(this.itinerario, mapa);
 		if(this.itinerario == null ){
@@ -36,7 +36,12 @@ public class EventoNuevoCoche extends EventoNuevoVehiculo {
 		 }
 		 else{
 			Coche coche = new Coche(id, duracionMaxima, iti, duracionMaxima, probAveria, duracionMaxima, semilla);
-			mapa.addVehiculo(this.id, coche);
+			try {
+				mapa.addVehiculo(this.id, coche);
+			} catch (InsertException e) {
+				// TODO Auto-generated catch block
+				throw new ErrorDeSimulacion("No se ha podido aniadir el vehiculo id " + this.id);
+			}
 		 }
 
 	}
