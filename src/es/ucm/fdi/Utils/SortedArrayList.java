@@ -23,11 +23,14 @@ public class SortedArrayList<E> extends ArrayList<E> {
 	 
 	 @Override
 	 public boolean add(E e) {
-		int idx = 0;
+	/*
+		 int idx = 0;
 		if (!isEmpty()) {
 			idx = findInsertionPoint(e);
 		}
-		super.add(idx, e);
+	*/
+		super.add(e);
+		this.sort(this.cmp);
 		return true;
 	}
 		 
@@ -37,7 +40,7 @@ public class SortedArrayList<E> extends ArrayList<E> {
 		return this.cmp.compare(k1, k2);
 	}
 	 
-	 protected  int findInsertionPoint(E o, int low, int high) {
+	/* protected  int findInsertionPoint(E o, int low, int high) {
 
 		while (low <= high) {
 			int mid = (low + high) >>> 1;
@@ -54,10 +57,10 @@ public class SortedArrayList<E> extends ArrayList<E> {
 	 public  int findInsertionPoint(E o) {
 		return findInsertionPoint(o, 0, size() - 1);
 	}
-	 
+	 */
 	 @Override
 	 public boolean addAll(Collection<? extends E> c) {
-		 Iterator<? extends E> i = c.iterator();
+		Iterator<? extends E> i = c.iterator();
 		boolean changed = false;
 		while (i.hasNext()) {
 			boolean ret = add(i.next());
