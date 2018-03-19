@@ -17,11 +17,11 @@ public class Bicicleta extends Vehiculo {
 	@Override
 	protected void completaDetallesSeccion(IniSection is) {
 		// TODO Auto-generated method stub
-		super.completaDetallesSeccion(is);
-		//is.setValue("itinerary", this.itinerario);
-		is.setValue("max_speed", this.velocidadMaxima);
-		is.setValue("type", "bike");
 		
+		//is.setValue("itinerary", this.itinerario);
+		//is.setValue("max_speed", this.velocidadMaxima);
+		is.setValue("type", "bike");
+		super.completaDetallesSeccion(is);
 	}
 
 	

@@ -31,13 +31,13 @@ public class Autopista extends Carretera {
 	@Override
 	protected void completaDetallesSeccion(IniSection is) {
 		// TODO Auto-generated method stub
-		is.setValue("src", this.cruceOrigen);
-		is.setValue("dest",this.cruceDestino);
-		is.setValue("max_speed",this.velocidadMaxima);
-		is.setValue("length", this.longitud);
-		is.setValue("type", "bike");
-		is.setValue("lanes",this.carriles);
-		
+		//is.setValue("src", this.cruceOrigen);
+	//	is.setValue("dest",this.cruceDestino);
+	//	is.setValue("max_speed",this.velocidadMaxima);
+	//	is.setValue("length", this.longitud);
+		is.setValue("type", "lanes");
+	//	is.setValue("lanes",this.carriles);
+		super.completaDetallesSeccion(is);
 	}
 	
 	
