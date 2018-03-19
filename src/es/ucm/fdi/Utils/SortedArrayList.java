@@ -22,55 +22,51 @@ public class SortedArrayList<E> extends ArrayList<E> {
 		}
 	 
 	 @Override
-	 /* programar la inserción ordenada */
-	 
 	 public boolean add(E e) {
-		 int idx = 0;
-			if (!isEmpty()) {
-				idx = findInsertionPoint(e);
-			}
-			super.add(idx, e);
-			return true;
+		int idx = 0;
+		if (!isEmpty()) {
+			idx = findInsertionPoint(e);
 		}
+		super.add(idx, e);
+		return true;
+	}
 		 
 	 
 	 
 	 protected  int compare(E k1, E k2) {
-			return this.cmp.compare(k1, k2);
-		}
+		return this.cmp.compare(k1, k2);
+	}
 	 
 	 protected  int findInsertionPoint(E o, int low, int high) {
 
-			while (low <= high) {
-				int mid = (low + high) >>> 1;
-				int delta = compare(get(mid), o);
-
-				if (delta > 0) {
-					high = mid - 1;
-				} else {
-					low = mid + 1;
-				}
+		while (low <= high) {
+			int mid = (low + high) >>> 1;
+			int delta = compare(get(mid), o);
+			if (delta > 0) {
+				high = mid - 1;
+			} else {
+				low = mid + 1;
 			}
-
-			return low;
 		}
+		return low;
+	}
 	 
 	 public  int findInsertionPoint(E o) {
-			return findInsertionPoint(o, 0, size() - 1);
-		}
+		return findInsertionPoint(o, 0, size() - 1);
+	}
 	 
 	 @Override
 	 public boolean addAll(Collection<? extends E> c) {
 		 Iterator<? extends E> i = c.iterator();
-			boolean changed = false;
-			while (i.hasNext()) {
-				boolean ret = add(i.next());
-				if (!changed) {
-					changed = ret;
-				}
+		boolean changed = false;
+		while (i.hasNext()) {
+			boolean ret = add(i.next());
+			if (!changed) {
+				changed = ret;
 			}
-			return changed;
 		}
+		return changed;
+	}
 
 	 
 

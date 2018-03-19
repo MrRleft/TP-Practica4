@@ -9,7 +9,7 @@ import es.ucm.fdi.Exceptions.InsertException;
 import es.ucm.fdi.Exceptions.NotFoundException;
 import es.ucm.fdi.model.Cruce;
 import es.ucm.fdi.model.MapaCarreteras;
-import es.ucm.fdi.model.Vehiculo;
+import es.ucm.fdi.vehiculos.Vehiculo;
 
 public class EventoNuevoVehiculo extends Evento{
 

@@ -30,7 +30,7 @@ public class Comprobador {
 		});
 
 		for (File file : files) {
-			test(file.getAbsolutePath(), file.getAbsolutePath() + ".eout", file.getAbsolutePath() + ".eout");
+			test(file.getAbsolutePath(), file.getAbsolutePath() + ".out", file.getAbsolutePath() + ".out-samir");
 			System.out.println(file.getAbsolutePath());
 		}
 
@@ -46,7 +46,7 @@ public class Comprobador {
 	
 
 	public static void main(String[] args) throws IOException, InvocationTargetException, InterruptedException {		
-		test("resources/examples/events/basic");
+		test("resources/examples/basic");
 	}
 
 }

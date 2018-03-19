@@ -1,11 +1,11 @@
 package es.ucm.fdi.events;
 
 
-import es.ucm.fdi.model.Carretera;
 import es.ucm.fdi.model.Cruce;
 import es.ucm.fdi.model.MapaCarreteras;
 import es.ucm.fdi.Exceptions.InsertException;
 import es.ucm.fdi.Exceptions.NotFoundException;
+import es.ucm.fdi.carreteras.Carretera;
 import es.ucm.fdi.events.Evento;
 
 
