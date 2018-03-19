@@ -46,7 +46,7 @@ public class Comprobador {
 	
 
 	public static void main(String[] args) throws IOException, InvocationTargetException, InterruptedException {		
-		test("resources/examples/advanced");
+		test("resources/examples/basic");
 	}
 
 }

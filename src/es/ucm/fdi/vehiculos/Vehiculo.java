@@ -24,12 +24,8 @@ public class Vehiculo extends ObjetoSimulacion {
 
 
 	 public Vehiculo(String id, int velocidadMaxima, List<Cruce> iti) throws ErrorCarga {
-		super(id);
-		 // comprobar que la velocidadMaxima es mayor o igual que 0, y
-		 // que el itinerario tiene al menos dos cruces.
-		 // En caso de no cumplirse lo anterior, lanzar una excepci�n.
-		 // inicializar los atributos teniendo en cuenta los par�metros.
-		 // al crear un veh�culo su �carretera� ser� inicalmene �null�.
+		
+		 super(id);
 		if(velocidadMaxima < 0)
 			throw new ErrorCarga("La velocidad maxima de " + id + "es menor que 0");
 		if(iti.size() < 2)
@@ -58,10 +54,7 @@ public class Vehiculo extends ObjetoSimulacion {
 		 
 	 }
 	 public void setVelocidadActual(int velocidad) {
-	  // Si �velocidad� es negativa, entonces la �velocidadActual� es 0.
-	  // Si �velocidad� excede a �velocidadMaxima�, entonces la
-	  // �velocidadActual� es �velocidadMaxima�
-	  // En otro caso, �velocidadActual� es �velocidad�
+		 
 		 if(velocidad < 0)
 			 this.velocidadActual = 0;
 		 if(velocidad > this.velocidadMaxima)
@@ -72,8 +65,7 @@ public class Vehiculo extends ObjetoSimulacion {
 	 
 	 @Override
 	 protected void completaDetallesSeccion(IniSection is) {
-		 // is.setValue("id", this.id);
-		 // is.setValue("time", 1);
+
 		  is.setValue("speed", this.velocidadActual);
 		  is.setValue("kilometrage", this.kilometraje);
 		  is.setValue("faulty", this.getTiempoDeInfraccion());
@@ -84,23 +76,14 @@ public class Vehiculo extends ObjetoSimulacion {
 	 
 	 @Override
 	 public void avanza() throws ErrorDeSimulacion {
-	  // si el coche est� averiado, decrementar tiempoAveria
-	  // si el coche est� esperando en un cruce, no se hace nada.
-	  // en otro caso:
-	/*  1. Actualizar su �localizacion�
-	  2. Actualizar su �kilometraje�
-	  3. Si el coche ha llegado a un cruce (localizacion >= carretera.getLength())
-	  3.1. Poner la localizaci�n igual a la longitud de la carretera.
-	  3.2. Corregir el kilometraje.
-	  3.3. Indicar a la carretera que el veh�culo entra al cruce.
-	  3.4. Marcar que �ste veh�culo est� en un cruce (this.estEnCruce = true)
-	 */if(!this.haLlegado) {
+
+		 if(!this.haLlegado) {
 			 if(this.tiempoAveria > 0) {
 				 this.tiempoAveria--;
 				 this.velocidadActual = 0;
 			 }
 			 else {
-				 if(/*Si no esta esperando en un cruce*/!this.EnCruce){
+				 if(!this.EnCruce){
 					 if(!LLegoAlCruce()) {
 						 this.kilometraje += this.velocidadActual;
 						 this.localizacion += this.velocidadActual;
@@ -113,24 +96,13 @@ public class Vehiculo extends ObjetoSimulacion {
 						 this.carretera.entraVehiculoAlCruce(this);
 
 					 }
-				//Preguntar: �Algo mas que hacer aqui?
 				 }
 			 }
 	 	}
 	 }
 	 
 	 public void moverASiguienteCarretera() throws ErrorDeSimulacion{
-		 // Si la carretera no es null, sacar el veh�culo de la carretera.
-		 // Si hemos llegado al �ltimo cruce del itinerario, entonces:
-	//	 1. Se marca que el veh�culo ha llegado (this.haLlegado = true).
-		// 2. Se pone su carretera a null.
-		// 3. Se pone su �velocidadActual� y �localizacion� a 0.
-		 // y se marca que el veh�culo est� en un cruce (this.estaEnCruce = true).
-		 // En otro caso:
-		 //1. Se calcula la siguiente carretera a la que tiene que ir.
-		// 2. Si dicha carretera no existe, se lanza excepci�n.
-		// 3. En otro caso, se introduce el veh�culo en la carretera.
-		// 4. Se inicializa su localizaci�n.
+
 		 if(!this.haLlegado) {
 			 if(this.carretera != null)
 				 this.carretera.saleVehiculo(this);
@@ -180,15 +152,7 @@ public class Vehiculo extends ObjetoSimulacion {
 		int IndexcruceProx = this.itinerario.lastIndexOf(cruceAct)+1;
 		Cruce cruceProx = this.itinerario.get(IndexcruceProx);
 		return cruceAct.carreteraHaciaCruce(cruceProx);
-		
-		/*
-		int i = 0;
-		while(this.itinerario.get(i).carreteraEntranteAqui(this.carretera) && (i < this.itinerario.size() -1)  ) {
-			i++;
-		}
-		Cruce Anterior = this.itinerario.get(i) , Proximo = this.itinerario.get(i+1);
-		return Anterior.EncuentraCarretera(Proximo);
-		*/
+
 	}
 	
 	protected void setVActual(int v) {

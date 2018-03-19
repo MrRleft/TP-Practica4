@@ -25,7 +25,7 @@ public class SimuladorTrafico {
 		 this.mapa = new MapaCarreteras();
 		 this.contadorTiempo = 0;
 		 Comparator<Evento> cmp = new Comparator<Evento>() {
-			//preguntar
+
 			@Override
 			public int compare(Evento o1, Evento o2) {
 				if(o1.getTiempo() < o2.getTiempo())
@@ -45,37 +45,31 @@ public class SimuladorTrafico {
 		
 		String output = "";
 		int limiteTiempo = this.contadorTiempo + pasosSimulacion - 1;
-		 while (this.contadorTiempo <= limiteTiempo) {
-			// ejecutar todos los eventos correspondienes a �this.contadorTiempo�
-	
-				for(Evento evento : eventos){
-					if(evento.getTiempo() == this.contadorTiempo){
-							evento.ejecuta(mapa);
-					}	
-				}
-				 // actualizar �mapa�
-				this.mapa.actualizar();
-				 // escribir el informe en �ficheroSalida�, controlando que no sea null.
-				output += this.mapa.generateReport(this.contadorTiempo);
-				System.out.println(output);
-				this.contadorTiempo++;
+		while (this.contadorTiempo <= limiteTiempo) {
+			 
+			for(Evento evento : eventos){
+				if(evento.getTiempo() == this.contadorTiempo){
+						evento.ejecuta(mapa);
+				}	
+			}
+			this.mapa.actualizar();
+			output += this.mapa.generateReport(this.contadorTiempo);
+			System.out.println(output);
+			this.contadorTiempo++;
 				
-		 }
-		 try {
+		}
+		try {
 			 ficheroSalida.write(output.getBytes());
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			throw new ErrorDeSimulacion("Error al grabarse en el fichero out");
 		}
 
 	}
 	
 	public void insertaEvento(Evento e) {
-		 // inserta un evento en �eventos�, controlando que el tiempo de
-		 // ejecuci�n del evento sea menor que �contadorTiempo�
 		
-			if(e.getTiempo() < this.pasosSim){
+		if(e.getTiempo() < this.pasosSim){
 			this.eventos.add(e);
-			}
 		}
+	}
 }

@@ -30,6 +30,7 @@ public class Main {
 	private static String ficheroSalida = null;
 
 	
+	@SuppressWarnings("unused")
 	private static void ParseaArgumentos(String[] args) {
 
 		// define the valid command line options

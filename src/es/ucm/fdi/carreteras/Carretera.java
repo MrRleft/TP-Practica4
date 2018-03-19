@@ -49,13 +49,7 @@ public class Carretera extends ObjetoSimulacion {
 	
 	public void avanza() throws ErrorDeSimulacion {
 		
-		// calcular velocidad base de la carretera
-		 // inicializar obst�culos a 0
-		 // Para cada veh�culo de la lista �vehiculos�:
-		 //1. Si el veh�culo est� averiado se incrementa el n�mero de obstaculos.
-		// 2. Se fija la velocidad actual del veh�culo
-		// 3. Se pide al veh�culo que avance.
-		 // ordenar la lista de veh�culos 
+		
 		int vBase = this.calculaVelocidadBase();
 		int obstaculos = 0;
 		for( Vehiculo v : vehiculos){
@@ -71,13 +65,13 @@ public class Carretera extends ObjetoSimulacion {
 	}
 	
 	 public void entraVehiculo(Vehiculo vehiculo) {
-		// Si el vehÃ­culo no existe en la carretera, se aÃ±ade a la lista de vehÃ­culos y
+		
 		 if(!this.vehiculos.contains(vehiculo)){
 			 this.vehiculos.add(vehiculo);
 			 this.vehiculos.sort(this.comparadorVehiculo); // se ordena la lista.
 			 }
 	
-		 // Si existe no se hace nada.
+		 
 	}
 	
 	 public void saleVehiculo(Vehiculo vehiculo) {
@@ -107,22 +101,18 @@ public class Carretera extends ObjetoSimulacion {
 	}
 	
 	protected void completaDetallesSeccion(IniSection is) {
-		 // crea â€œvehicles = (v1,10),(v2,10) â€�
+
 		String key= "";
 		if(this.vehiculos.size() != 0)
-		//	is.setValue("vehicles",key);
+
 			for(int i = 0; i < this.vehiculos.size();++i){
 				if(i!=this.vehiculos.size()-1){
 				key += "(" + this.vehiculos.get(i).getId()+","+ this.vehiculos.get(i).getLocalizacion() + ")," ;
-				//System.out.println("vehicles" + this.vehiculos.get(i).id);
 				}
 				else
 				key += "(" + this.vehiculos.get(i).getId()+","+ this.vehiculos.get(i).getLocalizacion() + ")" ;
 			} 
-		is.setValue("state",key );
-		//else
-			//is.setValue("vehicles","");
-		
+		is.setValue("state",key );		
 	}
 	
 		
