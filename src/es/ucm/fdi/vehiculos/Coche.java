@@ -5,7 +5,7 @@ import java.util.Random;
 
 import es.ucm.fdi.Exceptions.ErrorCarga;
 import es.ucm.fdi.Exceptions.ErrorDeSimulacion;
-import es.ucm.fdi.cruces.Cruce;
+import es.ucm.fdi.cruces.CruceGenerico;
 import es.ucm.fdi.ini.IniSection;
 
 public class Coche extends Vehiculo {
@@ -17,7 +17,7 @@ public class Coche extends Vehiculo {
 	private Random numAleatorio;
 	//private String tipo;
 
-	public Coche(String id, int velocidadMaxima, List<Cruce> iti,int resistencia,double probAveria,int duracionMaxima,long seed) throws ErrorCarga {
+	public Coche(String id, int velocidadMaxima, List<CruceGenerico<?>> iti,int resistencia,double probAveria,int duracionMaxima,long seed) throws ErrorCarga {
 		super(id, velocidadMaxima, iti);
 		// TODO Auto-generated constructor stub
 		this.resistenciaKm = resistencia;

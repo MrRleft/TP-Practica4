@@ -5,7 +5,7 @@ import java.util.List;
 import es.ucm.fdi.Exceptions.ErrorCarga;
 import es.ucm.fdi.Exceptions.ErrorDeSimulacion;
 import es.ucm.fdi.Exceptions.InsertException;
-import es.ucm.fdi.cruces.Cruce;
+import es.ucm.fdi.cruces.CruceGenerico;
 import es.ucm.fdi.model.MapaCarreteras;
 import es.ucm.fdi.vehiculos.Coche;
 
@@ -30,7 +30,7 @@ public class EventoNuevoCoche extends EventoNuevoVehiculo {
 	@Override
 	public void ejecuta(MapaCarreteras mapa) throws ErrorCarga, ErrorDeSimulacion {
 		// TODO Auto-generated method stub
-		List<Cruce> iti = this.ayudaCarretera(this.itinerario, mapa);
+		List<CruceGenerico<?>> iti = this.ayudaCarretera(this.itinerario, mapa);
 		if(this.itinerario == null ){
 			throw new ErrorCarga("Error al cargar el itinerario de " + id);
 		 }
@@ -47,7 +47,7 @@ public class EventoNuevoCoche extends EventoNuevoVehiculo {
 	}
 
 	@Override
-	public List<Cruce> ayudaCarretera(String[] stCr, MapaCarreteras mC) throws ErrorCarga {
+	public List<CruceGenerico<?>> ayudaCarretera(String[] stCr, MapaCarreteras mC) throws ErrorCarga {
 		// TODO Auto-generated method stub
 		return super.ayudaCarretera(stCr, mC);
 	}

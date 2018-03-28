@@ -5,7 +5,6 @@ import es.ucm.fdi.model.MapaCarreteras;
 import es.ucm.fdi.Exceptions.InsertException;
 import es.ucm.fdi.Exceptions.NotFoundException;
 import es.ucm.fdi.carreteras.Carretera;
-import es.ucm.fdi.cruces.Cruce;
 import es.ucm.fdi.cruces.CruceGenerico;
 import es.ucm.fdi.events.Evento;
 

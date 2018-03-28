@@ -16,11 +16,11 @@ public abstract class CruceGenerico<T extends  CarreteraEntrante> extends Objeto
 
 	protected int indiceSemaforoVerde; // lleva el �ndice de la carretera entrante
 	 // con el sem�foro en verde
-	protected List<CarreteraEntrante> carreterasEntrantes;
+	protected List<T> carreterasEntrantes;
 
 	// para optimizar las b�squedas de las carreterasEntrantes
 	// (IdCarretera, CarreteraEntrante)
-	protected Map<String,CarreteraEntrante> mapaCarreterasEntrantes;
+	protected Map<String,T> mapaCarreterasEntrantes;
 	protected Map<CruceGenerico<?>,Carretera> parCarreteraCruce;
 	 
 	public CruceGenerico(String id) {
@@ -53,17 +53,20 @@ public abstract class CruceGenerico<T extends  CarreteraEntrante> extends Objeto
 
 		 
 	 public void addCarreteraEntranteAlCruce(String idCarretera, Carretera carretera) {
-		 CarreteraEntrante cE = new CarreteraEntrante(carretera);
+		 T cE = CrearCE(carretera);
 		 this.carreterasEntrantes.add(cE);
 		 this.mapaCarreterasEntrantes.put(idCarretera, cE);
 	}
-
+	 
+	 protected abstract T CrearCE(Carretera Carr);
+	 
 	 public void addCarreteraSalienteAlCruce(CruceGenerico<?> destino, Carretera road) {
 
 		 this.parCarreteraCruce.put(destino, road);
 	
 	 }
 	 
+
 	public boolean carreteraEntranteAqui(Carretera c) {
 		return this.mapaCarreterasEntrantes.containsKey(c.getID());	
 	}
@@ -76,8 +79,8 @@ public abstract class CruceGenerico<T extends  CarreteraEntrante> extends Objeto
 		 this.mapaCarreterasEntrantes.get(idCarretera).entraVehiculo(vehiculo);
 	}
 		 
-	 public Carretera carreteraHaciaCruce(Cruce cruce) {
-			return this.parCarreteraCruce.get(cruce);
+	 public Carretera carreteraHaciaCruce(CruceGenerico<?> cruceProx) {
+			return this.parCarreteraCruce.get(cruceProx);
 	 }
 	 
 	 protected String getNombreSeccion() {

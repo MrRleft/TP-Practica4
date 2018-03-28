@@ -25,12 +25,11 @@ import es.ucm.fdi.carreteras.CarreteraEntrante;
 	 }
 	 
 
-	public boolean carreteraEntranteAqui(Carretera c) {
-		return this.mapaCarreterasEntrantes.containsKey(c.getID());	
-	}
-	
-	public Carretera EncuentraCarretera(Cruce proximo) {
-		return this.parCarreteraCruce.get(proximo);
+
+	@Override
+	protected CarreteraEntrante CrearCE(Carretera Carr) {
+
+		return new CarreteraEntrante(Carr);
 	}
 }
 

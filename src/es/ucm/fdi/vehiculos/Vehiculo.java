@@ -5,7 +5,6 @@ import java.util.List;
 import es.ucm.fdi.Exceptions.ErrorCarga;
 import es.ucm.fdi.Exceptions.ErrorDeSimulacion;
 import es.ucm.fdi.carreteras.Carretera;
-import es.ucm.fdi.cruces.Cruce;
 import es.ucm.fdi.cruces.CruceGenerico;
 import es.ucm.fdi.ini.IniSection;
 import es.ucm.fdi.model.ObjetoSimulacion;

@@ -3,13 +3,13 @@ package es.ucm.fdi.vehiculos;
 import java.util.List;
 
 import es.ucm.fdi.Exceptions.ErrorCarga;
-import es.ucm.fdi.cruces.Cruce;
+import es.ucm.fdi.cruces.CruceGenerico;
 import es.ucm.fdi.ini.IniSection;
 
 public class Bicicleta extends Vehiculo {
 
 
-	public Bicicleta(String id, int velocidadMaxima, List<Cruce> iti) throws ErrorCarga {
+	public Bicicleta(String id, int velocidadMaxima, List<CruceGenerico<?>> iti) throws ErrorCarga {
 		super(id, velocidadMaxima, iti);
 	}
 
