@@ -5,8 +5,9 @@ import java.util.List;
 import es.ucm.fdi.Exceptions.ErrorCarga;
 import es.ucm.fdi.Exceptions.ErrorDeSimulacion;
 import es.ucm.fdi.carreteras.Carretera;
+import es.ucm.fdi.cruces.Cruce;
+import es.ucm.fdi.cruces.CruceGenerico;
 import es.ucm.fdi.ini.IniSection;
-import es.ucm.fdi.model.Cruce;
 import es.ucm.fdi.model.ObjetoSimulacion;
 
 public class Vehiculo extends ObjetoSimulacion {
@@ -17,13 +18,13 @@ public class Vehiculo extends ObjetoSimulacion {
 	 protected int kilometraje; // distancia recorrida
 	 protected int localizacion; // localizaci�n en la carretera
 	 protected int tiempoAveria; // tiempo que estar� averiado
-	 protected List<Cruce> itinerario; // itinerario a recorrer (m�nimo 2)
+	 protected List<CruceGenerico<?>> itinerario; // itinerario a recorrer (m�nimo 2)
 	 private boolean EnCruce;
 	 private boolean haLlegado;
 
 
 
-	 public Vehiculo(String id, int velocidadMaxima, List<Cruce> iti) throws ErrorCarga {
+	 public Vehiculo(String id, int velocidadMaxima, List<CruceGenerico<?>> iti) throws ErrorCarga {
 		
 		 super(id);
 		if(velocidadMaxima < 0)
@@ -141,7 +142,7 @@ public class Vehiculo extends ObjetoSimulacion {
 		
 	protected Carretera calculoSigCarretera() {
 		
-		Cruce cruceAct;
+		CruceGenerico<?> cruceAct;
 		
 		if(this.carretera != null) 
 			cruceAct = this.carretera.getCruceDest();
@@ -150,7 +151,7 @@ public class Vehiculo extends ObjetoSimulacion {
 			cruceAct = this.itinerario.get(0);
 		
 		int IndexcruceProx = this.itinerario.lastIndexOf(cruceAct)+1;
-		Cruce cruceProx = this.itinerario.get(IndexcruceProx);
+		CruceGenerico<?> cruceProx = this.itinerario.get(IndexcruceProx);
 		return cruceAct.carreteraHaciaCruce(cruceProx);
 
 	}

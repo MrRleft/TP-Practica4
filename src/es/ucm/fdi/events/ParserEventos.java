@@ -7,6 +7,8 @@ import es.ucm.fdi.constructores.ConstructorEventoNuevaCarretera;
 import es.ucm.fdi.constructores.ConstructorEventoNuevoCamino;
 import es.ucm.fdi.constructores.ConstructorEventoNuevoCoche;
 import es.ucm.fdi.constructores.ConstructorEventoNuevoCruce;
+import es.ucm.fdi.constructores.ConstructorEventoNuevoCruceCircular;
+import es.ucm.fdi.constructores.ConstructorEventoNuevoCruceCongestionado;
 import es.ucm.fdi.constructores.ConstructorEventoNuevoVehiculo;
 import es.ucm.fdi.constructores.ConstructorEventos;
 import es.ucm.fdi.ini.IniSection;
@@ -20,7 +22,9 @@ public class ParserEventos {
 		 new ConstructorEventoNuevoCoche(),
 		 new ConstructorEventoNuevaBicicleta(),
 		 new ConstructorEventoNuevaAutopista(),
-		 new ConstructorEventoNuevoCamino()
+		 new ConstructorEventoNuevoCamino(),
+		 new ConstructorEventoNuevoCruceCongestionado(),
+		 new ConstructorEventoNuevoCruceCircular()
 	 };
 	// bucle de prueba y error
 	 public static Evento parseaEvento(IniSection sec) {

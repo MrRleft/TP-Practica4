@@ -7,7 +7,8 @@ import es.ucm.fdi.Exceptions.ErrorCarga;
 import es.ucm.fdi.Exceptions.ErrorDeSimulacion;
 import es.ucm.fdi.Exceptions.InsertException;
 import es.ucm.fdi.Exceptions.NotFoundException;
-import es.ucm.fdi.model.Cruce;
+import es.ucm.fdi.cruces.Cruce;
+import es.ucm.fdi.cruces.CruceGenerico;
 import es.ucm.fdi.model.MapaCarreteras;
 import es.ucm.fdi.vehiculos.Vehiculo;
 
@@ -30,7 +31,7 @@ public class EventoNuevoVehiculo extends Evento{
 		
 		//List<Cruce> iti = ParserCarreteras.parseaListaCruces(this.itinerario,mapa);
 		 // si iti es null o tiene menos de dos cruces lanzar excepci�n
-		 List<Cruce> iti = this.ayudaCarretera(this.itinerario, mapa);
+		 List<CruceGenerico<?>> iti = this.ayudaCarretera(this.itinerario, mapa);
 		 
 			 if(this.itinerario == null ){
 				throw new ErrorCarga("Error al cargar el itinerario de " + id);
@@ -48,11 +49,11 @@ public class EventoNuevoVehiculo extends Evento{
 		 // en otro caso crear el veh�culo y a�adirlo al mapa.
 	 }
 	 
-	 public List<Cruce> ayudaCarretera(String[] stCr,MapaCarreteras mC) throws ErrorCarga{
-		 List<Cruce> auxCarr = new ArrayList<Cruce>();
+	 public List<CruceGenerico<?>> ayudaCarretera(String[] stCr,MapaCarreteras mC) throws ErrorCarga{
+		 List<CruceGenerico<?>> auxCarr = new ArrayList<>();
 		 for (String j : stCr ){
 			try {
-				Cruce x = mC.getCruce(j);
+				CruceGenerico<?> x = mC.getCruce(j);
 				auxCarr.add(x);
 			} catch (NotFoundException e) {
 				// TODO Auto-generated catch block

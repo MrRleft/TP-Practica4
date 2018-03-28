@@ -2,7 +2,8 @@ package es.ucm.fdi.events;
 
 import es.ucm.fdi.Exceptions.ErrorCarga;
 import es.ucm.fdi.Exceptions.InsertException;
-import es.ucm.fdi.model.Cruce;
+import es.ucm.fdi.cruces.Cruce;
+import es.ucm.fdi.cruces.CruceGenerico;
 import es.ucm.fdi.model.MapaCarreteras;
 
 
@@ -18,11 +19,10 @@ public class EventoNuevoCruce extends Evento {
 
 	@Override
 	public void ejecuta(MapaCarreteras mapa) throws ErrorCarga {
-		String aux = this.id;
-		
+
 		// TODO Auto-generated method stub
 		try {
-			Cruce cruce = new Cruce(aux);
+			CruceGenerico<?> cruce = creaCruce();
 			mapa.addCruce(this.id, cruce);
 		} catch (InsertException e) {
 			// TODO Auto-generated catch block
@@ -30,6 +30,11 @@ public class EventoNuevoCruce extends Evento {
 		}
 	}
 
+	protected CruceGenerico<?> creaCruce(){
+		
+		return new Cruce(this.id);
+	}
+	
 	 public String toString() {
 		 StringBuilder sb = new StringBuilder();
 		 System.out.println("[new_junction]");

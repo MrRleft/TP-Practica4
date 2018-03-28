@@ -5,8 +5,8 @@ import java.util.Random;
 
 import es.ucm.fdi.Exceptions.ErrorCarga;
 import es.ucm.fdi.Exceptions.ErrorDeSimulacion;
+import es.ucm.fdi.cruces.Cruce;
 import es.ucm.fdi.ini.IniSection;
-import es.ucm.fdi.model.Cruce;
 
 public class Coche extends Vehiculo {
 	

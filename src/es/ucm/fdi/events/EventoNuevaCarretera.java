@@ -1,11 +1,12 @@
 package es.ucm.fdi.events;
 
 
-import es.ucm.fdi.model.Cruce;
 import es.ucm.fdi.model.MapaCarreteras;
 import es.ucm.fdi.Exceptions.InsertException;
 import es.ucm.fdi.Exceptions.NotFoundException;
 import es.ucm.fdi.carreteras.Carretera;
+import es.ucm.fdi.cruces.Cruce;
+import es.ucm.fdi.cruces.CruceGenerico;
 import es.ucm.fdi.events.Evento;
 
 
@@ -32,8 +33,8 @@ public class EventoNuevaCarretera extends Evento {
 		
 		// obten cruce origen y cruce destino utilizando el mapa
 		
-		Cruce cOrigen = mapa.getCruce(cruceOrigenId);
-		Cruce cDestino = mapa.getCruce(cruceDestinoId);
+		CruceGenerico<?> cOrigen = mapa.getCruce(cruceOrigenId);
+		CruceGenerico<?> cDestino = mapa.getCruce(cruceDestinoId);
 		// crea la carretera
 		// añade al mapa la carretera	
 		Carretera carretera = new Carretera(this.id,this.longitud,this.velocidadMaxima,cOrigen,cDestino);

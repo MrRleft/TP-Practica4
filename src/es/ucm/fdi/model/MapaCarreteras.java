@@ -11,17 +11,19 @@ import es.ucm.fdi.Exceptions.ErrorDeSimulacion;
 import es.ucm.fdi.Exceptions.InsertException;
 import es.ucm.fdi.Exceptions.NotFoundException;
 import es.ucm.fdi.carreteras.Carretera;
+import es.ucm.fdi.cruces.Cruce;
+import es.ucm.fdi.cruces.CruceGenerico;
 import es.ucm.fdi.vehiculos.Vehiculo;
 
 public class MapaCarreteras {
 
 	//Preguntar si se pueden quitar las listas pues quedan obsoletas
 	 private List<Carretera> carreteras;
-	 private List<Cruce> cruces;
+	 private List<CruceGenerico<?>> cruces;
 	 private List<Vehiculo> vehiculos;
 	
 	 private Map<String, Carretera> mapaDeCarreteras;
-	 private Map<String, Cruce> mapaDeCruces;
+	 private Map<String, CruceGenerico<?>> mapaDeCruces;
 	 private Map<String, Vehiculo> mapaDeVehiculos;
 	
 	 public MapaCarreteras() {
@@ -38,7 +40,7 @@ public class MapaCarreteras {
 		 	
 		}
 	
-	 public void addCruce(String idCruce, Cruce cruce) throws InsertException {
+	 public void addCruce(String idCruce, CruceGenerico<?> cruce) throws InsertException {
 		 // comprueba que â€œidCruceâ€� no existe en el mapa.
 		 // Si no existe, lo aÃ±ade a â€œcrucesâ€� y a â€œmapaDeCrucesâ€�.
 		 // Si existe lanza una excepciÃ³n.
@@ -64,8 +66,8 @@ public class MapaCarreteras {
 		 
 	}
 	
-	 public void addCarretera(String idCarretera, Cruce origen, Carretera carretera,
-			 Cruce destino) throws InsertException {
+	 public void addCarretera(String idCarretera, CruceGenerico<?> origen, Carretera carretera,
+			 CruceGenerico<?> destino) throws InsertException {
 			 // comprueba que â€œidCarreteraâ€� no existe en el mapa.
 			 // Si no existe, lo aÃ±ade a â€œcarreterasâ€� y a â€œmapaDeCarreterasâ€�,
 			 // y posteriormente actualiza los cruces origen y destino como sigue:
@@ -83,7 +85,7 @@ public class MapaCarreteras {
 	 }
 	 
 	 
-	 public List<Cruce> getCruces() {
+	 public List<CruceGenerico<?>> getCruces() {
 		return cruces;
 	}
 
@@ -126,7 +128,7 @@ public class MapaCarreteras {
 
 		}
 	
-	public Cruce getCruce(String id) throws NotFoundException {
+	public CruceGenerico<?> getCruce(String id) throws NotFoundException {
 
 		 // devuelve el cruce con ese â€œidâ€� utilizando el mapaDeCruces.
 		 // sino existe el cruce lanza excepciÃ³n
