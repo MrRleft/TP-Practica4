@@ -1,5 +1,7 @@
 package es.ucm.fdi.carreteras;
 
+import es.ucm.fdi.Exceptions.ErrorDeSimulacion;
+
 public class CarreteraEntranteConIntervalo extends CarreteraEntrante{
 
 	private int intervaloDeTiempo;  // Tiempo que ha de transcurrir para poner  
@@ -12,25 +14,53 @@ public class CarreteraEntranteConIntervalo extends CarreteraEntrante{
 							// vehículo mientras el semáforo estaba // en verde.
 	 public CarreteraEntranteConIntervalo(Carretera carretera, int intervalTiempo) {  
 		 super(carretera);  
+		 this.intervaloDeTiempo = intervalTiempo;
+		 this.unidadesDeTiempoUsadas = 0;
+		 this.usoCompleto = false;
+		 this.usadaPorUnVehiculo = false;
 	}  
 	 
-	 @Override  protected void avanzaPrimerVehiculo() {  
+	 @Override 
+	 public void avanzaPrimerVehiculo() throws ErrorDeSimulacion {  
 		 // Incrementa unidadesDeTiempoUsadas 
 		 // Actualiza usoCompleto:   
 		 //   - Si “colaVehiculos” es vacía, entonces “usoCompleto=false”   7
 		 //   - En otro caso saca el primer vehículo “v” de la “colaVehiculos”,  
 		 //     y le mueve a la siguiente carretera (“v.moverASiguienteCarretera()”)    
 		 //     Pone “usadaPorUnVehiculo” a true. 
-		 } 
+		 this.unidadesDeTiempoUsadas++;
+		 if(this.colaVehiculos.size() == 0)
+			 this.usoCompleto = false;
+		 else {
+			this.getColaVehiculos().get(0).moverASiguienteCarretera();
+			this.usadaPorUnVehiculo = true;
+		 }
+	} 
 	 
 	 public boolean tiempoConsumido() {  
 		 // comprueba si se ha agotado el intervalo de tiempo. 
 		 // “unidadesDeTiempoUsadas >= “intervaloDeTiempo” 
+		 return this.unidadesDeTiempoUsadas >= this.intervaloDeTiempo;
 	}
 	 
-	 public boolean usoCompleto() {  } 	 // método get 
-	 public boolean usada() {}   // método get 
+	 public void restartTime() {
+		 this.unidadesDeTiempoUsadas = 0;
+	 }
 	 
+	 public boolean usoCompleto() { 
+		 return this.usoCompleto;
+	 } 	 // método get 
+	 public boolean usada() {
+		 return this.usadaPorUnVehiculo;
+	 }   // método get 
+	 
+	 public int getInt() {
+		 return this.intervaloDeTiempo;
+	 }
+	 
+	 public void setInt(int i) {
+		 this.intervaloDeTiempo = i;
+	 }
 }
 	
 

@@ -19,20 +19,42 @@ public class CruceCircular extends CruceGenerico<CarreteraEntranteConIntervalo>{
 	protected void actualizaSemaforos() {
 	
 		/*
-	 - Si no hay carretera con sem·foro en verde (indiceSemaforoVerde == -1) entonces se
-	 selecciona la primera carretera entrante (la de la posiciÛn 0) y se pone su
-	 sem·foro en verde.
-	 - Si hay carretera entrante "ri" con su sem·foro en verde, (indiceSemaforoVerde !=
+	 - Si no hay carretera con sem√°foro en verde (indiceSemaforoVerde == -1) entonces se
+	 selecciona la primera carretera entrante (la de la posici√≥n 0) y se pone su
+	 sem√°foro en verde.
+	 - Si hay carretera entrante "ri" con su sem√°foro en verde, (indiceSemaforoVerde !=
 	 -1) entonces:
 	 1. Si ha consumido su intervalo de tiempo en verde ("ri.tiempoConsumido()"):
-	 1.1. Se pone el sem·foro de "ri" a rojo.
-	 1.2. Si ha sido usada en todos los pasos (ìri.usoCompleto()î), se fija
+	 1.1. Se pone el sem√°foro de "ri" a rojo.
+	 1.2. Si ha sido usada en todos los pasos (‚Äúri.usoCompleto()‚Äù), se fija
 	 el intervalo de tiempo a ... Sino, si no ha sido usada
-	 (ì!ri.usada()î) se fija el intervalo de tiempo a ...
-	 1.3. Se coge como nueva carretera con sem·foro a verde la inmediatamente
-	 Posterior a ìriî.
+	 (‚Äú!ri.usada()‚Äù) se fija el intervalo de tiempo a ...
+	 1.3. Se coge como nueva carretera con sem√°foro a verde la inmediatamente
+	 Posterior a ‚Äúri‚Äù.
 	*/
-		
+		if(this.indiceSemaforoVerde == -1) {
+			this.carreterasEntrantes.get(0).ponSemaforo(true);
+			this.indiceSemaforoVerde = 0;		
+		}
+		else {
+			if(!this.carreterasEntrantes.get(this.indiceSemaforoVerde).tiempoConsumido()) {
+				this.carreterasEntrantes.get(this.indiceSemaforoVerde).ponSemaforo(false);
+				this.carreterasEntrantes.get(this.indiceSemaforoVerde).restartTime();
+				int nuevoInt;
+			
+				if(this.carreterasEntrantes.get(this.indiceSemaforoVerde).usoCompleto()) 
+					//m¬¥ƒ±n(intervaloDeTiempo + 1, maxValorIntervalo)
+					nuevoInt = Math.min(this.carreterasEntrantes.get(this.indiceSemaforoVerde).getInt() + 1,
+							this.maxValorIntervalo);
+				else 
+					//m¬¥ax(intervaloDeTiempo ‚àí 1, minValorIntervalo).
+					nuevoInt = Math.max(this.carreterasEntrantes.get(this.indiceSemaforoVerde).getInt() - 1,
+							this.minValorIntervalo);
+				this.carreterasEntrantes.get(this.indiceSemaforoVerde).setInt(nuevoInt);
+				this.indiceSemaforoVerde++;
+				this.carreterasEntrantes.get(this.indiceSemaforoVerde).ponSemaforo(true);
+			}
+		}
 	}
 
 	@Override

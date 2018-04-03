@@ -1,7 +1,6 @@
 package es.ucm.fdi.constructores;
 
 import es.ucm.fdi.events.Evento;
-import es.ucm.fdi.events.EventoNuevoCruce;
 import es.ucm.fdi.events.EventoNuevoCruceCongestionado;
 import es.ucm.fdi.ini.IniSection;
 

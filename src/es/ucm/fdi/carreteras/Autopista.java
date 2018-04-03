@@ -1,6 +1,5 @@
 package es.ucm.fdi.carreteras;
 
-import es.ucm.fdi.cruces.Cruce;
 import es.ucm.fdi.cruces.CruceGenerico;
 import es.ucm.fdi.ini.IniSection;
 

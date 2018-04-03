@@ -8,6 +8,7 @@ import es.ucm.fdi.ini.IniSection;
 public class ConstructorEventoAveriaCoche extends ConstructorEventos {
 	
 	
+	@SuppressWarnings("unused")
 	private String[] valoresPorDefecto;
 
 	public ConstructorEventoAveriaCoche() {

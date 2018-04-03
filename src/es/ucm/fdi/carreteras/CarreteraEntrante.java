@@ -9,7 +9,7 @@ import es.ucm.fdi.vehiculos.Vehiculo;
 public class CarreteraEntrante {
 
 	 private Carretera carretera;
-	 private List<Vehiculo> colaVehiculos;
+	 protected List<Vehiculo> colaVehiculos;
 	 protected boolean semaforo; // true=verde, false=rojo
 
 	 

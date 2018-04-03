@@ -26,6 +26,21 @@ public class CruceCongestionado extends CruceGenerico<CarreteraEntranteConInterv
 		 a verde y se inicializan los atributos de "rj", entre ellos el
 		 "intervaloTiempo" a Math.max(rj.numVehiculosEnCola()/2,1).
 		 */
+		if(this.indiceSemaforoVerde == -1) {
+			int posMax = this.busquedaSigCarr();
+			this.carreterasEntrantes.get(posMax).ponSemaforo(true);
+			this.indiceSemaforoVerde = posMax;		
+		}
+		else {
+			if(this.carreterasEntrantes.get(indiceSemaforoVerde).tiempoConsumido()) {
+				this.carreterasEntrantes.get(indiceSemaforoVerde).ponSemaforo(false);
+				this.carreterasEntrantes.get(this.indiceSemaforoVerde).restartTime();
+				this.indiceSemaforoVerde = this.busquedaSigCarr();
+				int NuevoInt = Math.max(this.carreterasEntrantes.get(indiceSemaforoVerde).getColaVehiculos().size()/2,1);
+				this.carreterasEntrantes.get(indiceSemaforoVerde).setInt(NuevoInt);
+				this.carreterasEntrantes.get(indiceSemaforoVerde).ponSemaforo(true);
+			}
+		}
 	 }
 
 	@Override
@@ -34,4 +49,17 @@ public class CruceCongestionado extends CruceGenerico<CarreteraEntranteConInterv
 		return new CarreteraEntranteConIntervalo(Carr, 0);
 	}
 
+	private int busquedaSigCarr() {
+		int i = 0, maxFound = -1, posMax = -1, posMaxAux = -1;
+		while( i < this.carreterasEntrantes.size()) {
+			if(this.carreterasEntrantes.get(i).getColaVehiculos().size() > maxFound) {
+				maxFound = this.carreterasEntrantes.get(i).getColaVehiculos().size();
+				posMaxAux = posMax;
+				posMax = i;
+			}
+		}
+		if(posMax == this.indiceSemaforoVerde)
+			posMax = posMaxAux;
+		return posMax;
+	}
 }
