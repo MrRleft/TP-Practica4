@@ -68,7 +68,7 @@ public class Vehiculo extends ObjetoSimulacion {
 
 		  is.setValue("speed", this.velocidadActual);
 		  is.setValue("kilometrage", this.kilometraje);
-		  is.setValue("faulty", this.getTiempoDeInfraccion());
+		  is.setValue("faulty", this.tiempoAveria);
 		  is.setValue("location", this.haLlegado ? "arrived" :
 			  	"(" + this.carretera + "," + this.getLocalizacion() + ")");
 	 

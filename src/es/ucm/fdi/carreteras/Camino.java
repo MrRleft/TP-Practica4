@@ -24,10 +24,11 @@ public class Camino extends Carretera {
 	@Override
 	protected void completaDetallesSeccion(IniSection is) {
 
-		is.setValue("src", this.cruceOrigen);
-		is.setValue("dest", this.cruceDestino);
-		is.setValue("max_speed", this.velocidadMaxima);
-		is.setValue("length", this.longitud);
+	//	is.setValue("src", this.cruceOrigen);
+	//	is.setValue("dest", this.cruceDestino);
+	//	is.setValue("max_speed", this.velocidadMaxima);
+	//	is.setValue("length", this.longitud);
 		is.setValue("type", "dirt");
+		super.completaDetallesSeccion(is);
 	}
 }

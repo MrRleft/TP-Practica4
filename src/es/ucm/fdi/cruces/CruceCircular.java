@@ -2,6 +2,7 @@ package es.ucm.fdi.cruces;
 
 import es.ucm.fdi.carreteras.Carretera;
 import es.ucm.fdi.carreteras.CarreteraEntranteConIntervalo;
+import es.ucm.fdi.ini.IniSection;
 
 public class CruceCircular extends CruceGenerico<CarreteraEntranteConIntervalo>{
 	
@@ -63,4 +64,11 @@ public class CruceCircular extends CruceGenerico<CarreteraEntranteConIntervalo>{
 		return new CarreteraEntranteConIntervalo(Carr, 0);
 	}
 
+	@Override
+	protected void completaDetallesSeccion(IniSection is) {
+
+		
+		//super.completaDetallesSeccion(is);
+		is.setValue("type", "rr");
+	}
 }

@@ -35,7 +35,8 @@ public class EventoNuevoCoche extends EventoNuevoVehiculo {
 			throw new ErrorCarga("Error al cargar el itinerario de " + id);
 		 }
 		 else{
-			Coche coche = new Coche(id, duracionMaxima, iti, duracionMaxima, probAveria, duracionMaxima, semilla);
+			
+			Coche coche = new Coche(id, velocidadMaxima, iti, resistencia, probAveria, duracionMaxima, semilla);
 			try {
 				mapa.addVehiculo(this.id, coche);
 			} catch (InsertException e) {

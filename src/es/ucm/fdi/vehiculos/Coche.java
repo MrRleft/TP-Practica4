@@ -15,8 +15,9 @@ public class Coche extends Vehiculo {
 	private int duracionMaxima;
 	private long seed;
 	private Random numAleatorio;
-	//private String tipo;
-
+	private int ultimaAveria;
+	
+	
 	public Coche(String id, int velocidadMaxima, List<CruceGenerico<?>> iti,int resistencia,double probAveria,int duracionMaxima,long seed) throws ErrorCarga {
 		super(id, velocidadMaxima, iti);
 		// TODO Auto-generated constructor stub
@@ -25,15 +26,26 @@ public class Coche extends Vehiculo {
 		this.duracionMaxima = duracionMaxima;
 		this.seed = seed;
 		this.numAleatorio = new Random(this.seed);
+		this.ultimaAveria = 0;
 	}
 
 	@Override
 	public void avanza() throws ErrorDeSimulacion {
 		// TODO Auto-generated method stub
-		if(this.tiempoAveria == 0 && this.kilometraje >= this.resistenciaKm && this.numAleatorio.nextDouble()< this.probabilidadDeAveria ){
-		this.setAveria(numAleatorio.nextInt(this.duracionMaxima + 1));
-		super.avanza();
+		 // - Si el coche está averiado poner “kmUltimaAveria” a “kilometraje”.
+		 // - Sino el coche no está averiado y ha recorrido “resistenciakm”, y además
+		 // “numAleatorio”.nextDouble() < “probabilidadDeAveria”, entonces
+		 // incrementar “tiempoAveria” con “numAleatorio.nextInt(“duracionMaximaAveria”)+1
+		 // - Llamar a super.avanza();
+		if(this.tiempoAveria > 0)
+			this.ultimaAveria = this.kilometraje;
+		else if(this.tiempoAveria == 0 && this.kilometraje >= this.resistenciaKm &&
+				this.numAleatorio.nextDouble() < this.probabilidadDeAveria){
+			this.tiempoAveria = this.numAleatorio.nextInt(duracionMaxima)+1;
 		}
+		super.avanza();
+			
+
 	}
 
 	@Override
@@ -52,13 +64,15 @@ public class Coche extends Vehiculo {
 	protected void completaDetallesSeccion(IniSection is) {
 		// TODO Auto-generated method stub
 		//is.setValue("type", this.tipo);
-		is.setValue("itinerary", this.itinerario);
-		is.setValue("max_speed", this.velocidadMaxima);
-		is.setValue("resistance", this.resistenciaKm);
-		is.setValue("fault_probability", this.probabilidadDeAveria);
-		is.setValue("max_fault_duration", this.duracionMaxima);
-		is.setValue("seed", this.seed);
+		is.setValue("id", this.id);
+//		is.setValue("itinerary", this.itinerario);
+//		is.setValue("max_speed", this.velocidadMaxima);
+//		is.setValue("resistance", this.resistenciaKm);
+//		is.setValue("fault_probability", this.probabilidadDeAveria);
+//		is.setValue("max_fault_duration", this.duracionMaxima);
+//		is.setValue("seed", this.seed);
 		is.setValue("type", "car");
+		super.completaDetallesSeccion(is);
 	}
 
 	

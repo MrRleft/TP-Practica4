@@ -41,8 +41,7 @@ public abstract class CruceGenerico<T extends  CarreteraEntrante> extends Objeto
 		if (!this.carreterasEntrantes.isEmpty()) {
 			boolean ok = true;
 			if(this.indiceSemaforoVerde == -1) {
-				this.indiceSemaforoVerde = 0;
-				this.carreterasEntrantes.get(0).ponSemaforo(true);
+				this.actualizaSemaforos();
 				ok = false;
 			}
 			carreterasEntrantes.get(this.indiceSemaforoVerde).avanzaPrimerVehiculo();
@@ -88,29 +87,7 @@ public abstract class CruceGenerico<T extends  CarreteraEntrante> extends Objeto
 		 return "junction_report";
 	}
 	
-	 @Override
-	protected void completaDetallesSeccion(IniSection is) {
-		String detalles = "";
-		for (int i = 0; i <this.carreterasEntrantes.size(); ++i){
-			
-			detalles += "(" + this.carreterasEntrantes.get(i).getCarretera().getID() + ",";
-			if (this.carreterasEntrantes.get(i).getSem()) 
-				detalles += "green,[";
-			else
-				detalles += "red,[";
-			for (Vehiculo v : this.carreterasEntrantes.get(i).getColaVehiculos())
-				detalles += v.getId() + ",";
-			if(this.carreterasEntrantes.get(i).getColaVehiculos().size() > 0)
-				detalles = detalles.substring(0, detalles.length()-1);
-			detalles = detalles.substring(0, detalles.length() );
-			detalles += "])";
-			if(i < this.carreterasEntrantes.size()-1)
-				detalles += ",";
-		}
-		detalles = detalles.substring(0, detalles.length());
-		is.setValue("queues", detalles);
-	}
-	 
+	protected abstract void completaDetallesSeccion(IniSection is);
 	 abstract protected void actualizaSemaforos();
 		
 }

@@ -2,6 +2,7 @@ package es.ucm.fdi.cruces;
 
 import es.ucm.fdi.carreteras.Carretera;
 import es.ucm.fdi.carreteras.CarreteraEntranteConIntervalo;
+import es.ucm.fdi.ini.IniSection;
 
 public class CruceCongestionado extends CruceGenerico<CarreteraEntranteConIntervalo>{
 
@@ -57,9 +58,19 @@ public class CruceCongestionado extends CruceGenerico<CarreteraEntranteConInterv
 				posMaxAux = posMax;
 				posMax = i;
 			}
+			i++;
 		}
-		if(posMax == this.indiceSemaforoVerde)
+		if(posMax == this.indiceSemaforoVerde && posMaxAux >= 0)
 			posMax = posMaxAux;
+		
 		return posMax;
+	}
+	
+	@Override
+	protected void completaDetallesSeccion(IniSection is) {
+
+		
+		//super.completaDetallesSeccion(is);
+		is.setValue("type", "mc");
 	}
 }
