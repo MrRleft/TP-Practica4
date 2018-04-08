@@ -5,16 +5,16 @@ import es.ucm.fdi.Exceptions.ErrorDeSimulacion;
 public class CarreteraEntranteConIntervalo extends CarreteraEntrante{
 
 	private int intervaloDeTiempo;  // Tiempo que ha de transcurrir para poner  
-										// el semáforo de la carretera en rojo 
+										// el semï¿½foro de la carretera en rojo 
 	private int unidadesDeTiempoUsadas; // Se incrementa cada vez que
-										// avanza un vehículo 
-	private boolean usoCompleto; // Controla que en cada paso con el semáforo 
-									// en verde, ha pasado un vehículo 
+										// avanza un vehï¿½culo 
+	private boolean usoCompleto; // Controla que en cada paso con el semï¿½foro 
+									// en verde, ha pasado un vehï¿½culo 
 	private boolean usadaPorUnVehiculo; // Controla que al menos ha pasado un                                    
-							// vehículo mientras el semáforo estaba // en verde.
+							// vehï¿½culo mientras el semï¿½foro estaba // en verde.
 	 public CarreteraEntranteConIntervalo(Carretera carretera, int intervalTiempo) {  
 		 super(carretera);  
-		 this.intervaloDeTiempo = intervalTiempo;
+		 this.intervaloDeTiempo =intervalTiempo;
 		 this.unidadesDeTiempoUsadas = 0;
 		 this.usoCompleto = false;
 		 this.usadaPorUnVehiculo = false;
@@ -24,10 +24,10 @@ public class CarreteraEntranteConIntervalo extends CarreteraEntrante{
 	 public void avanzaPrimerVehiculo() throws ErrorDeSimulacion {  
 		 // Incrementa unidadesDeTiempoUsadas 
 		 // Actualiza usoCompleto:   
-		 //   - Si “colaVehiculos” es vacía, entonces “usoCompleto=false”   7
-		 //   - En otro caso saca el primer vehículo “v” de la “colaVehiculos”,  
-		 //     y le mueve a la siguiente carretera (“v.moverASiguienteCarretera()”)    
-		 //     Pone “usadaPorUnVehiculo” a true. 
+		 //   - Si ï¿½colaVehiculosï¿½ es vacï¿½a, entonces ï¿½usoCompleto=falseï¿½   7
+		 //   - En otro caso saca el primer vehï¿½culo ï¿½vï¿½ de la ï¿½colaVehiculosï¿½,  
+		 //     y le mueve a la siguiente carretera (ï¿½v.moverASiguienteCarretera()ï¿½)    
+		 //     Pone ï¿½usadaPorUnVehiculoï¿½ a true. 
 		 this.unidadesDeTiempoUsadas++;
 		 if(this.colaVehiculos.size() == 0)
 			 this.usoCompleto = false;
@@ -39,7 +39,7 @@ public class CarreteraEntranteConIntervalo extends CarreteraEntrante{
 	 
 	 public boolean tiempoConsumido() {  
 		 // comprueba si se ha agotado el intervalo de tiempo. 
-		 // “unidadesDeTiempoUsadas >= “intervaloDeTiempo” 
+		 // ï¿½unidadesDeTiempoUsadas >= ï¿½intervaloDeTiempoï¿½ 
 		 return this.unidadesDeTiempoUsadas >= this.intervaloDeTiempo;
 	}
 	 
@@ -49,10 +49,10 @@ public class CarreteraEntranteConIntervalo extends CarreteraEntrante{
 	 
 	 public boolean usoCompleto() { 
 		 return this.usoCompleto;
-	 } 	 // método get 
+	 } 	 // mï¿½todo get 
 	 public boolean usada() {
 		 return this.usadaPorUnVehiculo;
-	 }   // método get 
+	 }   // mï¿½todo get 
 	 
 	 public int getInt() {
 		 return this.intervaloDeTiempo;
@@ -61,6 +61,14 @@ public class CarreteraEntranteConIntervalo extends CarreteraEntrante{
 	 public void setInt(int i) {
 		 this.intervaloDeTiempo = i;
 	 }
+	
+	public int getUnidadesDeTiempoUsadas() {
+		return unidadesDeTiempoUsadas;
+	}
+
+	public void setUnidadesDeTiempoUsadas(int unidadesDeTiempoUsadas) {
+		this.unidadesDeTiempoUsadas = unidadesDeTiempoUsadas;
+	}
 }
 	
 

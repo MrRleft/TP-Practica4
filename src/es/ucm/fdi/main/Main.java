@@ -129,11 +129,11 @@ public class Main {
 		//
 		
 		
-		Main.ParseaArgumentos(args);
-		Main.iniciaModoEstandar();
+		//Main.ParseaArgumentos(args);
+		//Main.iniciaModoEstandar();
 		
 		
-	//	Main.ejecutaFicheros(args[0]);
+		Main.ejecutaFicheros(args[0]);
 	}
 	
 	@SuppressWarnings("unused")

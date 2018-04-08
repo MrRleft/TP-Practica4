@@ -32,10 +32,10 @@ public class Coche extends Vehiculo {
 	@Override
 	public void avanza() throws ErrorDeSimulacion {
 		// TODO Auto-generated method stub
-		 // - Si el coche está averiado poner “kmUltimaAveria” a “kilometraje”.
-		 // - Sino el coche no está averiado y ha recorrido “resistenciakm”, y además
-		 // “numAleatorio”.nextDouble() < “probabilidadDeAveria”, entonces
-		 // incrementar “tiempoAveria” con “numAleatorio.nextInt(“duracionMaximaAveria”)+1
+		 // - Si el coche estï¿½ averiado poner ï¿½kmUltimaAveriaï¿½ a ï¿½kilometrajeï¿½.
+		 // - Sino el coche no estï¿½ averiado y ha recorrido ï¿½resistenciakmï¿½, y ademï¿½s
+		 // ï¿½numAleatorioï¿½.nextDouble() < ï¿½probabilidadDeAveriaï¿½, entonces
+		 // incrementar ï¿½tiempoAveriaï¿½ con ï¿½numAleatorio.nextInt(ï¿½duracionMaximaAveriaï¿½)+1
 		 // - Llamar a super.avanza();
 		if(this.tiempoAveria > 0)
 			this.ultimaAveria = this.kilometraje;
@@ -63,14 +63,7 @@ public class Coche extends Vehiculo {
 	@Override
 	protected void completaDetallesSeccion(IniSection is) {
 		// TODO Auto-generated method stub
-		//is.setValue("type", this.tipo);
 		is.setValue("id", this.id);
-//		is.setValue("itinerary", this.itinerario);
-//		is.setValue("max_speed", this.velocidadMaxima);
-//		is.setValue("resistance", this.resistenciaKm);
-//		is.setValue("fault_probability", this.probabilidadDeAveria);
-//		is.setValue("max_fault_duration", this.duracionMaxima);
-//		is.setValue("seed", this.seed);
 		is.setValue("type", "car");
 		super.completaDetallesSeccion(is);
 	}
