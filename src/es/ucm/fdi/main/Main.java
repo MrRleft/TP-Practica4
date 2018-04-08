@@ -129,13 +129,14 @@ public class Main {
 		//
 		
 		
-	//	Main.ParseaArgumentos(args);
-	//	Main.iniciaModoEstandar();
+		//Main.ParseaArgumentos(args);
+		//Main.iniciaModoEstandar();
 		
 		
 		Main.ejecutaFicheros(args[0]);
 	}
 	
+	@SuppressWarnings("unused")
 	private static void ejecutaFicheros(String path) throws IOException {
 
 		File dir = new File(path);

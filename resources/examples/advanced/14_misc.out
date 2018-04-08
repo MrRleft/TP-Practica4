@@ -1,3 +1,4 @@
+# ******* step 0 *******
 [junction_report]
 id = j1
 time = 1
@@ -11,8 +12,7 @@ queues = (r1,green,[]),(r3,red,[])
 [junction_report]
 id = j3
 time = 1
-queues = (r2,green:1,[])
-type = mc
+queues = (r2,green,[])
 
 [junction_report]
 id = j4
@@ -22,7 +22,7 @@ queues =
 [junction_report]
 id = j5
 time = 1
-type = rr
+queues = (r4,green,[])
 
 [road_report]
 id = r1
@@ -33,13 +33,16 @@ state = (v1,20)
 [road_report]
 id = r2
 time = 1
+src = j2
+dest = j3
+max_speed = 20
+length = 100
 type = dirt
-state = 
 
 [road_report]
 id = r3
 time = 1
-state = (v2,11),(v3,11)
+state = (v2,11),(v3,0)
 
 [road_report]
 id = r4
@@ -66,12 +69,15 @@ location = (r3,11)
 [vehicle_report]
 id = v3
 time = 1
+itinerary = [j4, j2, j5]
+max_speed = 3
+resistance = 3
+fault_probability = 0.2
+max_fault_duration = 3
+seed = 314159265
 type = car
-speed = 11
-kilometrage = 11
-faulty = 0
-location = (r3,11)
 
+# ******* step 1 *******
 [junction_report]
 id = j1
 time = 2
@@ -85,8 +91,7 @@ queues = (r1,red,[]),(r3,green,[])
 [junction_report]
 id = j3
 time = 2
-queues = (r2,green:1,[])
-type = mc
+queues = (r2,green,[])
 
 [junction_report]
 id = j4
@@ -96,7 +101,7 @@ queues =
 [junction_report]
 id = j5
 time = 2
-type = rr
+queues = (r4,green,[])
 
 [road_report]
 id = r1
@@ -107,13 +112,16 @@ state = (v1,40)
 [road_report]
 id = r2
 time = 2
+src = j2
+dest = j3
+max_speed = 20
+length = 100
 type = dirt
-state = 
 
 [road_report]
 id = r3
 time = 2
-state = (v2,22),(v3,22)
+state = (v2,22),(v3,0)
 
 [road_report]
 id = r4
@@ -140,12 +148,15 @@ location = (r3,22)
 [vehicle_report]
 id = v3
 time = 2
+itinerary = [j4, j2, j5]
+max_speed = 3
+resistance = 3
+fault_probability = 0.2
+max_fault_duration = 3
+seed = 314159265
 type = car
-speed = 11
-kilometrage = 22
-faulty = 0
-location = (r3,22)
 
+# ******* step 2 *******
 [junction_report]
 id = j1
 time = 3
@@ -159,8 +170,7 @@ queues = (r1,green,[]),(r3,red,[])
 [junction_report]
 id = j3
 time = 3
-queues = (r2,green:1,[])
-type = mc
+queues = (r2,green,[])
 
 [junction_report]
 id = j4
@@ -170,7 +180,7 @@ queues =
 [junction_report]
 id = j5
 time = 3
-type = rr
+queues = (r4,green,[])
 
 [road_report]
 id = r1
@@ -181,13 +191,16 @@ state = (v1,40)
 [road_report]
 id = r2
 time = 3
+src = j2
+dest = j3
+max_speed = 20
+length = 100
 type = dirt
-state = 
 
 [road_report]
 id = r3
 time = 3
-state = (v2,33),(v3,33)
+state = (v2,33),(v3,0)
 
 [road_report]
 id = r4
@@ -214,12 +227,15 @@ location = (r3,33)
 [vehicle_report]
 id = v3
 time = 3
+itinerary = [j4, j2, j5]
+max_speed = 3
+resistance = 3
+fault_probability = 0.2
+max_fault_duration = 3
+seed = 314159265
 type = car
-speed = 11
-kilometrage = 33
-faulty = 0
-location = (r3,33)
 
+# ******* step 3 *******
 [junction_report]
 id = j1
 time = 4
@@ -233,8 +249,7 @@ queues = (r1,red,[]),(r3,green,[])
 [junction_report]
 id = j3
 time = 4
-queues = (r2,green:1,[])
-type = mc
+queues = (r2,green,[])
 
 [junction_report]
 id = j4
@@ -244,7 +259,7 @@ queues =
 [junction_report]
 id = j5
 time = 4
-type = rr
+queues = (r4,green,[])
 
 [road_report]
 id = r1
@@ -255,13 +270,16 @@ state = (v1,40)
 [road_report]
 id = r2
 time = 4
+src = j2
+dest = j3
+max_speed = 20
+length = 100
 type = dirt
-state = 
 
 [road_report]
 id = r3
 time = 4
-state = (v2,44),(v3,33)
+state = (v2,44),(v3,0)
 
 [road_report]
 id = r4
@@ -288,12 +306,15 @@ location = (r3,44)
 [vehicle_report]
 id = v3
 time = 4
+itinerary = [j4, j2, j5]
+max_speed = 3
+resistance = 3
+fault_probability = 0.2
+max_fault_duration = 3
+seed = 314159265
 type = car
-speed = 0
-kilometrage = 33
-faulty = 2
-location = (r3,33)
 
+# ******* step 4 *******
 [junction_report]
 id = j1
 time = 5
@@ -307,8 +328,7 @@ queues = (r1,green,[]),(r3,red,[])
 [junction_report]
 id = j3
 time = 5
-queues = (r2,green:1,[])
-type = mc
+queues = (r2,green,[])
 
 [junction_report]
 id = j4
@@ -318,7 +338,7 @@ queues =
 [junction_report]
 id = j5
 time = 5
-type = rr
+queues = (r4,green,[])
 
 [road_report]
 id = r1
@@ -329,13 +349,16 @@ state = (v1,40)
 [road_report]
 id = r2
 time = 5
+src = j2
+dest = j3
+max_speed = 20
+length = 100
 type = dirt
-state = 
 
 [road_report]
 id = r3
 time = 5
-state = (v2,55),(v3,33)
+state = (v2,55),(v3,0)
 
 [road_report]
 id = r4
@@ -362,12 +385,15 @@ location = (r3,55)
 [vehicle_report]
 id = v3
 time = 5
+itinerary = [j4, j2, j5]
+max_speed = 3
+resistance = 3
+fault_probability = 0.2
+max_fault_duration = 3
+seed = 314159265
 type = car
-speed = 0
-kilometrage = 33
-faulty = 1
-location = (r3,33)
 
+# ******* step 5 *******
 [junction_report]
 id = j1
 time = 6
@@ -381,8 +407,7 @@ queues = (r1,red,[]),(r3,green,[])
 [junction_report]
 id = j3
 time = 6
-queues = (r2,green:1,[])
-type = mc
+queues = (r2,green,[])
 
 [junction_report]
 id = j4
@@ -392,7 +417,7 @@ queues =
 [junction_report]
 id = j5
 time = 6
-type = rr
+queues = (r4,green,[])
 
 [road_report]
 id = r1
@@ -403,13 +428,16 @@ state = (v1,60)
 [road_report]
 id = r2
 time = 6
+src = j2
+dest = j3
+max_speed = 20
+length = 100
 type = dirt
-state = 
 
 [road_report]
 id = r3
 time = 6
-state = (v2,66),(v3,33)
+state = (v2,66),(v3,0)
 
 [road_report]
 id = r4
@@ -436,12 +464,15 @@ location = (r3,66)
 [vehicle_report]
 id = v3
 time = 6
+itinerary = [j4, j2, j5]
+max_speed = 3
+resistance = 3
+fault_probability = 0.2
+max_fault_duration = 3
+seed = 314159265
 type = car
-speed = 0
-kilometrage = 33
-faulty = 0
-location = (r3,33)
 
+# ******* step 6 *******
 [junction_report]
 id = j1
 time = 7
@@ -455,8 +486,7 @@ queues = (r1,green,[]),(r3,red,[])
 [junction_report]
 id = j3
 time = 7
-queues = (r2,green:1,[])
-type = mc
+queues = (r2,green,[])
 
 [junction_report]
 id = j4
@@ -466,7 +496,7 @@ queues =
 [junction_report]
 id = j5
 time = 7
-type = rr
+queues = (r4,green,[])
 
 [road_report]
 id = r1
@@ -477,13 +507,16 @@ state = (v1,80)
 [road_report]
 id = r2
 time = 7
+src = j2
+dest = j3
+max_speed = 20
+length = 100
 type = dirt
-state = 
 
 [road_report]
 id = r3
 time = 7
-state = (v2,77),(v3,44)
+state = (v2,77),(v3,0)
 
 [road_report]
 id = r4
@@ -510,12 +543,15 @@ location = (r3,77)
 [vehicle_report]
 id = v3
 time = 7
+itinerary = [j4, j2, j5]
+max_speed = 3
+resistance = 3
+fault_probability = 0.2
+max_fault_duration = 3
+seed = 314159265
 type = car
-speed = 11
-kilometrage = 44
-faulty = 0
-location = (r3,44)
 
+# ******* step 7 *******
 [junction_report]
 id = j1
 time = 8
@@ -529,8 +565,7 @@ queues = (r1,red,[]),(r3,green,[])
 [junction_report]
 id = j3
 time = 8
-queues = (r2,green:1,[])
-type = mc
+queues = (r2,green,[])
 
 [junction_report]
 id = j4
@@ -540,7 +575,7 @@ queues =
 [junction_report]
 id = j5
 time = 8
-type = rr
+queues = (r4,green,[])
 
 [road_report]
 id = r1
@@ -551,13 +586,16 @@ state =
 [road_report]
 id = r2
 time = 8
+src = j2
+dest = j3
+max_speed = 20
+length = 100
 type = dirt
-state = (v1,0)
 
 [road_report]
 id = r3
 time = 8
-state = (v2,88),(v3,55)
+state = (v2,88),(v3,0)
 
 [road_report]
 id = r4
@@ -584,12 +622,15 @@ location = (r3,88)
 [vehicle_report]
 id = v3
 time = 8
+itinerary = [j4, j2, j5]
+max_speed = 3
+resistance = 3
+fault_probability = 0.2
+max_fault_duration = 3
+seed = 314159265
 type = car
-speed = 11
-kilometrage = 55
-faulty = 0
-location = (r3,55)
 
+# ******* step 8 *******
 [junction_report]
 id = j1
 time = 9
@@ -603,8 +644,7 @@ queues = (r1,green,[]),(r3,red,[])
 [junction_report]
 id = j3
 time = 9
-queues = (r2,green:1,[])
-type = mc
+queues = (r2,green,[])
 
 [junction_report]
 id = j4
@@ -614,7 +654,7 @@ queues =
 [junction_report]
 id = j5
 time = 9
-type = rr
+queues = (r4,green,[])
 
 [road_report]
 id = r1
@@ -625,13 +665,16 @@ state =
 [road_report]
 id = r2
 time = 9
+src = j2
+dest = j3
+max_speed = 20
+length = 100
 type = dirt
-state = (v1,20)
 
 [road_report]
 id = r3
 time = 9
-state = (v2,99),(v3,66)
+state = (v2,99),(v3,0)
 
 [road_report]
 id = r4
@@ -658,12 +701,15 @@ location = (r3,99)
 [vehicle_report]
 id = v3
 time = 9
+itinerary = [j4, j2, j5]
+max_speed = 3
+resistance = 3
+fault_probability = 0.2
+max_fault_duration = 3
+seed = 314159265
 type = car
-speed = 11
-kilometrage = 66
-faulty = 0
-location = (r3,66)
 
+# ******* step 9 *******
 [junction_report]
 id = j1
 time = 10
@@ -677,8 +723,7 @@ queues = (r1,red,[]),(r3,green,[v2])
 [junction_report]
 id = j3
 time = 10
-queues = (r2,green:1,[])
-type = mc
+queues = (r2,green,[])
 
 [junction_report]
 id = j4
@@ -688,7 +733,7 @@ queues =
 [junction_report]
 id = j5
 time = 10
-type = rr
+queues = (r4,green,[])
 
 [road_report]
 id = r1
@@ -699,13 +744,16 @@ state =
 [road_report]
 id = r2
 time = 10
+src = j2
+dest = j3
+max_speed = 20
+length = 100
 type = dirt
-state = (v1,40)
 
 [road_report]
 id = r3
 time = 10
-state = (v2,100),(v3,77)
+state = (v2,100),(v3,0)
 
 [road_report]
 id = r4
@@ -732,9 +780,11 @@ location = (r3,100)
 [vehicle_report]
 id = v3
 time = 10
+itinerary = [j4, j2, j5]
+max_speed = 3
+resistance = 3
+fault_probability = 0.2
+max_fault_duration = 3
+seed = 314159265
 type = car
-speed = 11
-kilometrage = 77
-faulty = 0
-location = (r3,77)
 

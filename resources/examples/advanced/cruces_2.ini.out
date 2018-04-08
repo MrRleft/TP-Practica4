@@ -1,0 +1,2030 @@
+[junction_report]
+id = j1
+time = 1
+queues = 
+
+[junction_report]
+id = j2
+time = 1
+queues = (d2,green,[])
+
+[junction_report]
+id = j3
+time = 1
+queues = (r2,green,[])
+
+[junction_report]
+id = j4
+time = 1
+queues = (r1,green:1,[]),(d1,red,[])
+type = mc
+
+[junction_report]
+id = j5
+time = 1
+type = rr
+
+[junction_report]
+id = j6
+time = 1
+type = rr
+
+[junction_report]
+id = j7
+time = 1
+queues = (l2,green:1,[]),(d4,red,[])
+type = mc
+
+[road_report]
+id = r1
+time = 1
+state = (v3,11),(c3,11)
+
+[road_report]
+id = r2
+time = 1
+state = (b1,3),(b2,3),(c1,3),(c4,3)
+
+[road_report]
+id = r3
+time = 1
+state = 
+
+[road_report]
+id = r4
+time = 1
+state = 
+
+[road_report]
+id = l1
+time = 1
+type = lanes
+state = (b4,11)
+
+[road_report]
+id = l2
+time = 1
+type = lanes
+state = 
+
+[road_report]
+id = l3
+time = 1
+type = lanes
+state = 
+
+[road_report]
+id = d1
+time = 1
+type = dirt
+state = (v4,10),(c2,10),(b3,9),(v2,7)
+
+[road_report]
+id = d2
+time = 1
+type = dirt
+state = (v1,15)
+
+[road_report]
+id = d3
+time = 1
+type = dirt
+state = 
+
+[road_report]
+id = d4
+time = 1
+type = dirt
+state = 
+
+[vehicle_report]
+id = v1
+time = 1
+speed = 15
+kilometrage = 15
+faulty = 0
+location = (d2,15)
+
+[vehicle_report]
+id = v2
+time = 1
+speed = 7
+kilometrage = 7
+faulty = 0
+location = (d1,7)
+
+[vehicle_report]
+id = v3
+time = 1
+speed = 11
+kilometrage = 11
+faulty = 0
+location = (r1,11)
+
+[vehicle_report]
+id = v4
+time = 1
+speed = 10
+kilometrage = 10
+faulty = 0
+location = (d1,10)
+
+[vehicle_report]
+id = b1
+time = 1
+type = bike
+speed = 3
+kilometrage = 3
+faulty = 0
+location = (r2,3)
+
+[vehicle_report]
+id = b2
+time = 1
+type = bike
+speed = 3
+kilometrage = 3
+faulty = 0
+location = (r2,3)
+
+[vehicle_report]
+id = b3
+time = 1
+type = bike
+speed = 9
+kilometrage = 9
+faulty = 0
+location = (d1,9)
+
+[vehicle_report]
+id = b4
+time = 1
+type = bike
+speed = 11
+kilometrage = 11
+faulty = 0
+location = (l1,11)
+
+[vehicle_report]
+id = c1
+time = 1
+type = car
+speed = 3
+kilometrage = 3
+faulty = 0
+location = (r2,3)
+
+[vehicle_report]
+id = c2
+time = 1
+type = car
+speed = 10
+kilometrage = 10
+faulty = 0
+location = (d1,10)
+
+[vehicle_report]
+id = c3
+time = 1
+type = car
+speed = 11
+kilometrage = 11
+faulty = 0
+location = (r1,11)
+
+[vehicle_report]
+id = c4
+time = 1
+type = car
+speed = 3
+kilometrage = 3
+faulty = 0
+location = (r2,3)
+
+[junction_report]
+id = j1
+time = 2
+queues = 
+
+[junction_report]
+id = j2
+time = 2
+queues = (d2,green,[])
+
+[junction_report]
+id = j3
+time = 2
+queues = (r2,green,[])
+
+[junction_report]
+id = j4
+time = 2
+queues = (r1,red,[]),(d1,green:1,[v4,c2])
+type = mc
+
+[junction_report]
+id = j5
+time = 2
+type = rr
+
+[junction_report]
+id = j6
+time = 2
+type = rr
+
+[junction_report]
+id = j7
+time = 2
+queues = (l2,green:1,[]),(d4,red,[])
+type = mc
+
+[road_report]
+id = r1
+time = 2
+state = (v3,22),(c3,22)
+
+[road_report]
+id = r2
+time = 2
+state = (v1,0),(b1,6),(b2,6),(c1,6),(c4,6)
+
+[road_report]
+id = r3
+time = 2
+state = 
+
+[road_report]
+id = r4
+time = 2
+state = 
+
+[road_report]
+id = l1
+time = 2
+type = lanes
+state = (b4,22)
+
+[road_report]
+id = l2
+time = 2
+type = lanes
+state = 
+
+[road_report]
+id = l3
+time = 2
+type = lanes
+state = 
+
+[road_report]
+id = d1
+time = 2
+type = dirt
+state = (v4,20),(c2,20),(b3,18),(v2,14)
+
+[road_report]
+id = d2
+time = 2
+type = dirt
+state = 
+
+[road_report]
+id = d3
+time = 2
+type = dirt
+state = 
+
+[road_report]
+id = d4
+time = 2
+type = dirt
+state = 
+
+[vehicle_report]
+id = v1
+time = 2
+speed = 0
+kilometrage = 25
+faulty = 0
+location = (r2,0)
+
+[vehicle_report]
+id = v2
+time = 2
+speed = 7
+kilometrage = 14
+faulty = 0
+location = (d1,14)
+
+[vehicle_report]
+id = v3
+time = 2
+speed = 11
+kilometrage = 22
+faulty = 0
+location = (r1,22)
+
+[vehicle_report]
+id = v4
+time = 2
+speed = 0
+kilometrage = 20
+faulty = 0
+location = (d1,20)
+
+[vehicle_report]
+id = b1
+time = 2
+type = bike
+speed = 3
+kilometrage = 6
+faulty = 0
+location = (r2,6)
+
+[vehicle_report]
+id = b2
+time = 2
+type = bike
+speed = 3
+kilometrage = 6
+faulty = 0
+location = (r2,6)
+
+[vehicle_report]
+id = b3
+time = 2
+type = bike
+speed = 9
+kilometrage = 18
+faulty = 0
+location = (d1,18)
+
+[vehicle_report]
+id = b4
+time = 2
+type = bike
+speed = 11
+kilometrage = 22
+faulty = 0
+location = (l1,22)
+
+[vehicle_report]
+id = c1
+time = 2
+type = car
+speed = 3
+kilometrage = 6
+faulty = 0
+location = (r2,6)
+
+[vehicle_report]
+id = c2
+time = 2
+type = car
+speed = 0
+kilometrage = 20
+faulty = 0
+location = (d1,20)
+
+[vehicle_report]
+id = c3
+time = 2
+type = car
+speed = 11
+kilometrage = 22
+faulty = 0
+location = (r1,22)
+
+[vehicle_report]
+id = c4
+time = 2
+type = car
+speed = 3
+kilometrage = 6
+faulty = 0
+location = (r2,6)
+
+[junction_report]
+id = j1
+time = 3
+queues = 
+
+[junction_report]
+id = j2
+time = 3
+queues = (d2,green,[])
+
+[junction_report]
+id = j3
+time = 3
+queues = (r2,green,[])
+
+[junction_report]
+id = j4
+time = 3
+queues = (r1,green:1,[]),(d1,red,[v4,c2,b3,v2])
+type = mc
+
+[junction_report]
+id = j5
+time = 3
+type = rr
+
+[junction_report]
+id = j6
+time = 3
+type = rr
+
+[junction_report]
+id = j7
+time = 3
+queues = (l2,green:1,[]),(d4,red,[])
+type = mc
+
+[road_report]
+id = r1
+time = 3
+state = (v3,33),(c3,33)
+
+[road_report]
+id = r2
+time = 3
+state = (b1,9),(b2,9),(c1,9),(c4,9),(v1,3)
+
+[road_report]
+id = r3
+time = 3
+state = (v4,0)
+
+[road_report]
+id = r4
+time = 3
+state = 
+
+[road_report]
+id = l1
+time = 3
+type = lanes
+state = (b4,33)
+
+[road_report]
+id = l2
+time = 3
+type = lanes
+state = 
+
+[road_report]
+id = l3
+time = 3
+type = lanes
+state = 
+
+[road_report]
+id = d1
+time = 3
+type = dirt
+state = (c2,20),(b3,20),(v2,20)
+
+[road_report]
+id = d2
+time = 3
+type = dirt
+state = 
+
+[road_report]
+id = d3
+time = 3
+type = dirt
+state = 
+
+[road_report]
+id = d4
+time = 3
+type = dirt
+state = 
+
+[vehicle_report]
+id = v1
+time = 3
+speed = 3
+kilometrage = 28
+faulty = 0
+location = (r2,3)
+
+[vehicle_report]
+id = v2
+time = 3
+speed = 0
+kilometrage = 20
+faulty = 0
+location = (d1,20)
+
+[vehicle_report]
+id = v3
+time = 3
+speed = 11
+kilometrage = 33
+faulty = 0
+location = (r1,33)
+
+[vehicle_report]
+id = v4
+time = 3
+speed = 0
+kilometrage = 20
+faulty = 0
+location = (r3,0)
+
+[vehicle_report]
+id = b1
+time = 3
+type = bike
+speed = 3
+kilometrage = 9
+faulty = 0
+location = (r2,9)
+
+[vehicle_report]
+id = b2
+time = 3
+type = bike
+speed = 3
+kilometrage = 9
+faulty = 0
+location = (r2,9)
+
+[vehicle_report]
+id = b3
+time = 3
+type = bike
+speed = 0
+kilometrage = 20
+faulty = 0
+location = (d1,20)
+
+[vehicle_report]
+id = b4
+time = 3
+type = bike
+speed = 11
+kilometrage = 33
+faulty = 0
+location = (l1,33)
+
+[vehicle_report]
+id = c1
+time = 3
+type = car
+speed = 3
+kilometrage = 9
+faulty = 0
+location = (r2,9)
+
+[vehicle_report]
+id = c2
+time = 3
+type = car
+speed = 10
+kilometrage = 20
+faulty = 0
+location = (d1,20)
+
+[vehicle_report]
+id = c3
+time = 3
+type = car
+speed = 11
+kilometrage = 33
+faulty = 0
+location = (r1,33)
+
+[vehicle_report]
+id = c4
+time = 3
+type = car
+speed = 3
+kilometrage = 9
+faulty = 0
+location = (r2,9)
+
+[junction_report]
+id = j1
+time = 4
+queues = 
+
+[junction_report]
+id = j2
+time = 4
+queues = (d2,green,[])
+
+[junction_report]
+id = j3
+time = 4
+queues = (r2,green,[])
+
+[junction_report]
+id = j4
+time = 4
+queues = (r1,red,[]),(d1,green:2,[v4,c2,b3,v2])
+type = mc
+
+[junction_report]
+id = j5
+time = 4
+type = rr
+
+[junction_report]
+id = j6
+time = 4
+type = rr
+
+[junction_report]
+id = j7
+time = 4
+queues = (l2,green:1,[]),(d4,red,[])
+type = mc
+
+[road_report]
+id = r1
+time = 4
+state = (v3,44),(c3,44)
+
+[road_report]
+id = r2
+time = 4
+state = (b1,12),(b2,12),(c1,12),(c4,12),(v1,3)
+
+[road_report]
+id = r3
+time = 4
+state = (v4,15)
+
+[road_report]
+id = r4
+time = 4
+state = 
+
+[road_report]
+id = l1
+time = 4
+type = lanes
+state = (b4,44)
+
+[road_report]
+id = l2
+time = 4
+type = lanes
+state = 
+
+[road_report]
+id = l3
+time = 4
+type = lanes
+state = 
+
+[road_report]
+id = d1
+time = 4
+type = dirt
+state = (c2,20),(b3,20),(v2,20)
+
+[road_report]
+id = d2
+time = 4
+type = dirt
+state = 
+
+[road_report]
+id = d3
+time = 4
+type = dirt
+state = 
+
+[road_report]
+id = d4
+time = 4
+type = dirt
+state = 
+
+[vehicle_report]
+id = v1
+time = 4
+speed = 0
+kilometrage = 28
+faulty = 1
+location = (r2,3)
+
+[vehicle_report]
+id = v2
+time = 4
+speed = 0
+kilometrage = 20
+faulty = 1
+location = (d1,20)
+
+[vehicle_report]
+id = v3
+time = 4
+speed = 11
+kilometrage = 44
+faulty = 0
+location = (r1,44)
+
+[vehicle_report]
+id = v4
+time = 4
+speed = 15
+kilometrage = 35
+faulty = 0
+location = (r3,15)
+
+[vehicle_report]
+id = b1
+time = 4
+type = bike
+speed = 3
+kilometrage = 12
+faulty = 0
+location = (r2,12)
+
+[vehicle_report]
+id = b2
+time = 4
+type = bike
+speed = 3
+kilometrage = 12
+faulty = 0
+location = (r2,12)
+
+[vehicle_report]
+id = b3
+time = 4
+type = bike
+speed = 9
+kilometrage = 20
+faulty = 0
+location = (d1,20)
+
+[vehicle_report]
+id = b4
+time = 4
+type = bike
+speed = 11
+kilometrage = 44
+faulty = 0
+location = (l1,44)
+
+[vehicle_report]
+id = c1
+time = 4
+type = car
+speed = 3
+kilometrage = 12
+faulty = 0
+location = (r2,12)
+
+[vehicle_report]
+id = c2
+time = 4
+type = car
+speed = 10
+kilometrage = 20
+faulty = 0
+location = (d1,20)
+
+[vehicle_report]
+id = c3
+time = 4
+type = car
+speed = 11
+kilometrage = 44
+faulty = 0
+location = (r1,44)
+
+[vehicle_report]
+id = c4
+time = 4
+type = car
+speed = 3
+kilometrage = 12
+faulty = 0
+location = (r2,12)
+
+[junction_report]
+id = j1
+time = 5
+queues = 
+
+[junction_report]
+id = j2
+time = 5
+queues = (d2,green,[])
+
+[junction_report]
+id = j3
+time = 5
+queues = (r2,green,[])
+
+[junction_report]
+id = j4
+time = 5
+queues = (r1,red,[]),(d1,green:1,[v4,c2,b3,v2])
+type = mc
+
+[junction_report]
+id = j5
+time = 5
+type = rr
+
+[junction_report]
+id = j6
+time = 5
+type = rr
+
+[junction_report]
+id = j7
+time = 5
+queues = (l2,green:1,[]),(d4,red,[])
+type = mc
+
+[road_report]
+id = r1
+time = 5
+state = (v3,55),(c3,44)
+
+[road_report]
+id = r2
+time = 5
+state = (b1,15),(b2,15),(c1,15),(c4,15),(v1,3)
+
+[road_report]
+id = r3
+time = 5
+state = 
+
+[road_report]
+id = r4
+time = 5
+state = 
+
+[road_report]
+id = l1
+time = 5
+type = lanes
+state = (b4,55)
+
+[road_report]
+id = l2
+time = 5
+type = lanes
+state = 
+
+[road_report]
+id = l3
+time = 5
+type = lanes
+state = 
+
+[road_report]
+id = d1
+time = 5
+type = dirt
+state = (c2,20),(b3,20),(v2,20)
+
+[road_report]
+id = d2
+time = 5
+type = dirt
+state = 
+
+[road_report]
+id = d3
+time = 5
+type = dirt
+state = 
+
+[road_report]
+id = d4
+time = 5
+type = dirt
+state = 
+
+[vehicle_report]
+id = v1
+time = 5
+speed = 0
+kilometrage = 28
+faulty = 0
+location = (r2,3)
+
+[vehicle_report]
+id = v2
+time = 5
+speed = 0
+kilometrage = 20
+faulty = 0
+location = (d1,20)
+
+[vehicle_report]
+id = v3
+time = 5
+speed = 11
+kilometrage = 55
+faulty = 0
+location = (r1,55)
+
+[vehicle_report]
+id = v4
+time = 5
+speed = 0
+kilometrage = 50
+faulty = 0
+location = arrived
+
+[vehicle_report]
+id = b1
+time = 5
+type = bike
+speed = 3
+kilometrage = 15
+faulty = 0
+location = (r2,15)
+
+[vehicle_report]
+id = b2
+time = 5
+type = bike
+speed = 3
+kilometrage = 15
+faulty = 0
+location = (r2,15)
+
+[vehicle_report]
+id = b3
+time = 5
+type = bike
+speed = 9
+kilometrage = 20
+faulty = 0
+location = (d1,20)
+
+[vehicle_report]
+id = b4
+time = 5
+type = bike
+speed = 11
+kilometrage = 55
+faulty = 0
+location = (l1,55)
+
+[vehicle_report]
+id = c1
+time = 5
+type = car
+speed = 3
+kilometrage = 15
+faulty = 0
+location = (r2,15)
+
+[vehicle_report]
+id = c2
+time = 5
+type = car
+speed = 10
+kilometrage = 20
+faulty = 0
+location = (d1,20)
+
+[vehicle_report]
+id = c3
+time = 5
+type = car
+speed = 0
+kilometrage = 44
+faulty = 0
+location = (r1,44)
+
+[vehicle_report]
+id = c4
+time = 5
+type = car
+speed = 3
+kilometrage = 15
+faulty = 0
+location = (r2,15)
+
+[junction_report]
+id = j1
+time = 6
+queues = 
+
+[junction_report]
+id = j2
+time = 6
+queues = (d2,green,[])
+
+[junction_report]
+id = j3
+time = 6
+queues = (r2,green,[])
+
+[junction_report]
+id = j4
+time = 6
+queues = (r1,green:1,[]),(d1,red,[v4,c2,b3,v2])
+type = mc
+
+[junction_report]
+id = j5
+time = 6
+type = rr
+
+[junction_report]
+id = j6
+time = 6
+type = rr
+
+[junction_report]
+id = j7
+time = 6
+queues = (l2,green:1,[]),(d4,red,[])
+type = mc
+
+[road_report]
+id = r1
+time = 6
+state = (v3,66),(c3,44)
+
+[road_report]
+id = r2
+time = 6
+state = (b2,16),(c4,16),(b1,15),(c1,15),(v1,4)
+
+[road_report]
+id = r3
+time = 6
+state = 
+
+[road_report]
+id = r4
+time = 6
+state = 
+
+[road_report]
+id = l1
+time = 6
+type = lanes
+state = (b4,66)
+
+[road_report]
+id = l2
+time = 6
+type = lanes
+state = 
+
+[road_report]
+id = l3
+time = 6
+type = lanes
+state = 
+
+[road_report]
+id = d1
+time = 6
+type = dirt
+state = (c2,20),(b3,20),(v2,20)
+
+[road_report]
+id = d2
+time = 6
+type = dirt
+state = 
+
+[road_report]
+id = d3
+time = 6
+type = dirt
+state = 
+
+[road_report]
+id = d4
+time = 6
+type = dirt
+state = 
+
+[vehicle_report]
+id = v1
+time = 6
+speed = 1
+kilometrage = 29
+faulty = 0
+location = (r2,4)
+
+[vehicle_report]
+id = v2
+time = 6
+speed = 5
+kilometrage = 20
+faulty = 0
+location = (d1,20)
+
+[vehicle_report]
+id = v3
+time = 6
+speed = 11
+kilometrage = 66
+faulty = 0
+location = (r1,66)
+
+[vehicle_report]
+id = v4
+time = 6
+speed = 0
+kilometrage = 50
+faulty = 0
+location = arrived
+
+[vehicle_report]
+id = b1
+time = 6
+type = bike
+speed = 0
+kilometrage = 15
+faulty = 1
+location = (r2,15)
+
+[vehicle_report]
+id = b2
+time = 6
+type = bike
+speed = 1
+kilometrage = 16
+faulty = 0
+location = (r2,16)
+
+[vehicle_report]
+id = b3
+time = 6
+type = bike
+speed = 0
+kilometrage = 20
+faulty = 1
+location = (d1,20)
+
+[vehicle_report]
+id = b4
+time = 6
+type = bike
+speed = 11
+kilometrage = 66
+faulty = 0
+location = (l1,66)
+
+[vehicle_report]
+id = c1
+time = 6
+type = car
+speed = 0
+kilometrage = 15
+faulty = 1
+location = (r2,15)
+
+[vehicle_report]
+id = c2
+time = 6
+type = car
+speed = 10
+kilometrage = 20
+faulty = 0
+location = (d1,20)
+
+[vehicle_report]
+id = c3
+time = 6
+type = car
+speed = 0
+kilometrage = 44
+faulty = 1
+location = (r1,44)
+
+[vehicle_report]
+id = c4
+time = 6
+type = car
+speed = 1
+kilometrage = 16
+faulty = 0
+location = (r2,16)
+
+[junction_report]
+id = j1
+time = 7
+queues = 
+
+[junction_report]
+id = j2
+time = 7
+queues = (d2,green,[])
+
+[junction_report]
+id = j3
+time = 7
+queues = (r2,green,[])
+
+[junction_report]
+id = j4
+time = 7
+queues = (r1,red,[]),(d1,green:2,[v4,c2,b3,v2])
+type = mc
+
+[junction_report]
+id = j5
+time = 7
+type = rr
+
+[junction_report]
+id = j6
+time = 7
+type = rr
+
+[junction_report]
+id = j7
+time = 7
+queues = (l2,green:1,[]),(d4,red,[])
+type = mc
+
+[road_report]
+id = r1
+time = 7
+state = (v3,77),(c3,44)
+
+[road_report]
+id = r2
+time = 7
+state = (b2,19),(c4,19),(b1,15),(c1,15),(v1,5)
+
+[road_report]
+id = r3
+time = 7
+state = 
+
+[road_report]
+id = r4
+time = 7
+state = 
+
+[road_report]
+id = l1
+time = 7
+type = lanes
+state = (b4,77)
+
+[road_report]
+id = l2
+time = 7
+type = lanes
+state = 
+
+[road_report]
+id = l3
+time = 7
+type = lanes
+state = 
+
+[road_report]
+id = d1
+time = 7
+type = dirt
+state = (c2,20),(b3,20),(v2,20)
+
+[road_report]
+id = d2
+time = 7
+type = dirt
+state = 
+
+[road_report]
+id = d3
+time = 7
+type = dirt
+state = 
+
+[road_report]
+id = d4
+time = 7
+type = dirt
+state = 
+
+[vehicle_report]
+id = v1
+time = 7
+speed = 1
+kilometrage = 30
+faulty = 0
+location = (r2,5)
+
+[vehicle_report]
+id = v2
+time = 7
+speed = 5
+kilometrage = 20
+faulty = 0
+location = (d1,20)
+
+[vehicle_report]
+id = v3
+time = 7
+speed = 11
+kilometrage = 77
+faulty = 0
+location = (r1,77)
+
+[vehicle_report]
+id = v4
+time = 7
+speed = 0
+kilometrage = 50
+faulty = 0
+location = arrived
+
+[vehicle_report]
+id = b1
+time = 7
+type = bike
+speed = 0
+kilometrage = 15
+faulty = 0
+location = (r2,15)
+
+[vehicle_report]
+id = b2
+time = 7
+type = bike
+speed = 3
+kilometrage = 19
+faulty = 0
+location = (r2,19)
+
+[vehicle_report]
+id = b3
+time = 7
+type = bike
+speed = 0
+kilometrage = 20
+faulty = 0
+location = (d1,20)
+
+[vehicle_report]
+id = b4
+time = 7
+type = bike
+speed = 11
+kilometrage = 77
+faulty = 0
+location = (l1,77)
+
+[vehicle_report]
+id = c1
+time = 7
+type = car
+speed = 0
+kilometrage = 15
+faulty = 0
+location = (r2,15)
+
+[vehicle_report]
+id = c2
+time = 7
+type = car
+speed = 10
+kilometrage = 20
+faulty = 0
+location = (d1,20)
+
+[vehicle_report]
+id = c3
+time = 7
+type = car
+speed = 0
+kilometrage = 44
+faulty = 0
+location = (r1,44)
+
+[vehicle_report]
+id = c4
+time = 7
+type = car
+speed = 3
+kilometrage = 19
+faulty = 0
+location = (r2,19)
+
+[junction_report]
+id = j1
+time = 8
+queues = 
+
+[junction_report]
+id = j2
+time = 8
+queues = (d2,green,[])
+
+[junction_report]
+id = j3
+time = 8
+queues = (r2,green,[])
+
+[junction_report]
+id = j4
+time = 8
+queues = (r1,red,[]),(d1,green:1,[v4,c2,b3,v2])
+type = mc
+
+[junction_report]
+id = j5
+time = 8
+type = rr
+
+[junction_report]
+id = j6
+time = 8
+type = rr
+
+[junction_report]
+id = j7
+time = 8
+queues = (l2,green:1,[]),(d4,red,[])
+type = mc
+
+[road_report]
+id = r1
+time = 8
+state = (v3,88),(c3,44)
+
+[road_report]
+id = r2
+time = 8
+state = (b2,22),(c4,22),(b1,18),(c1,15),(v1,5)
+
+[road_report]
+id = r3
+time = 8
+state = 
+
+[road_report]
+id = r4
+time = 8
+state = 
+
+[road_report]
+id = l1
+time = 8
+type = lanes
+state = (b4,88)
+
+[road_report]
+id = l2
+time = 8
+type = lanes
+state = 
+
+[road_report]
+id = l3
+time = 8
+type = lanes
+state = 
+
+[road_report]
+id = d1
+time = 8
+type = dirt
+state = (c2,20),(b3,20),(v2,20)
+
+[road_report]
+id = d2
+time = 8
+type = dirt
+state = 
+
+[road_report]
+id = d3
+time = 8
+type = dirt
+state = 
+
+[road_report]
+id = d4
+time = 8
+type = dirt
+state = 
+
+[vehicle_report]
+id = v1
+time = 8
+speed = 0
+kilometrage = 30
+faulty = 2
+location = (r2,5)
+
+[vehicle_report]
+id = v2
+time = 8
+speed = 7
+kilometrage = 20
+faulty = 0
+location = (d1,20)
+
+[vehicle_report]
+id = v3
+time = 8
+speed = 11
+kilometrage = 88
+faulty = 0
+location = (r1,88)
+
+[vehicle_report]
+id = v4
+time = 8
+speed = 0
+kilometrage = 50
+faulty = 3
+location = arrived
+
+[vehicle_report]
+id = b1
+time = 8
+type = bike
+speed = 3
+kilometrage = 18
+faulty = 0
+location = (r2,18)
+
+[vehicle_report]
+id = b2
+time = 8
+type = bike
+speed = 3
+kilometrage = 22
+faulty = 0
+location = (r2,22)
+
+[vehicle_report]
+id = b3
+time = 8
+type = bike
+speed = 9
+kilometrage = 20
+faulty = 0
+location = (d1,20)
+
+[vehicle_report]
+id = b4
+time = 8
+type = bike
+speed = 11
+kilometrage = 88
+faulty = 0
+location = (l1,88)
+
+[vehicle_report]
+id = c1
+time = 8
+type = car
+speed = 0
+kilometrage = 15
+faulty = 2
+location = (r2,15)
+
+[vehicle_report]
+id = c2
+time = 8
+type = car
+speed = 10
+kilometrage = 20
+faulty = 0
+location = (d1,20)
+
+[vehicle_report]
+id = c3
+time = 8
+type = car
+speed = 0
+kilometrage = 44
+faulty = 0
+location = (r1,44)
+
+[vehicle_report]
+id = c4
+time = 8
+type = car
+speed = 3
+kilometrage = 22
+faulty = 0
+location = (r2,22)
+
+[junction_report]
+id = j1
+time = 9
+queues = 
+
+[junction_report]
+id = j2
+time = 9
+queues = (d2,green,[])
+
+[junction_report]
+id = j3
+time = 9
+queues = (r2,green,[])
+
+[junction_report]
+id = j4
+time = 9
+queues = (r1,green:1,[]),(d1,red,[v4,c2,b3,v2])
+type = mc
+
+[junction_report]
+id = j5
+time = 9
+type = rr
+
+[junction_report]
+id = j6
+time = 9
+type = rr
+
+[junction_report]
+id = j7
+time = 9
+queues = (l2,green:1,[]),(d4,red,[])
+type = mc
+
+[road_report]
+id = r1
+time = 9
+state = (v3,99),(c3,44)
+
+[road_report]
+id = r2
+time = 9
+state = (b2,25),(c4,25),(b1,21),(c1,15),(v1,5)
+
+[road_report]
+id = r3
+time = 9
+state = 
+
+[road_report]
+id = r4
+time = 9
+state = 
+
+[road_report]
+id = l1
+time = 9
+type = lanes
+state = (b4,95)
+
+[road_report]
+id = l2
+time = 9
+type = lanes
+state = 
+
+[road_report]
+id = l3
+time = 9
+type = lanes
+state = 
+
+[road_report]
+id = d1
+time = 9
+type = dirt
+state = (c2,20),(b3,20),(v2,20)
+
+[road_report]
+id = d2
+time = 9
+type = dirt
+state = 
+
+[road_report]
+id = d3
+time = 9
+type = dirt
+state = 
+
+[road_report]
+id = d4
+time = 9
+type = dirt
+state = 
+
+[vehicle_report]
+id = v1
+time = 9
+speed = 0
+kilometrage = 30
+faulty = 1
+location = (r2,5)
+
+[vehicle_report]
+id = v2
+time = 9
+speed = 7
+kilometrage = 20
+faulty = 0
+location = (d1,20)
+
+[vehicle_report]
+id = v3
+time = 9
+speed = 11
+kilometrage = 99
+faulty = 0
+location = (r1,99)
+
+[vehicle_report]
+id = v4
+time = 9
+speed = 0
+kilometrage = 50
+faulty = 3
+location = arrived
+
+[vehicle_report]
+id = b1
+time = 9
+type = bike
+speed = 3
+kilometrage = 21
+faulty = 0
+location = (r2,21)
+
+[vehicle_report]
+id = b2
+time = 9
+type = bike
+speed = 3
+kilometrage = 25
+faulty = 0
+location = (r2,25)
+
+[vehicle_report]
+id = b3
+time = 9
+type = bike
+speed = 9
+kilometrage = 20
+faulty = 0
+location = (d1,20)
+
+[vehicle_report]
+id = b4
+time = 9
+type = bike
+speed = 0
+kilometrage = 95
+faulty = 0
+location = (l1,95)
+
+[vehicle_report]
+id = c1
+time = 9
+type = car
+speed = 0
+kilometrage = 15
+faulty = 1
+location = (r2,15)
+
+[vehicle_report]
+id = c2
+time = 9
+type = car
+speed = 10
+kilometrage = 20
+faulty = 0
+location = (d1,20)
+
+[vehicle_report]
+id = c3
+time = 9
+type = car
+speed = 0
+kilometrage = 44
+faulty = 0
+location = (r1,44)
+
+[vehicle_report]
+id = c4
+time = 9
+type = car
+speed = 3
+kilometrage = 25
+faulty = 0
+location = (r2,25)
+
+[junction_report]
+id = j1
+time = 10
+queues = 
+
+[junction_report]
+id = j2
+time = 10
+queues = (d2,green,[])
+
+[junction_report]
+id = j3
+time = 10
+queues = (r2,green,[])
+
+[junction_report]
+id = j4
+time = 10
+queues = (r1,red,[v3]),(d1,green:2,[v4,c2,b3,v2])
+type = mc
+
+[junction_report]
+id = j5
+time = 10
+type = rr
+
+[junction_report]
+id = j6
+time = 10
+type = rr
+
+[junction_report]
+id = j7
+time = 10
+queues = (l2,green:1,[]),(d4,red,[])
+type = mc
+
+[road_report]
+id = r1
+time = 10
+state = (c3,44)
+
+[road_report]
+id = r2
+time = 10
+state = (b2,28),(c4,28),(b1,24),(c1,15),(v1,5)
+
+[road_report]
+id = r3
+time = 10
+state = 
+
+[road_report]
+id = r4
+time = 10
+state = 
+
+[road_report]
+id = l1
+time = 10
+type = lanes
+state = (b4,95)
+
+[road_report]
+id = l2
+time = 10
+type = lanes
+state = 
+
+[road_report]
+id = l3
+time = 10
+type = lanes
+state = (v3,0)
+
+[road_report]
+id = d1
+time = 10
+type = dirt
+state = (c2,20),(b3,20),(v2,20)
+
+[road_report]
+id = d2
+time = 10
+type = dirt
+state = 
+
+[road_report]
+id = d3
+time = 10
+type = dirt
+state = 
+
+[road_report]
+id = d4
+time = 10
+type = dirt
+state = 
+
+[vehicle_report]
+id = v1
+time = 10
+speed = 0
+kilometrage = 30
+faulty = 0
+location = (r2,5)
+
+[vehicle_report]
+id = v2
+time = 10
+speed = 7
+kilometrage = 20
+faulty = 0
+location = (d1,20)
+
+[vehicle_report]
+id = v3
+time = 10
+speed = 0
+kilometrage = 100
+faulty = 0
+location = (l3,0)
+
+[vehicle_report]
+id = v4
+time = 10
+speed = 0
+kilometrage = 50
+faulty = 3
+location = arrived
+
+[vehicle_report]
+id = b1
+time = 10
+type = bike
+speed = 3
+kilometrage = 24
+faulty = 0
+location = (r2,24)
+
+[vehicle_report]
+id = b2
+time = 10
+type = bike
+speed = 3
+kilometrage = 28
+faulty = 0
+location = (r2,28)
+
+[vehicle_report]
+id = b3
+time = 10
+type = bike
+speed = 9
+kilometrage = 20
+faulty = 0
+location = (d1,20)
+
+[vehicle_report]
+id = b4
+time = 10
+type = bike
+speed = 11
+kilometrage = 95
+faulty = 0
+location = (l1,95)
+
+[vehicle_report]
+id = c1
+time = 10
+type = car
+speed = 0
+kilometrage = 15
+faulty = 0
+location = (r2,15)
+
+[vehicle_report]
+id = c2
+time = 10
+type = car
+speed = 10
+kilometrage = 20
+faulty = 0
+location = (d1,20)
+
+[vehicle_report]
+id = c3
+time = 10
+type = car
+speed = 0
+kilometrage = 44
+faulty = 0
+location = (r1,44)
+
+[vehicle_report]
+id = c4
+time = 10
+type = car
+speed = 3
+kilometrage = 28
+faulty = 0
+location = (r2,28)
+

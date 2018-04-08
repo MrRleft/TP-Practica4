@@ -1,12 +1,13 @@
 package es.ucm.fdi.carreteras;
 
+
+import es.ucm.fdi.cruces.CruceGenerico;
 import es.ucm.fdi.ini.IniSection;
-import es.ucm.fdi.model.Cruce;
 
 
 public class Camino extends Carretera {
 	
-	public Camino(String id, int length, int maxSpeed, Cruce src, Cruce dest) {
+	public Camino(String id, int length, int maxSpeed, CruceGenerico<?> src, CruceGenerico<?> dest) {
 		super(id, length, maxSpeed, src, dest);	
 	}
 	
@@ -23,10 +24,11 @@ public class Camino extends Carretera {
 	@Override
 	protected void completaDetallesSeccion(IniSection is) {
 
-		is.setValue("src", this.cruceOrigen);
-		is.setValue("dest", this.cruceDestino);
-		is.setValue("max_speed", this.velocidadMaxima);
-		is.setValue("length", this.longitud);
+	//	is.setValue("src", this.cruceOrigen);
+	//	is.setValue("dest", this.cruceDestino);
+	//	is.setValue("max_speed", this.velocidadMaxima);
+	//	is.setValue("length", this.longitud);
 		is.setValue("type", "dirt");
+		super.completaDetallesSeccion(is);
 	}
 }

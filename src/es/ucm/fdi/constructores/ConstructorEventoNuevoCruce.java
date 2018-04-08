@@ -25,7 +25,7 @@ public class ConstructorEventoNuevoCruce extends ConstructorEventos {
 				 ConstructorEventos.parseaIntNoNegativo(section, "time", 0),
 				 // extrae el valor del campo �id� de la secci�n
 				 ConstructorEventos.identificadorValido(section, "id"));
-		 }
+	}
 		 @Override
 
 	 public String toString() { return "New Junction"; }

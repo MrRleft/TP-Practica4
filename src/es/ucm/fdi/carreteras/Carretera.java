@@ -7,8 +7,8 @@ import java.util.List;
 
 import es.ucm.fdi.Exceptions.ErrorDeSimulacion;
 import es.ucm.fdi.Utils.SortedArrayList;
+import es.ucm.fdi.cruces.CruceGenerico;
 import es.ucm.fdi.ini.IniSection;
-import es.ucm.fdi.model.Cruce;
 import es.ucm.fdi.model.ObjetoSimulacion;
 import es.ucm.fdi.vehiculos.Vehiculo;
 
@@ -16,15 +16,15 @@ public class Carretera extends ObjetoSimulacion {
 
 	 protected int longitud; // longitud de la carretera
 	 protected int velocidadMaxima; // velocidad mÃ¡xima
-	 protected Cruce cruceOrigen; // cruce del que parte la carretera
-	 protected Cruce cruceDestino; // cruce al que llega la carretera
+	 protected CruceGenerico<?> cruceOrigen; // cruce del que parte la carretera
+	 protected CruceGenerico<?> cruceDestino; // cruce al que llega la carretera
 	 protected List<Vehiculo> vehiculos; // lista ordenada de vehÃ­culos en la
 	// carretera (ordenada por localizaciÃ³n)
 	 
 	 
 	 protected Comparator<Vehiculo> comparadorVehiculo; // orden entre vehÃ­culos
 	 
-	 public Carretera(String id, int length, int maxSpeed, Cruce src, Cruce dest) {
+	 public Carretera(String id, int length, int maxSpeed, CruceGenerico<?> src, CruceGenerico<?> dest) {
 		 super(id);
 		 this.longitud = length;
 		 this.velocidadMaxima = maxSpeed;
@@ -122,7 +122,7 @@ public class Carretera extends ObjetoSimulacion {
 		return this.longitud;
 	}
 	
-	public Cruce getCruceDest() {
+	public CruceGenerico<?> getCruceDest() {
 		return this.cruceDestino;
 	}
 

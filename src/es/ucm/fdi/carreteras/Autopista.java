@@ -1,13 +1,13 @@
 package es.ucm.fdi.carreteras;
 
+import es.ucm.fdi.cruces.CruceGenerico;
 import es.ucm.fdi.ini.IniSection;
-import es.ucm.fdi.model.Cruce;
 
 
 public class Autopista extends Carretera {
 	private int carriles;
 
-	public Autopista(String id, int length, int maxSpeed, Cruce src, Cruce dest,int carriles) {
+	public Autopista(String id, int length, int maxSpeed, CruceGenerico<?> src, CruceGenerico<?> dest,int carriles) {
 		
 		super(id, length, maxSpeed, src, dest);
 		this.carriles = carriles;
