@@ -1,4 +1,3 @@
-# ******* step 0 *******
 [junction_report]
 id = j1
 time = 1
@@ -14,7 +13,6 @@ id = r1
 time = 1
 state = 
 
-# ******* step 1 *******
 [junction_report]
 id = j1
 time = 2
@@ -39,7 +37,6 @@ kilometrage = 5
 faulty = 0
 location = (r1,5)
 
-# ******* step 2 *******
 [junction_report]
 id = j1
 time = 3
@@ -64,7 +61,6 @@ kilometrage = 5
 faulty = 2
 location = (r1,5)
 
-# ******* step 3 *******
 [junction_report]
 id = j1
 time = 4
@@ -89,7 +85,6 @@ kilometrage = 5
 faulty = 1
 location = (r1,5)
 
-# ******* step 4 *******
 [junction_report]
 id = j1
 time = 5
@@ -114,7 +109,6 @@ kilometrage = 5
 faulty = 0
 location = (r1,5)
 
-# ******* step 5 *******
 [junction_report]
 id = j1
 time = 6
@@ -139,7 +133,6 @@ kilometrage = 10
 faulty = 0
 location = (r1,10)
 
-# ******* step 6 *******
 [junction_report]
 id = j1
 time = 7
@@ -164,7 +157,6 @@ kilometrage = 15
 faulty = 0
 location = (r1,15)
 
-# ******* step 7 *******
 [junction_report]
 id = j1
 time = 8
@@ -189,7 +181,6 @@ kilometrage = 20
 faulty = 0
 location = (r1,20)
 
-# ******* step 8 *******
 [junction_report]
 id = j1
 time = 9
@@ -214,7 +205,6 @@ kilometrage = 25
 faulty = 0
 location = (r1,25)
 
-# ******* step 9 *******
 [junction_report]
 id = j1
 time = 10

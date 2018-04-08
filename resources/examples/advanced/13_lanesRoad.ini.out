@@ -1,4 +1,3 @@
-# ******* step 0 *******
 [junction_report]
 id = j1
 time = 1
@@ -31,7 +30,6 @@ kilometrage = 11
 faulty = 0
 location = (lanes1,11)
 
-# ******* step 1 *******
 [junction_report]
 id = j1
 time = 2
@@ -64,7 +62,6 @@ kilometrage = 22
 faulty = 0
 location = (lanes1,22)
 
-# ******* step 2 *******
 [junction_report]
 id = j1
 time = 3
@@ -97,7 +94,6 @@ kilometrage = 33
 faulty = 0
 location = (lanes1,33)
 
-# ******* step 3 *******
 [junction_report]
 id = j1
 time = 4
@@ -130,7 +126,6 @@ kilometrage = 44
 faulty = 0
 location = (lanes1,44)
 
-# ******* step 4 *******
 [junction_report]
 id = j1
 time = 5
@@ -163,7 +158,6 @@ kilometrage = 55
 faulty = 0
 location = (lanes1,55)
 
-# ******* step 5 *******
 [junction_report]
 id = j1
 time = 6
@@ -196,7 +190,6 @@ kilometrage = 66
 faulty = 0
 location = (lanes1,66)
 
-# ******* step 6 *******
 [junction_report]
 id = j1
 time = 7
@@ -229,7 +222,6 @@ kilometrage = 77
 faulty = 0
 location = (lanes1,77)
 
-# ******* step 7 *******
 [junction_report]
 id = j1
 time = 8
@@ -262,7 +254,6 @@ kilometrage = 88
 faulty = 0
 location = (lanes1,88)
 
-# ******* step 8 *******
 [junction_report]
 id = j1
 time = 9
@@ -295,7 +286,6 @@ kilometrage = 99
 faulty = 0
 location = (lanes1,99)
 
-# ******* step 9 *******
 [junction_report]
 id = j1
 time = 10
