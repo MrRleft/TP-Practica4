@@ -4,8 +4,11 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-
+import es.ucm.fdi.Exceptions.ErrorCarga;
 import es.ucm.fdi.Exceptions.ErrorDeSimulacion;
+import es.ucm.fdi.Exceptions.InsertException;
+import es.ucm.fdi.Exceptions.NotFoundException;
+import es.ucm.fdi.MVC.ObservadorSimuladorTrafico;
 import es.ucm.fdi.events.Evento;
 import es.ucm.fdi.events.ParserEventos;
 import es.ucm.fdi.ini.Ini;
@@ -38,8 +41,37 @@ public class Controlador {
 			 System.err.println(r.getMessage());
 		 }
 	 }
+	
+	public void ejecuta(int pasos) {
+		 
+		try {
+			this.simulador.ejecuta(pasos,this.ficheroSalida);
+		} 
+		catch (ErrorDeSimulacion | ErrorCarga | NotFoundException | InsertException e) {
+			// TODO Auto-generated catch block
+			System.err.println(e.getMessage());
+		}
+		
+	}
+	
+	public void reinicia() {
+	
+		this.simulador.reinicia(); 
+		
+	}
 	 
-	 private void cargaEventos(InputStream inStream) throws ErrorDeSimulacion {
+	public void addObserver(ObservadorSimuladorTrafico o) {
+	
+		this.simulador.addObservador(o);
+		
+	}
+	
+	public void removeObserver(ObservadorSimuladorTrafico o) {
+		
+		this.simulador.removeObservador(o);
+		
+	}
+	 public void cargaEventos(InputStream inStream) throws ErrorDeSimulacion {
 		 Ini ini;
 		 try {
 			 // lee el fichero y carga su atributo iniSections

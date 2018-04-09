@@ -3,6 +3,7 @@ package es.ucm.fdi.cruces;
 import es.ucm.fdi.carreteras.Carretera;
 import es.ucm.fdi.carreteras.CarreteraEntranteConIntervalo;
 import es.ucm.fdi.ini.IniSection;
+import es.ucm.fdi.vehiculos.Vehiculo;
 
 public class CruceCircular extends CruceGenerico<CarreteraEntranteConIntervalo>{
 	
@@ -65,10 +66,35 @@ public class CruceCircular extends CruceGenerico<CarreteraEntranteConIntervalo>{
 	}
 
 	@Override
-	protected void completaDetallesSeccion(IniSection is) {
-
-		
-		//super.completaDetallesSeccion(is);
-		is.setValue("type", "rr");
+	 protected void completaDetallesSeccion(IniSection is) {
+		String detalles = "";
+		int tiempo ;
+		for (int i = 0; i <this.carreterasEntrantes.size(); ++i){
+			tiempo = this.carreterasEntrantes.get(i).getInt()-this.carreterasEntrantes.get(i).getUnidadesDeTiempoUsadas();
+			detalles += "(" + this.carreterasEntrantes.get(i).getCarretera().getID() + ",";
+			if (this.carreterasEntrantes.get(i).getSem()) {
+				if(tiempo > 0)
+				detalles += "green:" + tiempo+",[";
+				else if (tiempo < 0) {
+					tiempo =1;
+					detalles += "green:"+ tiempo+",[";
+				}
+				
+				else detalles += "green,[";
+			}
+			else
+				detalles += "red,[";
+			for (Vehiculo v : this.carreterasEntrantes.get(i).getColaVehiculos())
+				detalles += v.getId() + ",";
+			if(this.carreterasEntrantes.get(i).getColaVehiculos().size() > 0)
+				detalles = detalles.substring(0, detalles.length()-1);
+			detalles = detalles.substring(0, detalles.length() );
+			detalles += "])";
+			if(i < this.carreterasEntrantes.size()-1)
+				detalles += ",";
+		}
+		detalles = detalles.substring(0, detalles.length());
+		is.setValue("queues", detalles);
+		is.setValue("type", "mc");
 	}
 }

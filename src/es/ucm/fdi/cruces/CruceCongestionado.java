@@ -67,6 +67,7 @@ public class CruceCongestionado extends CruceGenerico<CarreteraEntranteConInterv
 		return posMax;
 	}
 	
+	@Override
 	 protected void completaDetallesSeccion(IniSection is) {
 			String detalles = "";
 			int tiempo ;
@@ -75,7 +76,7 @@ public class CruceCongestionado extends CruceGenerico<CarreteraEntranteConInterv
 				detalles += "(" + this.carreterasEntrantes.get(i).getCarretera().getID() + ",";
 				if (this.carreterasEntrantes.get(i).getSem()) {
 					if(tiempo > 0)
-					detalles += "green:" + tiempo+",[";
+						detalles += "green:" + tiempo+",[";
 					else if (tiempo < 0) {
 						tiempo =1;
 						detalles += "green:"+ tiempo+",[";

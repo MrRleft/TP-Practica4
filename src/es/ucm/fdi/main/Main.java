@@ -8,6 +8,9 @@ import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.lang.reflect.InvocationTargetException;
+
+import javax.swing.SwingUtilities;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -66,6 +69,18 @@ public class Main {
 	}
 
 	private static Options construyeOpciones() {
+		HAY QUE MODIFICAR ESTO TAMBIEN PARA QUE ACEPTE LO NUEVO
+		/*
+		 *  Estos son ejemplos de las opciones que debe aceptar la práctica:
+				-i resources/examples/events/basic/ex1.ini
+				-i resources/examples/events/advanced/ex1.ini -t 100
+				-m batch -i resources/examples/events/basic/ex1.ini -t 20
+				-m batch -i resources/examples/events/advanced/ex1.ini
+				-m gui -i resources/examples/events/basic/ex1.ini
+				-m gui -i resources/examples/events/advanced/ex1.ini
+				--help
+		 */
+		
 		Options opcionesLineacomandos = new Options();
 
 		opcionesLineacomandos.addOption(Option.builder("h").longOpt("help").desc("Muestra la ayuda.").build());
@@ -158,6 +173,35 @@ public class Main {
 			Main.limiteTiempo = 10;
 			Main.iniciaModoEstandar();
 		}
-
 	}
+	
+	private static void iniciaModoGrafico() throws FileNotFoundException, InvocationTargetException,
+		InterruptedException {
+	
+		SimuladorTrafico sim = new SimuladorTrafico(Main.limiteTiempo);
+		OutputStream os = Main.ficheroSalida == null ?
+				System.out : new FileOutputStream(new File(Main.ficheroSalida));
+		Controlador ctrl = new Controlador(sim, Main.limiteTiempo, null, os);
+		SwingUtilities.invokeLater(new Runnable() {
+
+			@Override
+			public void run() {
+				try {
+					new VentanaPrincipal(Main.ficheroEntrada, ctrl);
+				}
+				catch (FileNotFoundException e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+	
+	
+
+	private void parseaOpcionModo(CommandLine c) {
+		A completar
+	}
+	
+
+	
 }
