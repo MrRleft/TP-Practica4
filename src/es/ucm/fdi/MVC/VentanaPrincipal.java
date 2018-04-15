@@ -77,7 +77,7 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 		this.controlador = ctrl;
 		this.ficheroActual = ficheroEntrada != null ? new File(ficheroEntrada) : null;
 		this.initGUI();
-	 // añadimos la ventana principal como observadora
+	 // aï¿½adimos la ventana principal como observadora
 		ctrl.addObserver(this);
 	}
 	
@@ -93,7 +93,11 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 
 			@Override
 			public void windowClosing(WindowEvent e) {
+				JFrame frame = new JFrame();
 				// TODO Auto-generated method stub
+				if(JOptionPane.showConfirmDialog(frame, "Aye you sure you want to close this window?", "Really Closing?", 
+				   JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
+		            System.exit(0);
 				
 			}
 
@@ -126,7 +130,7 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 				// TODO Auto-generated method stub
 				
 			}
-		 // al salir pide confirmación
+		 // al salir pide confirmaciï¿½n
 		 });
 		 JPanel panelPrincipal = this.createPanelPrincipal();
 		 this.setContentPane(panelPrincipal);
@@ -158,7 +162,7 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 	
 	private void addBarraEstado(JPanel panelPrincipal) {
 		this.panelBarraEstado = new PanelBarraEstado("Bienvenido al simulador !",this.controlador);
-		// se añade al panel principal (el que contiene al panel
+		// se aï¿½ade al panel principal (el que contiene al panel
 		// superior y al inferior)
 		panelPrincipal.add(this.panelBarraEstado,BorderLayout.PAGE_END);
 	}
@@ -167,9 +171,9 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 	private void createPanelInferior(JPanel panelCentral) {
 		// TODO Auto-generated method stub
 		/*
-		  El panel inferior será un JPanel con BoxLayout en el eje X.
-			 Contendrá un panel para meter las tres tablas, y un panel para el gráfico.
-			 El panel para las tablas (puedes usar GridLayout(3,1)) contendrá a su vez otros tres
+		  El panel inferior serï¿½ un JPanel con BoxLayout en el eje X.
+			 Contendrï¿½ un panel para meter las tres tablas, y un panel para el grï¿½fico.
+			 El panel para las tablas (puedes usar GridLayout(3,1)) contendrï¿½ a su vez otros tres
 			paneles: 
 		 */
 		
@@ -181,9 +185,9 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 				new ModeloTablaCruces(VentanaPrincipal.columnIdCruce, this.controlador));
 		
 		this.componenteMapa = new ComponenteMapa(this.controlador);
-		// añadir un ScroolPane al panel inferior donde se coloca la
+		// aï¿½adir un ScroolPane al panel inferior donde se coloca la
 		// componente.
-		¿panelInferior.add(new JScrollPane(componenteMapa,...);?
+		ï¿½panelInferior.add(new JScrollPane(componenteMapa,...);?
 	}
 
 	
@@ -201,11 +205,11 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 	
 	 private JPanel createPanelSuperior(JPanel panelCentral) {
 		 /*
-		  *Creamos un panel con layout “BoxLayout” alineado en el eje de las X. Contendrá:
+		  *Creamos un panel con layout ï¿½BoxLayoutï¿½ alineado en el eje de las X. Contendrï¿½:
 			panelEditorEventos: Contiene un area de texto para mostrar los eventos. Puede
-			crearse con el “texto” de un fichero previamente cargado. No es observador.
+			crearse con el ï¿½textoï¿½ de un fichero previamente cargado. No es observador.
 		 
-			 panelColaEventos: Contendrá una tabla de eventos. Es observador.
+			 panelColaEventos: Contendrï¿½ una tabla de eventos. Es observador.
 			 
 			 panelInformes: Contiene un area de texto para mostrar los informes. Es observador.
 			 this.panelInformes = new PanelInformes("Informes: ",false,

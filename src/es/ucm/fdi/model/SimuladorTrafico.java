@@ -120,7 +120,9 @@ public class SimuladorTrafico implements Observador<ObservadorSimuladorTrafico>{
 	
 	private void notificaError(ErrorDeSimulacion err) {
 		// TODO Auto-generated method stub
-		Por HACER
+		for(int i = 0; i< this.observadores.size();++i){
+			this.observadores.get(i).errorSimulador(this.contadorTiempo, this.mapa, eventos, err);
+		}
 	}
 
 	private void notificaNuevoEvento() {
@@ -131,15 +133,19 @@ public class SimuladorTrafico implements Observador<ObservadorSimuladorTrafico>{
 
 	public void reinicia() {
 		// TODO Auto-generated method stub
-		// El simulador tendrá un método reinicia, que reinicia todos sus atributos y
-		//notifca a los observadores dicha acción. 
+		// El simulador tendrï¿½ un mï¿½todo reinicia, que reinicia todos sus atributos y
+		//notifca a los observadores dicha acciï¿½n. 
 		Por HACER
+		
 		this.notificaReinicia();
+		
 	}
 
 	private void notificaReinicia() {
 		// TODO Auto-generated method stub
-		Por HACER
-		
+	
+		for(int i = 0; i< this.observadores.size();++i){
+			this.observadores.get(i).reinicia(contadorTiempo, mapa, eventos);
+		}
 	}
 }
