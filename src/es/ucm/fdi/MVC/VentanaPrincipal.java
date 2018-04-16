@@ -187,7 +187,7 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 		this.componenteMapa = new ComponenteMapa(this.controlador);
 		// a�adir un ScroolPane al panel inferior donde se coloca la
 		// componente.
-		�panelInferior.add(new JScrollPane(componenteMapa,...);?
+		panelInferior.add(new JScrollPane(componenteMapa,...);?
 	}
 
 	
