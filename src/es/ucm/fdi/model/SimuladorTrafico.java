@@ -123,12 +123,14 @@ public class SimuladorTrafico implements Observador<ObservadorSimuladorTrafico>{
 		for(int i = 0; i< this.observadores.size();++i){
 			this.observadores.get(i).errorSimulador(this.contadorTiempo, this.mapa, eventos, err);
 		}
+		this.notificaError(err);//PREGUNTARRRRRRRRRRRRRRRRRRRRRRRRR
 	}
 
 	private void notificaNuevoEvento() {
 		for (ObservadorSimuladorTrafico o : this.observadores) {
 			o.addEvento(this.contadorTiempo,this.mapa,this.eventos);
 		 }
+		this.notificaNuevoEvento();////PREGUNTARRRRRRRRRRRRRRRRRRRRRRRRR
 	}
 
 	public void reinicia() {

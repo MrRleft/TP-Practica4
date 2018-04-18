@@ -21,7 +21,6 @@ abstract public class PanelAreaTexto extends JPanel{
 	}
 	
 	public void setBorde(String titulo){
-		
 		this.setBorder(BorderFactory.createTitledBorder(titulo));
 	}
 	

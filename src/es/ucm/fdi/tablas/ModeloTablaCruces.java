@@ -12,6 +12,7 @@ public class ModeloTablaCruces extends ModeloTabla<CruceGenerico<?>> {
 
 	public ModeloTablaCruces(String[] columnidcruce, Controlador controlador) {
 		// TODO Auto-generated constructor stub
+		super(columnidcruce,controlador);
 	}
 
 	@Override

@@ -12,6 +12,7 @@ public class ModeloTablaCarreteras extends ModeloTabla<Carretera> {
 
 	public ModeloTablaCarreteras(String[] columnidcarretera, Controlador controlador) {
 		// TODO Auto-generated constructor stub
+		super(columnidcarretera, controlador);
 	}
 
 	@Override
@@ -29,6 +30,7 @@ public class ModeloTablaCarreteras extends ModeloTabla<Carretera> {
 	@Override
 	public void addEvento(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
 		// TODO Auto-generated method stub
+		eventos.add()
 
 	}
 

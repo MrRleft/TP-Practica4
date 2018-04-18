@@ -10,7 +10,7 @@ import es.ucm.fdi.model.MapaCarreteras;
 public class ModeloTablaEventos extends ModeloTabla<Evento>  {
 	
 	public ModeloTablaEventos(String[] columnIdEventos, Controlador ctrl) { 
-		…
+		super(columnIdEventos,ctrl);
 	}
 	@Override // necesario para que se visualicen los datos
 	public Object getValueAt(int indiceFil, int indiceCol) {
@@ -31,12 +31,13 @@ public class ModeloTablaEventos extends ModeloTabla<Evento>  {
 	//...
 	@Override
 	public void avanza(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
-	this.lista = eventos; this.fireTableStructureChanged();
+	this.lista = eventos; 
+	this.fireTableStructureChanged();
 	}
 	
 	@Override
 	public void addEvento(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
-		
+	
 	}
 	
 	@Override

@@ -10,6 +10,7 @@ import java.io.FileNotFoundException;
 import java.util.List;
 
 import javax.swing.BorderFactory;
+import javax.swing.BoxLayout;
 import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
@@ -48,6 +49,8 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 	public static Border bordePorDefecto = BorderFactory.createLineBorder(Color.black, 2);
 	// SUPERIOR PANEL
 	static private final String[] columnIdEventos = { "#", "Tiempo", "Tipo" };
+	private JPanel mainPanel;
+	private JPanel contentPanel_1; // tantos como zonas en la ventana
 	private PanelAreaTexto panelEditorEventos;
 	private PanelInformes panelInformes;
 	private PanelTabla<Evento> panelColaEventos;
@@ -81,57 +84,40 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 		ctrl.addObserver(this);
 	}
 	
+	
+	
 	private void initGUI() {
-		 this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+		 
 		 this.addWindowListener(new WindowListener() {
-
-			@Override
 			public void windowOpened(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
 			}
 
-			@Override
 			public void windowClosing(WindowEvent e) {
 				JFrame frame = new JFrame();
 				// TODO Auto-generated method stub
 				if(JOptionPane.showConfirmDialog(frame, "Aye you sure you want to close this window?", "Really Closing?", 
 				   JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
 		            System.exit(0);
+			}
 				
+			public void windowClosed(WindowEvent e) {	
 			}
 
-			@Override
-			public void windowClosed(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
+			public void windowIconified(WindowEvent e) {	
 			}
-
-			@Override
-			public void windowIconified(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
-			}
-
-			@Override
+			
 			public void windowDeiconified(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
+				// TODO Auto-generated method stub	
 			}
-
-			@Override
-			public void windowActivated(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
+			public void windowActivated(WindowEvent e) {	
 			}
-
-			@Override
 			public void windowDeactivated(WindowEvent e) {
-				// TODO Auto-generated method stub
-				
 			}
-		 // al salir pide confirmaci�n
+	
 		 });
+		 
+		 /*PANEL PRINCIPAL*/
+		 
 		 JPanel panelPrincipal = this.createPanelPrincipal();
 		 this.setContentPane(panelPrincipal);
 
@@ -150,7 +136,7 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 		 // PANEL INFERIOR
 		 this.createPanelInferior(panelCentral);
 		 // BARRA DE HERRAMIENTAS
-		 this.addToolBar(panelPrincipal);
+		 addToolBar();
 		 // FILE CHOOSER
 		 this.fc = new JFileChooser();
 		 // REPORT DIALOG (OPCIONAL)
@@ -167,6 +153,9 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 		panelPrincipal.add(this.panelBarraEstado,BorderLayout.PAGE_END);
 	}
 	
+	private void addToolBar(JPanel panelPrincipal){
+		
+	}
 	
 	private void createPanelInferior(JPanel panelCentral) {
 		// TODO Auto-generated method stub
@@ -193,8 +182,10 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 	
 	private JPanel createPanelPrincipal() {
 		// TODO Auto-generated method stub
-		return null;
+		JPanel panelPrincipal = new JPanel(new BorderLayout());
+		return panelPrincipal;
 	}
+
 
 	private JPanel createPanelCentral() {
 		 JPanel panelCentral = new JPanel();
