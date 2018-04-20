@@ -2,7 +2,7 @@ package es.ucm.fdi.main;
 
 enum ModoEjecucion {
 	 
-	BATCH("batch"), GUI("gui");
+	BATCH("batch"), GUI("gui"), ERR("error");
 	
 	private String descModo;
 	
@@ -12,10 +12,22 @@ enum ModoEjecucion {
 	
 	}
 	
-	private String getModelDesc() {
+	public String getModelDesc() {
 		
 		return descModo;
 	
+	}
+
+	public static ModoEjecucion parser(String g) {
+		ModoEjecucion e;
+		
+		if (g.equals(ModoEjecucion.BATCH.descModo))
+			e = ModoEjecucion.BATCH;
+		else if (g.equals(ModoEjecucion.GUI.descModo))
+			e = ModoEjecucion.GUI;
+		else 
+			e = ModoEjecucion.ERR;
+		return e;
 	}
 	
 }

@@ -21,13 +21,16 @@ public class SimuladorTrafico implements Observador<ObservadorSimuladorTrafico>{
 	private List<ObservadorSimuladorTrafico> observadores;
 	private List<Evento> eventos;
 	private int contadorTiempo;
+	
+	@SuppressWarnings("unused")
 	private int pasosSim;
+	private Comparator<Evento> cmp;
 	
 	public SimuladorTrafico(int lt)  {
 		
 		 this.mapa = new MapaCarreteras();
 		 this.contadorTiempo = 0;
-		 Comparator<Evento> cmp = new Comparator<Evento>() {
+		 this.cmp = new Comparator<Evento>() {
 
 			@Override
 			public int compare(Evento o1, Evento o2) {
@@ -79,7 +82,9 @@ public class SimuladorTrafico implements Observador<ObservadorSimuladorTrafico>{
 	
 	private void notificaAvanza() {
 		// TODO Auto-generated method stub
-		
+		for (ObservadorSimuladorTrafico o : this.observadores) {
+			o.avanza(this.contadorTiempo,this.mapa,this.eventos);
+		 }
 	}
 
 	@Override
@@ -123,22 +128,21 @@ public class SimuladorTrafico implements Observador<ObservadorSimuladorTrafico>{
 		for(int i = 0; i< this.observadores.size();++i){
 			this.observadores.get(i).errorSimulador(this.contadorTiempo, this.mapa, eventos, err);
 		}
-		this.notificaError(err);//PREGUNTARRRRRRRRRRRRRRRRRRRRRRRRR
 	}
 
 	private void notificaNuevoEvento() {
 		for (ObservadorSimuladorTrafico o : this.observadores) {
 			o.addEvento(this.contadorTiempo,this.mapa,this.eventos);
 		 }
-		this.notificaNuevoEvento();////PREGUNTARRRRRRRRRRRRRRRRRRRRRRRRR
 	}
 
 	public void reinicia() {
 		// TODO Auto-generated method stub
 		// El simulador tendr� un m�todo reinicia, que reinicia todos sus atributos y
 		//notifca a los observadores dicha acci�n. 
-		Por HACER
-		
+		this.eventos = new SortedArrayList<Evento>(cmp); // estructura ordenada por �tiempo�
+		this.mapa = new MapaCarreteras();
+		this.contadorTiempo = 0;
 		this.notificaReinicia();
 		
 	}
@@ -149,5 +153,10 @@ public class SimuladorTrafico implements Observador<ObservadorSimuladorTrafico>{
 		for(int i = 0; i< this.observadores.size();++i){
 			this.observadores.get(i).reinicia(contadorTiempo, mapa, eventos);
 		}
+	}
+	
+	public void setPasos(int lt) {
+		
+		 this.pasosSim = lt;
 	}
 }

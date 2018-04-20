@@ -20,6 +20,7 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
+import es.ucm.fdi.MVC.VentanaPrincipal;
 import es.ucm.fdi.control.Controlador;
 import es.ucm.fdi.model.SimuladorTrafico;
 
@@ -31,6 +32,7 @@ public class Main {
 	private static Integer limiteTiempo = null;
 	private static String ficheroEntrada = null;
 	private static String ficheroSalida = null;
+	private static ModoEjecucion modo = null;
 
 	
 	@SuppressWarnings("unused")
@@ -49,6 +51,7 @@ public class Main {
 			parseaOpcionFicheroIN(linea);
 			parseaOpcionFicheroOUT(linea);
 			parseaOpcionSTEPS(linea);
+			parseaOpcionModo(linea);
 
 			// if there are some remaining arguments, then something wrong is
 			// provided in the command line!
@@ -69,7 +72,7 @@ public class Main {
 	}
 
 	private static Options construyeOpciones() {
-		HAY QUE MODIFICAR ESTO TAMBIEN PARA QUE ACEPTE LO NUEVO
+		//HAY QUE MODIFICAR ESTO TAMBIEN PARA QUE ACEPTE LO NUEVO
 		/*
 		 *  Estos son ejemplos de las opciones que debe aceptar la práctica:
 				-i resources/examples/events/basic/ex1.ini
@@ -82,11 +85,15 @@ public class Main {
 		 */
 		
 		Options opcionesLineacomandos = new Options();
-
-		opcionesLineacomandos.addOption(Option.builder("h").longOpt("help").desc("Muestra la ayuda.").build());
-		opcionesLineacomandos.addOption(Option.builder("i").longOpt("input").hasArg().desc("Fichero de entrada de eventos.").build());
 		opcionesLineacomandos.addOption(
-				Option.builder("o").longOpt("output").hasArg().desc("Fichero de salida, donde se escriben los informes.").build());
+				Option.builder("m").longOpt("mode")
+				.hasArg().desc("Elige el modo, con graficos o en consola de comandos"). build());
+		opcionesLineacomandos.addOption(Option.builder("h").longOpt("help").desc("Muestra la ayuda.").build());
+		opcionesLineacomandos.addOption(Option.builder("i").longOpt("input")
+				.hasArg().desc("Fichero de entrada de eventos.").build());
+		opcionesLineacomandos.addOption(
+				Option.builder("o").longOpt("output")
+				.hasArg().desc("Fichero de salida, donde se escriben los informes.").build());
 		opcionesLineacomandos.addOption(Option.builder("t").longOpt("ticks").hasArg()
 				.desc("Pasos que ejecuta el simulador en su bucle principal (el valor por defecto es " + Main.limiteTiempoPorDefecto + ").")
 				.build());
@@ -134,7 +141,7 @@ public class Main {
 
 	}
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, InvocationTargetException, InterruptedException {
 
 		// example command lines:
 		//
@@ -144,11 +151,14 @@ public class Main {
 		//
 		
 		
-		//Main.ParseaArgumentos(args);
-		//Main.iniciaModoEstandar();
+		Main.ParseaArgumentos(args);
+		if(Main.modo == ModoEjecucion.GUI)
+			Main.iniciaModoGrafico();
+		else
+			Main.iniciaModoEstandar();
 		
 		
-		Main.ejecutaFicheros(args[0]);
+		//Main.ejecutaFicheros(args[0]);
 	}
 	
 	@SuppressWarnings("unused")
@@ -198,8 +208,19 @@ public class Main {
 	
 	
 
-	private void parseaOpcionModo(CommandLine c) {
-		A completar
+	private static void parseaOpcionModo(CommandLine c) throws ParseException {
+		
+		
+		Main.modo = ModoEjecucion.parser(c.getOptionValue("m"));
+		if(Main.modo == ModoEjecucion.ERR)
+			throw new ParseException("El modo introducio no es correcto");
+		/*private static void parseaOpcionFicheroIN(CommandLine linea) throws ParseException {
+			Main.ficheroEntrada = linea.getOptionValue("i");
+			if (Main.ficheroEntrada == null) {
+				throw new ParseException("El fichero de eventos no existe");
+			}
+		}
+		*/
 	}
 	
 

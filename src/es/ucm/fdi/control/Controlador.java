@@ -92,21 +92,3 @@ public class Controlador {
 	 }
 	}
 
-/*
- 
-Parse para la parte uno
-for (IniSection sec : ini.getSections()) {
-	 Evento e = ParserEventos.parseaEvento(sec);
-	 if (e != null)
-		 this.simulador.insertaEvento(e);
-	 else
-		 throw new ErrorDeSimulacion("Evento desconocido: " + sec.getTag());
-}
-
-Parse parte0
-for (IniSection sec : ini.getSections()) {
-			 // parseamos la sección para ver a que evento corresponde
-				 EventoNuevoVehiculo e = EventoNuevoVehiculo.parseaEvento(sec);
-				 this.simulador.insertaEvento(e);
-		 }
-*/
