@@ -1,4 +1,4 @@
-package es.ucm.fdi.view.swing.grafico;
+package es.fdi.ucm.components;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -21,7 +21,7 @@ import es.ucm.fdi.model.cruces.CruceGenerico;
 import es.ucm.fdi.model.eventos.Evento;
 import es.ucm.fdi.model.vehiculos.Vehiculo;
 
-public class ComponenteMapa extends JComponent implements ObservadorSimuladorTrafico {
+public class ComponenteMapa extends JComponent implements es.ucm.fdi.MVC.ObservadorSimuladorTrafico {
 
 	private static final long serialVersionUID = 1L;
 	
@@ -257,6 +257,43 @@ public class ComponenteMapa extends JComponent implements ObservadorSimuladorTra
 		this.mapa = mapa;
 		calculaCoordenadasCruce();
 		refresh();
+	}
+
+	@Override
+	public void addObservador(es.ucm.fdi.MVC.ObservadorSimuladorTrafico o) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeObservador(es.ucm.fdi.MVC.ObservadorSimuladorTrafico o) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void errorSimulador(int tiempo, MapaCarreteras map, List<es.ucm.fdi.events.Evento> eventos,
+			es.ucm.fdi.Exceptions.ErrorDeSimulacion e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void avanza(int tiempo, MapaCarreteras mapa, List<es.ucm.fdi.events.Evento> eventos) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addEvento(int tiempo, MapaCarreteras mapa, List<es.ucm.fdi.events.Evento> eventos) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void reinicia(int tiempo, MapaCarreteras mapa, List<es.ucm.fdi.events.Evento> eventos) {
+		// TODO Auto-generated method stub
+		
 	}
 
 }
