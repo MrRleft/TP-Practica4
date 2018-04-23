@@ -214,13 +214,7 @@ public class Main {
 		Main.modo = ModoEjecucion.parser(c.getOptionValue("m"));
 		if(Main.modo == ModoEjecucion.ERR)
 			throw new ParseException("El modo introducio no es correcto");
-		/*private static void parseaOpcionFicheroIN(CommandLine linea) throws ParseException {
-			Main.ficheroEntrada = linea.getOptionValue("i");
-			if (Main.ficheroEntrada == null) {
-				throw new ParseException("El fichero de eventos no existe");
-			}
-		}
-		*/
+
 	}
 	
 

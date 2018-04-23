@@ -3,6 +3,7 @@ package es.fdi.ucm.components;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
+import java.io.FileNotFoundException;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -43,7 +44,12 @@ public class BarraMenu extends JMenuBar {
 		 cargar.addActionListener(new ActionListener() {
 			 @Override
 			 public void actionPerformed(ActionEvent e) {
-				 mainWindow.cargaFichero();
+				 try {
+					mainWindow.cargaFichero();
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			 }
 		 });
 		 

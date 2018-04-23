@@ -35,8 +35,9 @@ public class PanelObjSim<T> extends JPanel {
 		
 		@Override
 		public void keyTyped(KeyEvent e) {
-			if (e.getKeyChar() == DialogoInformes.TECLALIMPIAR)
+			/*if (e.getKeyChar() == DialogoInformes.TECLALIMPIAR)
 					list.clearSelection();
+			*/
 		}
 
 		@Override

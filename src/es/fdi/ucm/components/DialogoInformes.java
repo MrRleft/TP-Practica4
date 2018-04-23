@@ -5,9 +5,13 @@ import java.util.List;
 
 import javax.swing.JDialog;
 
+import es.ucm.fdi.Exceptions.ErrorDeSimulacion;
 import es.ucm.fdi.MVC.ObservadorSimuladorTrafico;
+import es.ucm.fdi.MVC.VentanaPrincipal;
 import es.ucm.fdi.carreteras.Carretera;
+import es.ucm.fdi.control.Controlador;
 import es.ucm.fdi.cruces.CruceGenerico;
+import es.ucm.fdi.events.Evento;
 import es.ucm.fdi.model.MapaCarreteras;
 import es.ucm.fdi.panels.PanelInformes;
 import es.ucm.fdi.vehiculos.Vehiculo;
@@ -21,20 +25,21 @@ import es.ucm.fdi.vehiculos.Vehiculo;
 		 Por tanto vamos a tener una clase gen�rica para estos paneles PanelObjSim<T>,
 		que ser� la que contenga el correspondiente objeto Jlist<T> objList. 
 	 */
+@SuppressWarnings("serial")
 public class DialogoInformes extends JDialog implements ObservadorSimuladorTrafico {
 	
-	private PanelBotones panelBotones;
+	//private PanelBotones panelBotones;
 	private PanelObjSim<Vehiculo> panelVehiculos;
 	private PanelObjSim<Carretera> panelCarreteras;
 	private PanelObjSim<CruceGenerico<?>> panelCruces;
 	
-	private void initGUI() {
+	public void initGUI(VentanaPrincipal panelPrincipal, Controlador c) {
 	 
 		 this.panelVehiculos = new PanelObjSim<Vehiculo>("Vehiculos");
 		 this.panelCarreteras = new PanelObjSim<Carretera>("Carreteras");
 		 this.panelCruces = new PanelObjSim<CruceGenerico<?>>("Cruces");
-		 this.panelBotones = new PanelBotones(this);
-		 PanelInformes panelInfo = new PanelInformes();
+		//this.panelBotones = new PanelBotones(this);
+		 PanelInformes panelInfo = new PanelInformes("Placeholder", rootPaneCheckingEnabled, c);
 		 panelPrincipal.add(panelInfo,BorderLayout.PAGE_START);
 		 
 	 
@@ -56,6 +61,36 @@ public class DialogoInformes extends JDialog implements ObservadorSimuladorTrafi
 	
 	public List<CruceGenerico<?>> getCrucesSeleccionados() {
 		 return this.panelCruces.getSelectedItems();
+	}
+	@Override
+	public void addObservador(ObservadorSimuladorTrafico o) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void removeObservador(ObservadorSimuladorTrafico o) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void errorSimulador(int tiempo, MapaCarreteras map, List<Evento> eventos, ErrorDeSimulacion e) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void avanza(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void addEvento(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
+		// TODO Auto-generated method stub
+		
+	}
+	@Override
+	public void reinicia(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
+		// TODO Auto-generated method stub
+		
 	}
 	
 

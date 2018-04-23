@@ -21,9 +21,9 @@ enum ModoEjecucion {
 	public static ModoEjecucion parser(String g) {
 		ModoEjecucion e;
 		
-		if (g.equals(ModoEjecucion.BATCH.descModo))
+		if (g == null || g.equals(ModoEjecucion.BATCH.descModo))
 			e = ModoEjecucion.BATCH;
-		else if (g.equals(ModoEjecucion.GUI.descModo))
+		else if (g != null && g.equals(ModoEjecucion.GUI.descModo))
 			e = ModoEjecucion.GUI;
 		else 
 			e = ModoEjecucion.ERR;

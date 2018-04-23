@@ -161,4 +161,9 @@ public class MapaCarreteras {
 			throw new ErrorCarga("No se han podido colocar las averias correctamente");
 		v.setAveria(duration);
 	}
+
+	public List<Vehiculo> getVehiculos() {
+		// TODO Auto-generated method stub
+		return this.vehiculos;
+	}
 }

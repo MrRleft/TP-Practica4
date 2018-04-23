@@ -140,9 +140,9 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 		 // FILE CHOOSER
 		 this.fc = new JFileChooser();
 		 // REPORT DIALOG (OPCIONAL)
-		// this.dialogoInformes = new DialogoInformes(this,this.controlador);
-		 this.pack();
-		 this.setVisible(true);
+		this.dialogoInformes = new DialogoInformes();
+		this.pack();
+		this.setVisible(true);
 		
 	}
 	

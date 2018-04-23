@@ -7,6 +7,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+@SuppressWarnings("serial")
 abstract public class PanelAreaTexto extends JPanel{
 
 	protected JTextArea areatexto;
@@ -29,11 +30,11 @@ abstract public class PanelAreaTexto extends JPanel{
 	}
 	
 	public void setTexto(String texto) {
-		...
+		this.areatexto.setText(texto);
 	}
 	
 	public void limpiar() {
-		...
+		this.setTexto("");
 	}
 	
 	public void inserta(String valor) {
