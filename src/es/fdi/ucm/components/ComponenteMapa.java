@@ -15,7 +15,6 @@ import es.ucm.fdi.control.Controlador;
 import es.ucm.fdi.MVC.ObservadorSimuladorTrafico;
 import es.ucm.fdi.Exceptions.ErrorDeSimulacion;
 import es.ucm.fdi.model.MapaCarreteras;
-import es.ucm.fdi.model.cruces.CruceGenerico;
 import es.ucm.fdi.carreteras.Carretera;
 import es.ucm.fdi.carreteras.CarreteraEntrante;
 import es.ucm.fdi.cruces.CruceGenerico;
