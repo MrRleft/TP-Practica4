@@ -136,7 +136,7 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 		 // PANEL INFERIOR
 		 this.createPanelInferior(panelCentral);
 		 // BARRA DE HERRAMIENTAS
-		 addToolBar();
+		 this.addToolBar(panelPrincipal);
 		 // FILE CHOOSER
 		 this.fc = new JFileChooser();
 		 // REPORT DIALOG (OPCIONAL)
@@ -154,7 +154,8 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 	}
 	
 	private void addToolBar(JPanel panelPrincipal){
-		
+		this.toolbar = new ToolBar(this, this.controlador);
+		panelPrincipal.add(this.toolbar, BorderLayout.PAGE_START);
 	}
 	
 	private void createPanelInferior(JPanel panelCentral) {
@@ -165,7 +166,9 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 			 El panel para las tablas (puedes usar GridLayout(3,1)) contendr� a su vez otros tres
 			paneles: 
 		 */
-		
+		JPanel panelInferior = new JPanel();
+		panelInferior.setLayout(new BoxLayout(panelInferior, BoxLayout.X_AXIS));
+		panelInferior.setLayout(new GridLayout(3,1));
 		this.panelVehiculos = new PanelTabla<Vehiculo>("Vehiculos",
 				new ModeloTablaVehiculos(VentanaPrincipal.columnIdVehiculo, this.controlador));
 		this.panelCarreteras = new PanelTabla<Carretera>("Carretras",
@@ -176,7 +179,7 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 		this.componenteMapa = new ComponenteMapa(this.controlador);
 		// a�adir un ScroolPane al panel inferior donde se coloca la
 		// componente.
-		panelInferior.add(new JScrollPane(componenteMapa,...);?
+		panelInferior.add(new JScrollPane(this.componenteMapa));///////????????????
 	}
 
 	
@@ -206,6 +209,8 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 			 this.panelInformes = new PanelInformes("Informes: ",false,
 			 this.controlador);
 		  */
+		 JPanel panelSuperior = new JPanel();
+			panelSuperior.setLayout(new BoxLayout(panelSuperior, BoxLayout.X_AXIS));
 		 this.panelEditorEventos = new PanelEditorEventos(titulo,texto,true,this);
 		 this.panelColaEventos = new PanelTabla<Evento>("Cola Eventos: ",
 				 new ModeloTablaEventos(VentanaPrincipal.columnIdEventos, this.controlador));
@@ -230,7 +235,7 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 
 	private void muestraDialogoError(String string) {
 		// TODO Auto-generated method stub
-		JOptionPane.showMessageDialog(parentComponent, message);
+		JOptionPane.showMessageDialog(parentComponent,string);
 	}
 
 	public void cargaFichero() {
@@ -293,6 +298,22 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 	}
 
 	public void setMensaje(String string) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void addObservador(ObservadorSimuladorTrafico o) {
+		// TODO Auto-generated method stub
+		
+	}
+
+
+
+	@Override
+	public void removeObservador(ObservadorSimuladorTrafico o) {
 		// TODO Auto-generated method stub
 		
 	}

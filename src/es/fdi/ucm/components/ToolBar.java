@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.io.ByteArrayInputStream;
 import java.util.List;
 
+
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JLabel;
@@ -106,5 +107,17 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 	public void reinicia(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
 		 this.steps.setValue(1);
 		 this.time.setText("0");
+	}
+
+	@Override
+	public void addObservador(ObservadorSimuladorTrafico o) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeObservador(ObservadorSimuladorTrafico o) {
+		// TODO Auto-generated method stub
+		
 	}
 }

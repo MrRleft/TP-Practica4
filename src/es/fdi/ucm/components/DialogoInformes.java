@@ -9,16 +9,17 @@ import es.ucm.fdi.MVC.ObservadorSimuladorTrafico;
 import es.ucm.fdi.carreteras.Carretera;
 import es.ucm.fdi.cruces.CruceGenerico;
 import es.ucm.fdi.model.MapaCarreteras;
+import es.ucm.fdi.panels.PanelInformes;
 import es.ucm.fdi.vehiculos.Vehiculo;
 
 /*
-	 * Esta componente será una observadora, ya que puede estar visible u oculta, pero
-		debe tener siempre actualizados los objetos de la simulación presentes en cada paso.
-		El JDialog contiene tres paneles, y cada uno de estos paneles contendrá un JList para
-		mostrar la información sobre los correspondientes objetos de la simulación y poder
+	 * Esta componente serï¿½ una observadora, ya que puede estar visible u oculta, pero
+		debe tener siempre actualizados los objetos de la simulaciï¿½n presentes en cada paso.
+		El JDialog contiene tres paneles, y cada uno de estos paneles contendrï¿½ un JList para
+		mostrar la informaciï¿½n sobre los correspondientes objetos de la simulaciï¿½n y poder
 		seleccionarlos.
-		 Por tanto vamos a tener una clase genérica para estos paneles PanelObjSim<T>,
-		que será la que contenga el correspondiente objeto Jlist<T> objList. 
+		 Por tanto vamos a tener una clase genï¿½rica para estos paneles PanelObjSim<T>,
+		que serï¿½ la que contenga el correspondiente objeto Jlist<T> objList. 
 	 */
 public class DialogoInformes extends JDialog implements ObservadorSimuladorTrafico {
 	
@@ -33,7 +34,7 @@ public class DialogoInformes extends JDialog implements ObservadorSimuladorTrafi
 		 this.panelCarreteras = new PanelObjSim<Carretera>("Carreteras");
 		 this.panelCruces = new PanelObjSim<CruceGenerico<?>>("Cruces");
 		 this.panelBotones = new PanelBotones(this);
-		 InformationPanel panelInfo = new InformationPanel();
+		 PanelInformes panelInfo = new PanelInformes();
 		 panelPrincipal.add(panelInfo,BorderLayout.PAGE_START);
 		 
 	 
@@ -57,20 +58,7 @@ public class DialogoInformes extends JDialog implements ObservadorSimuladorTrafi
 		 return this.panelCruces.getSelectedItems();
 	}
 	
-	@Override
-	public void avanza(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
-	 this.setMapa(mapa);
-	}
-	
-	@Override
-	public void addEvento(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
-	 this.setMapa(mapa);
-	}
-	
-	@Override
-	public void reinicia(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
-	 this.setMapa(mapa);
-	}
+
 }
 	
 

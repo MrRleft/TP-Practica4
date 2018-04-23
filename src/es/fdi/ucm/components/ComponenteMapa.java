@@ -260,4 +260,5 @@ public class ComponenteMapa extends JComponent implements ObservadorSimuladorTra
 	}
 
 
+
 }
