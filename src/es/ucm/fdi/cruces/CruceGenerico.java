@@ -113,6 +113,5 @@ public abstract class CruceGenerico<T extends  CarreteraEntrante> extends Objeto
 	public List<T> getCarreteras() {
 		// TODO Auto-generated method stub
 		return this.carreterasEntrantes;
-	}
-		
+	}	
 }

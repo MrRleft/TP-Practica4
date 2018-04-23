@@ -138,7 +138,9 @@ public class Carretera extends ObjetoSimulacion {
 		return this.vehiculos;
 	}
 
-	
+
+
+
 	
 	
 }

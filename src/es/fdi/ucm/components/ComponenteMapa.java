@@ -11,7 +11,12 @@ import java.util.Map;
 
 import javax.swing.JComponent;
 
+import es.ucm.fdi.Exceptions.ErrorDeSimulacion;
+import es.ucm.fdi.MVC.ObservadorSimuladorTrafico;
+import es.ucm.fdi.carreteras.Carretera;
+import es.ucm.fdi.carreteras.CarreteraEntrante;
 import es.ucm.fdi.control.Controlador;
+<<<<<<< HEAD
 import es.ucm.fdi.MVC.ObservadorSimuladorTrafico;
 import es.ucm.fdi.Exceptions.ErrorDeSimulacion;
 import es.ucm.fdi.model.MapaCarreteras;
@@ -19,6 +24,11 @@ import es.ucm.fdi.carreteras.Carretera;
 import es.ucm.fdi.carreteras.CarreteraEntrante;
 import es.ucm.fdi.cruces.CruceGenerico;
 import es.ucm.fdi.events.Evento;
+=======
+import es.ucm.fdi.cruces.CruceGenerico;
+import es.ucm.fdi.events.Evento;
+import es.ucm.fdi.model.MapaCarreteras;
+>>>>>>> 50e072848d228175415215d18121276ebcd8df9d
 import es.ucm.fdi.vehiculos.Vehiculo;
 
 public class ComponenteMapa extends JComponent implements ObservadorSimuladorTrafico {
@@ -259,6 +269,7 @@ public class ComponenteMapa extends JComponent implements ObservadorSimuladorTra
 		refresh();
 	}
 
+<<<<<<< HEAD
 	@Override
 	public void addObservador(es.ucm.fdi.MVC.ObservadorSimuladorTrafico o) {
 		// TODO Auto-generated method stub
@@ -272,5 +283,8 @@ public class ComponenteMapa extends JComponent implements ObservadorSimuladorTra
 	}
 
 	
+=======
+
+>>>>>>> 50e072848d228175415215d18121276ebcd8df9d
 
 }
