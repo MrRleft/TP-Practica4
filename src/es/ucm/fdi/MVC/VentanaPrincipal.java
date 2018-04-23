@@ -99,7 +99,7 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 				   JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
 		            System.exit(0);
 			}
-				
+			}	
 			public void windowClosed(WindowEvent e) {	
 			}
 
@@ -140,7 +140,7 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 		 // FILE CHOOSER
 		 this.fc = new JFileChooser();
 		 // REPORT DIALOG (OPCIONAL)
-		 this.dialogoInformes = new DialogoInformes(this,this.controlador);
+		// this.dialogoInformes = new DialogoInformes(this,this.controlador);
 		 this.pack();
 		 this.setVisible(true);
 		
@@ -211,19 +211,15 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 		  */
 		 JPanel panelSuperior = new JPanel();
 			panelSuperior.setLayout(new BoxLayout(panelSuperior, BoxLayout.X_AXIS));
-		 this.panelEditorEventos = new PanelEditorEventos(titulo,texto,true,this);
+		 String texto = "";
+		 texto = this.leeFichero(this.ficheroActual);	
+			
+		 this.panelEditorEventos = new PanelEditorEventos(this.ficheroActual.getName(),texto,true,this);
 		 this.panelColaEventos = new PanelTabla<Evento>("Cola Eventos: ",
 				 new ModeloTablaEventos(VentanaPrincipal.columnIdEventos, this.controlador));
 		 this.panelInformes = new PanelInformes("Informes: ",false, this.controlador);
 		 
-		 String texto = "";
-		 try {
-			 texto = this.leeFichero(this.ficheroActual);
-		 } 
-		 catch (FileNotFoundException e) {
-			 this.ficheroActual = null;
-			 this.muestraDialogoError("Error durante la lectura del fichero: " + e.getMessage());
-		 }
+		return panelSuperior;
 	 }
 	 
 	
@@ -235,27 +231,21 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 
 	private void muestraDialogoError(String string) {
 		// TODO Auto-generated method stub
-		JOptionPane.showMessageDialog(parentComponent,string);
+		JOptionPane.showMessageDialog(getComponent(0),string);
 	}
 
-	public void cargaFichero() {
+	public void cargaFichero() throws FileNotFoundException {
 		 int returnVal = this.fc.showOpenDialog(null);
 		 if (returnVal == JFileChooser.APPROVE_OPTION) {
 		 
 			 File fichero = this.fc.getSelectedFile();
-			 try {
-				 String s = leeFichero(fichero);
-				 this.controlador.reinicia();
-				 this.ficheroActual = fichero;
-				 this.panelEditorEventos.setTexto(s);
-				 this.panelEditorEventos.setBorde(this.ficheroActual.getName());
-				 this.panelBarraEstado.setMensaje("Fichero " + fichero.getName() +
-						 " de eventos cargado into the editor");
-			 }
-			 catch (FileNotFoundException e) {
-				 this.muestraDialogoError("Error durante la lectura del fichero: " +
-				 e.getMessage());
-			 }
+			 String s = leeFichero(fichero);
+			 this.controlador.reinicia();
+			 this.ficheroActual = fichero;
+			 this.panelEditorEventos.setTexto(s);
+			 this.panelEditorEventos.setBorde(this.ficheroActual.getName());
+			 this.panelBarraEstado.setMensaje("Fichero " + fichero.getName() +
+					 " de eventos cargado into the editor");
 		 }
 	}
 	@Override
@@ -292,9 +282,9 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 		
 	}
 
-	public Object getTextoEditorEventos() {
+	public String getTextoEditorEventos() {
 		// TODO Auto-generated method stub
-		return null;
+		return this.leeFichero(this.ficheroActual);
 	}
 
 	public void setMensaje(String string) {

@@ -4,6 +4,7 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.ByteArrayInputStream;
+import java.io.FileNotFoundException;
 import java.util.List;
 
 
@@ -31,18 +32,23 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 		controlador.addObserver(this);
 		JButton botonCargar = new JButton();
 		botonCargar.setToolTipText("Carga un fichero de ventos");
-		botonCargar.setIcon(new ImageIcon(Utils.loadImage("resources/icons/open.png")));
+		botonCargar.setIcon(new ImageIcon("resources/icons/open.png"));
 		botonCargar.addActionListener(new ActionListener() {
 				@Override
 				 public void actionPerformed(ActionEvent e) {
-					mainWindow.cargaFichero();
+					try {
+						mainWindow.cargaFichero();
+					} catch (FileNotFoundException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
 				 }
 			});
 		this.add(botonCargar);
 		
 		JButton botonCheckIn = new JButton();
 		botonCheckIn.setToolTipText("Carga los eventos al simulador");
-		botonCheckIn.setIcon(new ImageIcon(Utils.loadImage("resources/icons/events.png")));
+		botonCheckIn.setIcon(new ImageIcon("resources/icons/events.png"));
 		botonCheckIn.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -78,7 +84,7 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 		JButton botonGeneraReports = new JButton();
 		botonGeneraReports.setToolTipText("Generata informes");
 		botonGeneraReports.setIcon(new
-		 ImageIcon(Utils.loadImage("resources/icons/report.png")));
+		 ImageIcon("resources/icons/report.png"));
 		botonGeneraReports.addActionListener(new ActionListener() {
 		 @Override
 		 public void actionPerformed(ActionEvent e) {

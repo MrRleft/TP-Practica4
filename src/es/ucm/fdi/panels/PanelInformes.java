@@ -12,7 +12,7 @@ public class PanelInformes extends PanelAreaTexto implements ObservadorSimulador
 
 	 public PanelInformes(String titulo, boolean editable, Controlador ctrl) {
 		 super(titulo, editable);
-		 ctrl.addObserver(this); // se añade como observador
+		 ctrl.addObserver(this); // se aï¿½ade como observador
 	}
 
 	@Override
@@ -35,6 +35,18 @@ public class PanelInformes extends PanelAreaTexto implements ObservadorSimulador
 
 	@Override
 	public void reinicia(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addObservador(ObservadorSimuladorTrafico o) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeObservador(ObservadorSimuladorTrafico o) {
 		// TODO Auto-generated method stub
 		
 	}

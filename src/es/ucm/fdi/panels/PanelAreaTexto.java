@@ -25,7 +25,7 @@ abstract public class PanelAreaTexto extends JPanel{
 	}
 	
 	public String getTexto() {
-		...
+		return areatexto.getText();
 	}
 	
 	public void setTexto(String texto) {

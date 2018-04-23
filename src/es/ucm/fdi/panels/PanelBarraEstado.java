@@ -36,7 +36,7 @@ public class PanelBarraEstado extends JPanel implements ObservadorSimuladorTrafi
 
 	@Override
 	public void addEvento(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
-		this.infoEjecucion.setText("Evento añadido al simulador");
+		this.infoEjecucion.setText("Evento aï¿½adido al simulador");
 	}
 	
 	@Override	
@@ -46,6 +46,18 @@ public class PanelBarraEstado extends JPanel implements ObservadorSimuladorTrafi
 
 	@Override
 	public void errorSimulador(int tiempo, MapaCarreteras map, List<Evento> eventos, ErrorDeSimulacion e) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void addObservador(ObservadorSimuladorTrafico o) {
+		// TODO Auto-generated method stub
+		
+	}
+
+	@Override
+	public void removeObservador(ObservadorSimuladorTrafico o) {
 		// TODO Auto-generated method stub
 		
 	}
