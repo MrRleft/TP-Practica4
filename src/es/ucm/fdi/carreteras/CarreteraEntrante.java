@@ -67,6 +67,11 @@ public class CarreteraEntrante {
 		this.colaVehiculos = colaVehiculos;
 	}
 
+	public boolean tieneSemaforoVerde() {
+		// TODO Auto-generated method stub
+		return this.semaforo == true;
+	}
+
 
 	
 }

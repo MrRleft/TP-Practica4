@@ -1,4 +1,4 @@
-package es.ucm.fdi.view.swing.grafico;
+package es.fdi.ucm.components;
 
 import java.awt.Color;
 import java.awt.Dimension;
@@ -11,15 +11,15 @@ import java.util.Map;
 
 import javax.swing.JComponent;
 
+import es.ucm.fdi.Exceptions.ErrorDeSimulacion;
+import es.ucm.fdi.MVC.ObservadorSimuladorTrafico;
+import es.ucm.fdi.carreteras.Carretera;
+import es.ucm.fdi.carreteras.CarreteraEntrante;
 import es.ucm.fdi.control.Controlador;
-import es.ucm.fdi.control.ObservadorSimuladorTrafico;
-import es.ucm.fdi.model.ErrorDeSimulacion;
+import es.ucm.fdi.cruces.CruceGenerico;
+import es.ucm.fdi.events.Evento;
 import es.ucm.fdi.model.MapaCarreteras;
-import es.ucm.fdi.model.carreteras.Carretera;
-import es.ucm.fdi.model.cruces.CarreteraEntrante;
-import es.ucm.fdi.model.cruces.CruceGenerico;
-import es.ucm.fdi.model.eventos.Evento;
-import es.ucm.fdi.model.vehiculos.Vehiculo;
+import es.ucm.fdi.vehiculos.Vehiculo;
 
 public class ComponenteMapa extends JComponent implements ObservadorSimuladorTrafico {
 
@@ -96,7 +96,7 @@ public class ComponenteMapa extends JComponent implements ObservadorSimuladorTra
 		// draw edges
 		for (Carretera e : this.mapa.getCarreteras()) {
 			Punto p1 = posicionesDeNodos.get(e.getCruceOrigen().getId());
-			Punto p2 = posicionesDeNodos.get(e.getCruceDestino().getId());
+			Punto p2 = posicionesDeNodos.get(e.getCruceDest().getId());
 
 			// draw the edge
 			Color arrowColor = hasGreen(e) ? Color.GREEN : Color.RED;
@@ -121,7 +121,7 @@ public class ComponenteMapa extends JComponent implements ObservadorSimuladorTra
 	}
 
 	private boolean hasGreen(Carretera e) {
-		for (CarreteraEntrante r : e.getCruceDestino().getCarreteras()) {
+		for (CarreteraEntrante r : e.getCruceDest().getCarreteras()) {
 			if (r.getCarretera().equals(e)) {
 				if (r.tieneSemaforoVerde())
 					return true;
@@ -258,5 +258,6 @@ public class ComponenteMapa extends JComponent implements ObservadorSimuladorTra
 		calculaCoordenadasCruce();
 		refresh();
 	}
+
 
 }

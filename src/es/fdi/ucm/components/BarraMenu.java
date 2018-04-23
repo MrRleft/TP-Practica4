@@ -13,6 +13,7 @@ import es.ucm.fdi.MVC.VentanaPrincipal;
 import es.ucm.fdi.control.Controlador;
 
 
+@SuppressWarnings("serial")
 public class BarraMenu extends JMenuBar {
 
 
@@ -47,11 +48,11 @@ public class BarraMenu extends JMenuBar {
 		 });
 		 
 		 menu.add(cargar);
-		 menu.add(salvar);
+	//	 menu.add(salvar);
 		 menu.addSeparator();
-		 menu.add(salvarInformes);
+	//	 menu.add(salvarInformes);
 		 menu.addSeparator();
-		 menu.add(salir);
+	//	 menu.add(salir);
 		}
 
 	 private void creaMenuInformes(JMenu menuReport, VentanaPrincipal mainWindow) {

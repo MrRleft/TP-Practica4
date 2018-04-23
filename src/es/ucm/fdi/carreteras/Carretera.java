@@ -131,6 +131,18 @@ public class Carretera extends ObjetoSimulacion {
 	}
 
 
+	public List<Vehiculo> getVehiculos() {
+		// TODO Auto-generated method stub
+		return this.vehiculos;
+	}
+
+
+	public CruceGenerico<?> getCruceOrigen() {
+		// TODO Auto-generated method stub
+		return this.getCruceOrigen();
+	}
+
+
 	
 	
 }

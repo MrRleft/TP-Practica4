@@ -109,5 +109,10 @@ public abstract class CruceGenerico<T extends  CarreteraEntrante> extends Objeto
 		is.setValue("queues", detalles);
 	}
 	 abstract protected void actualizaSemaforos();
+
+	public List<T> getCarreteras() {
+		// TODO Auto-generated method stub
+		return carreterasEntrantes;
+	}
 		
 }
