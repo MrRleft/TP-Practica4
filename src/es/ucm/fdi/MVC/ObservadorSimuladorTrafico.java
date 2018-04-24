@@ -6,7 +6,7 @@ import es.ucm.fdi.Exceptions.ErrorDeSimulacion;
 import es.ucm.fdi.events.Evento;
 import es.ucm.fdi.model.MapaCarreteras;
 
-public interface ObservadorSimuladorTrafico extends Observador<ObservadorSimuladorTrafico>{
+public interface ObservadorSimuladorTrafico{
 	 // notifica errores
 	 public void errorSimulador(int tiempo, MapaCarreteras map, List<Evento> eventos, ErrorDeSimulacion e);
 	 // notifica el avance de los objetos de simulaci�n

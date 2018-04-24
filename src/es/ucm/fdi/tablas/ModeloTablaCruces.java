@@ -40,16 +40,5 @@ public class ModeloTablaCruces extends ModeloTabla<CruceGenerico<?>> {
 		this.fireTableStructureChanged();
 	}
 
-	@Override
-	public void addObservador(ObservadorSimuladorTrafico o) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void removeObservador(ObservadorSimuladorTrafico o) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

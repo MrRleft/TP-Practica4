@@ -23,6 +23,7 @@ import es.ucm.fdi.control.Controlador;
 import es.ucm.fdi.events.Evento;
 import es.ucm.fdi.model.MapaCarreteras;
 
+@SuppressWarnings("serial")
 public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 	
 	private JSpinner steps;
@@ -115,15 +116,4 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 		 this.time.setText("0");
 	}
 
-	@Override
-	public void addObservador(ObservadorSimuladorTrafico o) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void removeObservador(ObservadorSimuladorTrafico o) {
-		// TODO Auto-generated method stub
-		
-	}
 }

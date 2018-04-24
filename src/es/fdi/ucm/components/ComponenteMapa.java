@@ -259,18 +259,5 @@ public class ComponenteMapa extends JComponent implements ObservadorSimuladorTra
 		refresh();
 	}
 
-	@Override
-	public void addObservador(es.ucm.fdi.MVC.ObservadorSimuladorTrafico o) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void removeObservador(es.ucm.fdi.MVC.ObservadorSimuladorTrafico o) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
 
 }

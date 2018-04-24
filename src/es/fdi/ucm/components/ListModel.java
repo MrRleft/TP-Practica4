@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.swing.DefaultListModel;
 
+@SuppressWarnings("serial")
 public class ListModel<T> extends DefaultListModel<T> {
 	 
 	private List<T> lista;

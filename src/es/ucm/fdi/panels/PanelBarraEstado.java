@@ -50,18 +50,4 @@ public class PanelBarraEstado extends JPanel implements ObservadorSimuladorTrafi
 		
 	}
 
-	@Override
-	public void addObservador(ObservadorSimuladorTrafico o) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	@Override
-	public void removeObservador(ObservadorSimuladorTrafico o) {
-		// TODO Auto-generated method stub
-		
-	}
-
-	
-
 }

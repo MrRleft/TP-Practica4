@@ -93,26 +93,13 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 			}
 
 			public void windowClosing(WindowEvent e) {
-				JFrame frame = new JFrame();
-				// TODO Auto-generated method stub
-				if(JOptionPane.showConfirmDialog(frame, "Aye you sure you want to close this window?", "Really Closing?", 
-				   JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
-		            System.exit(0);
-			}
+				Salir();
 			}	
-			public void windowClosed(WindowEvent e) {	
-			}
-
-			public void windowIconified(WindowEvent e) {	
-			}
-			
-			public void windowDeiconified(WindowEvent e) {
-				// TODO Auto-generated method stub	
-			}
-			public void windowActivated(WindowEvent e) {	
-			}
-			public void windowDeactivated(WindowEvent e) {
-			}
+			public void windowClosed(WindowEvent e) {}
+			public void windowIconified(WindowEvent e) {}	
+			public void windowDeiconified(WindowEvent e) {}
+			public void windowActivated(WindowEvent e) {}
+			public void windowDeactivated(WindowEvent e) {}
 	
 		 });
 		 
@@ -129,7 +116,8 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 		 JPanel panelCentral = this.createPanelCentral();
 		 panelPrincipal.add(panelCentral,BorderLayout.CENTER);
 		// PANEL SUPERIOR
-		 this.createPanelSuperior(panelCentral);
+		 JPanel panelSup = this.createPanelSuperior(panelCentral);
+		 panelCentral.add(panelSup);
 		 // MENU
 		 BarraMenu menubar = new BarraMenu(this,this.controlador);
 		 this.setJMenuBar(menubar);
@@ -138,7 +126,7 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 		 // BARRA DE HERRAMIENTAS
 		 this.addToolBar(panelPrincipal);
 		 // FILE CHOOSER
-		 this.fc = new JFileChooser();
+		this.fc = new JFileChooser();
 		 // REPORT DIALOG (OPCIONAL)
 		this.dialogoInformes = new DialogoInformes();
 		this.pack();
@@ -167,8 +155,9 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 			paneles: 
 		 */
 		JPanel panelInferior = new JPanel();
-		panelInferior.setLayout(new BoxLayout(panelInferior, BoxLayout.X_AXIS));
-		panelInferior.setLayout(new GridLayout(3,1));
+		JPanel left = new JPanel();
+		left.setLayout(new GridLayout(3,1));
+		panelInferior.setLayout(new GridLayout(1,1));
 		this.panelVehiculos = new PanelTabla<Vehiculo>("Vehiculos",
 				new ModeloTablaVehiculos(VentanaPrincipal.columnIdVehiculo, this.controlador));
 		this.panelCarreteras = new PanelTabla<Carretera>("Carretras",
@@ -179,7 +168,16 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 		this.componenteMapa = new ComponenteMapa(this.controlador);
 		// a�adir un ScroolPane al panel inferior donde se coloca la
 		// componente.
-		panelInferior.add(new JScrollPane(this.componenteMapa));///////????????????
+
+		left.add(panelVehiculos);
+		left.add(panelCarreteras);
+		left.add(panelCruces);
+		panelInferior.add(left);
+		panelInferior.add(this.componenteMapa);///////????????????
+
+		panelCentral.add(panelInferior);
+		
+
 	}
 
 	
@@ -215,9 +213,12 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 		 texto = this.leeFichero(this.ficheroActual);	
 			
 		 this.panelEditorEventos = new PanelEditorEventos(this.ficheroActual.getName(),texto,true,this);
+		 panelSuperior.add(this.panelEditorEventos);
 		 this.panelColaEventos = new PanelTabla<Evento>("Cola Eventos: ",
 				 new ModeloTablaEventos(VentanaPrincipal.columnIdEventos, this.controlador));
+		 panelSuperior.add(this.panelColaEventos);
 		 this.panelInformes = new PanelInformes("Informes: ",false, this.controlador);
+		 panelSuperior.add(this.panelInformes);
 		 
 		return panelSuperior;
 	 }
@@ -288,24 +289,23 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 	}
 
 	public void setMensaje(String string) {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub	
 		
 	}
 
 
 
-	@Override
-	public void addObservador(ObservadorSimuladorTrafico o) {
+	public void Salir() {
 		// TODO Auto-generated method stub
-		
+		JFrame frame = new JFrame();
+		// TODO Auto-generated method stub
+		if(JOptionPane.showConfirmDialog(frame, "Are you sure you want to close this window?", "Really Closing?", 
+		   JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
+            System.exit(0);
+		}
+
 	}
 
 
-
-	@Override
-	public void removeObservador(ObservadorSimuladorTrafico o) {
-		// TODO Auto-generated method stub
-		
-	}
 
 }

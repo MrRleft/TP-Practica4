@@ -13,6 +13,7 @@ import es.ucm.fdi.control.Controlador;
 import es.ucm.fdi.cruces.CruceGenerico;
 import es.ucm.fdi.events.Evento;
 import es.ucm.fdi.model.MapaCarreteras;
+import es.ucm.fdi.panels.PanelBotones;
 import es.ucm.fdi.panels.PanelInformes;
 import es.ucm.fdi.vehiculos.Vehiculo;
 
@@ -28,7 +29,7 @@ import es.ucm.fdi.vehiculos.Vehiculo;
 @SuppressWarnings("serial")
 public class DialogoInformes extends JDialog implements ObservadorSimuladorTrafico {
 	
-	//private PanelBotones panelBotones;
+	private PanelBotones panelBotones;
 	private PanelObjSim<Vehiculo> panelVehiculos;
 	private PanelObjSim<Carretera> panelCarreteras;
 	private PanelObjSim<CruceGenerico<?>> panelCruces;
@@ -38,17 +39,19 @@ public class DialogoInformes extends JDialog implements ObservadorSimuladorTrafi
 		 this.panelVehiculos = new PanelObjSim<Vehiculo>("Vehiculos");
 		 this.panelCarreteras = new PanelObjSim<Carretera>("Carreteras");
 		 this.panelCruces = new PanelObjSim<CruceGenerico<?>>("Cruces");
-		//this.panelBotones = new PanelBotones(this);
+		 this.panelBotones = new PanelBotones(this);
 		 PanelInformes panelInfo = new PanelInformes("Placeholder", rootPaneCheckingEnabled, c);
 		 panelPrincipal.add(panelInfo,BorderLayout.PAGE_START);
 		 
 	 
 	}
+	
 	private void setMapa(MapaCarreteras mapa) {
 	
 		this.panelVehiculos.setList(mapa.getVehiculos());
 		this.panelCarreteras.setList(mapa.getCarreteras());
 		this.panelCruces.setList(mapa.getCruces());
+		
 	}
 	
 	public List<Vehiculo> getVehiculosSeleccionados() {
@@ -62,16 +65,7 @@ public class DialogoInformes extends JDialog implements ObservadorSimuladorTrafi
 	public List<CruceGenerico<?>> getCrucesSeleccionados() {
 		 return this.panelCruces.getSelectedItems();
 	}
-	@Override
-	public void addObservador(ObservadorSimuladorTrafico o) {
-		// TODO Auto-generated method stub
-		
-	}
-	@Override
-	public void removeObservador(ObservadorSimuladorTrafico o) {
-		// TODO Auto-generated method stub
-		
-	}
+
 	@Override
 	public void errorSimulador(int tiempo, MapaCarreteras map, List<Evento> eventos, ErrorDeSimulacion e) {
 		// TODO Auto-generated method stub

@@ -53,13 +53,61 @@ public class BarraMenu extends JMenuBar {
 			 }
 		 });
 		 
+		 JMenuItem salvar = new JMenuItem("Guardar");
+		 salvar.setMnemonic(KeyEvent.VK_L);
+		 salvar.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L,
+		 ActionEvent.ALT_MASK));
+		 salvar.addActionListener(new ActionListener() {
+			 @Override
+			 public void actionPerformed(ActionEvent e) {
+				 guardarResultados();
+			 }
+
+			
+		 });
+		 
+		
+		/* JMenuItem salvarInformes = new JMenuItem("Guardar informes");
+		 cargar.setMnemonic(KeyEvent.VK_L);
+		 cargar.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L,
+		 ActionEvent.ALT_MASK));
+		 cargar.addActionListener(new ActionListener() {
+			 @Override
+			 public void actionPerformed(ActionEvent e) {
+				 try {
+					mainWindow.guardarInformes();
+				} catch (FileNotFoundException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			 }
+		 });
+		 */
+		 
+		 JMenuItem salir = new JMenuItem("Salir");
+		 salir.setMnemonic(KeyEvent.VK_L);
+		 salir.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L,
+		 ActionEvent.ALT_MASK));
+		 salir.addActionListener(new ActionListener() {
+			 @Override
+			 public void actionPerformed(ActionEvent e) {
+				 mainWindow.Salir();
+			 }
+		 });
+		 
 		 menu.add(cargar);
-	//	 menu.add(salvar);
 		 menu.addSeparator();
-	//	 menu.add(salvarInformes);
+		 menu.add(salvar);
 		 menu.addSeparator();
-	//	 menu.add(salir);
+		// menu.add(salvarInformes);
+		 menu.addSeparator();
+		 menu.add(salir);
 		}
+	 
+	 private void guardarResultados() {
+			// TODO Auto-generated method stub
+			
+	}
 
 	 private void creaMenuInformes(JMenu menuReport, VentanaPrincipal mainWindow) {
 			 
