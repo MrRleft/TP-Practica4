@@ -65,6 +65,41 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 		 });
 		this.add(botonCheckIn);
 		
+		JButton run = new JButton();
+		run.setToolTipText("Carga los eventos al simulador");
+		run.setIcon(new ImageIcon("resources/icons/play.png"));
+		run.addActionListener(new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			 try {
+				 controlador.reinicia();
+				 byte[] contenido = mainWindow.getTextoEditorEventos().getBytes();
+				 controlador.cargaEventos(new ByteArrayInputStream(contenido));
+			 } catch (ErrorDeSimulacion err) {
+				 
+			 }
+			 	mainWindow.setMensaje("Eventos cargados al simulador!");
+			 }
+		 });
+		this.add(run);
+		
+		JButton stop = new JButton();
+		stop.setToolTipText("Carga los eventos al simulador");
+		stop.setIcon(new ImageIcon("resources/icons/stop.png"));
+		stop.addActionListener(new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			 try {
+				 controlador.reinicia();
+				 byte[] contenido = mainWindow.getTextoEditorEventos().getBytes();
+				 controlador.cargaEventos(new ByteArrayInputStream(contenido));
+			 } catch (ErrorDeSimulacion err) {
+				 
+			 }
+			 	mainWindow.setMensaje("Eventos cargados al simulador!");
+			 }
+		 });
+		this.add(stop);
 		this.add(new JLabel(" Pasos: "));
 		this.steps = new JSpinner(new SpinnerNumberModel(5, 1, 1000, 1));
 		this.steps.setToolTipText("pasos a ejecutar: 1-1000");
@@ -82,8 +117,9 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 		this.add(this.time);
 		
 		// OPCIONAL
+		/*
 		JButton botonGeneraReports = new JButton();
-		botonGeneraReports.setToolTipText("Generata informes");
+		botonGeneraReports.setToolTipText("Generar informes");
 		botonGeneraReports.setIcon(new
 		 ImageIcon("resources/icons/report.png"));
 		botonGeneraReports.addActionListener(new ActionListener() {
@@ -93,6 +129,7 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 		 }
 		});
 		this.add(botonGeneraReports);
+		*/
 	}
 	
 	@Override
