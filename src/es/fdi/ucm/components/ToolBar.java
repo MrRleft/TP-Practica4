@@ -32,7 +32,7 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 		super();
 		controlador.addObserver(this);
 		JButton botonCargar = new JButton();
-		botonCargar.setToolTipText("Carga un fichero de ventos");
+		botonCargar.setToolTipText("Carga un fichero de eventos");
 		botonCargar.setIcon(new ImageIcon("resources/icons/open.png"));
 		botonCargar.addActionListener(new ActionListener() {
 				@Override
@@ -49,6 +49,7 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 		this.add(botonCargar);
 		
 		JButton botonCheckIn = new JButton();
+		
 		botonCheckIn.setToolTipText("CheckIn");
 		botonCheckIn.setIcon(new ImageIcon("resources/icons/events.png"));
 		botonCheckIn.addActionListener(new ActionListener() {
@@ -72,14 +73,10 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 		run.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			 try {
-				 controlador.execute();
-				/* byte[] contenido = mainWindow.getTextoEditorEventos().getBytes();
-				 controlador.cargaEventos(new ByteArrayInputStream(contenido));*/
-			 } catch (ErrorDeSimulacion err) {
-				 System.err.println("Error en la ejecucion");
-				 err.printStackTrace();
-			 }
+			int pasos = mainWindow.getSteps();
+			 controlador.ejecuta(pasos);
+			/* byte[] contenido = mainWindow.getTextoEditorEventos().getBytes();
+			 controlador.cargaEventos(new ByteArrayInputStream(contenido));*/
 			 	mainWindow.setMensaje("Eventos cargados al simulador!");
 			 }
 		 });

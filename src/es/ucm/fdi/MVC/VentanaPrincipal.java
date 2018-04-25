@@ -5,9 +5,14 @@ import java.awt.Color;
 import java.awt.GridLayout;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.List;
+import java.util.Scanner;
 
 import javax.swing.BorderFactory;
 import javax.swing.BoxLayout;
@@ -227,7 +232,16 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 	 
 	private String leeFichero(File ficheroActual2) {
 		// TODO Auto-generated method stub
-		return null;
+		String s = "";
+		try {
+			Scanner sc = new Scanner(ficheroActual2);
+			s = sc.useDelimiter("\\A").next();
+			sc.close();
+		} catch (FileNotFoundException e) {
+			System.out.println("hola");
+			//aqui iria una excepcion
+		}
+		return s;
 	}
 
 	private void muestraDialogoError(String string) {
