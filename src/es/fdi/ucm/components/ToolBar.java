@@ -41,6 +41,7 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 						mainWindow.cargaFichero();
 					} catch (FileNotFoundException e1) {
 						// TODO Auto-generated catch block
+						System.err.println("Problema al cargar los eventos desde el GUI");
 						e1.printStackTrace();
 					}
 				 }
@@ -48,17 +49,17 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 		this.add(botonCargar);
 		
 		JButton botonCheckIn = new JButton();
-		botonCheckIn.setToolTipText("Carga los eventos al simulador");
+		botonCheckIn.setToolTipText("CheckIn");
 		botonCheckIn.setIcon(new ImageIcon("resources/icons/events.png"));
 		botonCheckIn.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			 try {
-				 controlador.reinicia();
 				 byte[] contenido = mainWindow.getTextoEditorEventos().getBytes();
 				 controlador.cargaEventos(new ByteArrayInputStream(contenido));
 			 } catch (ErrorDeSimulacion err) {
-				 
+				 System.err.println("Problema al cargar los eventos desde el GUI");
+				 err.printStackTrace();
 			 }
 			 	mainWindow.setMensaje("Eventos cargados al simulador!");
 			 }
@@ -66,17 +67,18 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 		this.add(botonCheckIn);
 		
 		JButton run = new JButton();
-		run.setToolTipText("Carga los eventos al simulador");
+		run.setToolTipText("Ejecuta el simulador");
 		run.setIcon(new ImageIcon("resources/icons/play.png"));
 		run.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			 try {
-				 controlador.reinicia();
-				 byte[] contenido = mainWindow.getTextoEditorEventos().getBytes();
-				 controlador.cargaEventos(new ByteArrayInputStream(contenido));
+				 controlador.execute();
+				/* byte[] contenido = mainWindow.getTextoEditorEventos().getBytes();
+				 controlador.cargaEventos(new ByteArrayInputStream(contenido));*/
 			 } catch (ErrorDeSimulacion err) {
-				 
+				 System.err.println("Error en la ejecucion");
+				 err.printStackTrace();
 			 }
 			 	mainWindow.setMensaje("Eventos cargados al simulador!");
 			 }
@@ -84,7 +86,7 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 		this.add(run);
 		
 		JButton stop = new JButton();
-		stop.setToolTipText("Carga los eventos al simulador");
+		stop.setToolTipText("Para la ejecucion del simulador");
 		stop.setIcon(new ImageIcon("resources/icons/stop.png"));
 		stop.addActionListener(new ActionListener() {
 		@Override
@@ -96,7 +98,7 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 			 } catch (ErrorDeSimulacion err) {
 				 
 			 }
-			 	mainWindow.setMensaje("Eventos cargados al simulador!");
+			 	mainWindow.setMensaje("Parado");
 			 }
 		 });
 		this.add(stop);
