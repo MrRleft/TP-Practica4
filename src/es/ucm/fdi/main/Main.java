@@ -20,9 +20,9 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
-import es.ucm.fdi.MVC.VentanaPrincipal;
-import es.ucm.fdi.control.Controlador;
+import es.ucm.fdi.controller.Controlador;
 import es.ucm.fdi.model.SimuladorTrafico;
+import es.ucm.fdi.view.VentanaPrincipal;
 
 
 public class Main {

@@ -6,13 +6,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import es.ucm.fdi.Exceptions.ErrorCarga;
-import es.ucm.fdi.Exceptions.ErrorDeSimulacion;
-import es.ucm.fdi.Exceptions.InsertException;
-import es.ucm.fdi.Exceptions.NotFoundException;
-import es.ucm.fdi.carreteras.Carretera;
-import es.ucm.fdi.cruces.CruceGenerico;
-import es.ucm.fdi.vehiculos.Vehiculo;
+import es.ucm.fdi.model.Exceptions.ErrorCarga;
+import es.ucm.fdi.model.Exceptions.ErrorDeSimulacion;
+import es.ucm.fdi.model.Exceptions.InsertException;
+import es.ucm.fdi.model.Exceptions.NotFoundException;
+import es.ucm.fdi.model.carreteras.Carretera;
+import es.ucm.fdi.model.cruces.CruceGenerico;
+import es.ucm.fdi.model.vehiculos.Vehiculo;
 
 public class MapaCarreteras {
 

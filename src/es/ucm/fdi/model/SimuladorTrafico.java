@@ -6,14 +6,14 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
-import es.ucm.fdi.Exceptions.ErrorCarga;
-import es.ucm.fdi.Exceptions.ErrorDeSimulacion;
-import es.ucm.fdi.Exceptions.InsertException;
-import es.ucm.fdi.Exceptions.NotFoundException;
-import es.ucm.fdi.MVC.Observador;
-import es.ucm.fdi.MVC.ObservadorSimuladorTrafico;
 import es.ucm.fdi.Utils.SortedArrayList;
-import es.ucm.fdi.events.Evento;
+import es.ucm.fdi.model.Exceptions.ErrorCarga;
+import es.ucm.fdi.model.Exceptions.ErrorDeSimulacion;
+import es.ucm.fdi.model.Exceptions.InsertException;
+import es.ucm.fdi.model.Exceptions.NotFoundException;
+import es.ucm.fdi.model.events.Evento;
+import es.ucm.fdi.view.Observador;
+import es.ucm.fdi.view.ObservadorSimuladorTrafico;
 
 public class SimuladorTrafico implements Observador<ObservadorSimuladorTrafico>{
 
