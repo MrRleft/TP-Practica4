@@ -139,6 +139,23 @@ public class Carretera extends ObjetoSimulacion {
 	}
 
 
+	public String getStringVehiculos() {
+		// TODO Auto-generated method stub
+		String key= "[";
+		if(this.vehiculos.size() != 0)
+			
+			for(int i = 0; i < this.vehiculos.size();++i){
+				if(i!=this.vehiculos.size()-1){
+					key += this.vehiculos.get(i).getId()+ ",";
+				}
+				else
+					key += this.vehiculos.get(i).getId() ;
+			} 
+		key += "]";
+		return key;
+	}
+
+
 
 
 	

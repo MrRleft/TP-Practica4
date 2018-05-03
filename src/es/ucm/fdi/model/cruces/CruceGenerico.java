@@ -111,7 +111,27 @@ public abstract class CruceGenerico<T extends  CarreteraEntrante> extends Objeto
 	 abstract protected void actualizaSemaforos();
 
 	public List<T> getCarreteras() {
-		// TODO Auto-generated method stub
+
 		return this.carreterasEntrantes;
+	}
+
+	public String getGreenRoad() {
+		
+		
+		String key = "[(";
+		CarreteraEntrante semVerde = this.carreterasEntrantes.get(this.indiceSemaforoVerde);
+		key += "(" +semVerde.getID() + "green" + "[" + semVerde.getIDCars() + "])]" ;
+		return key;
+	}
+
+	public Object getRedRoads() {
+
+		String key = "[";
+		for(CarreteraEntrante RedSems : this.carreterasEntrantes) {
+			if(!RedSems.getSem())
+				key += "(" + RedSems.getID() + "red" + "[" + RedSems.getIDCars() + "])" ;
+		}
+		key += "]";
+		return key;
 	}	
 }

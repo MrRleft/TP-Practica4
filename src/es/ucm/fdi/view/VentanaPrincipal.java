@@ -286,14 +286,19 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 		// TODO Auto-generated method stub
 		
 	}
+	
+	//De aqui en adelante tenemos las funciones que nos van a ir sirviendo para que funcionen los diferentes componentes
 
 	public int getSteps() {
-		// TODO Auto-generated method stub
+		//Consigue los pasos que se encuantran en el toolbar
+		
 		return 0;
 	}
 
 	public void generaInformes() {
 		// TODO Auto-generated method stub
+		//Este es opcional, ya veremos si podemos llegar a hacerlo
+		
 		
 	}
 
@@ -318,6 +323,14 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
             System.exit(0);
 		}
 
+	}
+
+
+
+	public void guardarResultados() {
+		// TODO Auto-generated method stub
+		//Esto se encarga de guardar ela salida del programa tal y como lo haría en el modo batch
+		
 	}
 
 

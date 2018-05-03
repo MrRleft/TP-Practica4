@@ -60,7 +60,7 @@ public class BarraMenu extends JMenuBar {
 		 salvar.addActionListener(new ActionListener() {
 			 @Override
 			 public void actionPerformed(ActionEvent e) {
-				 guardarResultados();
+				 mainWindow.guardarResultados();
 			 }
 
 			
@@ -103,11 +103,6 @@ public class BarraMenu extends JMenuBar {
 		 menu.addSeparator();
 		 menu.add(salir);
 		}
-	 
-	 private void guardarResultados() {
-			// TODO Auto-generated method stub
-			
-	}
 
 	 private void creaMenuInformes(JMenu menuReport, VentanaPrincipal mainWindow) {
 			 
@@ -135,6 +130,7 @@ public class BarraMenu extends JMenuBar {
 			controlador.ejecuta(pasos);
 			}
 		});
+		
 		JMenuItem reinicia = new JMenuItem("Reinicia");
 		
 		menuSimulador.add(ejecuta);

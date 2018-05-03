@@ -72,6 +72,20 @@ public class CarreteraEntrante {
 		return this.semaforo == true;
 	}
 
+	public String getID() {
+		// TODO Auto-generated method stub
+		return this.carretera.getID();
+	}
+
+	public String getIDCars() {
+		// TODO Auto-generated method stub
+		String key = "";
+		for(Vehiculo v : this.colaVehiculos)
+			key += v.getId() + ",";
+		key = key.substring(0, key.length() - 1);
+		return key;
+	}
+
 
 	
 }

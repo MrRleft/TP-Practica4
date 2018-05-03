@@ -138,7 +138,7 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 	
 	@Override
 	public void avanza(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
-	 this.time.setText(""+tiempo);
+		this.time.setText(""+tiempo);
 	}
 	
 	@Override
@@ -151,5 +151,9 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 		 this.steps.setValue(1);
 		 this.time.setText("0");
 	}
-
+	
+	public int getSteps() {
+		
+		return (int) this.steps.getValue();
+	}
 }

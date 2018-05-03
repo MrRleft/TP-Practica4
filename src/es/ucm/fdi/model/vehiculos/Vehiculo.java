@@ -165,9 +165,34 @@ public class Vehiculo extends ObjetoSimulacion {
 	}
 
 	public void setAveria(int duration) {
-		// TODO Auto-generated method stub
 		this.tiempoAveria += duration;
 
+	}
+
+
+	public String getRoad() {
+		return this.carretera.getID();
+	}
+
+
+	public int getSpeed() {
+		return this.velocidadActual;
+	}
+
+
+	public Object getKM() {
+		return this.kilometraje;
+	}
+
+
+	public String getIti() {
+		
+		String key = "[";
+		for(CruceGenerico<?> c : this.itinerario)
+			key += c.getId() + ",";
+		key = key.substring(0, key.length() - 1);
+		key += "]";
+		return null;
 	}
 	
 	
