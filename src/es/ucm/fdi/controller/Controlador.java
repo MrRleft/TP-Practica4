@@ -30,10 +30,14 @@ public class Controlador {
 		 this.pasosSimulacion = limiteTiempo;
 	}
 
+	 
+	public SimuladorTrafico getSimulador(){
+		return this.simulador;
+	}
 	public void ejecuta() {
 		 try {
 			 
-			 this.cargaEventos(this.ficheroEntrada);
+			 this.cargaEventos();
 			 this.simulador.ejecuta(this.pasosSimulacion,this.ficheroSalida);
 		 }
 		 catch(Exception r) {
@@ -71,24 +75,34 @@ public class Controlador {
 		this.simulador.removeObservador(o);
 		
 	}
-	 public void cargaEventos(InputStream inStream) throws ErrorDeSimulacion {
+	 public void cargaEventos() throws ErrorDeSimulacion {
 		 Ini ini;
 		 try {
 			 // lee el fichero y carga su atributo iniSections
-			 ini = new Ini(inStream);
-		 }
-		 catch (IOException e) {
-			 throw new ErrorDeSimulacion("Error en la lectura de eventos: " + e);
-		 }
-		
-		 for (IniSection sec : ini.getSections()) {
-			 Evento e = ParserEventos.parseaEvento(sec);
+			 ini = new Ini(this.ficheroEntrada);
+			 for (IniSection sec : ini.getSections()) {
+					 Evento e = ParserEventos.parseaEvento(sec);
 			 if (e != null)
 				 this.simulador.insertaEvento(e);
 			 else
 				 throw new ErrorDeSimulacion("Evento desconocido: " + sec.getTag());
+			 }
+		 }
+			 
+		 catch (IOException e) {
+			 throw new ErrorDeSimulacion("Error en la lectura de eventos: " + e);
+		 }
+			
 		}
+
+
+	public OutputStream getFicheroSalida() {
+		return ficheroSalida;
+	}
 		 
-	 }
+	public void setInputFile(InputStream inputFile) {
+		this.ficheroEntrada = inputFile;
+	}
+	
 	}
 

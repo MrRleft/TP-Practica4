@@ -6,6 +6,8 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.List;
 
+import javax.swing.SwingUtilities;
+
 import es.ucm.fdi.Utils.SortedArrayList;
 import es.ucm.fdi.model.Exceptions.ErrorCarga;
 import es.ucm.fdi.model.Exceptions.ErrorDeSimulacion;
@@ -83,7 +85,7 @@ public class SimuladorTrafico implements Observador<ObservadorSimuladorTrafico>{
 	private void notificaAvanza() {
 		// TODO Auto-generated method stub
 		for (ObservadorSimuladorTrafico o : this.observadores) {
-			o.avanza(this.contadorTiempo,this.mapa,this.eventos);
+			SwingUtilities.invokeLater(() -> o.avanza(this.contadorTiempo,this.mapa,this.eventos));
 		 }
 	}
 
@@ -125,14 +127,14 @@ public class SimuladorTrafico implements Observador<ObservadorSimuladorTrafico>{
 	
 	private void notificaError(ErrorDeSimulacion err) {
 		// TODO Auto-generated method stub
-		for(int i = 0; i< this.observadores.size();++i){
-			this.observadores.get(i).errorSimulador(this.contadorTiempo, this.mapa, eventos, err);
-		}
+		for (ObservadorSimuladorTrafico o : this.observadores) {
+			SwingUtilities.invokeLater(() -> o.errorSimulador(this.contadorTiempo,this.mapa,this.eventos,err));
+		 }
 	}
 
 	private void notificaNuevoEvento() {
 		for (ObservadorSimuladorTrafico o : this.observadores) {
-			o.addEvento(this.contadorTiempo,this.mapa,this.eventos);
+			SwingUtilities.invokeLater(() -> o.addEvento(this.contadorTiempo,this.mapa,this.eventos));
 		 }
 	}
 
@@ -146,15 +148,27 @@ public class SimuladorTrafico implements Observador<ObservadorSimuladorTrafico>{
 		this.notificaReinicia();
 		
 	}
-
+	
+	
 	private void notificaReinicia() {
 		// TODO Auto-generated method stub
-	
-		for(int i = 0; i< this.observadores.size();++i){
-			this.observadores.get(i).reinicia(contadorTiempo, mapa, eventos);
+		for (ObservadorSimuladorTrafico o : this.observadores) {
+			SwingUtilities.invokeLater(() -> o.reinicia(contadorTiempo, mapa, eventos));
 		}
 	}
 	
+	public List<Evento> getEventos() {
+		return eventos;
+	}
+
+	public MapaCarreteras getMapa() {
+		return mapa;
+	}
+
+	public int getContadorTiempo() {
+		return contadorTiempo;
+	}
+
 	public void setPasos(int lt) {
 		
 		 this.pasosSim = lt;

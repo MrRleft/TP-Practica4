@@ -15,4 +15,5 @@ public interface ObservadorSimuladorTrafico{
 	 public void addEvento(int tiempo, MapaCarreteras mapa, List<Evento> eventos);
 	 // notifica que la simulaci�n se ha reiniciado
 	 public void reinicia(int tiempo, MapaCarreteras mapa, List<Evento> eventos);
+	 
 }
