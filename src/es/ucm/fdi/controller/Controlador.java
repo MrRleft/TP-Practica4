@@ -75,6 +75,7 @@ public class Controlador {
 		 Ini ini;
 		 try {
 			 // lee el fichero y carga su atributo iniSections
+			 
 			 ini = new Ini(inStream);
 		 }
 		 catch (IOException e) {

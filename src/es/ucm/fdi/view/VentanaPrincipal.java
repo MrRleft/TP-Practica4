@@ -238,7 +238,7 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 			s = sc.useDelimiter("\\A").next();
 			sc.close();
 		} catch (FileNotFoundException e) {
-			System.out.println("hola");
+			System.err.println("Error al cargar los datos del archivo de texto");
 			//aqui iria una excepcion
 		}
 		return s;
@@ -331,6 +331,20 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 		// TODO Auto-generated method stub
 		//Esto se encarga de guardar ela salida del programa tal y como lo haría en el modo batch
 		
+	}
+
+
+
+	public FileInputStream getFichero() {
+		// TODO Auto-generated method stub
+		try {
+			return new FileInputStream(this.ficheroActual);
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			System.err.println("Problema al cargar el inputStream");
+			return null;
+		}
 	}
 
 

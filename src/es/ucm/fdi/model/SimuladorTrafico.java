@@ -112,6 +112,7 @@ public class SimuladorTrafico implements Observador<ObservadorSimuladorTrafico>{
 				throw err;
 			}
 			else {
+				
 				this.eventos.add(e);
 				this.notificaNuevoEvento(); // se notifica a los observadores
 			}

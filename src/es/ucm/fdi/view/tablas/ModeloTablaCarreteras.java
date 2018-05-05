@@ -21,11 +21,15 @@ public class ModeloTablaCarreteras extends ModeloTabla<Carretera> {
 
 	@Override
 	public void avanza(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
+
 		List<Carretera> lista = mapa.getCarreteras();
+		System.out.println(lista.size());
 		for(Carretera c : lista) {
 			Object[] row = {c.getLongitud(), c.getID(), c.getCruceOrigen(), c.getCruceDest(), c.getStringVehiculos()};
 			this.addRow(row);
+//			System.out.println(row);
 		}
+		
 		this.fireTableStructureChanged();
 	}
 
@@ -43,6 +47,6 @@ public class ModeloTablaCarreteras extends ModeloTabla<Carretera> {
 		this.fireTableStructureChanged();
 	}
 
-
+	
 
 }

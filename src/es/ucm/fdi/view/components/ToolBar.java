@@ -4,7 +4,9 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.InputStream;
 import java.util.List;
 
 
@@ -56,8 +58,8 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			 try {
-				 byte[] contenido = mainWindow.getTextoEditorEventos().getBytes();
-				 controlador.cargaEventos(new ByteArrayInputStream(contenido));
+				 InputStream contenido = mainWindow.getFichero();
+				 controlador.cargaEventos(contenido);
 			 } catch (ErrorDeSimulacion err) {
 				 System.err.println("Problema al cargar los eventos desde el GUI");
 				 err.printStackTrace();
