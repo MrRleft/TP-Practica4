@@ -16,23 +16,36 @@ public class ModeloTablaCruces extends ModeloTabla<CruceGenerico<?>> {
 		super(columnidcruce,controlador);
 	}
 
+	@Override // necesario para que se visualicen los datos	
+	public Object getValueAt(int indiceFil, int indiceCol) {
+		Object s = null;
+		switch (indiceCol) {
+			case 0:
+				s = indiceFil; break;
+			case 1:
+				s = this.lista.get(indiceFil).getId(); break;
+			case 2:
+				s = this.lista.get(indiceFil).getGreenRoad(); break;
+			case 3:
+				s = this.lista.get(indiceFil).getRedRoads(); break;
+			default: 
+				assert (false);
+		}
+		return s;
+	}
+	
 	@Override
 	public void errorSimulador(int tiempo, MapaCarreteras map, List<Evento> eventos, ErrorDeSimulacion e) {
 	}
 
 	@Override
 	public void avanza(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
-		List<CruceGenerico<?>> lista = mapa.getCruces();
-		for(CruceGenerico<?> c : lista) {
-			Object[] row = {c.getId(), c.getGreenRoad(), c.getRedRoads()};
-			this.addRow(row);
-		}
+		this.lista = mapa.getCruces();
 		this.fireTableStructureChanged();
 	}
 
 	@Override
 	public void addEvento(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
-		this.avanza(tiempo, mapa, eventos);
 		this.fireTableStructureChanged();
 	}
 

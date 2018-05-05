@@ -292,7 +292,7 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 	public int getSteps() {
 		//Consigue los pasos que se encuantran en el toolbar
 		
-		return 0;
+		return this.toolbar.getSteps();
 	}
 
 	public void generaInformes() {

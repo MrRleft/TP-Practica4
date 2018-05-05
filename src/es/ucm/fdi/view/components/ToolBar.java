@@ -28,6 +28,7 @@ import es.ucm.fdi.view.VentanaPrincipal;
 @SuppressWarnings("serial")
 public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 	
+	private Controlador c;
 	private JSpinner steps;
 	private JTextField time;
 	public ToolBar(VentanaPrincipal mainWindow, Controlador controlador){
@@ -75,12 +76,11 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 		run.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			int pasos = mainWindow.getSteps();
-			 controlador.ejecuta(pasos);
-			/* byte[] contenido = mainWindow.getTextoEditorEventos().getBytes();
-			 controlador.cargaEventos(new ByteArrayInputStream(contenido));*/
-			 	mainWindow.setMensaje("Eventos cargados al simulador!");
-			 }
+				int pasos = mainWindow.getSteps();
+				System.out.println(pasos);
+				controlador.ejecuta(pasos);
+				mainWindow.setMensaje("Ejecutados "+ pasos +"!");
+			}
 		 });
 		this.add(run);
 		
@@ -140,7 +140,8 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 	
 	@Override
 	public void avanza(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
-		this.time.setText(""+tiempo);
+		System.out.println("avanzo");
+		this.time.setText(""+(this.c.getTime()));
 	}
 	
 	@Override

@@ -13,6 +13,7 @@ public class ModeloTablaEventos extends ModeloTabla<Evento>  {
 	public ModeloTablaEventos(String[] columnIdEventos, Controlador ctrl) { 
 		super(columnIdEventos,ctrl);
 	}
+	
 	@Override // necesario para que se visualicen los datos
 	public Object getValueAt(int indiceFil, int indiceCol) {
 		Object s = null;
@@ -29,7 +30,7 @@ public class ModeloTablaEventos extends ModeloTabla<Evento>  {
 		return s;
 	}
 	
-	//...
+
 	@Override
 	public void avanza(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
 	this.lista = eventos; 
@@ -48,7 +49,8 @@ public class ModeloTablaEventos extends ModeloTabla<Evento>  {
 	
 	@Override
 	public void errorSimulador(int tiempo, MapaCarreteras map, List<Evento> eventos, ErrorDeSimulacion e) {
-		// TODO Auto-generated method stub
+		for(int i = 0; i < getRowCount(); i++ )
+			this.removeRow(i);
 		this.fireTableStructureChanged();
 	}
 

@@ -28,6 +28,7 @@ public class SimuladorTrafico implements Observador<ObservadorSimuladorTrafico>{
 	
 	public SimuladorTrafico(int lt)  {
 		
+
 		 this.mapa = new MapaCarreteras();
 		 this.contadorTiempo = 0;
 		 this.cmp = new Comparator<Evento>() {
@@ -53,13 +54,15 @@ public class SimuladorTrafico implements Observador<ObservadorSimuladorTrafico>{
 		String output = "";
 		int limiteTiempo = this.contadorTiempo + pasosSimulacion - 1;
 		while (this.contadorTiempo <= limiteTiempo) {
-			 
+
 			for(Evento evento : eventos){
+				
 				if(evento.getTiempo() == this.contadorTiempo){
 						evento.ejecuta(mapa);
 				}	
 			}
 			try {
+				
 				this.mapa.actualizar();
 				this.notificaAvanza();
 			}
@@ -113,6 +116,7 @@ public class SimuladorTrafico implements Observador<ObservadorSimuladorTrafico>{
 			}
 			else {
 				
+				//System.out.println("Cont" + this.contadorTiempo + "EVE" + e.getTiempo());
 				this.eventos.add(e);
 				this.notificaNuevoEvento(); // se notifica a los observadores
 			}
@@ -141,6 +145,7 @@ public class SimuladorTrafico implements Observador<ObservadorSimuladorTrafico>{
 		// TODO Auto-generated method stub
 		// El simulador tendr� un m�todo reinicia, que reinicia todos sus atributos y
 		//notifca a los observadores dicha acci�n. 
+		System.out.println("REINICIANDO");
 		this.eventos = new SortedArrayList<Evento>(cmp); // estructura ordenada por �tiempo�
 		this.mapa = new MapaCarreteras();
 		this.contadorTiempo = 0;
@@ -159,5 +164,9 @@ public class SimuladorTrafico implements Observador<ObservadorSimuladorTrafico>{
 	public void setPasos(int lt) {
 		
 		 this.pasosSim = lt;
+	}
+	public int getContTiempo() {
+		
+		return this.contadorTiempo;
 	}
 }

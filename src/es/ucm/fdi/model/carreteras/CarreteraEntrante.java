@@ -80,9 +80,11 @@ public class CarreteraEntrante {
 	public String getIDCars() {
 		// TODO Auto-generated method stub
 		String key = "";
-		for(Vehiculo v : this.colaVehiculos)
-			key += v.getId() + ",";
-		key = key.substring(0, key.length() - 1);
+		if(this.colaVehiculos.size() > 0) {
+			for(Vehiculo v : this.colaVehiculos)
+				key += v.getId() + ",";
+			key = key.substring(0, key.length() - 1);
+		}
 		return key;
 	}
 
