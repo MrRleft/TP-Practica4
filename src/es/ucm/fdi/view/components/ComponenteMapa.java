@@ -23,8 +23,6 @@ import es.ucm.fdi.view.ObservadorSimuladorTrafico;
 
 public class ComponenteMapa extends JComponent implements ObservadorSimuladorTrafico {
 
-	
-
 	private static final long serialVersionUID = 1L;
 	
 	private static final int radioCruce = 20;
@@ -260,13 +258,6 @@ public class ComponenteMapa extends JComponent implements ObservadorSimuladorTra
 		calculaCoordenadasCruce();
 		refresh();
 	}
-	
-	public MapaCarreteras getMapa() {
-		return mapa;
-	}
 
-	public void setMapa(MapaCarreteras mapa) {
-		this.mapa = mapa;
-	}
 
 }

@@ -6,18 +6,12 @@ import es.ucm.fdi.controller.Controlador;
 import es.ucm.fdi.model.MapaCarreteras;
 import es.ucm.fdi.model.Exceptions.ErrorDeSimulacion;
 import es.ucm.fdi.model.events.Evento;
-import es.ucm.fdi.view.Describable;
 import es.ucm.fdi.view.ObservadorSimuladorTrafico;
-import es.ucm.fdi.view.components.ComponenteMapa;
 
 public class ModeloTablaEventos extends ModeloTabla<Evento>  {
 	
-	private List<Evento> events;
-	
 	public ModeloTablaEventos(String[] columnIdEventos, Controlador ctrl) { 
 		super(columnIdEventos,ctrl);
-		this.events = ctrl.getSimulador().getEventos();
-		
 	}
 	@Override // necesario para que se visualicen los datos
 	public Object getValueAt(int indiceFil, int indiceCol) {
@@ -44,9 +38,7 @@ public class ModeloTablaEventos extends ModeloTabla<Evento>  {
 	
 	@Override
 	public void addEvento(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
-		eventos = this.events;
 		this.fireTableStructureChanged();
-		
 	}
 	
 	@Override
@@ -59,12 +51,5 @@ public class ModeloTablaEventos extends ModeloTabla<Evento>  {
 		// TODO Auto-generated method stub
 		this.fireTableStructureChanged();
 	}
-	public List<Evento> getEvents() {
-		return events;
-	}
-	public void setEvents(List<Evento> events) {
-		this.events = events;
-	}
-	
 
 }

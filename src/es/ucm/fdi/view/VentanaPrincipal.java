@@ -50,7 +50,7 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 	private static final long serialVersionUID = 1L;
 
 	private Controlador controlador;
-	private List<Evento> events;
+	
 	public static Border bordePorDefecto = BorderFactory.createLineBorder(Color.black, 2);
 	// SUPERIOR PANEL
 	static private final String[] columnIdEventos = { "#", "Tiempo", "Tipo" };
@@ -321,23 +321,15 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 		if(JOptionPane.showConfirmDialog(frame, "Are you sure you want to close this window?", "Really Closing?", 
 		   JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
             System.exit(0);
-            
 		}
 
 	}
 
-	public void newEvent() {
-		events = this.controlador.getSimulador().getEventos();
-		
-		this.componenteMapa.setMapa(this.controlador.getSimulador().getMapa());
-		
-		this.componenteMapa.paint(getGraphics());
-	}
 
 
 	public void guardarResultados() {
 		// TODO Auto-generated method stub
-		//Esto se encarga de guardar ela salida del programa tal y como lo harï¿½a en el modo batch
+		//Esto se encarga de guardar ela salida del programa tal y como lo haría en el modo batch
 		
 	}
 

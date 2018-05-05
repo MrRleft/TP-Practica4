@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.ByteArrayInputStream;
 import java.io.FileNotFoundException;
-import java.io.InputStream;
 import java.util.List;
 
 
@@ -19,10 +18,7 @@ import javax.swing.SpinnerNumberModel;
 
 import es.ucm.fdi.controller.Controlador;
 import es.ucm.fdi.model.MapaCarreteras;
-import es.ucm.fdi.model.Exceptions.ErrorCarga;
 import es.ucm.fdi.model.Exceptions.ErrorDeSimulacion;
-import es.ucm.fdi.model.Exceptions.InsertException;
-import es.ucm.fdi.model.Exceptions.NotFoundException;
 import es.ucm.fdi.model.events.Evento;
 import es.ucm.fdi.view.ObservadorSimuladorTrafico;
 import es.ucm.fdi.view.VentanaPrincipal;
@@ -61,9 +57,7 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 		public void actionPerformed(ActionEvent e) {
 			 try {
 				 byte[] contenido = mainWindow.getTextoEditorEventos().getBytes();
-				 controlador.getSimulador().reinicia();
-				 controlador.setInputFile(new ByteArrayInputStream(contenido));
-				 controlador.cargaEventos();
+				 controlador.cargaEventos(new ByteArrayInputStream(contenido));
 			 } catch (ErrorDeSimulacion err) {
 				 System.err.println("Problema al cargar los eventos desde el GUI");
 				 err.printStackTrace();
@@ -80,12 +74,7 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			int pasos = mainWindow.getSteps();
-			 try {
-				controlador.getSimulador().ejecuta(pasos, controlador.getFicheroSalida());
-			} catch (ErrorDeSimulacion | ErrorCarga | NotFoundException | InsertException e1) {
-				// TODO Auto-generated catch block
-				e1.printStackTrace();
-			}
+			 controlador.ejecuta(pasos);
 			/* byte[] contenido = mainWindow.getTextoEditorEventos().getBytes();
 			 controlador.cargaEventos(new ByteArrayInputStream(contenido));*/
 			 	mainWindow.setMensaje("Eventos cargados al simulador!");
@@ -102,8 +91,7 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 			 try {
 				 controlador.reinicia();
 				 byte[] contenido = mainWindow.getTextoEditorEventos().getBytes();
-				 controlador.setInputFile(new ByteArrayInputStream(contenido));
-				 controlador.cargaEventos();
+				 controlador.cargaEventos(new ByteArrayInputStream(contenido));
 			 } catch (ErrorDeSimulacion err) {
 				 
 			 }
@@ -168,8 +156,4 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 		
 		return (int) this.steps.getValue();
 	}
-	
-	
-
-	
 }
