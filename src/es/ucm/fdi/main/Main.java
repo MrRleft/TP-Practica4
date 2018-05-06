@@ -8,6 +8,9 @@ import java.io.FilenameFilter;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
+import java.lang.reflect.InvocationTargetException;
+
+import javax.swing.SwingUtilities;
 
 import org.apache.commons.cli.CommandLine;
 import org.apache.commons.cli.CommandLineParser;
@@ -17,17 +20,19 @@ import org.apache.commons.cli.Option;
 import org.apache.commons.cli.Options;
 import org.apache.commons.cli.ParseException;
 
-import es.ucm.fdi.control.Controlador;
+import es.ucm.fdi.controller.Controlador;
 import es.ucm.fdi.model.SimuladorTrafico;
+import es.ucm.fdi.view.VentanaPrincipal;
 
 
 public class Main {
 
 
-	private final static Integer limiteTiempoPorDefecto = 10;
+	private final static Integer limiteTiempoPorDefecto = 20;
 	private static Integer limiteTiempo = null;
 	private static String ficheroEntrada = null;
 	private static String ficheroSalida = null;
+	private static ModoEjecucion modo = null;
 
 	
 	@SuppressWarnings("unused")
@@ -46,6 +51,7 @@ public class Main {
 			parseaOpcionFicheroIN(linea);
 			parseaOpcionFicheroOUT(linea);
 			parseaOpcionSTEPS(linea);
+			parseaOpcionModo(linea);
 
 			// if there are some remaining arguments, then something wrong is
 			// provided in the command line!
@@ -66,12 +72,28 @@ public class Main {
 	}
 
 	private static Options construyeOpciones() {
+		//HAY QUE MODIFICAR ESTO TAMBIEN PARA QUE ACEPTE LO NUEVO
+		/*
+		 *  Estos son ejemplos de las opciones que debe aceptar la práctica:
+				-i resources/examples/events/basic/ex1.ini
+				-i resources/examples/events/advanced/ex1.ini -t 100
+				-m batch -i resources/examples/events/basic/ex1.ini -t 20
+				-m batch -i resources/examples/events/advanced/ex1.ini
+				-m gui -i resources/examples/events/basic/ex1.ini
+				-m gui -i resources/examples/events/advanced/ex1.ini
+				--help
+		 */
+		
 		Options opcionesLineacomandos = new Options();
-
-		opcionesLineacomandos.addOption(Option.builder("h").longOpt("help").desc("Muestra la ayuda.").build());
-		opcionesLineacomandos.addOption(Option.builder("i").longOpt("input").hasArg().desc("Fichero de entrada de eventos.").build());
 		opcionesLineacomandos.addOption(
-				Option.builder("o").longOpt("output").hasArg().desc("Fichero de salida, donde se escriben los informes.").build());
+				Option.builder("m").longOpt("mode")
+				.hasArg().desc("Elige el modo, con graficos o en consola de comandos"). build());
+		opcionesLineacomandos.addOption(Option.builder("h").longOpt("help").desc("Muestra la ayuda.").build());
+		opcionesLineacomandos.addOption(Option.builder("i").longOpt("input")
+				.hasArg().desc("Fichero de entrada de eventos.").build());
+		opcionesLineacomandos.addOption(
+				Option.builder("o").longOpt("output")
+				.hasArg().desc("Fichero de salida, donde se escriben los informes.").build());
 		opcionesLineacomandos.addOption(Option.builder("t").longOpt("ticks").hasArg()
 				.desc("Pasos que ejecuta el simulador en su bucle principal (el valor por defecto es " + Main.limiteTiempoPorDefecto + ").")
 				.build());
@@ -119,7 +141,7 @@ public class Main {
 
 	}
 
-	public static void main(String[] args) throws IOException {
+	public static void main(String[] args) throws IOException, InvocationTargetException, InterruptedException {
 
 		// example command lines:
 		//
@@ -129,11 +151,14 @@ public class Main {
 		//
 		
 		
-		//Main.ParseaArgumentos(args);
-		//Main.iniciaModoEstandar();
+		Main.ParseaArgumentos(args);
+		if(Main.modo == ModoEjecucion.GUI)
+			Main.iniciaModoGrafico();
+		else
+			Main.iniciaModoEstandar();
 		
 		
-		Main.ejecutaFicheros(args[0]);
+		//Main.ejecutaFicheros(args[0]);
 	}
 	
 	@SuppressWarnings("unused")
@@ -158,6 +183,40 @@ public class Main {
 			Main.limiteTiempo = 10;
 			Main.iniciaModoEstandar();
 		}
+	}
+	
+	private static void iniciaModoGrafico() throws FileNotFoundException, InvocationTargetException,
+		InterruptedException {
+	
+		SimuladorTrafico sim = new SimuladorTrafico(Main.limiteTiempo);
+		OutputStream os = Main.ficheroSalida == null ?
+				System.out : new FileOutputStream(new File(Main.ficheroSalida));
+		Controlador ctrl = new Controlador(sim, Main.limiteTiempo, null, os);
+		SwingUtilities.invokeLater(new Runnable() {
+
+			@Override
+			public void run() {
+				try {
+					new VentanaPrincipal(Main.ficheroEntrada, ctrl);
+				}
+				catch (FileNotFoundException e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
+	
+	
+
+	private static void parseaOpcionModo(CommandLine c) throws ParseException {
+		
+		
+		Main.modo = ModoEjecucion.parser(c.getOptionValue("m"));
+		if(Main.modo == ModoEjecucion.ERR)
+			throw new ParseException("El modo introducio no es correcto");
 
 	}
+	
+
+	
 }

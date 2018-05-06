@@ -5,7 +5,7 @@ import java.io.FilenameFilter;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 
-import es.ucm.fdi.ini.Ini;
+import es.ucm.fdi.model.ini.Ini;
 
 
 

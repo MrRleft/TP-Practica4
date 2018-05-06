@@ -1,7 +1,7 @@
 package es.ucm.fdi.model;
 
-import es.ucm.fdi.Exceptions.ErrorDeSimulacion;
-import es.ucm.fdi.ini.IniSection;
+import es.ucm.fdi.model.Exceptions.ErrorDeSimulacion;
+import es.ucm.fdi.model.ini.IniSection;
 
 public abstract class ObjetoSimulacion {
 

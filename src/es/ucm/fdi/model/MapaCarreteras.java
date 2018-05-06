@@ -6,13 +6,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import es.ucm.fdi.Exceptions.ErrorCarga;
-import es.ucm.fdi.Exceptions.ErrorDeSimulacion;
-import es.ucm.fdi.Exceptions.InsertException;
-import es.ucm.fdi.Exceptions.NotFoundException;
-import es.ucm.fdi.carreteras.Carretera;
-import es.ucm.fdi.cruces.CruceGenerico;
-import es.ucm.fdi.vehiculos.Vehiculo;
+import es.ucm.fdi.model.Exceptions.ErrorCarga;
+import es.ucm.fdi.model.Exceptions.ErrorDeSimulacion;
+import es.ucm.fdi.model.Exceptions.InsertException;
+import es.ucm.fdi.model.Exceptions.NotFoundException;
+import es.ucm.fdi.model.carreteras.Carretera;
+import es.ucm.fdi.model.cruces.CruceGenerico;
+import es.ucm.fdi.model.vehiculos.Vehiculo;
 
 public class MapaCarreteras {
 
@@ -95,8 +95,8 @@ public class MapaCarreteras {
 	public String generateReport(int time) {
 		 //Preguntar como va el report.
 		
-	//	 String report = ("# ******* step "+ time +" *******\r\n");
-		 String report = "";
+		 String report = ("# ******* step "+ time +" *******\r\n");
+		 //String report = "";
 		 time++;
 	//	 report += System.lineSeparator();		 // genera informe para cruces
 		 for(int i = 0; i < this.cruces.size();++i){
@@ -160,5 +160,10 @@ public class MapaCarreteras {
 		if(v == null)
 			throw new ErrorCarga("No se han podido colocar las averias correctamente");
 		v.setAveria(duration);
+	}
+
+	public List<Vehiculo> getVehiculos() {
+		// TODO Auto-generated method stub
+		return this.vehiculos;
 	}
 }
