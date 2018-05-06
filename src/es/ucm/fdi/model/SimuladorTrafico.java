@@ -49,7 +49,7 @@ public class SimuladorTrafico implements Observador<ObservadorSimuladorTrafico>{
 		 this.pasosSim = lt;
 	}
 	
-	public void ejecuta(int pasosSimulacion, OutputStream ficheroSalida, boolean show) throws ErrorDeSimulacion, ErrorCarga, NotFoundException, InsertException {
+	public void ejecuta(int pasosSimulacion, OutputStream ficheroSalida, boolean show, boolean save) throws ErrorDeSimulacion, ErrorCarga, NotFoundException, InsertException {
 		
 		String output = "";
 		int limiteTiempo = this.contadorTiempo + pasosSimulacion - 1;
@@ -77,7 +77,8 @@ public class SimuladorTrafico implements Observador<ObservadorSimuladorTrafico>{
 				
 		}
 		try {
-			 ficheroSalida.write(output.getBytes());
+			if(save)
+				ficheroSalida.write(output.getBytes());
 		} catch (IOException e) {
 			throw new ErrorDeSimulacion("Error al grabarse en el fichero out");
 		}

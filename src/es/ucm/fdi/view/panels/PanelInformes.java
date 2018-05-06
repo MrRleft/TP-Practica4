@@ -27,12 +27,7 @@ public class PanelInformes extends PanelAreaTexto implements ObservadorSimulador
 	@Override
 	public void avanza(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
 		
-		super.limpiar();
-		this.setTexto(mapa.generateReport(tiempo));
-		for(Evento e: eventos)
-			if(e.getTiempo() == tiempo)
-				this.setTexto("Ha entrado el evento de la cola " + e.toString());
-		
+		this.setTexto(mapa.generateReport(tiempo));	
 	}
 
 	@Override

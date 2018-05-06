@@ -27,6 +27,7 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.Border;
+import javax.swing.JOptionPane;
 
 import es.ucm.fdi.controller.Controlador;
 import es.ucm.fdi.model.MapaCarreteras;
@@ -102,7 +103,7 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 			}
 
 			public void windowClosing(WindowEvent e) {
-				Salir();
+				//Salir();
 			}	
 			public void windowClosed(WindowEvent e) {}
 			public void windowIconified(WindowEvent e) {}	
@@ -259,7 +260,6 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 		 
 			 File fichero = this.fc.getSelectedFile();
 			 String s = leeFichero(fichero);
-			 this.controlador.reinicia();
 			 this.ficheroActual = fichero;
 			 this.panelEditorEventos.setTexto(s);
 			 this.panelEditorEventos.setBorde(this.ficheroActual.getName());
@@ -319,11 +319,8 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 
 
 	public void Salir() {
-		// TODO Auto-generated method stub
-		JFrame frame = new JFrame();
-		// TODO Auto-generated method stub
-		if(JOptionPane.showConfirmDialog(frame, "Are you sure you want to close this window?", "Really Closing?", 
-		   JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE) == JOptionPane.YES_OPTION){
+
+		if((JOptionPane.showConfirmDialog(null, "Quieres salir") == 0)){
             System.exit(0);
 		}
 
@@ -332,9 +329,20 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 
 
 	public void guardarResultados() {
-		// TODO Auto-generated method stub
-		//Esto se encarga de guardar ela salida del programa tal y como lo haría en el modo batch
-		
+		int saveR = fc.showSaveDialog(null);
+			if (saveR == JFileChooser.APPROVE_OPTION) {
+					File file = fc.getSelectedFile();
+			try {
+					escribeArchivo(file, this.panelInformes.getTexto());
+			} catch (IOException e) {
+				try {
+					throw new ErrorDeSimulacion("No se ha podido guardar el archivo");
+				} catch (ErrorDeSimulacion e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		}
 	}
 
 
@@ -368,6 +376,16 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 	public void limpiaEventos() {
 		this.panelEditorEventos.limpiar();
 		
+	}
+
+	public void limpiaInformes() {
+		
+		this.panelInformes.limpiar();
+	}
+
+
+	public void guardarSalida() {
+		this.controlador.guardarSalida(true);
 	}
 
 

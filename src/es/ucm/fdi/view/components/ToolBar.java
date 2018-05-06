@@ -44,7 +44,6 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 				 public void actionPerformed(ActionEvent e) {
 					try {
 						mainWindow.cargaFichero();
-						controlador.ejecuta(1);
 					} catch (FileNotFoundException e1) {
 						// TODO Auto-generated catch block
 						System.err.println("Problema al cargar los eventos desde el GUI");
@@ -86,6 +85,20 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 		
 		 });
 		this.add(Clean);
+		
+		JButton Clean2 = new JButton();
+		
+		Clean2.setToolTipText("Limpia la caja de textode los informes");
+		Clean2.setIcon(new ImageIcon("resources/icons/clear.png"));
+		Clean2.addActionListener(new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+
+			 	mainWindow.limpiaInformes();
+			}
+		
+		 });
+		this.add(Clean2);
 		
 		JButton run = new JButton();
 		run.setToolTipText("Ejecuta el simulador");
@@ -135,7 +148,7 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 				
-			 	mainWindow.guardarSalida();
+			 	mainWindow.guardarResultados();
 			 }
 		 });
 		this.add(save);
