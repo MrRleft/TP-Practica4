@@ -118,6 +118,16 @@ public class BarraMenu extends JMenuBar {
 		 JMenuItem limpiaAreaInformes = new JMenuItem("Clear");
 		
 		 menuReport.add(limpiaAreaInformes);
+		 
+		 JMenuItem guardarInformes = new JMenuItem("Salvar");
+		 guardarInformes.addActionListener(new ActionListener() {
+			 @Override
+			 public void actionPerformed(ActionEvent e) {
+				 // OPCIONAL
+				 mainWindow.guardarResultados();
+			 }
+		 });
+		 menuReport.add(guardarInformes);
 	}
 
 	private void creaMenuSimulador(JMenu menuSimulador, Controlador controlador, VentanaPrincipal mainWindow) {

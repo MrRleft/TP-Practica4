@@ -85,6 +85,8 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 	//private DialogoInformes dialogoInformes; // opcional
 	// MODEL PART - VIEW CONTROLLER MODEL
 	private File ficheroActual;
+
+	private DialogoInformes dialogoInformes;
 	
 	public VentanaPrincipal(String ficheroEntrada,Controlador ctrl) throws FileNotFoundException {
 		super("Simulador de Trafico");
@@ -139,7 +141,7 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 		 // FILE CHOOSER
 		this.fc = new JFileChooser();
 		 // REPORT DIALOG (OPCIONAL)
-		//this.dialogoInformes = new DialogoInformes();
+		this.dialogoInformes = new DialogoInformes();
 		this.pack();
 		this.setVisible(true);
 		
@@ -357,7 +359,17 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 	public void guardarResultados() {
 		// TODO Auto-generated method stub
 		//Esto se encarga de guardar ela salida del programa tal y como lo har�a en el modo batch
-		
+		int saveR = fc.showSaveDialog(null);
+		if (saveR == JFileChooser.APPROVE_OPTION) {
+			File file = fc.getSelectedFile();
+			try {
+				escribeArchivo(file, this.panelInformes.getTexto());
+			} catch (IOException e) {
+				
+			}
+		}
+		//statusBarText.setText("All reports have been saved!");    
+		//stateBar.add(statusBarText);
 	}
 
 
