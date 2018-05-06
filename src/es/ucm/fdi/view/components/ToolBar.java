@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
@@ -53,6 +54,26 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 			});
 		this.add(botonCargar);
 		
+		JButton save = new JButton();
+		save.setToolTipText("Guardar");
+		save.setIcon(new ImageIcon("resources/icons/save.png"));
+		save.addActionListener(new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+				int pasos = mainWindow.getSteps();
+				
+				try {
+					mainWindow.guardar();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			}
+		 });
+		this.add(save);
+		
+		
+		
 		JButton botonCheckIn = new JButton();
 		
 		botonCheckIn.setToolTipText("CheckIn");
@@ -72,6 +93,18 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 		 });
 		this.add(botonCheckIn);
 		
+JButton botonClear = new JButton();
+		
+		botonClear.setToolTipText("Clear");
+		botonClear.setIcon(new ImageIcon("resources/icons/clear.png"));
+		botonClear.addActionListener(new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			mainWindow.getPanelEditorEventos().setTexto(null);
+		}
+		 });
+		this.add(botonClear);
+		
 		JButton run = new JButton();
 		run.setToolTipText("Ejecuta el simulador");
 		run.setIcon(new ImageIcon("resources/icons/play.png"));
@@ -84,6 +117,8 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 			}
 		 });
 		this.add(run);
+		
+		
 		
 		JButton restart = new JButton();
 		restart.setToolTipText("Para la ejecucion del simulador");

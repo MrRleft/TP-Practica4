@@ -13,7 +13,9 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.List;
 import java.util.Scanner;
 
@@ -60,6 +62,7 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 	private JPanel mainPanel;
 	private JPanel contentPanel_1; // tantos como zonas en la ventana
 	private PanelAreaTexto panelEditorEventos;
+	
 	private PanelInformes panelInformes;
 	private PanelTabla<Evento> panelColaEventos;
 	// MENU AND TOOL BAR
@@ -140,6 +143,10 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 		this.pack();
 		this.setVisible(true);
 		
+	}
+	
+	public PanelAreaTexto getPanelEditorEventos() {
+		return panelEditorEventos;
 	}
 	
 	private void addBarraEstado(JPanel panelPrincipal) {
@@ -315,8 +322,25 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 		
 	}
 
-
-
+	public void guardar() throws IOException{
+		 int fcAux = this.fc.showOpenDialog(null);
+		 if (fcAux == JFileChooser.APPROVE_OPTION) {
+			 File fichero = this.fc.getSelectedFile();
+			 escribeArchivo(fichero,this.panelEditorEventos.getTexto());
+		 }
+	}
+	
+	public static void escribeArchivo(File auxFile, String strFile) throws IOException {
+		try {
+			PrintWriter pw = new PrintWriter(auxFile);
+			pw.print(strFile);
+			pw.close();
+		} catch (IOException e) {
+			throw new IOException();
+		}
+	}
+	
+	
 	public void Salir() {
 		// TODO Auto-generated method stub
 		JFrame frame = new JFrame();
@@ -332,7 +356,7 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 
 	public void guardarResultados() {
 		// TODO Auto-generated method stub
-		//Esto se encarga de guardar ela salida del programa tal y como lo haría en el modo batch
+		//Esto se encarga de guardar ela salida del programa tal y como lo harï¿½a en el modo batch
 		
 	}
 
@@ -344,6 +368,6 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 		return iS;
 	}
 
-
+	
 
 }
