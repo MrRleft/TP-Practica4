@@ -72,8 +72,6 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 		 });
 		this.add(save);
 		
-		
-		
 		JButton botonCheckIn = new JButton();
 		
 		botonCheckIn.setToolTipText("CheckIn");
@@ -92,6 +90,8 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 			 }
 		 });
 		this.add(botonCheckIn);
+		
+		
 		
 JButton botonClear = new JButton();
 		
@@ -117,8 +117,6 @@ JButton botonClear = new JButton();
 			}
 		 });
 		this.add(run);
-		
-		
 		
 		JButton restart = new JButton();
 		restart.setToolTipText("Para la ejecucion del simulador");
