@@ -28,6 +28,7 @@ public class SimuladorTrafico implements Observador<ObservadorSimuladorTrafico>{
 	
 	public SimuladorTrafico(int lt)  {
 		
+
 		 this.mapa = new MapaCarreteras();
 		 this.contadorTiempo = 0;
 		 this.cmp = new Comparator<Evento>() {
@@ -48,18 +49,20 @@ public class SimuladorTrafico implements Observador<ObservadorSimuladorTrafico>{
 		 this.pasosSim = lt;
 	}
 	
-	public void ejecuta(int pasosSimulacion, OutputStream ficheroSalida) throws ErrorDeSimulacion, ErrorCarga, NotFoundException, InsertException {
+	public void ejecuta(int pasosSimulacion, OutputStream ficheroSalida, boolean show, boolean save) throws ErrorDeSimulacion, ErrorCarga, NotFoundException, InsertException {
 		
 		String output = "";
 		int limiteTiempo = this.contadorTiempo + pasosSimulacion - 1;
 		while (this.contadorTiempo <= limiteTiempo) {
-			 
+
 			for(Evento evento : eventos){
+				
 				if(evento.getTiempo() == this.contadorTiempo){
 						evento.ejecuta(mapa);
 				}	
 			}
 			try {
+				
 				this.mapa.actualizar();
 				this.notificaAvanza();
 			}
@@ -68,12 +71,14 @@ public class SimuladorTrafico implements Observador<ObservadorSimuladorTrafico>{
 				throw new ErrorDeSimulacion();
 			}
 			output += this.mapa.generateReport(this.contadorTiempo);
-			System.out.println(output);
+			if(show)
+				System.out.println(output);
 			this.contadorTiempo++;
 				
 		}
 		try {
-			 ficheroSalida.write(output.getBytes());
+			if(save)
+				ficheroSalida.write(output.getBytes());
 		} catch (IOException e) {
 			throw new ErrorDeSimulacion("Error al grabarse en el fichero out");
 		}
@@ -112,6 +117,8 @@ public class SimuladorTrafico implements Observador<ObservadorSimuladorTrafico>{
 				throw err;
 			}
 			else {
+				
+				//System.out.println("Cont" + this.contadorTiempo + "EVE" + e.getTiempo());
 				this.eventos.add(e);
 				this.notificaNuevoEvento(); // se notifica a los observadores
 			}
@@ -158,5 +165,9 @@ public class SimuladorTrafico implements Observador<ObservadorSimuladorTrafico>{
 	public void setPasos(int lt) {
 		
 		 this.pasosSim = lt;
+	}
+	public int getContTiempo() {
+		
+		return this.contadorTiempo;
 	}
 }

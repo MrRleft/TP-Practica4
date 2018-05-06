@@ -4,7 +4,10 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.ByteArrayInputStream;
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.io.InputStream;
 import java.util.List;
 
 
@@ -26,10 +29,12 @@ import es.ucm.fdi.view.VentanaPrincipal;
 @SuppressWarnings("serial")
 public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 	
+	private Controlador c;
 	private JSpinner steps;
 	private JTextField time;
 	public ToolBar(VentanaPrincipal mainWindow, Controlador controlador){
 		super();
+		this.c = controlador;
 		controlador.addObserver(this);
 		JButton botonCargar = new JButton();
 		botonCargar.setToolTipText("Carga un fichero de eventos");
@@ -50,14 +55,14 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 		
 		JButton botonCheckIn = new JButton();
 		
-		botonCheckIn.setToolTipText("CheckIn");
+		botonCheckIn.setToolTipText("Carga los eventos");
 		botonCheckIn.setIcon(new ImageIcon("resources/icons/events.png"));
 		botonCheckIn.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			 try {
-				 byte[] contenido = mainWindow.getTextoEditorEventos().getBytes();
-				 controlador.cargaEventos(new ByteArrayInputStream(contenido));
+				 InputStream contenido = mainWindow.getEventos();
+				 controlador.cargaEventos(contenido);
 			 } catch (ErrorDeSimulacion err) {
 				 System.err.println("Problema al cargar los eventos desde el GUI");
 				 err.printStackTrace();
@@ -67,38 +72,59 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 		 });
 		this.add(botonCheckIn);
 		
+		JButton Clean = new JButton();
+		
+		Clean.setToolTipText("Limpia la caja de texto para los eventos");
+		Clean.setIcon(new ImageIcon("resources/icons/delete_report.png"));
+		Clean.addActionListener(new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+
+			 	mainWindow.limpiaEventos();
+			}
+		
+		 });
+		this.add(Clean);
+		
+		JButton Clean2 = new JButton();
+		
+		Clean2.setToolTipText("Limpia la caja de textode los informes");
+		Clean2.setIcon(new ImageIcon("resources/icons/clear.png"));
+		Clean2.addActionListener(new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+
+			 	mainWindow.limpiaInformes();
+			}
+		
+		 });
+		this.add(Clean2);
+		
 		JButton run = new JButton();
 		run.setToolTipText("Ejecuta el simulador");
 		run.setIcon(new ImageIcon("resources/icons/play.png"));
 		run.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			int pasos = mainWindow.getSteps();
-			 controlador.ejecuta(pasos);
-			/* byte[] contenido = mainWindow.getTextoEditorEventos().getBytes();
-			 controlador.cargaEventos(new ByteArrayInputStream(contenido));*/
-			 	mainWindow.setMensaje("Eventos cargados al simulador!");
-			 }
+				int pasos = mainWindow.getSteps();
+				controlador.ejecuta(pasos);
+				mainWindow.setMensaje("Ejecutados "+ pasos +"!");
+			}
 		 });
 		this.add(run);
 		
-		JButton stop = new JButton();
-		stop.setToolTipText("Para la ejecucion del simulador");
-		stop.setIcon(new ImageIcon("resources/icons/stop.png"));
-		stop.addActionListener(new ActionListener() {
+		JButton restart = new JButton();
+		restart.setToolTipText("Reinicia el simulador");
+		restart.setIcon(new ImageIcon("resources/icons/reset.png"));
+		restart.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			 try {
-				 controlador.reinicia();
-				 byte[] contenido = mainWindow.getTextoEditorEventos().getBytes();
-				 controlador.cargaEventos(new ByteArrayInputStream(contenido));
-			 } catch (ErrorDeSimulacion err) {
-				 
-			 }
-			 	mainWindow.setMensaje("Parado");
+				
+				controlador.reinicia();
+			 	mainWindow.setMensaje("Se ha reiniciado el sistema");
 			 }
 		 });
-		this.add(stop);
+		this.add(restart);
 		this.add(new JLabel(" Pasos: "));
 		this.steps = new JSpinner(new SpinnerNumberModel(5, 1, 1000, 1));
 		this.steps.setToolTipText("pasos a ejecutar: 1-1000");
@@ -114,6 +140,36 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 		this.time.setMinimumSize(new Dimension(70, 70));
 		this.time.setEditable(false);
 		this.add(this.time);
+		
+		JButton save = new JButton();
+		save.setToolTipText("Guarda los resultados de la ejecución");
+		save.setIcon(new ImageIcon("resources/icons/save.png"));
+		save.addActionListener(new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+				
+			 	mainWindow.guardarResultados();
+			 }
+		 });
+		this.add(save);
+		
+		JButton saveReport = new JButton();
+		saveReport.setToolTipText("Guarda lo que esta en la caja de eventos en un fichero ");
+		saveReport.setIcon(new ImageIcon("resources/icons/save_report.png"));
+		saveReport.addActionListener(new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+				
+			 	try {
+					mainWindow.guardarEntrada();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			 }
+		 });
+		this.add(saveReport);
+		
 		
 		// OPCIONAL
 		/*
@@ -138,7 +194,7 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 	
 	@Override
 	public void avanza(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
-		this.time.setText(""+tiempo);
+		this.time.setText(""+(this.c.getTime()+1));
 	}
 	
 	@Override
@@ -148,8 +204,8 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 	
 	@Override
 	public void reinicia(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
-		 this.steps.setValue(1);
-		 this.time.setText("0");
+			
+		this.time.setText(""+(this.c.getTime()));
 	}
 	
 	public int getSteps() {

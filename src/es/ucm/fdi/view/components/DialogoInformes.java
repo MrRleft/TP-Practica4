@@ -14,7 +14,6 @@ import es.ucm.fdi.model.events.Evento;
 import es.ucm.fdi.model.vehiculos.Vehiculo;
 import es.ucm.fdi.view.ObservadorSimuladorTrafico;
 import es.ucm.fdi.view.VentanaPrincipal;
-import es.ucm.fdi.view.panels.PanelBotones;
 import es.ucm.fdi.view.panels.PanelInformes;
 
 /*
@@ -29,7 +28,7 @@ import es.ucm.fdi.view.panels.PanelInformes;
 @SuppressWarnings("serial")
 public class DialogoInformes extends JDialog implements ObservadorSimuladorTrafico {
 	
-	private PanelBotones panelBotones;
+//	private PanelBotones panelBotones;
 	private PanelObjSim<Vehiculo> panelVehiculos;
 	private PanelObjSim<Carretera> panelCarreteras;
 	private PanelObjSim<CruceGenerico<?>> panelCruces;
@@ -39,7 +38,7 @@ public class DialogoInformes extends JDialog implements ObservadorSimuladorTrafi
 		 this.panelVehiculos = new PanelObjSim<Vehiculo>("Vehiculos");
 		 this.panelCarreteras = new PanelObjSim<Carretera>("Carreteras");
 		 this.panelCruces = new PanelObjSim<CruceGenerico<?>>("Cruces");
-		 this.panelBotones = new PanelBotones(this);
+//		 this.panelBotones = new PanelBotones(this);
 		 PanelInformes panelInfo = new PanelInformes("Placeholder", rootPaneCheckingEnabled, c);
 		 panelPrincipal.add(panelInfo,BorderLayout.PAGE_START);
 		 

@@ -171,7 +171,8 @@ public class Vehiculo extends ObjetoSimulacion {
 
 
 	public String getRoad() {
-		return this.carretera.getID();
+
+		return !this.haLlegado ? this.carretera.getID() : "ARRIVED";
 	}
 
 
@@ -192,7 +193,7 @@ public class Vehiculo extends ObjetoSimulacion {
 			key += c.getId() + ",";
 		key = key.substring(0, key.length() - 1);
 		key += "]";
-		return null;
+		return key;
 	}
 	
 	

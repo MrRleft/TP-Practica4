@@ -118,9 +118,11 @@ public abstract class CruceGenerico<T extends  CarreteraEntrante> extends Objeto
 	public String getGreenRoad() {
 		
 		
-		String key = "[(";
-		CarreteraEntrante semVerde = this.carreterasEntrantes.get(this.indiceSemaforoVerde);
-		key += "(" +semVerde.getID() + "green" + "[" + semVerde.getIDCars() + "])]" ;
+		String key = "[";
+		if(this.indiceSemaforoVerde != -1) {
+			CarreteraEntrante semVerde = this.carreterasEntrantes.get(this.indiceSemaforoVerde);
+			key += "(" +semVerde.getID() + "green" + "[" + semVerde.getIDCars() + "])]" ;
+		}
 		return key;
 	}
 

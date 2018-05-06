@@ -37,10 +37,11 @@ public class EventoNuevaBicicleta extends EventoNuevoVehiculo {
 
 	@Override
 	 public String toString() {
-		 StringBuilder sb = new StringBuilder();
-		 super.toString();
-		 System.out.println("type="+"bike");
-		 return sb.toString();
+		String elRetornable = "";
+		String newline = System.getProperty("line.separator");
+		elRetornable += super.toString();
+		elRetornable += "type="+"bike" + newline;
+		return elRetornable;
 		 
 	 }
 

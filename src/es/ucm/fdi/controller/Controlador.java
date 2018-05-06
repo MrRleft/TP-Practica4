@@ -20,6 +20,7 @@ public class Controlador {
 	private SimuladorTrafico simulador;
 	private OutputStream ficheroSalida;
 	private InputStream ficheroEntrada;
+	private boolean guardarSalida;
 	private int pasosSimulacion;
 	
 	 public Controlador(SimuladorTrafico sim, Integer limiteTiempo, InputStream is, OutputStream os) {
@@ -28,13 +29,14 @@ public class Controlador {
 		 this.ficheroEntrada = is;
 		 this.ficheroSalida = os;
 		 this.pasosSimulacion = limiteTiempo;
+		 this.guardarSalida = false;
 	}
 
 	public void ejecuta() {
 		 try {
 			 
 			 this.cargaEventos(this.ficheroEntrada);
-			 this.simulador.ejecuta(this.pasosSimulacion,this.ficheroSalida);
+			 this.simulador.ejecuta(this.pasosSimulacion,this.ficheroSalida, true, true);
 		 }
 		 catch(Exception r) {
 			 
@@ -45,7 +47,7 @@ public class Controlador {
 	public void ejecuta(int pasos) {
 		 
 		try {
-			this.simulador.ejecuta(pasos,this.ficheroSalida);
+			this.simulador.ejecuta(pasos,this.ficheroSalida, false, this.guardarSalida);
 		} 
 		catch (ErrorDeSimulacion | ErrorCarga | NotFoundException | InsertException e) {
 			// TODO Auto-generated catch block
@@ -75,6 +77,7 @@ public class Controlador {
 		 Ini ini;
 		 try {
 			 // lee el fichero y carga su atributo iniSections
+			 
 			 ini = new Ini(inStream);
 		 }
 		 catch (IOException e) {
@@ -90,5 +93,16 @@ public class Controlador {
 		}
 		 
 	 }
+
+	public int getTime() {
+		// TODO Auto-generated method stub
+		return this.simulador.getContTiempo();
 	}
+
+	public void guardarSalida(boolean b) {
+
+		this.guardarSalida = b;
+		
+	}
+}
 

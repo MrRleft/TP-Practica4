@@ -30,11 +30,12 @@ abstract public class PanelAreaTexto extends JPanel{
 	}
 	
 	public void setTexto(String texto) {
-		this.areatexto.setText(texto);
+		String T = this.getTexto();
+		this.areatexto.setText(T + System.getProperty("line.separator") + texto);
 	}
 	
 	public void limpiar() {
-		this.setTexto("");
+		this.areatexto.setText("");
 	}
 	
 	public void inserta(String valor) {

@@ -4,6 +4,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.KeyEvent;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
@@ -38,9 +39,6 @@ public class BarraMenu extends JMenuBar {
 	 private void creaMenuFicheros(JMenu menu,VentanaPrincipal mainWindow) {
 		
 		 JMenuItem cargar = new JMenuItem("Carga Eventos");
-		 cargar.setMnemonic(KeyEvent.VK_L);
-		 cargar.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L,
-		 ActionEvent.ALT_MASK));
 		 cargar.addActionListener(new ActionListener() {
 			 @Override
 			 public void actionPerformed(ActionEvent e) {
@@ -53,36 +51,34 @@ public class BarraMenu extends JMenuBar {
 			 }
 		 });
 		 
-		 JMenuItem salvar = new JMenuItem("Guardar");
+		 JMenuItem salvar = new JMenuItem("Guardar eventos");
 		 salvar.setMnemonic(KeyEvent.VK_L);
-		 salvar.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L,
-		 ActionEvent.ALT_MASK));
 		 salvar.addActionListener(new ActionListener() {
 			 @Override
 			 public void actionPerformed(ActionEvent e) {
-				 mainWindow.guardarResultados();
+				 try {
+					mainWindow.guardarEntrada();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 			 }
 
 			
 		 });
 		 
 		
-		/* JMenuItem salvarInformes = new JMenuItem("Guardar informes");
+		 JMenuItem salvarInformes = new JMenuItem("Guardar informes");
 		 cargar.setMnemonic(KeyEvent.VK_L);
 		 cargar.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L,
 		 ActionEvent.ALT_MASK));
 		 cargar.addActionListener(new ActionListener() {
 			 @Override
 			 public void actionPerformed(ActionEvent e) {
-				 try {
-					mainWindow.guardarInformes();
-				} catch (FileNotFoundException e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+				 mainWindow.guardarResultados();
 			 }
 		 });
-		 */
+		
 		 
 		 JMenuItem salir = new JMenuItem("Salir");
 		 salir.setMnemonic(KeyEvent.VK_L);
@@ -99,24 +95,23 @@ public class BarraMenu extends JMenuBar {
 		 menu.addSeparator();
 		 menu.add(salvar);
 		 menu.addSeparator();
-		// menu.add(salvarInformes);
+		 menu.add(salvarInformes);
 		 menu.addSeparator();
 		 menu.add(salir);
 		}
 
 	 private void creaMenuInformes(JMenu menuReport, VentanaPrincipal mainWindow) {
 			 
-		 JMenuItem generaInformes = new JMenuItem("Generar");
-		 generaInformes.addActionListener(new ActionListener() {
+
+;
+		 JMenuItem limpiaAreaInformes = new JMenuItem("Clear");
+		 limpiaAreaInformes.addActionListener(new ActionListener() {
 			 @Override
 			 public void actionPerformed(ActionEvent e) {
-				 // OPCIONAL
-				 mainWindow.generaInformes();
+				 mainWindow.limpiaInformes();
 			 }
 		 });
-		 menuReport.add(generaInformes);
-		 JMenuItem limpiaAreaInformes = new JMenuItem("Clear");
-		
+		 
 		 menuReport.add(limpiaAreaInformes);
 	}
 
@@ -132,6 +127,13 @@ public class BarraMenu extends JMenuBar {
 		});
 		
 		JMenuItem reinicia = new JMenuItem("Reinicia");
+		ejecuta.addActionListener(new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			
+			controlador.reinicia();
+			}
+		});
 		
 		menuSimulador.add(ejecuta);
 		menuSimulador.add(reinicia);

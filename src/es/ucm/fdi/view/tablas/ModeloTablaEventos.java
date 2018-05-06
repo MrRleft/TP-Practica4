@@ -1,5 +1,6 @@
 package es.ucm.fdi.view.tablas;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import es.ucm.fdi.controller.Controlador;
@@ -13,6 +14,7 @@ public class ModeloTablaEventos extends ModeloTabla<Evento>  {
 	public ModeloTablaEventos(String[] columnIdEventos, Controlador ctrl) { 
 		super(columnIdEventos,ctrl);
 	}
+	
 	@Override // necesario para que se visualicen los datos
 	public Object getValueAt(int indiceFil, int indiceCol) {
 		Object s = null;
@@ -29,26 +31,34 @@ public class ModeloTablaEventos extends ModeloTabla<Evento>  {
 		return s;
 	}
 	
-	//...
+
 	@Override
 	public void avanza(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
-	this.lista = eventos; 
-	this.fireTableStructureChanged();
+	
+		List<Evento> Aux = new ArrayList<>();
+		for(Evento e : eventos) {
+			if(e.getTiempo() > tiempo)
+				Aux.add(e);
+		}
+		this.lista = Aux; 
+		this.fireTableStructureChanged();
 	}
 	
 	@Override
 	public void addEvento(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
+		List<Evento> Aux = new ArrayList<>();
+		for(Evento e : eventos) {
+			if(e.getTiempo() >= tiempo)
+				Aux.add(e);
+		}
+		this.lista = Aux; 
 		this.fireTableStructureChanged();
 	}
 	
-	@Override
-	public void reinicia(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
-		this.fireTableStructureChanged();
-	}
-	
+
+
 	@Override
 	public void errorSimulador(int tiempo, MapaCarreteras map, List<Evento> eventos, ErrorDeSimulacion e) {
-		// TODO Auto-generated method stub
 		this.fireTableStructureChanged();
 	}
 

@@ -16,7 +16,31 @@ public class ModeloTablaVehiculos extends ModeloTabla<Vehiculo> {
 		// TODO Auto-generated constructor stub
 		super(columnidvehiculo, controlador);
 	}
-
+	
+	@Override
+	public Object getValueAt(int indiceFil, int indiceCol) {
+		Object s = null;
+		switch (indiceCol) {
+			case 0:
+				s = this.lista.get(indiceFil).getId(); break;
+			case 1:
+				s = this.lista.get(indiceFil).getRoad(); break;
+			case 2:
+				s = this.lista.get(indiceFil).getLocalizacion(); break;
+			case 3:
+				s = this.lista.get(indiceFil).getSpeed(); break;
+			case 4:
+				s = this.lista.get(indiceFil).getKM(); break;
+			case 5:
+				s = this.lista.get(indiceFil).getTiempoDeInfraccion(); break;
+			case 6:
+				s = this.lista.get(indiceFil).getIti(); break;
+			default: 
+				assert (false);
+		}
+		return s;
+	}
+	
 	@Override
 	public void errorSimulador(int tiempo, MapaCarreteras map, List<Evento> eventos, ErrorDeSimulacion e) {
 
@@ -24,32 +48,18 @@ public class ModeloTablaVehiculos extends ModeloTabla<Vehiculo> {
 
 	@Override
 	public void avanza(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
-		// TODO Auto-generated method stub
-		List<Vehiculo> lista = mapa.getVehiculos();
-		for(Vehiculo v : lista) {
-			Object[] row = {v.getId(), v.getRoad(), v.getLocalizacion(), v.getSpeed(), v.getKM(),
-					v.getTiempoDeInfraccion(), v.getIti()};
-			this.addRow(row);
-		}
+
+		this.lista = mapa.getVehiculos();
 		this.fireTableStructureChanged();
 	}
 
 	@Override
 	public void addEvento(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
-		// TODO Auto-generated method stub
-		this.avanza(tiempo, mapa, eventos);
+
 		this.fireTableStructureChanged();
 	}
 
-	@Override
-	public void reinicia(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
-		// TODO Auto-generated method stub
-		
-		for(int i = 0; i < getRowCount(); i++ )
-			this.removeRow(i);
-		this.fireTableStructureChanged();
-	
-	}
+
 
 
 }

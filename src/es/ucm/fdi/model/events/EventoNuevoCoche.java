@@ -55,16 +55,16 @@ public class EventoNuevoCoche extends EventoNuevoVehiculo {
 
 	@Override
 	public String toString() {
-		StringBuilder sb = new StringBuilder();
-		// TODO Auto-generated method stub
-		super.toString();
-		System.out.println("type="+ "car");
-		System.out.println("resistance="+ this.resistencia);
-		System.out.println("fault_probability=" +this.probAveria);
-		System.out.println("max_fault_duration=" + this.duracionMaxima);
-		System.out.println("seed" + this.semilla);
+		String elRetornable = "";
+		String newline = System.getProperty("line.separator");
+		elRetornable += super.toString();
+		elRetornable += "type="+ "car" + newline;
+		//elRetornable += "resistance="+ this.resistencia + newline;
+		//elRetornable += "fault_probability=" +this.probAveria + newline;
+		//elRetornable += "max_fault_duration=" + this.duracionMaxima + newline;
+		//elRetornable += "seed" + this.semilla + newline;
 		
-		return sb.toString() ;
+		return elRetornable ;
 	}
 
 }
