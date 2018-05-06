@@ -95,8 +95,8 @@ public class MapaCarreteras {
 	public String generateReport(int time) {
 		 //Preguntar como va el report.
 		
-	//	 String report = ("# ******* step "+ time +" *******\r\n");
-		 String report = "";
+		 String report = ("# ******* step "+ time +" *******\r\n");
+		 //String report = "";
 		 time++;
 	//	 report += System.lineSeparator();		 // genera informe para cruces
 		 for(int i = 0; i < this.cruces.size();++i){

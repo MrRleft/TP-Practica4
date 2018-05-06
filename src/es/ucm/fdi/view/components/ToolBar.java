@@ -33,6 +33,7 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 	private JTextField time;
 	public ToolBar(VentanaPrincipal mainWindow, Controlador controlador){
 		super();
+		this.c = controlador;
 		controlador.addObserver(this);
 		JButton botonCargar = new JButton();
 		botonCargar.setToolTipText("Carga un fichero de eventos");
@@ -140,8 +141,9 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 	
 	@Override
 	public void avanza(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
-		System.out.println("avanzo");
-		//this.time.setText(""+(this.c.getTime()));
+		System.out.println("avanzo" + this.c.getTime());
+		
+		this.time.setText(""+(this.c.getTime()));
 	}
 	
 	@Override

@@ -67,10 +67,10 @@ public class EventoNuevoVehiculo extends Evento{
 		String elRetornable = "";
 		String newline = System.getProperty("line.separator");
 		elRetornable += "[new_vehicle]" + newline;
-		elRetornable += "time=" + this.tiempo + newline;
-		elRetornable += "id= "+ this.id + newline;
-		elRetornable += "max_speed= "+ this.velocidadMaxima + newline;
-		elRetornable += "itinerary= "+ this.itinerario + newline;
+		//elRetornable += "time=" + this.tiempo + newline;
+		//elRetornable += "id= "+ this.id + newline;
+		//elRetornable += "max_speed= "+ this.velocidadMaxima + newline;
+		//elRetornable += "itinerary= "+ this.itinerario + newline;
 		return elRetornable;
 		 
 	 }

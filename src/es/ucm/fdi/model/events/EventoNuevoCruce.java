@@ -39,8 +39,8 @@ public class EventoNuevoCruce extends Evento {
 		String elRetornable = "";
 		String newline = System.getProperty("line.separator");
 		elRetornable += "[new_junction]" + newline;
-		elRetornable += "time= " + super.getTiempo()  + newline;
-		elRetornable += "id = "+ this.id  + newline;
+		//elRetornable += "time= " + super.getTiempo()  + newline;
+		//elRetornable += "id = "+ this.id  + newline;
 		return elRetornable;
 	
 	 }

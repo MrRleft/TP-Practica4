@@ -46,12 +46,12 @@ public class EventoNuevaCarretera extends Evento {
 		 String elRetornable = "";
 		 String newline = System.getProperty("line.separator");
 		 elRetornable += "[new_road]" + newline;
-		 elRetornable += "time =" + super.getTiempo() + newline;
-		 elRetornable += "id = "+ this.id + newline;
-		 elRetornable += "src = "+ this.cruceOrigenId + newline;
-		 elRetornable += "dest = " + this.cruceDestinoId + newline;
-		 elRetornable += "max_speed = "+ this.velocidadMaxima+ newline;
-		 elRetornable += "length + = " + this.longitud + newline;
+		// elRetornable += "time =" + super.getTiempo() + newline;
+		 //elRetornable += "id = "+ this.id + newline;
+		// elRetornable += "src = "+ this.cruceOrigenId + newline;
+		// elRetornable += "dest = " + this.cruceDestinoId + newline;
+		// elRetornable += "max_speed = "+ this.velocidadMaxima+ newline;
+		// elRetornable += "length + = " + this.longitud + newline;
 		 return elRetornable;
 	}
 	

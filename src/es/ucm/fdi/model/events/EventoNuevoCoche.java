@@ -59,10 +59,10 @@ public class EventoNuevoCoche extends EventoNuevoVehiculo {
 		String newline = System.getProperty("line.separator");
 		elRetornable += super.toString();
 		elRetornable += "type="+ "car" + newline;
-		elRetornable += "resistance="+ this.resistencia + newline;
-		elRetornable += "fault_probability=" +this.probAveria + newline;
-		elRetornable += "max_fault_duration=" + this.duracionMaxima + newline;
-		elRetornable += "seed" + this.semilla + newline;
+		//elRetornable += "resistance="+ this.resistencia + newline;
+		//elRetornable += "fault_probability=" +this.probAveria + newline;
+		//elRetornable += "max_fault_duration=" + this.duracionMaxima + newline;
+		//elRetornable += "seed" + this.semilla + newline;
 		
 		return elRetornable ;
 	}

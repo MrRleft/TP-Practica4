@@ -33,6 +33,7 @@ public class CarreteraEntranteConIntervalo extends CarreteraEntrante{
 			 this.usoCompleto = false;
 		 else {
 			this.getColaVehiculos().get(0).moverASiguienteCarretera();
+			this.getColaVehiculos().remove(0);
 			this.usadaPorUnVehiculo = true;
 		 }
 	} 

@@ -171,7 +171,8 @@ public class Vehiculo extends ObjetoSimulacion {
 
 
 	public String getRoad() {
-		return this.carretera.getID();
+
+		return !this.haLlegado ? this.carretera.getID() : "ARRIVED";
 	}
 
 

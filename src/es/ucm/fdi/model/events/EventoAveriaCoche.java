@@ -30,9 +30,9 @@ public class EventoAveriaCoche extends Evento {
 		String elRetornable = "";
 		String newline = System.getProperty("line.separator");
 		elRetornable += "[make_vehicle_faulty]" + newline;
-		elRetornable += "time = "+ super.getTiempo()+ newline;
-		elRetornable += "vehicles = "+ this.vehicle+ newline;
-		elRetornable += "duration = " + this.duration+ newline;
+		//elRetornable += "time = "+ super.getTiempo()+ newline;
+		//elRetornable += "vehicles = "+ this.vehicle+ newline;
+		//elRetornable += "duration = " + this.duration+ newline;
 		return elRetornable;
 		
 	}

@@ -28,7 +28,7 @@ import es.ucm.fdi.view.VentanaPrincipal;
 public class Main {
 
 
-	private final static Integer limiteTiempoPorDefecto = 10;
+	private final static Integer limiteTiempoPorDefecto = 20;
 	private static Integer limiteTiempo = null;
 	private static String ficheroEntrada = null;
 	private static String ficheroSalida = null;

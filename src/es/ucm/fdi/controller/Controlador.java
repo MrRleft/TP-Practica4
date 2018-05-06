@@ -96,5 +96,5 @@ public class Controlador {
 		// TODO Auto-generated method stub
 		return this.simulador.getContTiempo();
 	}
-	}
+}
 
