@@ -17,26 +17,30 @@ public class PanelInformes extends PanelAreaTexto implements ObservadorSimulador
 
 	@Override
 	public void errorSimulador(int tiempo, MapaCarreteras map, List<Evento> eventos, ErrorDeSimulacion e) {
-		// TODO Auto-generated method stub
+		
+		super.setTexto("ERROR: " + e.getMessage());
+		super.setTexto("Pulsa reiniciar y vuelve a intentarlo");
 		
 	}
 
 	@Override
 	public void avanza(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
-		// TODO Auto-generated method stub
+		
+		super.setTexto(mapa.generateReport(tiempo));
 		
 	}
 
 	@Override
 	public void addEvento(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
 		// TODO Auto-generated method stub
-		
+		super.setTexto("NUEVO EVENTO INSERTADO");
 	}
 
 	@Override
 	public void reinicia(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
 		// TODO Auto-generated method stub
-		
+		super.limpiar();
+		super.setTexto("SE HA REINICIADO EL SIMULADOR");
 	}
 
 

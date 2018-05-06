@@ -6,11 +6,14 @@ import java.awt.GridLayout;
 import java.awt.event.WindowEvent;
 import java.awt.event.WindowListener;
 import java.io.BufferedReader;
+import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
+import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Scanner;
 
@@ -335,16 +338,10 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 
 
 
-	public FileInputStream getFichero() {
+	public InputStream getEventos() {
 		// TODO Auto-generated method stub
-		try {
-			return new FileInputStream(this.ficheroActual);
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-			System.err.println("Problema al cargar el inputStream");
-			return null;
-		}
+		InputStream iS = new ByteArrayInputStream(panelEditorEventos.getTexto().getBytes(StandardCharsets.UTF_8));
+		return iS;
 	}
 
 

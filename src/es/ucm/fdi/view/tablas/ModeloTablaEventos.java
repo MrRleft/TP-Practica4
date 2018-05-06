@@ -33,8 +33,9 @@ public class ModeloTablaEventos extends ModeloTabla<Evento>  {
 
 	@Override
 	public void avanza(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
-	this.lista = eventos; 
-	this.fireTableStructureChanged();
+	
+		this.lista = eventos; 
+		this.fireTableStructureChanged();
 	}
 	
 	@Override
@@ -42,15 +43,10 @@ public class ModeloTablaEventos extends ModeloTabla<Evento>  {
 		this.fireTableStructureChanged();
 	}
 	
-	@Override
-	public void reinicia(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
-		this.fireTableStructureChanged();
-	}
-	
+
+
 	@Override
 	public void errorSimulador(int tiempo, MapaCarreteras map, List<Evento> eventos, ErrorDeSimulacion e) {
-		for(int i = 0; i < getRowCount(); i++ )
-			this.removeRow(i);
 		this.fireTableStructureChanged();
 	}
 

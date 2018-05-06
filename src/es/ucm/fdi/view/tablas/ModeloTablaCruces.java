@@ -47,13 +47,7 @@ public class ModeloTablaCruces extends ModeloTabla<CruceGenerico<?>> {
 		this.fireTableStructureChanged();
 	}
 
-	@Override
-	public void reinicia(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
 
-		for(int i = 0; i < getRowCount(); i++ )
-			this.removeRow(i);
-		this.fireTableStructureChanged();
-	}
 
 
 }

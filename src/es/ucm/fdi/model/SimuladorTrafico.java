@@ -146,7 +146,6 @@ public class SimuladorTrafico implements Observador<ObservadorSimuladorTrafico>{
 		// TODO Auto-generated method stub
 		// El simulador tendr� un m�todo reinicia, que reinicia todos sus atributos y
 		//notifca a los observadores dicha acci�n. 
-		System.out.println("REINICIANDO");
 		this.eventos = new SortedArrayList<Evento>(cmp); // estructura ordenada por �tiempo�
 		this.mapa = new MapaCarreteras();
 		this.contadorTiempo = 0;

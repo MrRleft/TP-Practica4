@@ -6,6 +6,8 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableModel;
 
 import es.ucm.fdi.controller.Controlador;
+import es.ucm.fdi.model.MapaCarreteras;
+import es.ucm.fdi.model.events.Evento;
 import es.ucm.fdi.view.ObservadorSimuladorTrafico;
 
 //EL MODELO SE REGISTRA COMO OBSERVADOR
@@ -33,5 +35,13 @@ public abstract class ModeloTabla<T> extends DefaultTableModel implements Observ
 	@Override
 	public int getRowCount() {
 		return this.lista == null ? 0 :	this.lista.size();
+	}
+	
+	@Override
+	public void reinicia(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
+
+		this.lista = null;
+		this.fireTableStructureChanged();
+	
 	}
 }

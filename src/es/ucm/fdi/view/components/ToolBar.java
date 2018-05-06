@@ -43,6 +43,7 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 				 public void actionPerformed(ActionEvent e) {
 					try {
 						mainWindow.cargaFichero();
+						controlador.ejecuta(1);
 					} catch (FileNotFoundException e1) {
 						// TODO Auto-generated catch block
 						System.err.println("Problema al cargar los eventos desde el GUI");
@@ -60,8 +61,9 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			 try {
-				 InputStream contenido = mainWindow.getFichero();
+				 InputStream contenido = mainWindow.getEventos();
 				 controlador.cargaEventos(contenido);
+				 controlador.ejecuta(1);
 			 } catch (ErrorDeSimulacion err) {
 				 System.err.println("Problema al cargar los eventos desde el GUI");
 				 err.printStackTrace();
@@ -78,30 +80,24 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 		@Override
 		public void actionPerformed(ActionEvent e) {
 				int pasos = mainWindow.getSteps();
-				System.out.println(pasos);
 				controlador.ejecuta(pasos);
 				mainWindow.setMensaje("Ejecutados "+ pasos +"!");
 			}
 		 });
 		this.add(run);
 		
-		JButton stop = new JButton();
-		stop.setToolTipText("Para la ejecucion del simulador");
-		stop.setIcon(new ImageIcon("resources/icons/stop.png"));
-		stop.addActionListener(new ActionListener() {
+		JButton restart = new JButton();
+		restart.setToolTipText("Para la ejecucion del simulador");
+		restart.setIcon(new ImageIcon("resources/icons/reset.png"));
+		restart.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			 try {
-				 controlador.reinicia();
-				 byte[] contenido = mainWindow.getTextoEditorEventos().getBytes();
-				 controlador.cargaEventos(new ByteArrayInputStream(contenido));
-			 } catch (ErrorDeSimulacion err) {
-				 
-			 }
-			 	mainWindow.setMensaje("Parado");
+				
+				controlador.reinicia();
+			 	mainWindow.setMensaje("Se ha reiniciado el sistema");
 			 }
 		 });
-		this.add(stop);
+		this.add(restart);
 		this.add(new JLabel(" Pasos: "));
 		this.steps = new JSpinner(new SpinnerNumberModel(5, 1, 1000, 1));
 		this.steps.setToolTipText("pasos a ejecutar: 1-1000");
@@ -141,8 +137,6 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 	
 	@Override
 	public void avanza(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
-		System.out.println("avanzo" + this.c.getTime());
-		
 		this.time.setText(""+(this.c.getTime()));
 	}
 	
@@ -153,8 +147,7 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 	
 	@Override
 	public void reinicia(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
-		 this.steps.setValue(1);
-		 this.time.setText("0");
+		this.time.setText(""+(this.c.getTime()));
 	}
 	
 	public int getSteps() {
