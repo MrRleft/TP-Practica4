@@ -6,6 +6,7 @@ import java.awt.event.ActionListener;
 import java.io.ByteArrayInputStream;
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
@@ -55,7 +56,7 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 		
 		JButton botonCheckIn = new JButton();
 		
-		botonCheckIn.setToolTipText("CheckIn");
+		botonCheckIn.setToolTipText("Carga los eventos");
 		botonCheckIn.setIcon(new ImageIcon("resources/icons/events.png"));
 		botonCheckIn.addActionListener(new ActionListener() {
 		@Override
@@ -72,6 +73,20 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 		 });
 		this.add(botonCheckIn);
 		
+		JButton Clean = new JButton();
+		
+		Clean.setToolTipText("Limpia la caja de texto para los eventos");
+		Clean.setIcon(new ImageIcon("resources/icons/delete_report.png"));
+		Clean.addActionListener(new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+
+			 	mainWindow.limpiaEventos();
+			}
+		
+		 });
+		this.add(Clean);
+		
 		JButton run = new JButton();
 		run.setToolTipText("Ejecuta el simulador");
 		run.setIcon(new ImageIcon("resources/icons/play.png"));
@@ -86,7 +101,7 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 		this.add(run);
 		
 		JButton restart = new JButton();
-		restart.setToolTipText("Para la ejecucion del simulador");
+		restart.setToolTipText("Reinicia el simulador");
 		restart.setIcon(new ImageIcon("resources/icons/reset.png"));
 		restart.addActionListener(new ActionListener() {
 		@Override
@@ -113,6 +128,36 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 		this.time.setEditable(false);
 		this.add(this.time);
 		
+		JButton save = new JButton();
+		save.setToolTipText("Guarda los resultados de la ejecución");
+		save.setIcon(new ImageIcon("resources/icons/save.png"));
+		save.addActionListener(new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+				
+			 	mainWindow.guardarSalida();
+			 }
+		 });
+		this.add(save);
+		
+		JButton saveReport = new JButton();
+		saveReport.setToolTipText("Guarda lo que esta en la caja de eventos en un fichero ");
+		saveReport.setIcon(new ImageIcon("resources/icons/save_report.png"));
+		saveReport.addActionListener(new ActionListener() {
+		@Override
+		public void actionPerformed(ActionEvent e) {
+				
+			 	try {
+					mainWindow.guardarEntrada();
+				} catch (IOException e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
+			 }
+		 });
+		this.add(saveReport);
+		
+		
 		// OPCIONAL
 		/*
 		JButton botonGeneraReports = new JButton();
@@ -136,7 +181,7 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 	
 	@Override
 	public void avanza(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
-		this.time.setText(""+(this.c.getTime()));
+		this.time.setText(""+(this.c.getTime()+1));
 	}
 	
 	@Override
@@ -146,6 +191,7 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 	
 	@Override
 	public void reinicia(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
+			
 		this.time.setText(""+(this.c.getTime()));
 	}
 	

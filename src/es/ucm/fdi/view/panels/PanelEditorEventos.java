@@ -1,13 +1,14 @@
 package es.ucm.fdi.view.panels;
 
-import java.awt.event.MouseEvent;
-import java.awt.event.MouseListener;
+
 
 import es.ucm.fdi.view.VentanaPrincipal;
 
 public class PanelEditorEventos extends PanelAreaTexto {
 
-	 public PanelEditorEventos(String titulo, String texto, boolean editable, VentanaPrincipal mainWindow) {
+	private static final long serialVersionUID = 1L;
+
+	public PanelEditorEventos(String titulo, String texto, boolean editable, VentanaPrincipal mainWindow) {
 			 
 		super(titulo,editable);
 		this.setTexto(texto);

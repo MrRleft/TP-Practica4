@@ -35,7 +35,12 @@ public class ModeloTablaEventos extends ModeloTabla<Evento>  {
 	@Override
 	public void avanza(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
 	
-
+		List<Evento> Aux = new ArrayList<>();
+		for(Evento e : eventos) {
+			if(e.getTiempo() > tiempo)
+				Aux.add(e);
+		}
+		this.lista = Aux; 
 		this.fireTableStructureChanged();
 	}
 	

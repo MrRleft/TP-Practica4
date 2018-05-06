@@ -13,6 +13,7 @@ import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.InputStream;
+import java.io.PrintWriter;
 import java.nio.charset.StandardCharsets;
 import java.util.List;
 import java.util.Scanner;
@@ -344,6 +345,30 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 		return iS;
 	}
 
+	public void guardarEntrada() throws IOException{
+		 int fcAux = this.fc.showOpenDialog(null);
+			 if (fcAux == JFileChooser.APPROVE_OPTION) {
+			 File fichero = this.fc.getSelectedFile();
+				 escribeArchivo(fichero,this.panelEditorEventos.getTexto());
+		 }
+	}
+		
+	public static void escribeArchivo(File auxFile, String strFile) throws IOException {
+		try {
+			PrintWriter pw = new PrintWriter(auxFile);
+			pw.print(strFile);
+			pw.close();
+		} catch (IOException e) {
+				throw new IOException();
+		}
+	}
+
+
+
+	public void limpiaEventos() {
+		this.panelEditorEventos.limpiar();
+		
+	}
 
 
 }
