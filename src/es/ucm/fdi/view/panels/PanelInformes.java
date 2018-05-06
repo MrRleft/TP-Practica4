@@ -1,5 +1,6 @@
 package es.ucm.fdi.view.panels;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import es.ucm.fdi.controller.Controlador;
@@ -26,7 +27,11 @@ public class PanelInformes extends PanelAreaTexto implements ObservadorSimulador
 	@Override
 	public void avanza(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
 		
-		super.setTexto(mapa.generateReport(tiempo));
+		super.limpiar();
+		this.setTexto(mapa.generateReport(tiempo));
+		for(Evento e: eventos)
+			if(e.getTiempo() == tiempo)
+				this.setTexto("Ha entrado el evento de la cola " + e.toString());
 		
 	}
 
