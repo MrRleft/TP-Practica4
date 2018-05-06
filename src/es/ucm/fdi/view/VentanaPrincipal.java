@@ -79,7 +79,7 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 	private PanelTabla<Carretera> panelCarreteras;
 	private PanelTabla<CruceGenerico<?>> panelCruces;
 	// REPORT DIALOG
-	private DialogoInformes dialogoInformes; // opcional
+	//private DialogoInformes dialogoInformes; // opcional
 	// MODEL PART - VIEW CONTROLLER MODEL
 	private File ficheroActual;
 	
@@ -136,7 +136,7 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 		 // FILE CHOOSER
 		this.fc = new JFileChooser();
 		 // REPORT DIALOG (OPCIONAL)
-		this.dialogoInformes = new DialogoInformes();
+		//this.dialogoInformes = new DialogoInformes();
 		this.pack();
 		this.setVisible(true);
 		

@@ -63,7 +63,6 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 			 try {
 				 InputStream contenido = mainWindow.getEventos();
 				 controlador.cargaEventos(contenido);
-				 controlador.ejecuta(1);
 			 } catch (ErrorDeSimulacion err) {
 				 System.err.println("Problema al cargar los eventos desde el GUI");
 				 err.printStackTrace();
