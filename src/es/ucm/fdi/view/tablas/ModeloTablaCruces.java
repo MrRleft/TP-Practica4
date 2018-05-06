@@ -21,12 +21,10 @@ public class ModeloTablaCruces extends ModeloTabla<CruceGenerico<?>> {
 		Object s = null;
 		switch (indiceCol) {
 			case 0:
-				s = indiceFil; break;
-			case 1:
 				s = this.lista.get(indiceFil).getId(); break;
-			case 2:
+			case 1:
 				s = this.lista.get(indiceFil).getGreenRoad(); break;
-			case 3:
+			case 2:
 				s = this.lista.get(indiceFil).getRedRoads(); break;
 			default: 
 				assert (false);

@@ -36,11 +36,12 @@ public class EventoNuevoCruce extends Evento {
 	}
 	
 	 public String toString() {
-		 StringBuilder sb = new StringBuilder();
-		 System.out.println("[new_junction]");
-		 System.out.println("time= " + super.getTiempo());
-		 System.out.println("id = "+ this.id);
-		 return sb.toString();
+		String elRetornable = "";
+		String newline = System.getProperty("line.separator");
+		elRetornable += "[new_junction]" + newline;
+		elRetornable += "time= " + super.getTiempo()  + newline;
+		elRetornable += "id = "+ this.id  + newline;
+		return elRetornable;
 	
 	 }
 	 

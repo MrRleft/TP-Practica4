@@ -27,12 +27,13 @@ public class EventoAveriaCoche extends Evento {
 	@Override
 	public String toString() {
 		// TODO Auto-generated method stub
-		StringBuilder sb = new StringBuilder();
-		System.out.println("[make_vehicle_faulty]");
-		System.out.println("time = "+ super.getTiempo());
-		System.out.println("vehicles = "+ this.vehicle);
-		System.out.println("duration = " + this.duration);
-		return sb.toString();
+		String elRetornable = "";
+		String newline = System.getProperty("line.separator");
+		elRetornable += "[make_vehicle_faulty]" + newline;
+		elRetornable += "time = "+ super.getTiempo()+ newline;
+		elRetornable += "vehicles = "+ this.vehicle+ newline;
+		elRetornable += "duration = " + this.duration+ newline;
+		return elRetornable;
 		
 	}
 	

@@ -64,13 +64,14 @@ public class EventoNuevoVehiculo extends Evento{
 	 
 	 @Override
 	 public String toString() {
-		 StringBuilder sb = new StringBuilder();
-		 System.out.println("[new_vehicle]");
-		 System.out.println("time=" + this.tiempo);
-		 System.out.println("id= "+ this.id);
-		 System.out.println("max_speed= "+ this.velocidadMaxima);
-		 System.out.println("itinerary= "+ this.itinerario);
-		 return sb.toString();
+		String elRetornable = "";
+		String newline = System.getProperty("line.separator");
+		elRetornable += "[new_vehicle]" + newline;
+		elRetornable += "time=" + this.tiempo + newline;
+		elRetornable += "id= "+ this.id + newline;
+		elRetornable += "max_speed= "+ this.velocidadMaxima + newline;
+		elRetornable += "itinerary= "+ this.itinerario + newline;
+		return elRetornable;
 		 
 	 }
 

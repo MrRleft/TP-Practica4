@@ -43,15 +43,16 @@ public class EventoNuevaCarretera extends Evento {
 	}
 	
 	public String toString() {
-		 StringBuilder sb = new StringBuilder();
-		 System.out.println("[new_road]");
-		 System.out.println("time =" + super.getTiempo());
-		 System.out.println("id = "+ this.id);
-		 System.out.println("src = "+ this.cruceOrigenId);
-		 System.out.println("dest = "+ this.cruceDestinoId);
-		 System.out.println("max_speed = "+ this.velocidadMaxima);
-		 System.out.println("length + = " + this.longitud);
-		 return sb.toString();
+		 String elRetornable = "";
+		 String newline = System.getProperty("line.separator");
+		 elRetornable += "[new_road]" + newline;
+		 elRetornable += "time =" + super.getTiempo() + newline;
+		 elRetornable += "id = "+ this.id + newline;
+		 elRetornable += "src = "+ this.cruceOrigenId + newline;
+		 elRetornable += "dest = " + this.cruceDestinoId + newline;
+		 elRetornable += "max_speed = "+ this.velocidadMaxima+ newline;
+		 elRetornable += "length + = " + this.longitud + newline;
+		 return elRetornable;
 	}
 	
 

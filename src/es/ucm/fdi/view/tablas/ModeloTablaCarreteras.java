@@ -20,17 +20,17 @@ public class ModeloTablaCarreteras extends ModeloTabla<Carretera> {
 		Object s = null;
 		switch (indiceCol) {
 			case 0:
-				s = indiceFil; break;
-			case 1:
-				s = this.lista.get(indiceFil).getLongitud(); break;
-			case 2:
 				s = this.lista.get(indiceFil).getID(); break;
-			case 3:
+			case 1:
 				s = this.lista.get(indiceFil).getCruceOrigen(); break;
-			case 4:
+			case 2:
 				s = this.lista.get(indiceFil).getCruceDest(); break;
+			case 3:
+				s = this.lista.get(indiceFil).getLongitud(); break;
+			case 4:
+				s = this.lista.get(indiceFil).getVMax(); break;
 			case 5:
-				s = this.lista.get(indiceFil).toString(); break;
+				s = this.lista.get(indiceFil).getStringVehiculos(); break;
 			default: 
 				assert (false);
 		}

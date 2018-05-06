@@ -156,6 +156,12 @@ public class Carretera extends ObjetoSimulacion {
 	}
 
 
+	public int getVMax() {
+		// TODO Auto-generated method stub
+		return this.velocidadMaxima;
+	}
+
+
 
 
 	

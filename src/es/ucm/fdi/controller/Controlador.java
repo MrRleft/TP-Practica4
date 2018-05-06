@@ -34,7 +34,7 @@ public class Controlador {
 		 try {
 			 
 			 this.cargaEventos(this.ficheroEntrada);
-			 this.simulador.ejecuta(this.pasosSimulacion,this.ficheroSalida);
+			 this.simulador.ejecuta(this.pasosSimulacion,this.ficheroSalida, true);
 		 }
 		 catch(Exception r) {
 			 
@@ -45,7 +45,7 @@ public class Controlador {
 	public void ejecuta(int pasos) {
 		 
 		try {
-			this.simulador.ejecuta(pasos,this.ficheroSalida);
+			this.simulador.ejecuta(pasos,this.ficheroSalida, false);
 		} 
 		catch (ErrorDeSimulacion | ErrorCarga | NotFoundException | InsertException e) {
 			// TODO Auto-generated catch block

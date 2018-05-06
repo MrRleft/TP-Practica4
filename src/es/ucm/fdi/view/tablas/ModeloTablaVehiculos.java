@@ -22,20 +22,18 @@ public class ModeloTablaVehiculos extends ModeloTabla<Vehiculo> {
 		Object s = null;
 		switch (indiceCol) {
 			case 0:
-				s = indiceFil; break;
-			case 1:
 				s = this.lista.get(indiceFil).getId(); break;
-			case 2:
+			case 1:
 				s = this.lista.get(indiceFil).getRoad(); break;
-			case 3:
+			case 2:
 				s = this.lista.get(indiceFil).getLocalizacion(); break;
-			case 4:
+			case 3:
 				s = this.lista.get(indiceFil).getSpeed(); break;
-			case 5:
+			case 4:
 				s = this.lista.get(indiceFil).getKM(); break;
-			case 6:
+			case 5:
 				s = this.lista.get(indiceFil).getTiempoDeInfraccion(); break;
-			case 7:
+			case 6:
 				s = this.lista.get(indiceFil).getIti(); break;
 			default: 
 				assert (false);
