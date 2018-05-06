@@ -193,7 +193,7 @@ public class Vehiculo extends ObjetoSimulacion {
 			key += c.getId() + ",";
 		key = key.substring(0, key.length() - 1);
 		key += "]";
-		return null;
+		return key;
 	}
 	
 	
