@@ -45,7 +45,7 @@ public class Controlador {
 	 }
 	
 	public void ejecuta(int pasos) {
-		 
+		
 		try {
 			this.simulador.ejecuta(pasos,this.ficheroSalida, false, this.guardarSalida);
 		} 

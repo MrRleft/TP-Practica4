@@ -298,6 +298,10 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 		
 		return this.toolbar.getSteps();
 	}
+	
+	public int getDelies(){
+		return this.toolbar.getDelay();
+	}
 
 	public void generaInformes() {
 		// TODO Auto-generated method stub
