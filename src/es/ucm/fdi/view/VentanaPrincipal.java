@@ -84,6 +84,8 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 	//private DialogoInformes dialogoInformes; // opcional
 	// MODEL PART - VIEW CONTROLLER MODEL
 	private File ficheroActual;
+
+	private BarraMenu menubar;
 	
 	public VentanaPrincipal(String ficheroEntrada,Controlador ctrl) throws FileNotFoundException {
 		super("Simulador de Trafico");
@@ -129,7 +131,7 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 		 JPanel panelSup = this.createPanelSuperior(panelCentral);
 		 panelCentral.add(panelSup);
 		 // MENU
-		 BarraMenu menubar = new BarraMenu(this,this.controlador);
+		 menubar = new BarraMenu(this,this.controlador);
 		 this.setJMenuBar(menubar);
 		 // PANEL INFERIOR
 		 this.createPanelInferior(panelCentral);
@@ -386,6 +388,21 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 
 	public void guardarSalida() {
 		this.controlador.guardarSalida(true);
+	}
+
+
+
+	public int getDelay() {
+		// TODO Auto-generated method stub
+		return this.toolbar.getDelay();
+	}
+
+
+
+	public void enableThings(boolean a) {
+		
+		this.menubar.deshabilitar(a);
+		this.panelEditorEventos.habilitar(a);
 	}
 
 
