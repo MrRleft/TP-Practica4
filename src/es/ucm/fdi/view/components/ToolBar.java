@@ -32,7 +32,6 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 	private Controlador c;
 	private JSpinner steps;
 	private JTextField time;
-	private JSpinner delay;
 	public ToolBar(VentanaPrincipal mainWindow, Controlador controlador){
 		super();
 		this.c = controlador;
@@ -114,17 +113,6 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 		 });
 		this.add(run);
 		
-		JButton stop = new JButton();
-		stop.setToolTipText("Para el simulador");
-		stop.setIcon(new ImageIcon("resources/icons/stop.png"));
-		stop.addActionListener(new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-				
-			}
-		 });
-		this.add(stop);
-		
 		JButton restart = new JButton();
 		restart.setToolTipText("Reinicia el simulador");
 		restart.setIcon(new ImageIcon("resources/icons/reset.png"));
@@ -137,15 +125,6 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 			 }
 		 });
 		this.add(restart);
-		
-		this.add(new JLabel(" Delay: "));
-		this.delay = new JSpinner(new SpinnerNumberModel(5, 1, 1000, 1));
-		this.delay.setToolTipText("delay del hilo");
-		this.delay.setMaximumSize(new Dimension(70, 70));
-		this.delay.setMinimumSize(new Dimension(70, 70));
-		this.delay.setValue(1);
-		this.add(delay);
-		
 		this.add(new JLabel(" Pasos: "));
 		this.steps = new JSpinner(new SpinnerNumberModel(5, 1, 1000, 1));
 		this.steps.setToolTipText("pasos a ejecutar: 1-1000");
@@ -191,16 +170,6 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 		 });
 		this.add(saveReport);
 		
-		JButton exit = new JButton();
-		exit.setToolTipText("Salir de la aplicación");
-		exit.setIcon(new ImageIcon("resources/icons/exit.png"));
-		exit.addActionListener(new ActionListener() {
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			 mainWindow.Salir();
-		 }
-		 });
-		this.add(exit);
 		
 		// OPCIONAL
 		/*
