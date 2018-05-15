@@ -30,12 +30,9 @@ import es.ucm.fdi.view.VentanaPrincipal;
 public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 	
 	private Controlador c;
-	Thread playThread;
 	private JSpinner steps;
 	private JTextField time;
 	private JSpinner delay;
-	
-
 	public ToolBar(VentanaPrincipal mainWindow, Controlador controlador){
 		super();
 		this.c = controlador;
@@ -107,32 +104,14 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 		JButton run = new JButton();
 		run.setToolTipText("Ejecuta el simulador");
 		run.setIcon(new ImageIcon("resources/icons/play.png"));
-		
-		   this.playThread = new Thread() {
-			      public void run() {
-
-			        try {
-			          while(mainWindow.getDelies() > 1) {
-			        	  int pasos = mainWindow.getSteps();
-			  			controlador.ejecuta(pasos);
-			  			mainWindow.setMensaje("Ejecutados "+ pasos +"!");
-			              Thread.sleep(mainWindow.getDelies());
-			            
-			          }
-			        } catch (InterruptedException e) {
-			        }
-			      }
-		   };
 		run.addActionListener(new ActionListener() {
-			
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			playThread.start();
-		}
-		
-		
+				int pasos = mainWindow.getSteps();
+				controlador.ejecuta(pasos);
+				mainWindow.setMensaje("Ejecutados "+ pasos +"!");
+			}
 		 });
-		
 		this.add(run);
 		
 		JButton stop = new JButton();
@@ -184,7 +163,7 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 		this.add(this.time);
 		
 		JButton save = new JButton();
-		save.setToolTipText("Guarda los resultados de la ejecuciï¿½n");
+		save.setToolTipText("Guarda los resultados de la ejecución");
 		save.setIcon(new ImageIcon("resources/icons/save.png"));
 		save.addActionListener(new ActionListener() {
 		@Override
@@ -213,7 +192,7 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 		this.add(saveReport);
 		
 		JButton exit = new JButton();
-		exit.setToolTipText("Salir de la aplicaciï¿½n");
+		exit.setToolTipText("Salir de la aplicación");
 		exit.setIcon(new ImageIcon("resources/icons/exit.png"));
 		exit.addActionListener(new ActionListener() {
 		@Override
@@ -263,10 +242,5 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 	public int getSteps() {
 		
 		return (int) this.steps.getValue();
-	}
-	
-	public int getDelay() {
-		
-		return (int) this.delay.getValue();
 	}
 }
