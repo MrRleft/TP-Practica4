@@ -27,14 +27,16 @@ public class DelayRunner implements Runnable{
 		// TODO Auto-generated method stub
 		while(this.Steps > 0 && !Thread.interrupted()) {
 			
-			this.c.ejecuta(1);
-			this.Steps--;
 			try {
 				sleep(this.Delay);
 			} catch (InterruptedException e) {
 				
 				Thread.currentThread().interrupt();
 			}
+			this.Steps--;
+			this.c.ejecuta(1);
+
+
 			this.Toolb.changeSteps(this.Steps);
 		}
 		Toolb.enableButtons(true);

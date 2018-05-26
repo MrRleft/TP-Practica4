@@ -173,7 +173,7 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 		
 		
 		this.add(new JLabel(" Pasos: "));
-		this.steps = new JSpinner(new SpinnerNumberModel(5, 1, 1000, 1));
+		this.steps = new JSpinner(new SpinnerNumberModel(5, 0, 1000, 1));
 		this.steps.setToolTipText("pasos a ejecutar: 1-1000");
 		this.steps.setMaximumSize(new Dimension(70, 70));
 		this.steps.setMinimumSize(new Dimension(70, 70));
@@ -223,7 +223,8 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 		exit.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
-				interruptThread();
+				if(t1 != null) 
+					interruptThread();
 				mainWindow.Salir();
 			}
 		 });
@@ -276,8 +277,7 @@ public class ToolBar extends JToolBar implements ObservadorSimuladorTrafico {
 	}
 	
 	private void practica6Funcion() {
-		
-		System.out.println("HOLA PERRAS");
+
 		enableButtons(false);
 		Runnable t = new DelayRunner(this.getDelay(), this.getSteps(), this, this.c);
 		this.t1 = new Thread(t);

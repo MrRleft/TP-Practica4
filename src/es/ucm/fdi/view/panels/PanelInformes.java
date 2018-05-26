@@ -9,6 +9,7 @@ import es.ucm.fdi.model.Exceptions.ErrorDeSimulacion;
 import es.ucm.fdi.model.events.Evento;
 import es.ucm.fdi.view.ObservadorSimuladorTrafico;
 
+@SuppressWarnings("serial")
 public class PanelInformes extends PanelAreaTexto implements ObservadorSimuladorTrafico {
 
 	 public PanelInformes(String titulo, boolean editable, Controlador ctrl) {
@@ -18,10 +19,10 @@ public class PanelInformes extends PanelAreaTexto implements ObservadorSimulador
 
 	@Override
 	public void errorSimulador(int tiempo, MapaCarreteras map, List<Evento> eventos, ErrorDeSimulacion e) {
-		
+		/*
 		super.setTexto("ERROR: " + e.getMessage());
 		super.setTexto("Pulsa reiniciar y vuelve a intentarlo");
-		
+		*/
 	}
 
 	@Override
@@ -33,14 +34,12 @@ public class PanelInformes extends PanelAreaTexto implements ObservadorSimulador
 	@Override
 	public void addEvento(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
 		// TODO Auto-generated method stub
-		super.setTexto("NUEVO EVENTO INSERTADO");
 	}
 
 	@Override
 	public void reinicia(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
 		// TODO Auto-generated method stub
 		super.limpiar();
-		super.setTexto("SE HA REINICIADO EL SIMULADOR");
 	}
 
 

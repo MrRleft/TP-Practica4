@@ -79,7 +79,7 @@ public class BarraMenu extends JMenuBar {
 		 salvarInformes.setMnemonic(KeyEvent.VK_L);
 		 salvarInformes.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L,
 		 ActionEvent.ALT_MASK));
-		 cargar.addActionListener(new ActionListener() {
+		 salvarInformes.addActionListener(new ActionListener() {
 			 @Override
 			 public void actionPerformed(ActionEvent e) {
 				 mainWindow.guardarResultados();
@@ -124,7 +124,7 @@ public class BarraMenu extends JMenuBar {
 
 	private void creaMenuSimulador(JMenu menuSimulador, Controlador controlador, VentanaPrincipal mainWindow) {
 			
-		JMenuItem ejecuta = new JMenuItem("Ejecuta");
+		JMenuItem ejecuta = new JMenuItem("Ejecuta un paso");
 		ejecuta.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {

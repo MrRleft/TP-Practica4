@@ -356,11 +356,20 @@ public class VentanaPrincipal extends JFrame implements ObservadorSimuladorTrafi
 	}
 
 	public void guardarEntrada() throws IOException{
-		 int fcAux = this.fc.showOpenDialog(null);
-			 if (fcAux == JFileChooser.APPROVE_OPTION) {
-			 File fichero = this.fc.getSelectedFile();
-				 escribeArchivo(fichero,this.panelEditorEventos.getTexto());
-		 }
+		int saveR = fc.showSaveDialog(null);
+		if (saveR == JFileChooser.APPROVE_OPTION) {
+				File file = fc.getSelectedFile();
+		try {
+				escribeArchivo(file, this.panelEditorEventos.getTexto());
+		} catch (IOException e) {
+			try {
+				throw new ErrorDeSimulacion("No se ha podido guardar el archivo");
+			} catch (ErrorDeSimulacion e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		}
+	}
 	}
 		
 	public static void escribeArchivo(File auxFile, String strFile) throws IOException {
