@@ -26,12 +26,12 @@ public class PanelBarraEstado extends JPanel implements ObservadorSimuladorTrafi
 	}
 	
 	public void setMensaje(String mensaje) {
-		
+		this.infoEjecucion.setText(mensaje);
 	} // la ventana principal se comunica con el panel
 
 	@Override
 	public void avanza(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
-		this.infoEjecucion.setText("Paso: " + tiempo + " del Simulador");
+		this.infoEjecucion.setText("Paso: " + tiempo + " del Simulador completado");
 	}
 
 	@Override
@@ -42,12 +42,12 @@ public class PanelBarraEstado extends JPanel implements ObservadorSimuladorTrafi
 	
 	@Override	
 	public void reinicia(int tiempo, MapaCarreteras mapa, List<Evento> eventos) {
-		
+		setMensaje("Se ha reiniciado el simulador");
 	}
 
 	@Override
 	public void errorSimulador(int tiempo, MapaCarreteras map, List<Evento> eventos, ErrorDeSimulacion e) {
-		// TODO Auto-generated method stub
+		setMensaje("ERROR: " + e.getMessage());
 		
 	}
 

@@ -19,26 +19,33 @@ import es.ucm.fdi.view.VentanaPrincipal;
 public class BarraMenu extends JMenuBar {
 
 
-	 public BarraMenu(VentanaPrincipal mainWindow, Controlador controlador) {
+	 private JMenu menuFicheros;
+	private JMenu menuSimulador;
+	private JMenu menuReport;
+	private JMenuItem cargar;
+	private JMenuItem salvar;
+	private JMenuItem salvarInformes;
+
+	public BarraMenu(VentanaPrincipal mainWindow, Controlador controlador) {
 	 
 		 super();
 		 // MANEJO DE FICHEROS
-		 JMenu menuFicheros = new JMenu("Ficheros");
+		 menuFicheros = new JMenu("Ficheros");
 		 this.add(menuFicheros);
 		 this.creaMenuFicheros(menuFicheros,mainWindow);
 		 // SIMULADOR
-		 JMenu menuSimulador = new JMenu("Simulador");
+		 menuSimulador = new JMenu("Simulador");
 		 this.add(menuSimulador);
 		 this.creaMenuSimulador(menuSimulador,controlador,mainWindow);
 		 // INFORMES
-		 JMenu menuReport = new JMenu("Informes");
+		 menuReport = new JMenu("Informes");
 		 this.add(menuReport);
 		 this.creaMenuInformes(menuReport,mainWindow);
 	 }
 
 	 private void creaMenuFicheros(JMenu menu,VentanaPrincipal mainWindow) {
 		
-		 JMenuItem cargar = new JMenuItem("Carga Eventos");
+		 cargar = new JMenuItem("Carga Eventos");
 		 cargar.addActionListener(new ActionListener() {
 			 @Override
 			 public void actionPerformed(ActionEvent e) {
@@ -51,7 +58,7 @@ public class BarraMenu extends JMenuBar {
 			 }
 		 });
 		 
-		 JMenuItem salvar = new JMenuItem("Guardar eventos");
+		 salvar = new JMenuItem("Guardar eventos");
 		 salvar.setMnemonic(KeyEvent.VK_L);
 		 salvar.addActionListener(new ActionListener() {
 			 @Override
@@ -68,11 +75,11 @@ public class BarraMenu extends JMenuBar {
 		 });
 		 
 		
-		 JMenuItem salvarInformes = new JMenuItem("Guardar informes");
-		 cargar.setMnemonic(KeyEvent.VK_L);
-		 cargar.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L,
+		 salvarInformes = new JMenuItem("Guardar informes");
+		 salvarInformes.setMnemonic(KeyEvent.VK_L);
+		 salvarInformes.setAccelerator(KeyStroke.getKeyStroke(KeyEvent.VK_L,
 		 ActionEvent.ALT_MASK));
-		 cargar.addActionListener(new ActionListener() {
+		 salvarInformes.addActionListener(new ActionListener() {
 			 @Override
 			 public void actionPerformed(ActionEvent e) {
 				 mainWindow.guardarResultados();
@@ -117,7 +124,7 @@ public class BarraMenu extends JMenuBar {
 
 	private void creaMenuSimulador(JMenu menuSimulador, Controlador controlador, VentanaPrincipal mainWindow) {
 			
-		JMenuItem ejecuta = new JMenuItem("Ejecuta");
+		JMenuItem ejecuta = new JMenuItem("Ejecuta un paso");
 		ejecuta.addActionListener(new ActionListener() {
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -137,6 +144,16 @@ public class BarraMenu extends JMenuBar {
 		
 		menuSimulador.add(ejecuta);
 		menuSimulador.add(reinicia);
+	}
+
+	public void deshabilitar(boolean a) {
+		// TODO Auto-generated method stub
+		this.cargar.setEnabled(a);
+		this.menuFicheros.setEnabled(a);
+		this.menuReport.setEnabled(a);
+		this.menuSimulador.setEnabled(a);
+		this.salvar.setEnabled(a);
+		this.salvarInformes.setEnabled(a);
 	}
 
 }

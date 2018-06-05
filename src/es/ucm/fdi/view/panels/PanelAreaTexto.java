@@ -41,4 +41,8 @@ abstract public class PanelAreaTexto extends JPanel{
 	public void inserta(String valor) {
 		this.areatexto.insert(valor, this.areatexto.getCaretPosition());
 	}
+	
+	public void habilitar(boolean a) {
+		this.areatexto.setEditable(a);
+	}
 }
